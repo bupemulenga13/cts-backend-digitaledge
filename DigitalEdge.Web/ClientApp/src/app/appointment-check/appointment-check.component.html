@@ -1,0 +1,69 @@
+<!-- page content -->
+<side-bar></side-bar>
+<topnav-bar></topnav-bar>
+<div class="right_col " role="main" style="min-height:1675px">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+        <br />
+        <form [formGroup]="appointmentcheckForm" (ngSubmit)="Submit()">
+          <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="firstName">
+              First Name <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+              <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && g.firstName.errors }" />
+              <div *ngIf="isSubmitted && g.firstName.errors" class="invalid-feedback">
+                <div *ngIf="g.firstName.errors.required">First Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Get Record</button>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+        <h3>Appointments</h3>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Appointment Date</th>
+              <th>Appointment Time</th>
+              <th>Age</th>
+              <th>DOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="this.appointmentcheckData?.length == 0">
+              <td colspan="7" class="text-center font-weight-bolder" style="font-size: xx-large;color: grey"> NO RECORD FOUND</td>
+            </tr>
+            <tr *ngFor="let appointmentData of this.appointmentcheckData">
+              <td>{{appointmentData.firstName}}</td>
+              <td>{{appointmentData.lastName}}</td>
+              <td>{{appointmentData.clientPhoneNo}}</td>     
+              <td>{{appointmentData.appointmentDate | date: "mediumDate"}}</td>
+              <td>{{appointmentData.appointmentTime | date: "shortTime"}}</td>
+              <td>{{appointmentData.age}}</td>
+              <td>{{appointmentData.dateOfBirth | date: "mediumDate"}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<custom-footer></custom-footer>
+<!-- /page content -->

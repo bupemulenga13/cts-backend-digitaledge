@@ -1,0 +1,62 @@
+<!-- page content -->
+<side-bar></side-bar>
+<topnav-bar></topnav-bar>
+<div class="right_col " role="main" style="min-height:1675px">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+        <h2>Chart </h2>
+        <form [formGroup]="facilityForm" (ngSubmit)="Submit()">        
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Service Point Name</label>
+            <div class="col-sm-8">
+              <select class="custom-select" formControlName="servicePointId">
+                <option value="">Choose Service Point Name</option>
+                <option *ngFor="let service of Servicelist" [value]="service.servicePointId">{{service.servicePointName}}</option>
+              </select>
+            </div>
+          </div>         
+          <div class="clearfix"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Get Record</button>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-6">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Upcomming Appointment</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li>
+                <a class="collapse-link upcommingap" (click)="show($event)"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content" id="upcommingapp">
+            <div *ngIf="myChart">
+              <canvas id="canvas">{{ myChart }}</canvas>
+            </div>
+            <select class="custom-select" id="chartType" (change)="updateUpcommingAppChartType($event.target.value)">
+              <option value="line">Line</option>
+              <option value="pie">Pie</option>
+              <option value="bar">Bar</option>
+              <option value="radar">Radar</option>
+              <option value="polarArea">Polar Area</option>
+              <option value="doughnut">Doughnut</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<custom-footer></custom-footer>
+<!-- /page content -->
