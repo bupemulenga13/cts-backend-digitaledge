@@ -24,7 +24,7 @@ namespace DigitalEdge.Repository
         public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]
-        public virtual Facility facility { get; set;}
+        public virtual Facility Facility { get; set;}
         public DateTime DateCreated { get; set; }
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }

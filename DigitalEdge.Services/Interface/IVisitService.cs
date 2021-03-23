@@ -2,6 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 using DigitalEdge.Domain;
+using DigitalEdge.Repository;
 
 namespace DigitalEdge.Services
 {
@@ -19,6 +20,8 @@ namespace DigitalEdge.Services
         List<AppointmentsModel> getVisitsMissedFilter(VisitsModel data);
         List<AppointmentsModel> getClientDetails();
         List<ClientModel> getClientDetails(string searchTerm);
+        List<ClientModel> getClients();
+        List<AppointmentsModel> GetAppointments();
         List<AppointmentsModel> getClientDetailsFilters(VisitsModel data);
         List<AppointmentsModel> getActiveClientFilter(VisitsModel data);
         List<AppointmentsModel> getClientVisitPastDetails();
@@ -26,7 +29,7 @@ namespace DigitalEdge.Services
         string smsRecords(long id, bool name);
         Task<string> SendSMSApi(List<SMSRecords> SmsRecordsById);
         string SaveSMSApi(List<SMSRecords> SmsRecordsById, string resultContent);
-        List<FacilityModel> getFacility();
+        Facility GetFacility(long id);
         List<DistrictModel> getDistrict(long id);
         List<ServicePointModel> GetServicePoint(long id);
         List<ProvinceModel> GetProvince();
@@ -35,8 +38,17 @@ namespace DigitalEdge.Services
         string ConvertMessage(SMSRecords smsRecords);
         void DeleteFacility(FacilityModel facilityModel, string isfacility);
         void DeleteServicePoint(ServicePointModel servicepoint , string isservicePoint);
+    
+        string AddVisit(VisitModel model);
         ClientModel GetClient();
+        Client GetClientById(long id);
         List<AppointmentsModel> getVisitHistory();
         List<AppointmentsModel> getVisitHistoryByServicePoint(VisitsModel data);
+        List<FacilityModel> GetFacilities();
+        List<ServicePointModel> GetServicePoints();
+        List<VisitModel> GetVisits();
+        Appointment GetAppointmentById(long id);
+        List<FacilityTypeModel> GetFacilityTypes();
+        Visit GetVisitById(long id);
     }
 }

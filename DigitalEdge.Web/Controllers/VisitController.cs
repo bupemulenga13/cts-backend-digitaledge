@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Data;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
@@ -44,6 +44,26 @@ namespace DigitalEdge.Web.Controllers
                 return Ok(response);
             }
         }
+        [HttpPost]
+        [Route("CreateVisit")]
+        [AllowAnonymous]
+        public ActionResult CreateVisit([FromBody] VisitModel model)
+        {
+            if (model == null)
+            {
+                return Ok(new ServiceResponse() { StatusCode = 400 });
+            }
+            else
+            {
+                var result = this._visitService.AddVisit(model);
+                if (result != null)
+                {
+                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Visit created successfully!" });
+
+                }
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 400, Message = "Error: Visit not created" });
+            }
+        }
         [HttpGet]
         [Route("GetAppointmentsDetails")]
         [Authorize]
@@ -51,6 +71,15 @@ namespace DigitalEdge.Web.Controllers
         {
             var user = _visitService.getAppointmentsDetails();
             return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("GetAppointments")]
+        [Authorize]
+        public ActionResult GetAppointments()
+        {
+            var appointments = _visitService.GetAppointments();
+            return Ok(appointments);
         }
         [HttpPost]
         [Route("GetAppointmentsCheck")]
@@ -172,7 +201,7 @@ namespace DigitalEdge.Web.Controllers
         [HttpPost]
         [Route("GetClientInfo")]
         [Authorize]
-        public IActionResult GetClientInfo([FromBody]ClientModel model)
+        public IActionResult GetClientInfo([FromForm]ClientModel model)
         {
             
             if (model.FirstName != null && model.FirstName == model.FirstName)
@@ -196,6 +225,86 @@ namespace DigitalEdge.Web.Controllers
 
          }
 
+        [HttpGet]
+        [Route("GetClients")]
+        [Authorize]
+        public ActionResult GetClients()
+        {
+            var clients = _visitService.getClients();
+            return Ok(clients);
+        }
+        
+        [HttpGet]
+        [Route("GetFacilityTypes")]
+        [Authorize]
+        public ActionResult GetFacilityTypes()
+        {
+            var clients = _visitService.GetFacilityTypes();
+
+            return Ok(clients);
+        }
+        
+        [HttpGet]
+        [Route("GetFacilities")]
+        [Authorize]
+        public ActionResult GetFacilities()
+        {
+            var facilities = _visitService.GetFacilities();
+
+            return Ok(facilities);
+        }
+        
+        [HttpGet]
+        [Route("GetServicePoints")]
+        [Authorize]
+        public ActionResult GetServicePoints()
+        {
+            var servicePoints = _visitService.GetServicePoints();
+
+            return Ok(servicePoints);
+        }
+        
+        [HttpGet]
+        [Route("GetVisits")]
+        [Authorize]
+        public ActionResult GetVisits()
+        {
+            var visits = _visitService.GetVisits();
+
+            return Ok(visits);
+        }
+
+
+        [HttpGet]
+        [Route("GetClientById")]
+        [Authorize]
+        public ActionResult GetClientById(long id)
+        {
+            var client = _visitService.GetClientById(id);
+
+            return Ok(client);
+        }
+        
+        [HttpGet]
+        [Route("GetAppointment")]
+        [Authorize]
+        public ActionResult GetAppointment(long id)
+        {
+            var client = _visitService.GetAppointmentById(id);
+
+
+            return Ok(client);
+        }
+        
+        [HttpGet]
+        [Route("GetVisit")]
+        [Authorize]
+        public ActionResult GetVisit(long id)
+        {
+            var visit = _visitService.GetVisitById(id);
+
+            return Ok(visit);
+        }
 
         [HttpPost]
         [Route("ViewClientDetailsFilters")]
@@ -270,10 +379,15 @@ namespace DigitalEdge.Web.Controllers
         [HttpGet]
         [Route("GetFacility")]
         [Authorize]
-        public ActionResult GetFacility()
+        public ActionResult GetFacility(long id)
         {
-            return Ok(_visitService.getFacility());
+            return Ok(_visitService.GetFacility(id));
         }
+
+        
+        
+
+
         [HttpGet]
         [Route("GetDistrict/{id}")]
         [Authorize]
@@ -327,7 +441,7 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult DeleteFacility(FacilityModel facilityModel)
         {
-            string isfacility = "facility";
+            string isfacility = "Facility  ";
             try
             {
                 if (facilityModel.AssignedFacilityId == 0 || facilityModel.FacilityId == 0)

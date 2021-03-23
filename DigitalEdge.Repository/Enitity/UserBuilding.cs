@@ -27,8 +27,9 @@ namespace DigitalEdge.Repository
         public long? FacilityId { get; set; }    
         public long? ServicePointId { get; set; }    
         public bool IsActive { get; set; }
+
         [ForeignKey("FacilityId")]
-        public virtual Facility facility { get; set; }
+        public virtual Facility Facility { get; set; }
         [ForeignKey("UserId")]
         public virtual Users Users { get; set; } 
         [ForeignKey("ServicePointId")]

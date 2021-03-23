@@ -14,17 +14,20 @@ namespace DigitalEdge.Services
         ClientModel ValidateClient(RegistrationModel user);
         string GetToken(UserModel user);
         void DeleteUser(UserModel deleteuser);
-        void AddUser(UserModel adduser);
+        string AddUser(UserModel adduser);
         string AddAppointment(RegistrationModel addappointment);
-        void AddClient(RegistrationModel addclient);
+        string AddClient(RegistrationModel addclient);
         string AddFacilityUser(UserBindingModel adduser);
         string AddServicePoint(ServicePointModel adduser);
         void UpdateUser(UserModel adduser);
         void UpdateAppointment(RegistrationModel addupdate);
+        void UpdateClient(RegistrationModel updateClient);
         void UpdateFacilityUser(UserBindingModel adduser);
-        string UpdateFacility(FacilityModel adduser);
+        void UpdateFacility(FacilityModel updateFacility);
         void UpdateServicePoint(ServicePointModel updateservicepoint);
-        UserModel getData(long id);
+        UserModel GetData(long id);
         List<UserRolesModel> getRoles();
+        AppointmentsModel GetAppointment(long id);
+        
     }
 }

@@ -24,7 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css",
               "src/gentelella/vendors/font-awesome/css/font-awesome.min.css",
               "src/gentelella/vendors/nprogress/nprogress.css",
@@ -181,6 +180,6 @@
   },
   "defaultProject": "DigitalEdge.Web",
   "cli": {
-    "analytics": "fe08dd44-cb96-495e-bac2-d7331722f275"
+    "analytics": "72bcab51-1842-4814-a7b0-2d58745d3d40"
   }
 }

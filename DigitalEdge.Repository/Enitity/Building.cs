@@ -12,13 +12,35 @@ namespace DigitalEdge.Repository
         {
         }
 
-        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId)
+        public Facility(long facilityId, string facilityName, string facilityContactNumber, bool isAvailable, string address)
+        {
+            FacilityId = facilityId;
+            FacilityName = facilityName;
+            FacilityContactNumber = facilityContactNumber;
+            IsAvailable = isAvailable;
+            Address = address;
+        }
+
+        public Facility(long facilityId, string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address)
+        {
+            FacilityId = facilityId;
+            FacilityName = facilityName;
+            FacilityContactNumber = facilityContactNumber;
+            FacilityTypeId = facilityTypeId;
+            IsAvailable = isAvailable;
+            Address = address;
+        }
+
+        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address)
         {
             this.FacilityId = facilityId;
             this.FacilityTypeId = facilityTypeId;
             this.DistrictId = districtId;
             this.FacilityName = facilityName;
             this.FacilityContactNumber = facilityContactNumber;
+            this.IsAvailable = isAvailable;
+            this.Address = address;
+
         }
 
 
@@ -27,10 +49,10 @@ namespace DigitalEdge.Repository
         public string FacilityName { get; set; }
         public string FacilityContactNumber { get; set; }
 
-        public long? FacilityTypeId { get; set; }
+        public long FacilityTypeId { get; set; }
 
         [ForeignKey("FacilityTypeId")]
-        public virtual FacilityType FacilityType { get; set; }
+        public virtual FacilityType FacilityTypeModel { get; set; }
         public long? DistrictId { get; set; }
 
         [ForeignKey("DistrictId")]
@@ -40,6 +62,10 @@ namespace DigitalEdge.Repository
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }
         public long CreatedBy { get; set; }
+        public bool IsAvailable { get; set; }
+        public string Address { get; set; }
+
+
 
 
 

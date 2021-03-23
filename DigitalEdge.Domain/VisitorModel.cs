@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace DigitalEdge.Domain
 {
    public class ClientModel
@@ -43,8 +45,28 @@ namespace DigitalEdge.Domain
         public string EnrolledByPhone { get; set; }
 
         public long ClientTypeId { get; set; }
+        public string ClientType { get; set; }
 
         public long FacilityId { get; set; }
+        public string Facility { get; set; }
+     
+        public long ClientStatusId { get; set; }
+        public string ClientStatus { get; set; }
+
+        public long StatusCommentId { get; set; }
+        public string StatusComment { get; set; }
+
+        public long ServicePointId { get; set; }
+        public string ServicePoint { get; set; }
+
+        public long LanguageId { get; set; }
+        public string Language { get; set; }
+
+        public long SexId { get; set; }
+        public string Sex { get; set; }
+
+        
+
 
 
 

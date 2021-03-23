@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using DigitalEdge.Services;
@@ -39,42 +39,83 @@ namespace DigitalEdge.Web.Controllers
         [HttpPost]
         [Route("CreateAppointment")]
         [AllowAnonymous]
-        public ActionResult CreateAppointment([FromBody]RegistrationModel model)
+        public ActionResult CreateAppointment([FromBody] RegistrationModel model)
         {
             if (model == null)
             {
                 return Ok(new ServiceResponse() { StatusCode = 400 });
             }
             var user = _accountService.ValidateClient(model);            
-            if (user == null)
+            if (user.ArtNo != model.ArtNo)
             {
-                 this._accountService.AddClient(model);
-                var userdata = _visitService.GetClient();
-                if (userdata != null)
-                {
-                    model.ClientId = (userdata.ClientId);
-                    this._accountService.AddAppointment(model);
-                }
-                return Ok(new ServiceResponse() { StatusCode = 200 });
+                return Ok(new ServiceResponse() { StatusCode = 400, Message = "Client not found, enroll client before creating appointment!" });
+                
             }
             else
             {
-                model.ClientId = (user.ClientId);
+              model.ClientId = (user.ClientId);
               string result =  this._accountService.AddAppointment(model);
                 if (result == "null")
                     return Ok(new ServiceResponse() { Success = true, StatusCode = 500 });
                 else
-                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client appointment successfully created!" });
              }            
         }
+
+        [HttpPost]
+        [Route("CreateClient")]
+        [AllowAnonymous]
+        public ActionResult CreateClient([FromBody] RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return Ok(new ServiceResponse() { StatusCode = 400, Message = "Enter valid client details!" });
+            }
+            
+            else
+            {
+                var result = this._accountService.AddClient(model);
+                if (result != null)
+                {
+                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client created successfully!" });
+
+                }
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 400, Message = "Error: Client not saved"});
+            }
+            
+        }
+        
+
         [HttpPost]
         [Route("EditAppointment")]
         [AllowAnonymous]
         public ActionResult EditAppointment([FromBody]RegistrationModel model)
-        {           
+        {
+            if (model == null)
+            {
+                return Ok(new ServiceResponse() { Success = false, StatusCode = 400, Message="Error: Could not update appointment!" });
+            }
             this._accountService.UpdateAppointment(model);
-            return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message="Appointment update successfull!" });
+
         }
+
+        [HttpPost]
+        [Route("EditClient")]
+        [AllowAnonymous]
+        public ActionResult EditClient([FromBody]RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return Ok(new ServiceResponse() { Success = false, StatusCode = 400 });
+            }
+            this._accountService.UpdateClient(model);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client details successfully updated!" });
+        }
+
+
+
+
         [HttpGet]
         [Route("GetData")]
         [Authorize]
@@ -82,31 +123,51 @@ namespace DigitalEdge.Web.Controllers
         {
             var user = _accountService.getData();
             return Ok(user);
-        }      
+        }     
+        
         [HttpGet]
         [Route("GetData/{id}")]
         [Authorize]
         public ActionResult GetData(long id)
         {
-            var user = _accountService.getData(id);
+            var user = _accountService.GetData(id);
             return Ok(user);
         }
+        [HttpGet]
+        [Route("GetAppointment/{id}")]
+        [Authorize]
+        public ActionResult GetAppointment(long id)
+        {
+            var user = _accountService.GetAppointment(id);
+            return Ok(user);
+        }
+
         [HttpPost]
         [Route("Create")]
         [Authorize]
-        public ActionResult Create([FromBody]UserModel userdetail)
+        public ActionResult Create([FromBody] UserModel user)
         {
-            this._accountService.AddUser(userdetail);
-            return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+            if (user == null)
+            {
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 500, Message = "Error: Failed to add a user! " });
+            }
+            this._accountService.AddUser(user); 
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "User successfully created" });
         }
+
         [HttpPut]
         [Route("Edit")]
         [Authorize]
-        public ActionResult Edit([FromBody]UserModel updateuser)
+        public ActionResult Edit([FromBody]UserModel updateuser) 
         {
+            if (updateuser == null)
+            {
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 500, Message = "Error: Failed to update a user details! " });
+            }
             this._accountService.UpdateUser(updateuser);
-            return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "User details successfully updated!" });
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
@@ -115,6 +176,7 @@ namespace DigitalEdge.Web.Controllers
             this._accountService.UpdateUser(deleteuser);
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
         }
+
         [HttpGet]
         [Route("GetRoles")]
         [Authorize]
@@ -123,6 +185,7 @@ namespace DigitalEdge.Web.Controllers
             var userroles = _accountService.getRoles();
             return Ok(userroles);
         }
+
         [HttpPost]
         [Route("FacilityCreate")]
         [Authorize]
@@ -130,9 +193,9 @@ namespace DigitalEdge.Web.Controllers
         {
             string resultdata = this._accountService.AddFacilityUser(userFacility);
             if (resultdata == "null")
-                return Ok(new ServiceResponse() { Success = true, StatusCode = 500 });
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 500, Message = "Error: invalid operation" });
            else
-                return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message ="Facility successfully created!" });
 
         }       
         [HttpPost]
@@ -155,6 +218,7 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.getFacilityData();
             return Ok(user);
         }
+        
         [HttpGet]
         [Route("GetFacilityUserData")]
         [Authorize]
@@ -193,14 +257,15 @@ namespace DigitalEdge.Web.Controllers
         [HttpPost]
         [Route("UpdatefacilityUser")]
         [Authorize]
-        public ActionResult UpdatefacilityUser([FromBody]FacilityModel updatefacility)
+        public ActionResult UpdatefacilityUser([FromBody]FacilityModel facilityModel)
         {
-             string resultdata = this._accountService.UpdateFacility(updatefacility);
 
-            if (resultdata == "null")
-                return Ok(new ServiceResponse() { Success = true, StatusCode = 500 });
-            else
-                return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
+            if (facilityModel == null)
+            {
+                return Ok(new ServiceResponse() { Success = true, StatusCode = 500 ,Message="Error: Update operation failed"});
+            }
+            this._accountService.UpdateFacility(facilityModel);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message="Facility details updated successfully!" });
         }
     }
 }

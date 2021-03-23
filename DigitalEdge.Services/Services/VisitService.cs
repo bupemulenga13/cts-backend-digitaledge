@@ -73,7 +73,7 @@ namespace DigitalEdge.Services
         }
         public List<AppointmentsModel> getAppointmentsDetails()
         {
-            List<AppointmentsModel> userAppointement = _visitRepository.GetAppointementsDetails().Select(x => new AppointmentsModel(x.Id, x.ClientId, x.VisitsId, x.FirstName, x.LastName, x.MiddleName, x.PriorAppointmentDate, x.AppointmentDate, x.AppointmentTime, x.NextAppointmentDate, x.Age)).ToList();
+            List<AppointmentsModel> userAppointement = _visitRepository.GetAppointementsDetails().ToList();
             foreach (var user in userAppointement)
             {
                 user.NextAppointmentDate = user.NextAppointmentDate == DateTime.MinValue ? null : user.NextAppointmentDate;
@@ -185,6 +185,22 @@ namespace DigitalEdge.Services
                 return null;
             return (userClient);
         }
+        public List<ClientModel> getClients () {
+
+            List<ClientModel> clients = _visitRepository.GetClients().ToList();
+            if (clients == null)
+                return null;
+            return(clients);
+            
+        }
+        public List<AppointmentsModel> GetAppointments()
+        {
+            List<AppointmentsModel> appointments = _visitRepository.GetAppointments().ToList();
+            if (appointments == null)
+                return null;
+            return (appointments);
+        }
+
         public List<AppointmentsModel> getClientDetailsFilters(VisitsModel data)
         {
             List<AppointmentsModel> userClient = _visitRepository.GetClientDetailsFilters(data).ToList();
@@ -348,13 +364,14 @@ namespace DigitalEdge.Services
                 throw ex;
             }
         }
-        public List<FacilityModel> getFacility()
+        public Facility GetFacility(long id)
         {
-            List<FacilityModel> facilityDetails = _visitRepository.GetFacility().Select(x => new FacilityModel(x.FacilityId, x.FacilityName)).ToList();
+            return _visitRepository.GetFacilityById(id);
+            //List<FacilityModel> facilityDetails = _visitRepository.GetFacility().Select(x => new FacilityModel(x.FacilityId, x.FacilityName)).ToList();
 
-            if (facilityDetails == null)
-                return null;
-            return (facilityDetails);
+            //if (facilityDetails == null)
+            //    return null;
+            //return (facilityDetails);
         }
         public List<DistrictModel> getDistrict(long id)
         {
@@ -543,7 +560,7 @@ namespace DigitalEdge.Services
                 foreach (var msg in messages)
                 {
                     msg.ServicePointId = servicepoint.AssignedServicePointId;
-
+                    
                 }
                 _visitRepository.UpdateMessages(messages);
             }          
@@ -608,6 +625,63 @@ namespace DigitalEdge.Services
             if (userVisits == null)
                 return null;
             return (userVisits);
-        }    
+        }
+
+        public Client GetClientById(long id)
+        {
+            return _visitRepository.GetClientById(id);
+        }
+
+        public List<FacilityModel> GetFacilities()
+        {
+            List<FacilityModel> facilities = _visitRepository.GetFacilities().ToList();
+            if (facilities == null)
+                return null;
+            return (facilities);
+        }
+
+        public List<ServicePointModel> GetServicePoints()
+        {
+            List<ServicePointModel> servicePoints = _visitRepository.GetServicePoints().ToList();
+            if (servicePoints == null)
+                return null;
+            return (servicePoints);
+        }
+
+        public List<VisitModel> GetVisits()
+        {
+            List<VisitModel> visits = _visitRepository.GetVisits().ToList();
+            if (visits == null)
+                return null;
+            return (visits);
+        }
+
+        public Appointment GetAppointmentById(long id)
+        {
+            return _visitRepository.GetAppointmentById(id);
+        }
+
+        public List<FacilityTypeModel> GetFacilityTypes()
+        {
+            List<FacilityTypeModel> facilityTypes = _visitRepository.GetFacilityTypes().ToList();
+
+            if (facilityTypes == null)
+                return null;
+            return (facilityTypes);
+        }
+       
+
+        public string AddVisit(VisitModel model)
+        {
+            Visit visitData = new Visit(model.VisitId, model.ClientId, model.AppointmentId, model.FacilityId, model.ServicePointId, model.VisitDate, model.ReasonOfVisit, model.ClinicRemarks, model.Diagnosis, model.SecondDiagnosis, model.ThirdDiagnosis, model.Therapy);
+            string result = this._visitRepository.CreateVisit(visitData);
+
+            return result;
+        }
+
+        public Visit GetVisitById(long id)
+        {
+            return _visitRepository.GetVisitById(id);
+        }
     }
 }

@@ -51,9 +51,11 @@ namespace DigitalEdgeTest
             mock.Setup(x => x.GetRoleName(1))
                .Returns("Admin");
             var accountService = new AccountService(mock.Object, OptionsValue());
-            var user = new UserModel();
-            user.RoleId = "1";
-            user.FirstName = "User";
+            var user = new UserModel
+            {
+                RoleId = 1,
+                FirstName = "User"
+            };
             var result = accountService.GetToken(user);
             Assert.IsNotNull(result);
         }

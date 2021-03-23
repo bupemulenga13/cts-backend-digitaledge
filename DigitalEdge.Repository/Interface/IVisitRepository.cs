@@ -20,6 +20,8 @@ namespace DigitalEdge.Repository
         List<AppointmentsModel> GetAppointmentsMissedFilter(VisitsModel filterdata);
         List<AppointmentsModel> GetClientDetails();
         List<ClientModel> GetClientDetails(string searchTerm);
+        List<ClientModel> GetClients();
+        List<AppointmentsModel> GetAppointments();
         List<AppointmentsModel> GetClientDetailsFilters(VisitsModel filterdata);
         List<AppointmentsModel> GetActiveClientFilter(VisitsModel filterdata);
         List<AppointmentsModel> GetClientVisitPastDetails();
@@ -50,8 +52,17 @@ namespace DigitalEdge.Repository
         void DeleteFacility(long facilityId);
         void DeleteServicePoint(long servicePointId);
         Client ClientData();
+        Client GetClientById(long id);
         List<AppointmentsModel> GetVisitHistory();
         List<AppointmentsModel> GetVisitHistoryByService(VisitsModel filterdata);
+        List<FacilityModel> GetFacilities();
+        List<ServicePointModel> GetServicePoints();
+        List<VisitModel> GetVisits();
+        Appointment GetAppointmentById(long id);
+        Facility GetFacilityById(long id);
+        List<FacilityTypeModel> GetFacilityTypes();
+        string CreateVisit(Visit visitData);
+        Visit GetVisitById(long id);
     }
 
 }

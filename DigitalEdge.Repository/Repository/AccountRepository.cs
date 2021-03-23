@@ -46,7 +46,7 @@ namespace DigitalEdge.Repository
                                          PhoneNo = p.PhoneNo,
                                          IsDeleted = p.IsDeleted,
                                          RoleName = c.RoleName,
-                                         RoleId=(c.RoleId).ToString()
+                                         RoleId=c.RoleId
                                      }).ToList();
             return users;
         }
@@ -69,11 +69,21 @@ namespace DigitalEdge.Repository
         } 
         public Client GetClient(RegistrationModel data)
         {
-            var user = _clientRepository.GetAll().Where(x => x.FirstName == data.FirstName && x.LastName == data.LastName && x.ClientPhoneNo == System.Convert.ToInt64(data.PhoneNo)).SingleOrDefault();
+            var user = _clientRepository.GetAll().Where(x => x.FirstName == data.FirstName && x.LastName == data.LastName && x.ArtNo == data.ArtNo).SingleOrDefault();
             if (user == null)
                 return null;
             return user;
         }
+        public Appointment GetAppointment(long id)
+        {
+            var appointment = _DigitalEdgeContext.Appointments.Find(id);  
+            if (appointment == null)
+                return null;
+            return appointment;
+        }
+
+
+
         public string GetRoleName(long RoleId)
         {
             var RoleName = (from userRoles in _DigitalEdgeContext.UserRoles
@@ -86,9 +96,11 @@ namespace DigitalEdge.Repository
                 return null;
             return RoleName;
         }
-        public void createuser(Users users)
+        public string createuser(Users users)
         {
+            if (_DigitalEdgeContext.Users.Any(u => u.FirstName.Equals(users.FirstName) && u.Email.Equals(users.Email))) return "null";
             this._loginRepository.Insert(users);
+            return "Ok";
         }
         public string createappointment(Appointment users)
         {
@@ -98,31 +110,41 @@ namespace DigitalEdge.Repository
             return "ok";
 
         }
-        public void createclient(Client users)
+        public string createclient(Client users)
         {
+            if (_DigitalEdgeContext.Clients.Any(c => c.ArtNo.Equals(users.ArtNo))) return "null";
+            
             this._clientRepository.Insert(users);
+            return "Ok";
         }
         public void updateUser(Users users)
         {
             this._loginRepository.Update(users);
         }
-        public void updateAppointment(Appointment users)
+
+        public void UpdateAppointment(Appointment users)
         {
             this._appointmentRepository.Update(users);
         }
+
+        public void UpdateClient(Client client)
+        {
+            this._clientRepository.Update(client);
+        }
+
         public void updateUserFacility(UserFacility users)
         {
             this._facilityRepository.Update(users);
         }
+
         public void updateServicePoint(ServicePoint servicepoint)
         {
             this._servicePointRepository.Update(servicepoint);
         }  
-        public string updateFacility(Facility updatefacility)
+        public void updateFacility(Facility updatefacility)
         {
-            if (_DigitalEdgeContext.facility.Any(o => o.FacilityName.Equals(updatefacility.FacilityName) && o.DistrictId.Equals(updatefacility.DistrictId) && o.FacilityContactNumber.Equals(updatefacility.DistrictId))) return "null";
             this._facilityuserRepository.Update(updatefacility);
-            return "ok";
+            
         }
         public void Delete(Users deleteuser)
         {
@@ -141,7 +163,7 @@ namespace DigitalEdge.Repository
         } 
         public string facilitywithdistrictcreateuser(Facility adduser)
         {
-            if (_DigitalEdgeContext.facility.Any(o => o.FacilityName.Equals(adduser.FacilityName) && o.DistrictId.Equals(adduser.DistrictId))) return "null";
+            if (_DigitalEdgeContext.Facilities.Any(o => o.FacilityName.Equals(adduser.FacilityName) && o.DistrictId.Equals(adduser.DistrictId))) return "null";
 
             this._facilityuserRepository.Insert(adduser);
               return "ok";
@@ -158,7 +180,7 @@ namespace DigitalEdge.Repository
         {
             List<UserBindingModel> facilityuserslist = (from d in _DigitalEdgeContext.Users
                                                        join c in _DigitalEdgeContext.Userfacility on d.Id equals c.UserId
-                                                       join s in _DigitalEdgeContext.facility on c.FacilityId equals s.FacilityId
+                                                       join s in _DigitalEdgeContext.Facilities on c.FacilityId equals s.FacilityId
                                                         join g in _DigitalEdgeContext.ServicePoints on c.ServicePointId equals g.ServicePointId
 
                                                         where (c.IsActive == false)
@@ -176,7 +198,7 @@ namespace DigitalEdge.Repository
         }
           public List<FacilityModel> getFacilityUserDetails()
         {
-            List<FacilityModel> facilityuserslist = (from d in _DigitalEdgeContext.facility
+            List<FacilityModel> facilityuserslist = (from d in _DigitalEdgeContext.Facilities
                                                        join c in _DigitalEdgeContext.Districts on d.DistrictId equals c.DistrictId
                                                        join f in _DigitalEdgeContext.Provinces on c.ProvinceId equals f.ProvinceId
                                                      select new FacilityModel
@@ -193,7 +215,7 @@ namespace DigitalEdge.Repository
         }        
         public List<ServicePointModel> getServiceDetails()
         {
-            List<ServicePointModel> serviceuserslist = (from d in _DigitalEdgeContext.facility
+            List<ServicePointModel> serviceuserslist = (from d in _DigitalEdgeContext.Facilities
                                                         join c in _DigitalEdgeContext.ServicePoints on d.FacilityId equals c.FacilityId
                                                         select new ServicePointModel
                                                       {                                                            
@@ -205,7 +227,7 @@ namespace DigitalEdge.Repository
             return serviceuserslist;
         }
 
-           
+       
     }
 }
 

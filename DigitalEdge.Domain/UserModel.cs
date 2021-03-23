@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         public UserModel()
         {
         }
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, string roleId, Boolean isDeleted, string gender, string roleName)
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, string gender, string roleName)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -20,7 +20,18 @@ namespace DigitalEdge.Domain
             this.Gender = gender;
             this.RoleName = roleName;
         }
-        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, string roleId, Boolean isDeleted, string gender)
+        public UserModel(long id, string firstName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted )
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.Password = password;
+            this.Email = email;
+            this.RoleId = roleId;
+            this.IsSuperAdmin = isSuperAdmin;
+            this.IsDeleted = isDeleted;
+
+        }
+        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, string gender)
         {
             this.Id = id;
             this.Password = password;
@@ -40,9 +51,9 @@ namespace DigitalEdge.Domain
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }
-        public string RoleId { get; set; }
-        public string IsSuperAdmin { get; set; }
-        public Boolean IsDeleted { get; set; }
+        public long RoleId { get; set; }
+        public bool IsSuperAdmin { get; set; }
+        public bool IsDeleted { get; set; }
         public string Gender { get; set; }
         public string RoleName { get; set; }
     }

@@ -33,23 +33,26 @@ namespace DigitalEdge.Repository
             
         }
 
-        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long servicePointId, long languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, long v2, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff)
+        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long servicePointId, long languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, long clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff)
         {
             ClientId = id;
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;
             EnrollmentDate = enrollmentDate;
+            FacilityId = facilityId;
             ClientStatusId = clientStatusId;
             StatusCommentId = statusCommentId;
             ArtNo = artNo;
             SexId = sexId;
             ClientTypeId = clientTypeId;
+            ServicePointId = servicePointId;
             LanguageId = languageId;
             Address = address;
             EnrolledBy = enrolledBy;
             EnrolledByPhone = enrolledByPhone;
             GeneralComment = generalComment;
+            ClientPhoneNo = clientPhoneNo;
             AlternativePhoneNumber1 = alternativePhoneNumber1;
             PhoneVerifiedByAnalyst = phoneVerifiedByAnalyst;
             PhoneVerifiedByFacilityStaff = phoneVerifiedByFacilityStaff;
@@ -96,6 +99,9 @@ namespace DigitalEdge.Repository
 
         [ForeignKey("ClientTypeId")]
         public virtual ClientType ClientTypes { get; set; }
+        public virtual Appointment ClientAppointments { get; set; }
+        public virtual Visit ClientVisits { get; set; }
+
 
         public long ServicePointId { get; set; }
         [ForeignKey("ServicePointId")]
@@ -104,7 +110,6 @@ namespace DigitalEdge.Repository
         public long LanguageId { get; set; }
         [ForeignKey("LanguageId")]
         public virtual Language Languages { get; set; }
-
 
         public long ClientStatusId { get; set; }
 
@@ -123,48 +128,7 @@ namespace DigitalEdge.Repository
 
         
         
-        //public Client(long clientId, string firstName, string middleName, string lastName, string artNo, long clientPhoneNo, DateTime dateOfBirth, int age, int currentAge, string nextOfKinName, long nextOfKinContact, long nextOfClientId, DateTime dateCreated, DateTime dateEdit, long editBy, long createdBy, string address, string generalComment, string enrolledBy, string alternativePhoneNumber1, string alternativePhoneNumber2, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff, DateTime enrollmentDate, string enrolledByPhone, long facilityId, Facility facilities, long clientTypeId, ClientType clientTypes, long servicePointId, ServicePoint servicePoints, long languageId, Language languages, long clientStatusId, ClientStatus clientStatuses, long statusCommentId, StatusComments statusComments, long sexId, Sex sex)
-        //{
-        //    ClientId = clientId;
-        //    FirstName = firstName;
-        //    MiddleName = middleName;
-        //    LastName = lastName;
-        //    ArtNo = artNo;
-        //    ClientPhoneNo = clientPhoneNo;
-        //    DateOfBirth = dateOfBirth;
-        //    Age = age;
-        //    CurrentAge = currentAge;
-        //    NextOfKinName = nextOfKinName;
-        //    NextOfKinContact = nextOfKinContact;
-        //    NextOfClientId = nextOfClientId;
-        //    DateCreated = dateCreated;
-        //    DateEdit = dateEdit;
-        //    EditBy = editBy;
-        //    CreatedBy = createdBy;
-        //    Address = address;
-        //    GeneralComment = generalComment;
-        //    EnrolledBy = enrolledBy;
-        //    AlternativePhoneNumber1 = alternativePhoneNumber1;
-        //    AlternativePhoneNumber2 = alternativePhoneNumber2;
-        //    PhoneVerifiedByAnalyst = phoneVerifiedByAnalyst;
-        //    PhoneVerifiedByFacilityStaff = phoneVerifiedByFacilityStaff;
-        //    EnrollmentDate = enrollmentDate;
-        //    EnrolledByPhone = enrolledByPhone;
-        //    FacilityId = facilityId;
-        //    Facilities = facilities;
-        //    ClientTypeId = clientTypeId;
-        //    ClientTypes = clientTypes;
-        //    ServicePointId = servicePointId;
-        //    ServicePoints = servicePoints;
-        //    LanguageId = languageId;
-        //    Languages = languages;
-        //    ClientStatusId = clientStatusId;
-        //    ClientStatuses = clientStatuses;
-        //    StatusCommentId = statusCommentId;
-        //    StatusComments = statusComments;
-        //    SexId = sexId;
-        //    Sex = sex;
-        //}
+        
     }
 
 }

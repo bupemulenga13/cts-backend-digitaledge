@@ -11,9 +11,9 @@ namespace DigitalEdge.Repository
         {
         }
 
-        public Visit(long VisitId, long? ClientId, long? FacilityId, long? ServicePointId, string firstName, string lastName, string middleName,
+        public Visit(long VisitId, long ClientId, long FacilityId, long ServicePointId, string firstName, string lastName, string middleName,
           long clientPhoneNo, DateTime? dateOfBirth, DateTime priorAppointmentDate,
-         DateTime nextAppointmentDate, DateTime visitDate, DateTime visitType, string reasonOfVisit, string adviseNotes, long age)
+         DateTime nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes, long age)
         {
             this.VisitId = VisitId;
             this.ClientId = ClientId;
@@ -32,26 +32,56 @@ namespace DigitalEdge.Repository
             this.AdviseNotes = adviseNotes;
             this.Age = age;
         }
+        public Visit(long visitId, long clientId, long? appointmentId, long facilityId, long servicePointId, DateTime visitDate, string reasonOfVisit, string clinicRemarks, string diagnosis, string secondDiagnosis, string thirdDiagnosis, string therapy)
+        {
+            this.VisitId = visitId;
+            this.ClientId = clientId;
+            this.AppointmentId = appointmentId;
+            this.FacilityId = facilityId;
+            this.ServicePointId = servicePointId;
+            this.VisitDate = visitDate;
+            this.ReasonOfVisit = reasonOfVisit;
+            this.ClinicRemarks = clinicRemarks;
+            this.Diagnosis = diagnosis;
+            this.SecondDiagnosis = secondDiagnosis;
+            this.ThirdDiagnosis = thirdDiagnosis;
+            this.Therapy = therapy;
+
+        }
+
         [Key]
         public long VisitId { get; set; }
-        public long? ClientId { get; set; }
+
+        public long ClientId { get; set; }
 
         [ForeignKey("ClientId")]
         public virtual Client Clients { get; set; }
-       [ForeignKey("FacilityId")]
 
-        public long? FacilityId { get; set; }
-        public virtual Facility facility { get; set; }
+        [ForeignKey("FacilityId")]
+
+        public long FacilityId { get; set; }
+
+        public virtual Facility Facility { get; set; }
+
         [ForeignKey("ServicePointID")]
-        public long? ServicePointId { get; set; }
+        public long ServicePointId { get; set; }
+
         public virtual ServicePoint ServicePoints { get; set; }
-       [ForeignKey("AppointmentId")]
+
+        [ForeignKey("AppointmentId")]
         public long? AppointmentId { get; set; }
+
         public virtual Appointment Appointments { get; set; }
         public DateTime VisitDate { get; set; }
-        public DateTime VisitType { get; set; }
+        public string VisitType { get; set; }
+        public string ClinicRemarks { get; set; }
+        public string Diagnosis { get; set; }
+        public string SecondDiagnosis { get; set; }
+        public string ThirdDiagnosis { get; set; }
+        public string Therapy { get; set; }
         public DateTime PriorAppointmentDate { get; set; }
         public DateTime NextAppointmentDate { get; set; }
+        public long AppointmentStatus { get; set; }
         public string ReasonOfVisit { get; set; }
         public string AdviseNotes { get; set; }
         public DateTime DateCreated { get; set; }
@@ -64,6 +94,8 @@ namespace DigitalEdge.Repository
         public long ClientPhoneNo { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public long Age { get; set; }
+
+        
        
     }
 }

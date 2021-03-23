@@ -65,7 +65,6 @@ namespace DigitalEdge.Repository
                                                                ClientId = clients.ClientId,
                                                                FirstName = clients.FirstName,
                                                                LastName = clients.LastName,
-                                                               MiddleName = clients.MiddleName,
                                                                Age = clients.Age,
                                                                PriorAppointmentDate = visits.PriorAppointmentDate,
                                                                AppointmentDate = appointment.AppointmentDate,
@@ -196,7 +195,7 @@ namespace DigitalEdge.Repository
                                                                   ClientId = clients.ClientId,
                                                                   FirstName = clients.FirstName,
                                                                   LastName = clients.LastName,
-                                                                  MiddleName = clients.MiddleName,
+                                                                  ArtNo = clients.ArtNo,
                                                                   Age = clients.Age,
                                                                   PriorAppointmentDate = visits.PriorAppointmentDate,
                                                                   AppointmentDate = appointment.AppointmentDate,
@@ -258,7 +257,8 @@ namespace DigitalEdge.Repository
                                                               AppointmentTime = appointment.AppointmentDate,
                                                               NextAppointmentDate = visits.NextAppointmentDate,
                                                               VisitDate = visits.VisitDate,
-                                                              VisitsId = visits.VisitId
+                                                              VisitsId = visits.VisitId,
+                                                              ArtNo = clients.ArtNo
                                                           }).ToList();
 
             return missedvisitdetails;
@@ -319,7 +319,7 @@ namespace DigitalEdge.Repository
         { 
             
             List<ClientModel> viewClientdetails = (from client in _DigitalEdgeContext.Clients
-                                                          where client.FirstName== searchTerm || client.LastName == searchTerm || client.ArtNo == searchTerm
+                                                          where client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm)
                                                    select new ClientModel
                                                           {
                                                               ClientId = client.ClientId,
@@ -331,8 +331,74 @@ namespace DigitalEdge.Repository
                                                               DateOfBirth = client.DateOfBirth,
                                                               ArtNo = client.ArtNo,
                                                               EnrollmentDate = client.EnrollmentDate,
+                                                              Facility = client.Facilities.FacilityName
                                                           }).ToList();
             return viewClientdetails;
+        }
+        public List<ClientModel> GetClients()
+        {
+            
+
+            List<ClientModel> clients = (from client in _DigitalEdgeContext.Clients
+                                         join facility in _DigitalEdgeContext.Facilities on client.FacilityId equals facility.FacilityId
+                                         join status in _DigitalEdgeContext.ClientStatuses on client.ClientStatusId equals status.ClientStatusId
+                                         join sex in _DigitalEdgeContext.Sexes on client.SexId equals sex.SexId
+                                         select new ClientModel
+                                         {
+                                             ClientId = client.ClientId,
+                                             FirstName = client.FirstName,
+                                             LastName = client.LastName,
+                                             ArtNo = client.ArtNo,
+                                             EnrollmentDate = client.EnrollmentDate,
+                                             ClientPhoneNo = client.ClientPhoneNo,
+                                             Facility = facility.FacilityName,
+                                             Address = client.Address,
+                                             ClientStatusId = client.ClientStatusId,
+                                             ClientStatus = status.ClientStatusName,
+                                             ClientTypeId = client.ClientTypeId,
+                                             ClientType = client.ClientTypes.ClientTypeName,
+                                             DateOfBirth = client.DateOfBirth,
+                                             StatusCommentId = client.StatusCommentId,
+                                             StatusComment = client.StatusComments.StatusCommentName,
+                                             SexId = client.SexId,
+                                  
+                                             
+                                             
+ 
+                                         }
+                ).ToList();
+            return clients;
+            
+        }
+        public List<AppointmentsModel> GetAppointments()
+        {
+            List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
+                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId
+                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId
+                                                    join department in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals department.ServicePointId
+                                                    select new AppointmentsModel
+                                                    {
+                                                        Id = appointment.AppointmentId,
+                                                        ClientId = appointment.ClientId,
+                                                        FacilityId = appointment.FacilityId,
+                                                        ServicePointId = department.ServicePointId,
+                                                        AppointmentDate = appointment.AppointmentDate,
+                                                        AppointmentStatus = appointment.AppointmentStatus,
+                                                        Detail = appointment.Detail,
+                                                        FirstName = client.FirstName,
+                                                        LastName = client.LastName,
+                                                        ArtNo = client.ArtNo,
+                                                        FacilityName = appointment.FacilityModel.FacilityName,
+                                                        AppointmentTime = appointment.AppointmentDate,
+                                                        ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
+                                                        ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
+                                                        FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
+                                                        ServicePointModel = new ServicePointModel { ServicePointName = department.ServicePointName }
+                                                        
+
+                                                    }
+                                                    ).ToList();
+            return appointments;
         }
 
         public List<AppointmentsModel> GetClientDetailsFilters(VisitsModel filterdata)
@@ -400,7 +466,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -433,7 +499,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -494,7 +560,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -527,7 +593,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -560,7 +626,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -593,7 +659,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -626,7 +692,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -691,7 +757,7 @@ namespace DigitalEdge.Repository
                                            from visits in appointments.DefaultIfEmpty()
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
-                                           join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                            from facilitys in facilitylist.DefaultIfEmpty()
                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                            from districts in districtlist.DefaultIfEmpty()
@@ -756,7 +822,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -789,7 +855,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -852,7 +918,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -886,7 +952,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -920,7 +986,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -954,7 +1020,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -989,7 +1055,7 @@ namespace DigitalEdge.Repository
                                             from visits in appointments.DefaultIfEmpty()
                                             join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                             from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.facility on visits.FacilityId equals facility.FacilityId into facilitylist
+                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
                                             from facilitys in facilitylist.DefaultIfEmpty()
                                             join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
                                             from districts in districtlist.DefaultIfEmpty()
@@ -1026,7 +1092,7 @@ namespace DigitalEdge.Repository
                                            from visits in appointments.DefaultIfEmpty()
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
-                                           join facility in _DigitalEdgeContext.facility on appointment.FacilityId equals facility.FacilityId into facilityDetais
+                                           join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
                                            join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
                                            from servicepoints in servicepointDetails.DefaultIfEmpty()
@@ -1079,7 +1145,7 @@ namespace DigitalEdge.Repository
                                            from visits in appointments.DefaultIfEmpty()
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
-                                           join facility in _DigitalEdgeContext.facility on appointment.FacilityId equals facility.FacilityId into facilityDetais
+                                           join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
                                            join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
                                            from servicepoints in servicepointDetails.DefaultIfEmpty()
@@ -1108,7 +1174,7 @@ namespace DigitalEdge.Repository
                                            from visits in appointments.DefaultIfEmpty()
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
-                                           join facility in _DigitalEdgeContext.facility on appointment.FacilityId equals facility.FacilityId into facilityDetais
+                                           join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
                                            join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
                                            from servicepoints in servicepointDetails.DefaultIfEmpty()
@@ -1186,7 +1252,7 @@ namespace DigitalEdge.Repository
                                                                       NextAppointmentDate = visits.NextAppointmentDate,
                                                                       FacilityId = appointment.FacilityId,
                                                                       ServicePointId = appointment.ServicePointId,
-                                                                      ClientPhoneNo = appointment.Clients.ClientPhoneNo
+                                                                      ClientPhoneNo = appointment.ClientModel.ClientPhoneNo
                                                                   }).ToListAsync();
 
             return appointmentsdetails;
@@ -1285,7 +1351,7 @@ namespace DigitalEdge.Repository
         }
         public async Task<long> GetFacilityId(string name)
         {
-            var Details = await (from facility in _DigitalEdgeContext.facility
+            var Details = await (from facility in _DigitalEdgeContext.Facilities
                                  where (facility.FacilityName == name)
                                  select new Facility
                                  {
@@ -1305,7 +1371,7 @@ namespace DigitalEdge.Repository
         }
         public string GetFacilityContactNumber(long? id)
         {
-            var Details = (from facility in _DigitalEdgeContext.facility
+            var Details = (from facility in _DigitalEdgeContext.Facilities
                            where (facility.FacilityId == id)
                            select new Facility
                            {
@@ -1339,7 +1405,7 @@ namespace DigitalEdge.Repository
         }
         public void DeleteFacility(long facilityId)
         {
-            _DigitalEdgeContext.Remove(_DigitalEdgeContext.facility.Single(a => a.FacilityId == facilityId));
+            _DigitalEdgeContext.Remove(_DigitalEdgeContext.Facilities.Single(a => a.FacilityId == facilityId));
             _DigitalEdgeContext.SaveChanges();
         }
         public void DeleteServicePoint(long servicePointId)
@@ -1399,6 +1465,208 @@ namespace DigitalEdge.Repository
                                                                     }).ToList();
 
             return visitHistorydetails;
+        }
+
+        public Client GetClientById(long id)
+        {
+            var client = (from singleClient in _DigitalEdgeContext.Clients
+                          join sex in _DigitalEdgeContext.Sexes on singleClient.SexId equals sex.SexId into clients
+                          from sexes in clients.DefaultIfEmpty()
+                          join clientStatus in _DigitalEdgeContext.ClientStatuses on singleClient.ClientStatusId equals clientStatus.ClientStatusId into statuses    
+                          from clientStatuses in statuses.DefaultIfEmpty()
+                          join facility in _DigitalEdgeContext.Facilities on singleClient.FacilityId equals facility.FacilityId into facilities
+                          from clientFacility in facilities.DefaultIfEmpty()
+                          where (singleClient.ClientId == id)
+                          select new Client
+                          {
+                              ClientId = id,
+                              FirstName = singleClient.FirstName,
+                              LastName = singleClient.LastName,
+                              ArtNo = singleClient.ArtNo,
+                              DateOfBirth = singleClient.DateOfBirth,
+                              EnrollmentDate = singleClient.EnrollmentDate,
+                              ClientPhoneNo = singleClient.ClientPhoneNo,
+                              PhoneVerifiedByAnalyst = singleClient.PhoneVerifiedByAnalyst,
+                              PhoneVerifiedByFacilityStaff = singleClient.PhoneVerifiedByFacilityStaff,
+                              Sex = sexes,
+                              ClientStatuses = clientStatuses,
+                              Facilities = clientFacility,
+                              SexId = singleClient.SexId,
+                              ClientTypeId = singleClient.ClientTypeId,
+                              FacilityId = singleClient.FacilityId,
+                              StatusCommentId = singleClient.StatusCommentId,
+                              LanguageId = singleClient.LanguageId,
+                              ServicePointId = singleClient.ServicePointId,
+                              Address = singleClient.Address,
+                              EnrolledBy = singleClient.EnrolledBy,
+                              EnrolledByPhone = singleClient.EnrolledByPhone,
+                              GeneralComment = singleClient.GeneralComment
+                              
+                              
+                          })         
+                          .SingleOrDefault();
+
+            return client;
+        }
+
+        public List<FacilityModel> GetFacilities()
+        {
+            List<FacilityModel> facilities = (from facility in _DigitalEdgeContext.Facilities
+                                              join facilityType in _DigitalEdgeContext.FacilityTypes on facility.FacilityTypeId equals facilityType.FacilityTypeId
+                                              
+                                                    select new FacilityModel
+                                                    {
+                                                        FacilityId = facility.FacilityId,
+                                                        FacilityName = facility.FacilityName,
+                                                        FacilityTypeId = facility.FacilityTypeId,
+                                                        FacilityContactNumber = facility.FacilityContactNumber,
+                                                        IsAvailable = facility.IsAvailable,
+                                                        FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName
+                                                        
+
+                                                    }
+                                              ).ToList();
+            return facilities;
+        }
+
+        public List<ServicePointModel> GetServicePoints()
+        {
+            List<ServicePointModel> servicePoints = (from departments in _DigitalEdgeContext.ServicePoints
+                                                     select new ServicePointModel
+                                                     {
+                                                        ServicePointId = departments.ServicePointId,
+                                                        ServicePointName = departments.ServicePointName,
+                                                     }
+            ).ToList();
+
+            return servicePoints;
+        }
+
+        public List<VisitModel> GetVisits()
+        {
+            List<VisitModel> visits = (from attendances in _DigitalEdgeContext.Visits
+                                        select new VisitModel
+                                        {
+                                            VisitId = attendances.VisitId,
+                                            VisitDate = attendances.VisitDate,
+                                            VisitType = attendances.VisitType,
+                                            AppointmentId = attendances.AppointmentId,
+                                            ServicePointId = attendances.ServicePointId,
+                                            AppointmentStatus = attendances.AppointmentStatus,
+                                            PriorAppointmentDate = attendances.PriorAppointmentDate,
+                                            NextAppointmentDate = attendances.NextAppointmentDate,
+                                            ClinicRemarks = attendances.ClinicRemarks,
+                                            Diagnosis = attendances.Diagnosis,
+                                            SecondDiagnosis = attendances.SecondDiagnosis,
+                                            ThirdDiagnosis = attendances.ThirdDiagnosis,
+                                            Therapy = attendances.Therapy,
+                                            FacilityId = attendances.FacilityId,
+
+
+                                        }).ToList();
+            return visits;
+        }
+
+        public Appointment GetAppointmentById(long id)
+        {
+            var appointment = (from appointments in _DigitalEdgeContext.Appointments
+                               join client in _DigitalEdgeContext.Clients on appointments.ClientId equals client.ClientId into clients
+                               from clientAppointments in clients.DefaultIfEmpty()
+                               join facility in _DigitalEdgeContext.Facilities on appointments.FacilityId equals facility.FacilityId into facilities
+                               from appointmentInFacility in facilities.DefaultIfEmpty()
+                               join servicePoint in _DigitalEdgeContext.ServicePoints on appointments.ServicePointId equals servicePoint.ServicePointId into servicePoint
+                               from clientServicePoint in servicePoint.DefaultIfEmpty()
+                               where (appointments.AppointmentId == id)
+                               select new Appointment
+                               {
+                                   AppointmentId = id,
+                                   ClientId = clientAppointments.ClientId,
+                                   ServicePointId = clientAppointments.ServicePointId,
+                                   FacilityId = appointmentInFacility.FacilityId,
+                                   ClientModel = clientAppointments,
+                                   FacilityModel = appointmentInFacility,
+                                   ServicePointModel = clientServicePoint,
+                                   AppointmentStatus = appointments.AppointmentStatus,
+                                   AppointmentDate = appointments.AppointmentDate,
+                                   Detail = appointments.Detail                             
+                               }
+
+                               ).SingleOrDefault();
+
+            return appointment;
+        }
+
+        public Facility GetFacilityById(long id)
+        {
+            var facility = (from facilities in _DigitalEdgeContext.Facilities
+                            join facilityTypes in _DigitalEdgeContext.FacilityTypes on facilities.FacilityTypeId equals facilityTypes.FacilityTypeId into buildings
+                            from building in buildings.DefaultIfEmpty()
+                            where (facilities.FacilityId == id)
+                            select new Facility
+                            {
+                                FacilityId = facilities.FacilityId,
+                                FacilityName = facilities.FacilityName,
+                                FacilityTypeId = facilities.FacilityTypeId,
+                                IsAvailable = facilities.IsAvailable,
+                                FacilityContactNumber = facilities.FacilityContactNumber,
+                                Address = facilities.Address,
+                                FacilityTypeModel = building
+                            }
+                            ).SingleOrDefault();
+            return facility;
+
+        }
+
+        public List<FacilityTypeModel> GetFacilityTypes()
+        {
+            List<FacilityTypeModel> facilityTypes = (from facilityType in _DigitalEdgeContext.FacilityTypes
+                                                     select new FacilityTypeModel
+                                                     {
+                                                         FacilityTypeId = facilityType.FacilityTypeId,
+                                                         FacilityTypeName = facilityType.FacilityTypeName
+
+                                                     }).ToList();
+
+            return facilityTypes;
+        }
+
+        public string CreateVisit(Visit visitData)
+        {
+            if (_DigitalEdgeContext.Visits.Any(v => v.VisitId.Equals(visitData.VisitId))) return "null";
+            this._visitRepository.Insert(visitData);
+            return "ok";
+        }
+
+        public Visit GetVisitById(long id)
+        {
+            var visit = (from visits in _DigitalEdgeContext.Visits
+                         join client in _DigitalEdgeContext.Clients on visits.ClientId equals client.ClientId into dbClients
+                         from clientVisits in dbClients.DefaultIfEmpty()
+                         join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into dbFacilitites
+                         from clientFaciltiy in dbFacilitites.DefaultIfEmpty()
+                         join appointment in _DigitalEdgeContext.Appointments on visits.AppointmentId equals appointment.AppointmentId into dbAppointments
+                         from clientAppointment in dbAppointments.DefaultIfEmpty()
+                         join servicePoint in _DigitalEdgeContext.ServicePoints on visits.ServicePointId equals servicePoint.ServicePointId into dbServicePoints
+                         from visitServicePoint in dbServicePoints.DefaultIfEmpty()
+                         where (visits.VisitId == id)
+                         select new Visit
+                         {
+                             VisitId = visits.VisitId,
+                             VisitDate = visits.VisitDate,
+                             ClientId = clientVisits.ClientId,
+                             AppointmentId = clientAppointment.AppointmentId,
+                             FacilityId = clientFaciltiy.FacilityId,
+                             ServicePointId = visitServicePoint.ServicePointId,
+                             ReasonOfVisit = visits.ReasonOfVisit,
+                             Diagnosis = visits.Diagnosis,
+                             SecondDiagnosis = visits.SecondDiagnosis,
+                             ThirdDiagnosis = visits.ThirdDiagnosis,
+                             ClinicRemarks = visits.ClinicRemarks                         
+
+                         }
+                         ).SingleOrDefault();
+
+            return visit;
         }
     }
 }

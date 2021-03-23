@@ -6,7 +6,7 @@ namespace DigitalEdge.Domain
         public long UserId { get; set; }
         public string FacilityName { get; set; }
         public string UserName { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsAvailable { get; set; }
         public string Facility { get; set; }
         public string ServicePoint { get; set; }
         public long? UserFacilityId { get; set; }
@@ -18,6 +18,8 @@ namespace DigitalEdge.Domain
         public string ProvinceName { get; set; }
         public string FacilityContactNumber { get; set; }
         public long FacilityTypeId { get; set; }
+        public string Address { get; set; }
+
 
     }
 

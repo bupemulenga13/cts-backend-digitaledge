@@ -10,23 +10,25 @@ namespace DigitalEdge.Repository
         Users GetData(long id);
         Users GetLogin(string email, string password);
         Client GetClient(RegistrationModel data);
+        Appointment GetAppointment(long id);
         void Delete(Users deleteuser);
         void updateUserFacility(UserFacility deletebuilsinguser);
         void updateServicePoint(ServicePoint updateservicepoint);
-        string updateFacility(Facility updatefacility);
-        void createuser(Users adduser);
+        void updateFacility(Facility updatefacility);
+        string createuser(Users adduser);
         string createappointment(Appointment addappointment);
-        void createclient(Client addclient);
+        string createclient(Client addclient);
         string facilitycreateuser(UserFacility addfacilityuser);
         string facilitywithdistrictcreateuser(Facility addfacilityuser);
         string servicecreateuser(ServicePoint addfacilityuser);
         void updateUser(Users adduser);
-        void updateAppointment(Appointment adduser);
+        void UpdateAppointment(Appointment adduser);
+        void UpdateClient(Client addclient);
         List<UserRoles> GetRoles();
         string GetRoleName(long RoleId);
         List<UserBindingModel> getFacilityDetails();
         List<FacilityModel> getFacilityUserDetails();
         List<ServicePointModel> getServiceDetails();
-
+        
     }
 }

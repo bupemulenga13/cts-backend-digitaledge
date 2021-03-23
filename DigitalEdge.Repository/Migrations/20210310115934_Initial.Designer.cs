@@ -4,14 +4,16 @@ using DigitalEdge.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalEdge.Repository.Migrations
 {
     [DbContext(typeof(DigitalEdgeContext))]
-    partial class DigitalEdgeContextModelSnapshot : ModelSnapshot
+    [Migration("20210310115934_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,8 +66,7 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.HasKey("AppointmentId");
 
-                    b.HasIndex("ClientId")
-                        .IsUnique();
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("FacilityId");
 
@@ -710,11 +711,11 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("Age")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("AppointmentId")
+                    b.Property<long>("AppointmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("AppointmentStatus")
-                        .HasColumnType("bigint");
+                    b.Property<DateTime>("AppointmentStatus")
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("ClientId")
                         .HasColumnType("bigint");
@@ -779,15 +780,14 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime>("VisitDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("VisitType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("VisitType")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("VisitId");
 
                     b.HasIndex("AppointmentId");
 
-                    b.HasIndex("ClientId")
-                        .IsUnique();
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("FacilityId");
 
@@ -995,8 +995,8 @@ namespace DigitalEdge.Repository.Migrations
             modelBuilder.Entity("DigitalEdge.Repository.Appointment", b =>
                 {
                     b.HasOne("DigitalEdge.Repository.Client", "ClientModel")
-                        .WithOne("ClientAppointments")
-                        .HasForeignKey("DigitalEdge.Repository.Appointment", "ClientId")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1159,11 +1159,13 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     b.HasOne("DigitalEdge.Repository.Appointment", "Appointments")
                         .WithMany()
-                        .HasForeignKey("AppointmentId");
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DigitalEdge.Repository.Client", "Clients")
-                        .WithOne("ClientVisits")
-                        .HasForeignKey("DigitalEdge.Repository.Visit", "ClientId")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

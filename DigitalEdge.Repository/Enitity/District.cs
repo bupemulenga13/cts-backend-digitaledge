@@ -9,8 +9,7 @@ namespace DigitalEdge.Repository
         [Key]
         public long DistrictId { get; set; }
         public string DistrictName { get; set; }
-        public long? ProvinceId { get; set; }
-
+        public long ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]
         public virtual Province Provinces { get; set; }
         public DateTime DateCreated { get; set; }
