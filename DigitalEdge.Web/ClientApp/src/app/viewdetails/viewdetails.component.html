@@ -1,0 +1,44 @@
+<div class="right_col " role="main" style="min-height:1675px">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      
+      <div class="dashboard_graph" *ngIf="viewdatadetails != undefined">
+        <h3>View Details</h3>
+        <p>
+          <button (click)="redirectToAppointments()" style="float: right;">Back to Appointment</button>
+        </p>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>Client Name</th>
+              <th>Client Phone No.</th>
+              <th>D.O.B</th>
+              <th>Advise Notes</th>
+              <th>Reason Of Visit</th>
+              <th>Visit Date </th>
+              <th>Visit Type</th>
+              <th>Prior Appointment Date</th>
+              <th>Next Appointment Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let viewdetails of viewdatadetails">
+              <td>{{viewdetails.fullName}}</td>
+              <td>{{viewdetails.clientPhoneNo}}</td>
+              <td>{{viewdetails.dateOfBirth | date: "mediumDate"}}</td>
+              <td>{{viewdetails.adviseNotes}}</td>
+              <td>{{viewdetails.reasonOfVisit}}</td>
+              <td>{{viewdetails.visitDate | date: "mediumDate"}}</td>
+              <td>{{viewdetails.visitType | date: "mediumDate"}}</td>
+              <td>{{viewdetails.priorAppointmentDate | date: "mediumDate"}}</td>
+              <td>{{viewdetails.nextAppointmentDate | date: "mediumDate"}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+

@@ -1,0 +1,70 @@
+<!-- page content -->
+<side-bar></side-bar>
+<topnav-bar></topnav-bar>
+<div class="right_col " role="main" style="min-height:1675px">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+        <form [formGroup]="serviceForm" (ngSubmit)="Submit()">
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Service Point Name</label>
+            <div class="col-sm-8">
+              <select class="custom-select" formControlName="servicePointId">
+                <option value="">Choose Service Point Name</option>
+                <option *ngFor="let service of Servicelist" [value]="service.servicePointId">{{service.servicePointName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Get Record</button>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+        <h3>Visit History</h3>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>Client Name</th>
+              <th>Client Phone No.</th>
+              <th>D.O.B</th>
+              <th>Advise Notes</th>
+              <th>Reason Of Visit</th>
+              <th>Visit Date </th>
+              <th>Visit Type</th>
+              <th>Prior Appointment Date</th>
+              <th>Next Appointment Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="this.vistData?.length == 0">
+              <td colspan="10" class="text-center font-weight-bolder" style="font-size: xx-large;color: grey"> NO RECORD FOUND</td>
+            </tr>
+            <tr *ngFor="let visit of this.vistData">
+              <td>{{visit.fullName}}</td>
+              <td>{{visit.clientPhoneNo}}</td>
+              <td>{{visit.dateOfBirth | date: "mediumDate"}}</td>
+              <td>{{visit.adviseNotes}}</td>
+              <td>{{visit.reasonOfVisit}}</td>
+              <td>{{visit.visitDate | date: "mediumDate"}}</td>
+              <td>{{visit.visitType | date: "mediumDate"}}</td>
+              <td>{{visit.priorAppointmentDate | date: "mediumDate"}}</td>
+              <td>{{visit.nextAppointmentDate | date: "mediumDate"}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<custom-footer></custom-footer>
+<!-- /page content -->

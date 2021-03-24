@@ -1,0 +1,214 @@
+<side-bar></side-bar>
+<topnav-bar></topnav-bar>
+<div class="right_col" role="main" style="min-height: 1665px;">
+  <div class="row">
+    <div class="col-md-9 col-sm-9" style="margin:-10px">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of ImportList;let i = index">
+            <td>{{data.firstName}}  </td>
+            <td>{{data.middleName}} </td>
+            <td>{{data.lastName}} </td>
+            <td>{{data.phoneNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3 col-sm-3" style="margin:-10px;float:right">
+      <div class="x_panel">
+        <div class="x_title">
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <br>
+          <div class="item form-group">
+            <div class="col-md-12 col-sm-12 ">
+              <label>
+                Message Type
+              </label>
+              <div class="col-md-12 col-sm-12 ">
+                <div class="form-group">
+                  <div *ngFor="let type of selectType"  (change)="GetType($event.target.value)">
+                    <input type="radio" name="MessageType" id="messageTyped" value="{{type.value}}" checked="{{type.checked}}">
+                    {{type.value}}
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>36
+
+          <div *ngIf="this.AdhocCase">
+            <div class="item form-group">
+              <div class="col-md-12 col-sm-12 ">
+                <label>
+                  Facility
+                </label>
+                <div class="col-md-12 col-sm-12 ">
+                  <select class="select2_group form-control" [ngClass]="{ 'is-invalid':  emptyType }" (change)="GetServicePointId($event.target.value)" id="faculity_name">
+                    <option value="0" disabled="disabled">Select Facility</option>
+                    <option *ngFor="let facility of FacilityList" [value]="facility.facilityId">{{facility.facilityName}}</option>
+                  </select>
+                  <div *ngIf="emptyType" class="invalid-feedback">
+                    <div>
+                     Please select any facility value !
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item form-group">
+              <div class="col-md-12 col-sm-12 ">
+                <label>
+                  Service Point
+                </label>
+                <div class="col-md-12 col-sm-12 ">
+                  <select class="select2_group form-control" [ngClass]="{ 'is-invalid':  emptyService }" (change)="GetServicePointName($event.target.value)" id="service_Point">
+                    <option value="0" disabled="disabled">Select Service Point</option>
+                    <option *ngFor="let servicePoint of ServicePointList" [value]="servicePoint.servicePointId">{{servicePoint.servicePointName}}</option>
+                  </select>
+                  <div *ngIf="emptyService" class="invalid-feedback">
+                    <div>
+                      Please select any service point value !
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item form-group">
+              <div class="col-md-12 col-sm-12 ">
+                <label>
+                  Appointment Date
+                </label>
+                <div class="col-md-12 col-sm-12 ">
+                  <div class="form-group">
+                    <div class="input-group date" id="myDatepicker2">
+                      <input type="date" class="form-control" id="myDate" [ngClass]="{ 'is-invalid':  emptyDate }" (change)="GetDate()">
+                      <div *ngIf="emptyDate" class="invalid-feedback">
+                        <div>
+                          Appointment Date is required 
+                        </div>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item form-group">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="form-group">
+                  <div>
+                    <input type="checkbox" id="HasTime" (change)="HasTime()">
+                    HasTime
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item form-group" *ngIf="this.hasTime">
+              <div class="col-md-12 col-sm-12 ">
+                <label>
+                  Appointment TIme
+                </label>
+                <div class="col-md-12 col-sm-12 ">
+                  <div class="form-group">
+                    <div class="input-group date">
+                      <input type="time" class="form-control" id="myTime" [ngClass]="{ 'is-invalid':  emptyTimed }" (change)="GetTime()">
+                      <div *ngIf="emptyTimed" class="invalid-feedback">
+                        <div>
+                          Appointment TIme is required 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item form-group">
+              <div class="col-md-12 col-sm-12 ">
+                <label>
+                  Language
+                </label>
+                <div class="col-md-12 col-sm-12 ">
+                  <select class="form-control" [ngClass]="{ 'is-invalid':  emptyLanguage }" (change)="GetLanguage($event.target.value)" id="selectLanguage">
+                    <option value="0" disabled="disabled">
+                      Select Language
+                    </option>
+                    <option *ngFor="let item of selectLanguage" [selected]="item.isSelected == true" [value]="item.value">{{item.value}}</option>
+                  </select>
+                  <div *ngIf="emptyLanguage" class="invalid-feedback">
+                    <div>
+                      Please select any language value !
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-xs-12">
+              <label for="message">Message</label>
+              <textarea class="form-control" [ngClass]="{ 'is-invalid':  emptyMessage }" (change)="GetAdhocMessage($event.target.value)" [(ngModel)]="messageTemplate.Message" id="messages" name="message" rows="5" #Message="ngModel" [readonly]="hasMessage">
+	    	        </textarea>
+              <div *ngIf="emptyMessage && !hasMessage" class="invalid-feedback">
+                <div>
+                  Message is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12" *ngIf="this.hasTemplate && this.AdhocCase">
+              <div class="dropdown s-sms-dropdown overflow-dropdown pull-left">
+                <a class="" id="shortCodeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="insert-shortCode-text"> Insert Shortcode</span>
+                </a>
+                <div class="dropdown-menu custom-scrollbar" aria-labelledby="shortCodeDropdown">
+                  <a class="dropdown-item" *ngFor="let shortCode of insertShortCode, let codeIndex= index;" (click)="shortCode.isHeading ? '' : placeShortCodeInMessage(codeIndex)">
+                    <span [ngClass]="shortCode.isHeading ? 'header-text': 'shortCode-text'">{{shortCode.name}} <br /></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item form-group">
+            <div class="col-md-12 col-sm-12 ">
+              <ngx-file-drop dropZoneLabel="Drop files here" accept=".csv" (onFileDrop)="dropped($event)"
+                             (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                  <span style="float:right;padding:21px;">Drag & Drop CSV File </span>
+                  <br /><br />
+                  <button type="button" (click)="openFileSelector()">Browse Files</button>
+                </ng-template>
+              </ngx-file-drop>
+              <p *ngIf="filename" style="float:right;color:green;padding: 19px;">{{filename}}</p>
+              <div>
+                <div>
+                  {{this.fileError}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="item form-group">
+            <div class="col-md-3 col-sm-3 offset-md-3">
+              <button type="button" class="btn btn-danger" style="float:right;width:auto;height:auto;" (click)="ClearRecords()">Cancel</button>
+            </div>
+            <div class="col-md-3 col-sm-3 offset-md-3">
+              <button type="submit" class="btn btn-success" style="float:right;width:auto;height:auto;" (click)="GetBulkMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<custom-footer></custom-footer>
