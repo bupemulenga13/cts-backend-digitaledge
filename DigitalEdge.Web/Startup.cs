@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,12 +34,12 @@ namespace DigitalEdge.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddControllers();
+            services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DigitalEdge Apis", Version = "v1" });
             });
-            services.AddControllers();
-            services.AddControllersWithViews();
 
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -61,9 +62,7 @@ namespace DigitalEdge.Web
                    IssuerSigningKey = new SymmetricSecurityKey(key),
                    ValidateIssuer = false,
                    ValidateAudience = false,
-
-                   ClockSkew = TimeSpan.Zero,
-
+                                      
                };
            });
             Bootstraper.InitializeServices(services, Configuration);
@@ -77,7 +76,11 @@ namespace DigitalEdge.Web
         [System.Obsolete]
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
-            app.UseHttpsRedirection();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -89,11 +92,7 @@ namespace DigitalEdge.Web
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "DigitalEdge Apis V1");
             });
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            
 
             env.EnvironmentName = Microsoft.Extensions.Hosting.EnvironmentName.Production;
             if (env.IsDevelopment())
@@ -106,7 +105,7 @@ namespace DigitalEdge.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseDefaultFiles();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
@@ -114,7 +113,9 @@ namespace DigitalEdge.Web
             }
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
             app.UseSpa(spa =>
             {
@@ -126,6 +127,7 @@ namespace DigitalEdge.Web
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+            
         }
     }
 }

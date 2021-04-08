@@ -1521,7 +1521,8 @@ namespace DigitalEdge.Repository
                                                         FacilityTypeId = facility.FacilityTypeId,
                                                         FacilityContactNumber = facility.FacilityContactNumber,
                                                         IsAvailable = facility.IsAvailable,
-                                                        FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName
+                                                        FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
+                                                        Address = facility.Address
                                                         
 
                                                     }
