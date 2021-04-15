@@ -50,7 +50,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("EditedBy")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("InteractionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("FacilityId")
@@ -59,7 +59,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("ServicePointId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("PriorAppointmentDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("AppointmentId");
@@ -683,7 +683,7 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("PhoneNo")
+                    b.Property<string>("ClientPhoneNo")
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 

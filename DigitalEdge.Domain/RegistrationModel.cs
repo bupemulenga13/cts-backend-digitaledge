@@ -11,7 +11,7 @@ namespace DigitalEdge.Domain
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public long PhoneNo { get; set; }
+        public string ClientPhoneNo { get; set; }
         public string DateOfBirth { get; set; }
         public int Age { get; set; }
         public int CurrentAge { get; set; }
@@ -38,7 +38,7 @@ namespace DigitalEdge.Domain
         public long Id { get; set; }
         public long FacilityId { get; set; }      
 
-        public long ServicePointId { get; set; }
+        public long? ServicePointId { get; set; }
 
         
 
@@ -55,7 +55,7 @@ namespace DigitalEdge.Domain
 
         public string ArtNo { get; set; }
 
-        public long LanguageId { get; set; }
+        public long? LanguageId { get; set; }
 
         public long ClientTypeId { get; set; }
 
@@ -85,7 +85,10 @@ namespace DigitalEdge.Domain
             return DateTime.Parse(string.Format("{0}", EnrollmentDate));
         }
 
-
+        public DateTime GetAppointmentDateAndTime()
+        {
+            return DateTime.Parse(string.Format("{0} {1}", AppointmentDate, AppointmentTime));
+        }
 
 
 

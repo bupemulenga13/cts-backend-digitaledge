@@ -22,7 +22,7 @@ namespace DigitalEdge.Repository
             this.AppointmentDate = appointmentDate;
         }
                 
-        public Appointment(long id, long clientId,long facilityId, long servicePointId , DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)
+        public Appointment(long id, long clientId,long facilityId, long? servicePointId , DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)
         {
             this.AppointmentId = id;
             this.ClientId = clientId;
@@ -60,7 +60,7 @@ namespace DigitalEdge.Repository
             FacilityId = facilityId;
             ServicePointId = servicePointId;
             AppointmentDate = appointmentDate;
-            EndDate = appointmentDateFulfilled;
+            InteractionDate = appointmentDateFulfilled;
             AppointmentStatus = appointmentStatus;
             Detail = detail;
             DateCreated = dateCreated;
@@ -77,8 +77,8 @@ namespace DigitalEdge.Repository
         //    this.ServicePointId = servicePointId;
         //    this.AppointmentDate = appointmentDate;
         //    this.AppointmentStatus = appointmentStatus;
-        //    this.StartDate = startDate;
-        //    this.EndDate = endDate;
+        //    this.PriorAppointmentDate = startDate;
+        //    this.InteractionDate = endDate;
         //    this.DateCreated = dateCreated;
         //    this.DateEdited = dateEdited;
         //    this.EditedBy = editedBy;
@@ -98,14 +98,14 @@ namespace DigitalEdge.Repository
         [ForeignKey("FacilityId")]
         public virtual Facility FacilityModel { get; set; }
 
-        public long ServicePointId { get; set; }
+        public long? ServicePointId { get; set; }
 
         [ForeignKey("ServicePointId")]
         public virtual ServicePoint ServicePointModel { get; set; }
         public DateTime AppointmentDate { get; set; }
         public int AppointmentStatus { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime PriorAppointmentDate { get; set; }
+        public DateTime InteractionDate { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }

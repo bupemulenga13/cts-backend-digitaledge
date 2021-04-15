@@ -120,7 +120,6 @@ namespace DigitalEdge.Repository
                                                                VisitsId = visits.VisitId,
                                                                VisitDate = visits.VisitDate,
                                                                Age = clients.Age,
-                                                               //FacilityId = visits.FacilityId,
                                                                ServicePointId = visits.ServicePointId,                                                               
                                                            }).ToList();
 
@@ -361,9 +360,13 @@ namespace DigitalEdge.Repository
                                              StatusCommentId = client.StatusCommentId,
                                              StatusComment = client.StatusComments.StatusCommentName,
                                              SexId = client.SexId,
-                                  
-                                             
-                                             
+                                             Sex= sex.SexName,
+                                             ServicePointId = client.ServicePointId,
+                                             LanguageId = client.LanguageId,
+                                             FacilityId = client.FacilityId,
+                                             PhoneVerifiedByAnalyst = client.PhoneVerifiedByAnalyst,
+                                             PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff
+                                                                                         
  
                                          }
                 ).ToList();

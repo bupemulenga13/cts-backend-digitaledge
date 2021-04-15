@@ -75,7 +75,7 @@ namespace DigitalEdge.Services
 
         public string AddUser(UserModel user)
         {
-            //Users userData = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.PhoneNo,Convert.ToInt64(user.RoleId), false, user.Gender);
+            //Users userData = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.ClientPhoneNo,Convert.ToInt64(user.RoleId), false, user.Gender);
             Users userData = new Users(user.Id, user.FirstName, user.Password, user.Email, user.RoleId, false, false);
             string result = this._accountRepository.createuser(userData);
 
@@ -118,7 +118,7 @@ namespace DigitalEdge.Services
         public void UpdateClient(RegistrationModel client)  
         {
             Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, Convert.ToDateTime(client.DateOfBirth), Convert.ToDateTime(client.EnrollmentDate), client.FacilityId, client.ClientStatusId, client.StatusCommentId, client.ArtNo, client.SexId, client.ClientTypeId, client.ServicePointId, client.LanguageId, client.Address,
-                client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.PhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff);
+                client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.ClientPhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff);
             this._accountRepository.UpdateClient(updateclient);
         }
 
@@ -199,18 +199,18 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.Id, addappointment.ClientId, addappointment.FacilityId,
-              addappointment.ServicePointId, Convert.ToDateTime(addappointment.AppointmentDate), addappointment.AppointmentStatus, addappointment.Detail,
+              addappointment.ServicePointId, addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Detail,
                 addappointment.DateCreated = addappointment.GetCreatedDate(), addappointment.DateEdited,addappointment.EditedBy,addappointment.CreatedBy);  
           string result=this._accountRepository.createappointment(appointmentData);
             return result;
         }
         public string AddClient(RegistrationModel addclient)
         {
-            //Client clientData = new Client(addclient.Id, addclient.FirstName, addclient.MiddleName, addclient.LastName, Convert.ToInt64(addclient.PhoneNo)
+            //Client clientData = new Client(addclient.Id, addclient.FirstName, addclient.MiddleName, addclient.LastName, Convert.ToInt64(addclient.ClientPhoneNo)
             //    , addclient.DateOfBirth, addclient.Age, addclient.CurrentAge, addclient.NextOfKinName, addclient.NextOfKinContact, addclient.NextOfClientID,
             //    addclient.DateCreated, addclient.DateEdited, addclient.EditedBy, addclient.CreatedBy);
             Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, Convert.ToDateTime(addclient.DateOfBirth), Convert.ToDateTime(addclient.EnrollmentDate), addclient.FacilityId, addclient.ClientStatusId, addclient.StatusCommentId, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ServicePointId, addclient.LanguageId, addclient.Address,
-                addclient.EnrolledBy, addclient.EnrolledByPhone, addclient.GeneralComment, addclient.PhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff);
+                addclient.EnrolledBy, addclient.EnrolledByPhone, addclient.GeneralComment, addclient.ClientPhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff);
 
            string result =  this._accountRepository.createclient(clientData);
 

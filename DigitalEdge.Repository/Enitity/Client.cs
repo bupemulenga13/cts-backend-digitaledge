@@ -10,7 +10,7 @@ namespace DigitalEdge.Repository
         public Client()
         {
         }
-        public Client(long id , string firstName , string middleName , string lastName , long clientPhoneNo , DateTime dateOfBirth,int age, int CurrentAge, string nextOfkinName,
+        public Client(long id , string firstName , string middleName , string lastName , string clientPhoneNo , DateTime dateOfBirth,int age, int CurrentAge, string nextOfkinName,
             long nextofKinContact,long nextOfClientId, DateTime dateCreated , DateTime dateEdit,long editBy , long createdBy, long facilityId)
         {
             this.ClientId = id;
@@ -33,7 +33,7 @@ namespace DigitalEdge.Repository
             
         }
 
-        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long servicePointId, long languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, long clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff)
+        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long? servicePointId, long? languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, string clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff)
         {
             ClientId = id;
             FirstName = firstName;
@@ -67,7 +67,7 @@ namespace DigitalEdge.Repository
         [MaxLength(50)]
         public string LastName { get; set; }
         public string ArtNo { get; set; }
-        public long ClientPhoneNo { get; set; } 
+        public string ClientPhoneNo { get; set; } 
         public  DateTime DateOfBirth { get; set; } 
         public int Age { get; set; } 
         public int CurrentAge { get; set; }
@@ -103,11 +103,11 @@ namespace DigitalEdge.Repository
         public virtual Visit ClientVisits { get; set; }
 
 
-        public long ServicePointId { get; set; }
+        public long? ServicePointId { get; set; }
         [ForeignKey("ServicePointId")]
         public virtual ServicePoint ServicePoints  { get; set; }
 
-        public long LanguageId { get; set; }
+        public long? LanguageId { get; set; }
         [ForeignKey("LanguageId")]
         public virtual Language Languages { get; set; }
 

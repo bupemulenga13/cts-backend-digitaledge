@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
 
         [ForeignKey("ClientId")]
         public virtual Client Clients { get; set; }
-        public long ClientNumber { get; set; }
+        public string ClientNumber { get; set; }
         public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]

@@ -7,7 +7,7 @@ namespace DigitalEdge.Domain
         public SMSRecords()
         {
         }
-        public SMSRecords(long clientId, string firstName, string middleName, string lastName, long phoneNo, DateTime NextAppointmentDate,DateTime AppointmenDateTime)
+        public SMSRecords(long clientId, string firstName, string middleName, string lastName, string phoneNo, DateTime NextAppointmentDate,DateTime AppointmenDateTime)
         {
             this.ClientId = clientId;
             this.FirstName = firstName;
@@ -25,7 +25,7 @@ namespace DigitalEdge.Domain
         {
             get { return FirstName + " " + MiddleName + " " + LastName; }
         }
-        public long PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public DateTime AppointmenDateTime { get; set; }
         public DateTime AppointmenTime { get; set; }
         public DateTime NextAppointmentDate { get; set; }

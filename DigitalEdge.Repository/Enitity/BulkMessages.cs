@@ -8,7 +8,7 @@ namespace DigitalEdge.Repository
     {
         [Key]
         public long BulkMessagesId { get; set; }
-        public long ClientNumber { get; set; }
+        public string ClientNumber { get; set; }
         public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]

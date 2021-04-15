@@ -22,7 +22,7 @@ namespace DigitalEdge.Domain
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public long ClientPhoneNo { get; set; }
+        public string ClientPhoneNo { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
         public int CurrentAge { get; set; }
@@ -56,10 +56,10 @@ namespace DigitalEdge.Domain
         public long StatusCommentId { get; set; }
         public string StatusComment { get; set; }
 
-        public long ServicePointId { get; set; }
+        public long? ServicePointId { get; set; }
         public string ServicePoint { get; set; }
 
-        public long LanguageId { get; set; }
+        public long? LanguageId { get; set; }
         public string Language { get; set; }
 
         public long SexId { get; set; }

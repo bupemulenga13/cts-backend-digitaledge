@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         {
         }
 
-        public AppointmentsModel(long appointmentId, long clientId, long facilityId, long servicePointId, DateTime appointmentDate, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy, int appointmentStatus)
+        public AppointmentsModel(long appointmentId, long clientId, long facilityId, long? servicePointId, DateTime appointmentDate, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy, int appointmentStatus)
         {
             this.AppointmentId = appointmentId;
             this.ClientId = clientId;
@@ -37,7 +37,7 @@ namespace DigitalEdge.Domain
             this.NextAppointmentDate = nextAppointmentDate;
             this.Age = age;
         }
-        public AppointmentsModel(long id, string firstName, string lastName, string middleName, long clientPhoneNo,DateTime dateOfBirth, DateTime? priorAppointmentDate, 
+        public AppointmentsModel(long id, string firstName, string lastName, string middleName, string clientPhoneNo,DateTime dateOfBirth, DateTime? priorAppointmentDate, 
            DateTime? nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes)
         {
             this.Id = id;
@@ -54,8 +54,8 @@ namespace DigitalEdge.Domain
             this.AdviseNotes = adviseNotes;           
         }
 
-        public AppointmentsModel(long id, long ClientId,long FacilityId, long ServicePointID, string firstName, string lastName, string middleName,
-            long clientPhoneNo, DateTime dateOfBirth, DateTime? priorAppointmentDate,
+        public AppointmentsModel(long id, long ClientId,long FacilityId, long? ServicePointID, string firstName, string lastName, string middleName,
+            string clientPhoneNo, DateTime dateOfBirth, DateTime? priorAppointmentDate,
            DateTime? nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes)
         {
             this.Id = id;
@@ -81,7 +81,7 @@ namespace DigitalEdge.Domain
         public long VisitsId { get; set; }
         
         public long FacilityId { get; set; }
-        public long ServicePointId { get; set; }
+        public long? ServicePointId { get; set; }
         public string FullName {
             get
             {
@@ -97,7 +97,7 @@ namespace DigitalEdge.Domain
         public FacilityModel FacilityModel { get; set; }
         public ServicePointModel ServicePointModel { get; set; }
 
-        public long ClientPhoneNo { get; set; }
+        public string ClientPhoneNo { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime VisitDate { get; set; }
         public string VisitType { get; set; } 
