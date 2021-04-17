@@ -7,7 +7,12 @@ namespace DigitalEdge.Repository
 {
    public class Appointment
     {
-        
+        private long v1;
+        private long v2;
+        private long v3;
+        private DateTime dateTime1;
+        private DateTime dateTime2;
+
         public Appointment()
         {
         }
@@ -21,7 +26,22 @@ namespace DigitalEdge.Repository
             this.CreatedBy = createdBy;
             this.AppointmentDate = appointmentDate;
         }
-                
+
+        public Appointment(long appointmentId, long clientId, long facilityId, long servicePointId, DateTime appointmentDate, DateTime interactionDate, DateTime priorAppointmentDate, int appointmentStatus, string detail, DateTime dateEdited, long editedBy)
+        {
+            AppointmentId = appointmentId;
+            ClientId = clientId;
+            FacilityId = facilityId;
+            ServicePointId = servicePointId;
+            AppointmentDate = appointmentDate;
+            InteractionDate = interactionDate;
+            PriorAppointmentDate = priorAppointmentDate;
+            AppointmentStatus = appointmentStatus;
+            Detail = detail;
+            DateEdited = dateEdited;
+            EditedBy = editedBy;
+        }
+
         public Appointment(long id, long clientId,long facilityId, long? servicePointId , DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)
         {
             this.AppointmentId = id;
@@ -53,7 +73,7 @@ namespace DigitalEdge.Repository
         //    this.AppointmentStatus = appointmentStatus;
         //}
 
-        public Appointment(long id, long clientId , long facilityId, long servicePointId, DateTime appointmentDate, DateTime appointmentDateFulfilled, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)
+        public Appointment(long id, long clientId , long facilityId, long servicePointId, DateTime appointmentDate, DateTime appointmentDateFulfilled, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy, DateTime priorAppointmentDate)
         {
             AppointmentId = id;
             ClientId = clientId;
@@ -67,6 +87,7 @@ namespace DigitalEdge.Repository
             DateEdited = dateEdited;
             EditedBy = editedBy;
             CreatedBy = createdBy;
+            PriorAppointmentDate = priorAppointmentDate;
         }
 
         //public Appointment(long id, long clientId, long facilityId, long servicePointId, DateTime appointmentDate, int appointmentStatus, DateTime startDate, DateTime endDate, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)

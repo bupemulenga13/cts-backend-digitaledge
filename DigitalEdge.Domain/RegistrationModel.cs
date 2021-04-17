@@ -22,12 +22,12 @@ namespace DigitalEdge.Domain
         public DateTime DateEdit { get; set; }
         public long EditBy { get; set; }
         public long CreatedBy { get; set; }
-        public DateTime? PriorAppointmentDate { get; set; }
+        public string PriorAppointmentDate { get; set; }
         public string AppointmentDate { get; set; }
         public string AppointmentTime { get; set; }
         public int AppointmentStatus { get; set; }
-        public DateTime StartDate { get; set; }
-        public string EndDate { get; set; }
+        public string InteractionDate { get; set; }
+        public string InteractionTime { get; set; }
 
         public DateTime? NextAppointmentDate { get; set; }
         public string ReasonOfVisit { get; set; }
@@ -89,6 +89,17 @@ namespace DigitalEdge.Domain
         {
             return DateTime.Parse(string.Format("{0} {1}", AppointmentDate, AppointmentTime));
         }
+        public DateTime GetInteractionDateAndTime()
+        {
+            return DateTime.Parse(string.Format("{0} {1}", InteractionDate, InteractionTime));
+        }
+
+        public DateTime GetPriorAppointmentDate() { 
+        
+            return DateTime.Parse(string.Format("{0}", PriorAppointmentDate));
+
+        }
+
 
 
 

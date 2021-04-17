@@ -119,7 +119,7 @@ namespace DigitalEdge.Domain
         public long Age { get; set; }
         public int AppointmentStatus { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime InteractionDate { get; set; }  
         public long AppointmentId { get; }
         public string Detail { get; set; }
         public DateTime GetCreatedDate()

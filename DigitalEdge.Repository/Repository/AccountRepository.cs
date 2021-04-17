@@ -104,7 +104,7 @@ namespace DigitalEdge.Repository
         }
         public string createappointment(Appointment users)
         {
-            if(_DigitalEdgeContext.Appointments.Any(o => o.ClientId.Equals(users.ClientId) && o.AppointmentDate.Date.Equals(users.AppointmentDate.Date))) return "null";
+            if(_DigitalEdgeContext.Appointments.Any(o => o.AppointmentId.Equals(users.AppointmentId))) return "null";
 
             this._appointmentRepository.Insert(users);
             return "ok";

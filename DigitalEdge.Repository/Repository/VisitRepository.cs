@@ -387,6 +387,8 @@ namespace DigitalEdge.Repository
                                                         ServicePointId = department.ServicePointId,
                                                         AppointmentDate = appointment.AppointmentDate,
                                                         AppointmentStatus = appointment.AppointmentStatus,
+                                                        InteractionDate = appointment.InteractionDate,
+                                                        PriorAppointmentDate = appointment.PriorAppointmentDate,
                                                         Detail = appointment.Detail,
                                                         FirstName = client.FirstName,
                                                         LastName = client.LastName,

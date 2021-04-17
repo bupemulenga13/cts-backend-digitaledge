@@ -112,10 +112,10 @@ namespace DigitalEdge.Services
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId,Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServicePointId),Convert.ToDateTime(appointment.AppointmentDate), Convert.ToDateTime(appointment.EndDate), appointment.AppointmentStatus, appointment.Detail, appointment.DateCreated, appointment.DateEdited, appointment.EditedBy, appointment.CreatedBy);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServicePointId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), Convert.ToDateTime(appointment.AppointmentDate), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
             this._accountRepository.UpdateAppointment(updateuser);
         }
-        public void UpdateClient(RegistrationModel client)  
+        public void UpdateClient(RegistrationModel client) 
         {
             Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, Convert.ToDateTime(client.DateOfBirth), Convert.ToDateTime(client.EnrollmentDate), client.FacilityId, client.ClientStatusId, client.StatusCommentId, client.ArtNo, client.SexId, client.ClientTypeId, client.ServicePointId, client.LanguageId, client.Address,
                 client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.ClientPhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff);
