@@ -112,7 +112,7 @@ namespace DigitalEdge.Services
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServicePointId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), Convert.ToDateTime(appointment.AppointmentDate), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServicePointId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
             this._accountRepository.UpdateAppointment(updateuser);
         }
         public void UpdateClient(RegistrationModel client) 

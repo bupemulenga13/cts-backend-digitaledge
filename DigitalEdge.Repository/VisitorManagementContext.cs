@@ -31,6 +31,9 @@ namespace DigitalEdge.Repository
         public DbSet<Language> Languages { get; set; }
         public DbSet<Sex> Sexes { get; set; }
         public DbSet<StatusComments> StatusComments { get; set; }
+        public DbSet<VisitServices> ServiceTypes { get; set; }
+
+
 
 
 

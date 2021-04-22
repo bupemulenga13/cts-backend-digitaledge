@@ -96,7 +96,7 @@ namespace DigitalEdge.Domain
 
         public DateTime GetPriorAppointmentDate() { 
         
-            return DateTime.Parse(string.Format("{0}", PriorAppointmentDate));
+            return DateTime.Parse(string.Format("{0}", AppointmentDate));
 
         }
 

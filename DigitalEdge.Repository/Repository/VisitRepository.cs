@@ -365,7 +365,11 @@ namespace DigitalEdge.Repository
                                              LanguageId = client.LanguageId,
                                              FacilityId = client.FacilityId,
                                              PhoneVerifiedByAnalyst = client.PhoneVerifiedByAnalyst,
-                                             PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff
+                                             PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff,
+                                             AlternativePhoneNumber1 = client.AlternativePhoneNumber1,
+                                             GeneralComment = client.GeneralComment,
+                                             EnrolledBy = client.EnrolledBy,
+                                             EnrolledByPhone = client.EnrolledByPhone
                                                                                          
  
                                          }
@@ -399,9 +403,7 @@ namespace DigitalEdge.Repository
                                                         ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
                                                         FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
                                                         ServicePointModel = new ServicePointModel { ServicePointName = department.ServicePointName }
-                                                        
-
-                                                    }
+                                                                                                            }
                                                     ).ToList();
             return appointments;
         }
