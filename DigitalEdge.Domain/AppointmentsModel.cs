@@ -82,6 +82,9 @@ namespace DigitalEdge.Domain
         
         public long FacilityId { get; set; }
         public long? ServicePointId { get; set; }
+
+        public long ServiceTypeId { get; set; }
+
         public string FullName {
             get
             {
@@ -95,6 +98,9 @@ namespace DigitalEdge.Domain
         public string MiddleName { get; set; }
         public ClientModel ClientModel { get; set; }
         public FacilityModel FacilityModel { get; set; }
+
+        public ServiceTypeModel ServiceTypeModel { get; set; }
+
         public ServicePointModel ServicePointModel { get; set; }
 
         public string ClientPhoneNo { get; set; }

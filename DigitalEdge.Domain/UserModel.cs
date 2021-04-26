@@ -56,6 +56,8 @@ namespace DigitalEdge.Domain
         public bool IsDeleted { get; set; }
         public string Gender { get; set; }
         public string RoleName { get; set; }
+        public bool IsActive { get; set; }
+
     }
     public class FormFileData
     {

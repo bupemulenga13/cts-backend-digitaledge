@@ -32,7 +32,10 @@ namespace DigitalEdge.Domain
         public string FacilityName { get; set; }
         public long? FacilityId { get; set; }
         public string ServicePointName { get; set; }
+        public string ServiceTypeName { get; set; }
         public long? ServicePointId { get; set; }
+        public long ServiceTypeId { get; set; }
+
         public string Message { get; set; }
         public string FacilityContactNumber { get; set; }
     }

@@ -10,8 +10,8 @@ namespace DigitalEdge.Domain
 
         public VisitsServiceModel(long serviceTypeId, string serviceTypeName)
         {
-            ServiceTypeId = serviceTypeId;
-            ServiceTypeName = serviceTypeName;
+            this.ServiceTypeId = serviceTypeId;
+            this.ServiceTypeName = serviceTypeName;
         }
 
         public long ServiceTypeId { get; set; }

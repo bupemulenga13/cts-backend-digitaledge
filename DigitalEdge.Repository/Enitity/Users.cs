@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
         public Users()
         {
         }
-        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, string gender)
+        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, bool isActive)
         {
             this.Id = id;
             this.Password = password;
@@ -23,7 +23,7 @@ namespace DigitalEdge.Repository
             this.PhoneNo = phoneNo;
             this.RoleId = roleId;
             this.IsDeleted = isDeleted;
-            this.Gender = gender;
+            this.IsActive = isActive;
         }
         public Users(string password, Boolean isSuperAdmin, string firstName, string email, long roleId)
         {
@@ -33,15 +33,17 @@ namespace DigitalEdge.Repository
             this.Email = email;
             this.RoleId = roleId;
         }
-        public Users(long id, string firstName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted)
+        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, string phoneNo)
         {   
             this.Id = id;
             this.FirstName = firstName;
+            this.LastName = lastName;
             this.Password = password;
             this.Email = email;
             this.RoleId = roleId;
             this.IsSuperAdmin = isSuperAdmin;
             this.IsDeleted = isDeleted;
+            this.IsActive = isActive;
 
         }
 
@@ -74,6 +76,16 @@ namespace DigitalEdge.Repository
         public bool IsActive { get; set; }
         public string Gender { get; set; }
         public long RoleId { get; set; }
+
+        public bool GetSuperAdmin()
+        {
+            if (RoleId == 1)
+            {
+               return IsSuperAdmin = true;
+            }
+
+            return IsSuperAdmin = false;
+        }
 
 
         [ForeignKey("RoleId")]

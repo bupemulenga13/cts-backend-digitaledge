@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DigitalEdge.Repository.Enitity
+namespace DigitalEdge.Repository
 {
     public class VisitServices
     {
         [Key]
-        public long ServiceTypedId { get; set; }
+        public long ServiceTypeId { get; set; }
 
         public string ServiceTypeName { get; set; }
 

@@ -34,6 +34,11 @@ namespace DigitalEdge.Repository
             {
                 return;   // DB has been seeded
             }
+            if (context.ServiceTypes.Any())
+            {
+                return;   // DB has been seeded
+            }
+
 
             //User Roles
             var roles = new UserRoles[]
@@ -108,6 +113,23 @@ namespace DigitalEdge.Repository
                 new StatusComments{StatusCommentName = "Withdrawn from treatment", ClientStatusId = 2},
             };
             context.StatusComments.AddRange(statusComment);
+            context.SaveChanges();
+
+            //Service Types
+
+            var serviceType = new VisitServices[]
+            {
+                new VisitServices{ServiceTypeName = "Clinical"},
+                new VisitServices{ServiceTypeName = "Pharmacy"},
+                new VisitServices{ServiceTypeName = "Lab CD4"},
+                new VisitServices{ServiceTypeName = "Lab Viral Load"},
+                new VisitServices{ServiceTypeName = "Cervical Cancer Screening"},
+                new VisitServices{ServiceTypeName = "Cervical Cancer Treatment"},
+                new VisitServices{ServiceTypeName = "PREP"},
+                new VisitServices{ServiceTypeName = "Referral"},
+                new VisitServices{ServiceTypeName = "Other"},
+            };
+            context.ServiceTypes.AddRange(serviceType);
             context.SaveChanges();
 
 

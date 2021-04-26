@@ -40,7 +40,10 @@ namespace DigitalEdge.Domain
 
         public long? ServicePointId { get; set; }
 
-        
+        public long ServiceTypeId { get; set; }
+
+
+
 
         // Newly added properties from CTS
         public string  Address { get; set; }

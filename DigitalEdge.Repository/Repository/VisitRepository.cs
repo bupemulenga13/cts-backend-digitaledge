@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -85,6 +86,7 @@ namespace DigitalEdge.Repository
                                                            {
                                                                Id = appointment.AppointmentId,
                                                                ClientId = clients.ClientId,
+                                                               ServiceTypeId = appointment.ServiceTypeId,
                                                                FirstName = clients.FirstName,
                                                                LastName = clients.LastName,
                                                                MiddleName = clients.MiddleName,
@@ -105,7 +107,7 @@ namespace DigitalEdge.Repository
                                                            from visits in appointments.DefaultIfEmpty()
                                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                                            from clients in list.DefaultIfEmpty()                                                          
-                                                           where appointment.ServicePointId == upcommingfilterdata.ServicePointId && appointment.AppointmentDate >= DateTime.UtcNow
+                                                           where appointment.ServiceTypeId == upcommingfilterdata.ServiceTypeId && appointment.AppointmentDate >= DateTime.UtcNow
                                                            select new AppointmentsModel
                                                            {
                                                                Id = appointment.AppointmentId,
@@ -120,7 +122,7 @@ namespace DigitalEdge.Repository
                                                                VisitsId = visits.VisitId,
                                                                VisitDate = visits.VisitDate,
                                                                Age = clients.Age,
-                                                               ServicePointId = visits.ServicePointId,                                                               
+                                                               ServiceTypeId = visits.ServicePointId,                                                               
                                                            }).ToList();
 
             return upcommingappointmentsfilter;
@@ -146,7 +148,8 @@ namespace DigitalEdge.Repository
                                                                      AppointmentDate = appointment.AppointmentDate,
                                                                      AppointmentTime = appointment.AppointmentDate,
                                                                      NextAppointmentDate = visits.NextAppointmentDate,
-                                                                     VisitsId = visits.VisitId
+                                                                     VisitsId = visits.VisitId,
+                                                                     ServiceTypeId = appointment.ServiceTypeId
                                                                  }).ToList();
 
             return appointmentsmisseddetails;
@@ -159,7 +162,7 @@ namespace DigitalEdge.Repository
                                                                  from visits in appointments.DefaultIfEmpty()
                                                                  join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                                                  from clients in list.DefaultIfEmpty()
-                                                                 where appointment.ServicePointId == missedfilter.ServicePointId && appointment.AppointmentDate < DateTime.UtcNow
+                                                                 where appointment.ServiceTypeId == missedfilter.ServiceTypeId && appointment.AppointmentDate < DateTime.UtcNow
                                                                  select new AppointmentsModel
                                                                  {
                                                                      Id = appointment.AppointmentId,
@@ -176,6 +179,7 @@ namespace DigitalEdge.Repository
                                                                      Age = clients.Age,
                                                                      //FacilityId = visits.FacilityId,
                                                                      ServicePointId = visits.ServicePointId,
+                                                                     ServiceTypeId = visits.ServiceTypeId
                                                                  }).ToList();
 
             return appointmentsmissedfilter;
@@ -382,13 +386,13 @@ namespace DigitalEdge.Repository
             List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
                                                     join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId
                                                     join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId
-                                                    join department in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals department.ServicePointId
+                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId
                                                     select new AppointmentsModel
                                                     {
                                                         Id = appointment.AppointmentId,
                                                         ClientId = appointment.ClientId,
                                                         FacilityId = appointment.FacilityId,
-                                                        ServicePointId = department.ServicePointId,
+                                                        ServiceTypeId = department.ServiceTypeId,
                                                         AppointmentDate = appointment.AppointmentDate,
                                                         AppointmentStatus = appointment.AppointmentStatus,
                                                         InteractionDate = appointment.InteractionDate,
@@ -402,7 +406,7 @@ namespace DigitalEdge.Repository
                                                         ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
                                                         ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
                                                         FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
-                                                        ServicePointModel = new ServicePointModel { ServicePointName = department.ServicePointName }
+                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = department.ServiceTypeName }
                                                                                                             }
                                                     ).ToList();
             return appointments;
@@ -1101,8 +1105,8 @@ namespace DigitalEdge.Repository
                                            from clients in list.DefaultIfEmpty()
                                            join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
-                                           join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
-                                           from servicepoints in servicepointDetails.DefaultIfEmpty()
+                                           join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails 
+                                           from serviceTypes in serviceTypesDetails.DefaultIfEmpty()
                                            where (appointment.AppointmentDate >= DateTime.UtcNow && appointment.AppointmentDate < DateTime.UtcNow.Date.AddDays(8)) ||
                                            (visits.NextAppointmentDate >= DateTime.UtcNow && visits.NextAppointmentDate < DateTime.UtcNow.Date.AddDays(8))
                                            select new SMSRecords
@@ -1117,8 +1121,8 @@ namespace DigitalEdge.Repository
                                                FacilityId = facilitys.FacilityId,
                                                FacilityName = facilitys.FacilityName,
                                                FacilityContactNumber = facilitys.FacilityContactNumber,
-                                               ServicePointId = servicepoints.ServicePointId,
-                                               ServicePointName = servicepoints.ServicePointName
+                                               ServiceTypeId = serviceTypes.ServiceTypeId,
+                                               ServiceTypeName = serviceTypes.ServiceTypeName
                                            }).ToList();
             return smsRecords;
         }
@@ -1154,8 +1158,8 @@ namespace DigitalEdge.Repository
                                            from clients in list.DefaultIfEmpty()
                                            join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
-                                           join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
-                                           from servicepoints in servicepointDetails.DefaultIfEmpty()
+                                           /*//join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails  
+                                           from serviceTypes in serviceTypesDetails.DefaultIfEmpty()*/
                                            where ((appointment.AppointmentDate >= DateTime.UtcNow || visits.NextAppointmentDate >= DateTime.UtcNow) && appointment.AppointmentId == id)
                                            select new SMSRecords
                                            {
@@ -1168,9 +1172,9 @@ namespace DigitalEdge.Repository
                                                NextAppointmentDate = visits.NextAppointmentDate,
                                                FacilityId = facilitys.FacilityId,
                                                FacilityName = facilitys.FacilityName,
-                                               FacilityContactNumber = facilitys.FacilityContactNumber,
-                                               ServicePointId = servicepoints.ServicePointId,
-                                               ServicePointName = servicepoints.ServicePointName
+                                               FacilityContactNumber = facilitys.FacilityContactNumber,/*
+                                               ServiceTypeId = serviceTypes.ServiceTypeId,
+                                               ServiceTypeName = serviceTypes.ServicePointName*/
                                            }).ToList();
             return smsRecords;
         }
@@ -1182,9 +1186,9 @@ namespace DigitalEdge.Repository
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
                                            join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
-                                           from facilitys in facilityDetais.DefaultIfEmpty()
+                                           from facilitys in facilityDetais.DefaultIfEmpty()/*
                                            join servicepoint in _DigitalEdgeContext.ServicePoints on appointment.ServicePointId equals servicepoint.ServicePointId into servicepointDetails
-                                           from servicepoints in servicepointDetails.DefaultIfEmpty()
+                                           from servicepoints in servicepointDetails.DefaultIfEmpty()*/
                                            where ((appointment.AppointmentDate >= DateTime.UtcNow || visits.NextAppointmentDate >= DateTime.UtcNow) && visits.VisitId == id)
                                            select new SMSRecords
                                            {
@@ -1197,9 +1201,9 @@ namespace DigitalEdge.Repository
                                                NextAppointmentDate = visits.NextAppointmentDate,
                                                FacilityId = facilitys.FacilityId,
                                                FacilityName = facilitys.FacilityName,
-                                               FacilityContactNumber = facilitys.FacilityContactNumber,
+                                               FacilityContactNumber = facilitys.FacilityContactNumber,/*
                                                ServicePointId = servicepoints.ServicePointId,
-                                               ServicePointName = servicepoints.ServicePointName
+                                               ServicePointName = servicepoints.ServicePointName*/
                                            }).ToList();
             return smsRecords;
         }
@@ -1225,7 +1229,8 @@ namespace DigitalEdge.Repository
                                                                    PriorAppointmentDate = visits.PriorAppointmentDate,
                                                                    AppointmentDate = appointment.AppointmentDate,
                                                                    AppointmentTime = appointment.AppointmentDate,
-                                                                   NextAppointmentDate = visits.NextAppointmentDate
+                                                                   NextAppointmentDate = visits.NextAppointmentDate,
+                                                                   ServiceTypeId = appointment.ServiceTypeId
                                                                }).ToList();
 
 
@@ -1258,7 +1263,7 @@ namespace DigitalEdge.Repository
                                                                       AppointmentTime = appointment.AppointmentDate,
                                                                       NextAppointmentDate = visits.NextAppointmentDate,
                                                                       FacilityId = appointment.FacilityId,
-                                                                      ServicePointId = appointment.ServicePointId,
+                                                                      ServiceTypeId = appointment.ServiceTypeId,
                                                                       ClientPhoneNo = appointment.ClientModel.ClientPhoneNo
                                                                   }).ToListAsync();
 
@@ -1287,9 +1292,9 @@ namespace DigitalEdge.Repository
             {
                 appointmentDetails = this._appointmentRepository.Get().Where(x => x.FacilityId == id).ToList();
             }
-            else if (type == "servicepoint")
+            else if (type == "serviceType")
             {
-                appointmentDetails = this._appointmentRepository.Get().Where(x => x.ServicePointId == id).ToList();
+                appointmentDetails = this._appointmentRepository.Get().Where(x => x.ServiceTypeId == id).ToList();
             }
             return appointmentDetails;
 
@@ -1537,6 +1542,17 @@ namespace DigitalEdge.Repository
             return facilities;
         }
 
+        public List<VisitsServiceModel> GetServiceTypes()
+        {
+            List<VisitsServiceModel> serviceTypes = (from serviceType in _DigitalEdgeContext.ServiceTypes
+                                                     select new VisitsServiceModel{
+                                                         ServiceTypeId = serviceType.ServiceTypeId,
+                                                         ServiceTypeName = serviceType.ServiceTypeName
+            }).ToList();
+
+            return serviceTypes;
+        }
+
         public List<ServicePointModel> GetServicePoints()
         {
             List<ServicePointModel> servicePoints = (from departments in _DigitalEdgeContext.ServicePoints
@@ -1582,18 +1598,18 @@ namespace DigitalEdge.Repository
                                from clientAppointments in clients.DefaultIfEmpty()
                                join facility in _DigitalEdgeContext.Facilities on appointments.FacilityId equals facility.FacilityId into facilities
                                from appointmentInFacility in facilities.DefaultIfEmpty()
-                               join servicePoint in _DigitalEdgeContext.ServicePoints on appointments.ServicePointId equals servicePoint.ServicePointId into servicePoint
-                               from clientServicePoint in servicePoint.DefaultIfEmpty()
+                               join serviceType in _DigitalEdgeContext.ServiceTypes on appointments.ServiceTypeId equals serviceType.ServiceTypeId into serviceType   
+                               from clientServiceType  in serviceType.DefaultIfEmpty()
                                where (appointments.AppointmentId == id)
-                               select new Appointment
+                               select new Appointment   
                                {
                                    AppointmentId = id,
                                    ClientId = clientAppointments.ClientId,
-                                   ServicePointId = clientAppointments.ServicePointId,
+                                   ServiceTypeId = appointments.ServiceTypeId,
                                    FacilityId = appointmentInFacility.FacilityId,
                                    ClientModel = clientAppointments,
                                    FacilityModel = appointmentInFacility,
-                                   ServicePointModel = clientServicePoint,
+                                   ServiceTypeModel = clientServiceType,
                                    AppointmentStatus = appointments.AppointmentStatus,
                                    AppointmentDate = appointments.AppointmentDate,
                                    Detail = appointments.Detail                             

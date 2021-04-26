@@ -63,10 +63,20 @@ namespace DigitalEdge.Repository
 
         public virtual Facility Facility { get; set; }
 
-        [ForeignKey("ServicePointID")]
+        [ForeignKey("ServicePointId")]
         public long ServicePointId { get; set; }
 
         public virtual ServicePoint ServicePoints { get; set; }
+        
+        [ForeignKey("ServiceTypeId")]
+        public long ServiceTypeId { get; set; }
+
+        public virtual VisitServices ServiceTypes { get; set; }
+        
+        /*[ForeignKey("ServiceTypeId")]
+        public long ServiceTypeId { get; set; }
+
+        public virtual VisitServices ServiceTypes { get; set; } */
 
         [ForeignKey("AppointmentId")]
         public long? AppointmentId { get; set; }

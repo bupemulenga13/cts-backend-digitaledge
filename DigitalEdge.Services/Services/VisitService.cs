@@ -639,6 +639,13 @@ namespace DigitalEdge.Services
                 return null;
             return (facilities);
         }
+        public List<VisitsServiceModel> GetServiceTypes()
+        {
+            List<VisitsServiceModel> serviceTypes = _visitRepository.GetServiceTypes().ToList();
+            if (serviceTypes == null)
+                return null;
+            return (serviceTypes);
+        }
 
         public List<ServicePointModel> GetServicePoints()
         {

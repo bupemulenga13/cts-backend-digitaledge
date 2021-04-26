@@ -24,7 +24,7 @@ namespace DigitalEdgeTest
             var mock = new Mock<IAccountRepository>();
             mock.Setup(x => x.GetLogin("sheffy@gmail.com", "sheffy"))
                .Returns(new Users
-                    (34, "sheffy", false, "Sheffy", "Kalra", "sheffy@gmail.com", "983172808", 0, false, "female"));
+                    (34, "sheffy", false, "Sheffy", "Kalra", "sheffy@gmail.com", "983172808", 0, false, false));
                   
             var accountService = new AccountService(mock.Object, OptionsValue());
             var result = accountService.ValidateUser("sheffy@gmail.com", "sheffy");
@@ -37,7 +37,7 @@ namespace DigitalEdgeTest
             var mock = new Mock<IAccountRepository>();
             mock.Setup(x => x.GetLogin("sheffy@gmail.com", "sheffy123"))
                .Returns(new Users
-                    (34, "sheffy", false, "Sheffy", "Kalra", "sheffy@gmail.com", "983172808", 0, false, "female"));
+                    (34, "sheffy", false, "Sheffy", "Kalra", "sheffy@gmail.com", "983172808", 0, false, false));
 
             var accountService = new AccountService(mock.Object, OptionsValue());
             var result = accountService.ValidateUser("sheffy@gmail.com", "sheffy");

@@ -50,9 +50,9 @@ namespace DigitalEdge.Services
         public AppointmentsModel  GetAppointment(long id)
         {
             Appointment appointment = _accountRepository.GetAppointment(id);
-            AppointmentsModel appointmentModel = new AppointmentsModel(appointment.AppointmentId, appointment.ClientId, appointment.FacilityId, appointment.ServicePointId, appointment.AppointmentDate, appointment.DateCreated, appointment.DateEdited, appointment.EditedBy, appointment.CreatedBy, appointment.AppointmentStatus);
+            AppointmentsModel appointmentModel = new AppointmentsModel(appointment.AppointmentId, appointment.ClientId, appointment.FacilityId, appointment.ServiceTypeId, appointment.AppointmentDate, appointment.DateCreated, appointment.DateEdited, appointment.EditedBy, appointment.CreatedBy, appointment.AppointmentStatus);
             if (appointmentModel == null)
-                return null;
+                return null; 
             return (appointmentModel);
 
         }
@@ -75,12 +75,18 @@ namespace DigitalEdge.Services
 
         public string AddUser(UserModel user)
         {
-            //Users userData = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.ClientPhoneNo,Convert.ToInt64(user.RoleId), false, user.Gender);
-            Users userData = new Users(user.Id, user.FirstName, user.Password, user.Email, user.RoleId, false, false);
-            string result = this._accountRepository.createuser(userData);
+            if (user.RoleId == 1)
+            {
+               Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.PhoneNo);
+                string result1 = this._accountRepository.createuser(superAdminData);
+                return result1;
 
+            }
+            Users userData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, false, false, true, user.PhoneNo);
+            string result = this._accountRepository.createuser(userData);
             return result;
-            
+
+            //Users userData = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.ClientPhoneNo,Convert.ToInt64(user.RoleId), false, user.Gender);
 
 
         }
@@ -105,14 +111,20 @@ namespace DigitalEdge.Services
         }
         public void UpdateUser(UserModel user)
         {
+            if (user.RoleId == 1)
+            {
+                Users editUser = new Users(user.Id, user.Password, true, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, false, true);
 
-            Users adduser = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId ,user.IsDeleted, user.Gender);
+                this._accountRepository.updateUser(editUser);
+            }
+            Users adduser = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, false, true);
 
             this._accountRepository.updateUser(adduser);
+
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServicePointId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
             this._accountRepository.UpdateAppointment(updateuser);
         }
         public void UpdateClient(RegistrationModel client) 
@@ -125,7 +137,7 @@ namespace DigitalEdge.Services
 
         public void DeleteUser(UserModel user)
         {
-            Users deleteUser = new Users(user.Id, user.Password, Convert.ToBoolean(user.IsSuperAdmin), user.FirstName, user.LastName, user.Email, user.PhoneNo, Convert.ToInt32(user.RoleId), Convert.ToBoolean(user.IsDeleted), user.Gender);
+            Users deleteUser = new Users(user.Id, user.Password, Convert.ToBoolean(user.IsSuperAdmin), user.FirstName, user.LastName, user.Email, user.PhoneNo, Convert.ToInt32(user.RoleId), Convert.ToBoolean(user.IsDeleted), Convert.ToBoolean(user.IsActive));
 
             this._accountRepository.Delete(deleteUser);
         }
@@ -199,9 +211,10 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.Id, addappointment.ClientId, addappointment.FacilityId,
-              addappointment.ServicePointId, addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Detail,
+              addappointment.ServiceTypeId, addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Detail,
                 addappointment.DateCreated = addappointment.GetCreatedDate(), addappointment.DateEdited,addappointment.EditedBy,addappointment.CreatedBy);  
           string result=this._accountRepository.createappointment(appointmentData);
+
             return result;
         }
         public string AddClient(RegistrationModel addclient)

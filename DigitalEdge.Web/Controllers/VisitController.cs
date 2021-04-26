@@ -255,6 +255,16 @@ namespace DigitalEdge.Web.Controllers
         }
         
         [HttpGet]
+        [Route("GetServiceTypes")]
+        [Authorize]
+        public ActionResult GetServiceTypes()
+        {   
+            var serviceTypes = _visitService.GetServiceTypes();
+
+            return Ok(serviceTypes);
+        }
+        
+        [HttpGet]
         [Route("GetServicePoints")]
         [Authorize]
         public ActionResult GetServicePoints()

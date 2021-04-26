@@ -104,6 +104,8 @@ namespace DigitalEdge.Repository
 
 
         public long? ServicePointId { get; set; }
+
+
         [ForeignKey("ServicePointId")]
         public virtual ServicePoint ServicePoints  { get; set; }
 

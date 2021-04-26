@@ -38,7 +38,7 @@ namespace DigitalEdge.Web.Controllers
         }
         [HttpPost]
         [Route("CreateAppointment")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult CreateAppointment([FromBody] RegistrationModel model)
         {
             if (model == null)
@@ -64,7 +64,7 @@ namespace DigitalEdge.Web.Controllers
 
         [HttpPost]
         [Route("CreateClient")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult CreateClient([FromBody] RegistrationModel model)
         {
             if (model == null)
@@ -88,7 +88,7 @@ namespace DigitalEdge.Web.Controllers
 
         [HttpPost]
         [Route("EditAppointment")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult EditAppointment([FromBody]RegistrationModel model)
         {
             if (model == null)
@@ -102,7 +102,7 @@ namespace DigitalEdge.Web.Controllers
 
         [HttpPost]
         [Route("EditClient")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult EditClient([FromBody]RegistrationModel model)
         {
             if (model == null)

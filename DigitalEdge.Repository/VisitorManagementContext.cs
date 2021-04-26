@@ -15,7 +15,6 @@ namespace DigitalEdge.Repository
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Facility> Facilities { get; set; }
-
         public DbSet<Messages> Messages { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<ServicePoint> ServicePoints { get; set; }
