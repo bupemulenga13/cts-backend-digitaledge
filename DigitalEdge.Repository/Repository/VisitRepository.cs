@@ -1692,5 +1692,51 @@ namespace DigitalEdge.Repository
 
             return visit;
         }
+
+        public int CountFacilities()
+        {
+            var count = _DigitalEdgeContext.Facilities.Count();
+
+            return count;
+        }
+
+        public int CountClients()
+        {
+            var count = _DigitalEdgeContext.Clients.Count();
+
+            return count;
+        }
+
+        public int CountAppointments()
+        {
+            var count = _DigitalEdgeContext.Appointments.Count();
+
+            return count;
+        }
+
+        public int AvailableFacilities()
+        {
+            var facilities = _DigitalEdgeContext.Facilities.Where(f => f.IsAvailable).Count();
+
+            return facilities;
+        }
+
+        public int TodaysAppointments()
+        {
+            DateTime today = DateTime.Now.Date;
+
+            var appointments = _DigitalEdgeContext.Appointments.Where(a => a.DateCreated >= today).Count();
+
+            return appointments;
+        }
+
+        public int TodaysClients()
+        {
+            DateTime today = DateTime.Now.Date;
+
+            var clients = _DigitalEdgeContext.Clients.Where(c => c.DateCreated >= today).Count();
+
+            return clients;
+        }
     }
 }

@@ -28,6 +28,10 @@ namespace DigitalEdge.Services
         UserModel GetData(long id);
         List<UserRolesModel> getRoles();
         AppointmentsModel GetAppointment(long id);
+
+        int CountUsers();
+
+        int ActiveUsers();
         
     }
 }

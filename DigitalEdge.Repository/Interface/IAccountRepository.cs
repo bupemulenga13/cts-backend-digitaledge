@@ -29,6 +29,9 @@ namespace DigitalEdge.Repository
         List<UserBindingModel> getFacilityDetails();
         List<FacilityModel> getFacilityUserDetails();
         List<ServicePointModel> getServiceDetails();
-        
+
+        int CountUsers();
+
+        int ActiveUsers();
     }
 }

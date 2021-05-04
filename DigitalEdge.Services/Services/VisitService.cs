@@ -690,5 +690,35 @@ namespace DigitalEdge.Services
         {
             return _visitRepository.GetVisitById(id);
         }
+
+        public int CountFacilities()
+        {
+            return _visitRepository.CountFacilities();
+        }
+
+        public int CountClients()
+        {
+            return _visitRepository.CountClients();
+        }
+
+        public int CountAppointments()
+        {
+            return _visitRepository.CountAppointments();
+        }
+
+        public int AvailableFacilities()
+        {
+            return _visitRepository.AvailableFacilities();
+        }
+
+        public int TodaysAppointments()
+        {
+            return _visitRepository.TodaysAppointments();
+        }
+
+        public int TodaysClients()
+        {
+            return _visitRepository.TodaysClients();
+        }
     }
 }

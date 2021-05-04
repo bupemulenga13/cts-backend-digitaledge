@@ -124,13 +124,13 @@ namespace DigitalEdge.Services
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.DateEdited, appointment.EditedBy);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.GetDateEdited(), appointment.DateCreated);
             this._accountRepository.UpdateAppointment(updateuser);
         }
-        public void UpdateClient(RegistrationModel client) 
+        public void UpdateClient(RegistrationModel client)
         {
             Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, Convert.ToDateTime(client.DateOfBirth), Convert.ToDateTime(client.EnrollmentDate), client.FacilityId, client.ClientStatusId, client.StatusCommentId, client.ArtNo, client.SexId, client.ClientTypeId, client.ServicePointId, client.LanguageId, client.Address,
-                client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.ClientPhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff);
+                client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.ClientPhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.DateCreated, client.GetDateEdited());
             this._accountRepository.UpdateClient(updateclient);
         }
 
@@ -223,7 +223,7 @@ namespace DigitalEdge.Services
             //    , addclient.DateOfBirth, addclient.Age, addclient.CurrentAge, addclient.NextOfKinName, addclient.NextOfKinContact, addclient.NextOfClientID,
             //    addclient.DateCreated, addclient.DateEdited, addclient.EditedBy, addclient.CreatedBy);
             Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, Convert.ToDateTime(addclient.DateOfBirth), Convert.ToDateTime(addclient.EnrollmentDate), addclient.FacilityId, addclient.ClientStatusId, addclient.StatusCommentId, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ServicePointId, addclient.LanguageId, addclient.Address,
-                addclient.EnrolledBy, addclient.EnrolledByPhone, addclient.GeneralComment, addclient.ClientPhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff);
+                addclient.EnrolledBy, addclient.EnrolledByPhone, addclient.GeneralComment, addclient.ClientPhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.GetCreatedDate(), addclient.DateEdited);
 
            string result =  this._accountRepository.createclient(clientData);
 
@@ -233,6 +233,15 @@ namespace DigitalEdge.Services
         {
             throw new NotImplementedException();
         }
-        
+
+        public int CountUsers()
+        {
+            return _accountRepository.CountUsers();
+        }
+
+        public int ActiveUsers()
+        {
+            return _accountRepository.ActiveUsers();
+        }
     }
 }

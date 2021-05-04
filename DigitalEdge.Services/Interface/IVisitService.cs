@@ -50,6 +50,16 @@ namespace DigitalEdge.Services
         Appointment GetAppointmentById(long id);
         List<FacilityTypeModel> GetFacilityTypes();
         Visit GetVisitById(long id);
-        List<VisitsServiceModel> GetServiceTypes();   
+        List<VisitsServiceModel> GetServiceTypes();
+
+        int CountFacilities();
+        int CountClients();
+        int CountAppointments();
+
+
+        int AvailableFacilities();
+        int TodaysAppointments();
+
+        int TodaysClients();
     }
 }

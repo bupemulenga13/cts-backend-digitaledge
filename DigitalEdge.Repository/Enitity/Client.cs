@@ -33,7 +33,7 @@ namespace DigitalEdge.Repository
             
         }
 
-        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long? servicePointId, long? languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, string clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff)
+        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long? servicePointId, long? languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, string clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff, DateTime dateCreated, DateTime dateEdited)
         {
             ClientId = id;
             FirstName = firstName;
@@ -56,6 +56,8 @@ namespace DigitalEdge.Repository
             AlternativePhoneNumber1 = alternativePhoneNumber1;
             PhoneVerifiedByAnalyst = phoneVerifiedByAnalyst;
             PhoneVerifiedByFacilityStaff = phoneVerifiedByFacilityStaff;
+            DateCreated = dateCreated;
+            DateEdit = dateEdited;
         }
 
         [Key]

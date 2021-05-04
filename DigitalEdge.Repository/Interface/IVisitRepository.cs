@@ -64,6 +64,16 @@ namespace DigitalEdge.Repository
         string CreateVisit(Visit visitData);
         Visit GetVisitById(long id);
         List<VisitsServiceModel> GetServiceTypes();
+
+        int CountFacilities();
+        int CountClients();
+        int CountAppointments();      
+
+        int AvailableFacilities();
+        int TodaysAppointments();
+        int TodaysClients();
+
+        
     }
 
 }

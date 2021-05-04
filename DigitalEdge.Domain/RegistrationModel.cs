@@ -73,6 +73,7 @@ namespace DigitalEdge.Domain
 
 
 
+
         public DateTime GetCreatedDate()
         {
             return DateTime.Now;
@@ -100,6 +101,21 @@ namespace DigitalEdge.Domain
         public DateTime GetPriorAppointmentDate() { 
         
             return DateTime.Parse(string.Format("{0}", AppointmentDate));
+
+        }
+
+        public DateTime GetDateCreated() { return DateTime.Now; }
+
+        public DateTime GetDateEdited() {
+
+            /*DateTime currentDate = DateTime.Now;
+
+            DateTime oldDate = DateCreated;
+
+            var editDate = currentDate - oldDate;
+
+            return editDate;*/
+            return DateTime.Now;
 
         }
 

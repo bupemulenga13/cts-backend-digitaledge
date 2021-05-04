@@ -228,7 +228,19 @@ namespace DigitalEdge.Repository
             return serviceuserslist;
         }
 
-       
+        public int CountUsers()
+        {
+            var users = _DigitalEdgeContext.Users.Count();
+
+            return users;
+        }
+
+        public int ActiveUsers()
+        {
+            var users = _DigitalEdgeContext.Users.Where(u => u.IsActive == true).Count();
+
+            return users;
+        }
     }
 }
 

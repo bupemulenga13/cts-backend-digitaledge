@@ -51,7 +51,7 @@ namespace DigitalEdge.Web.Controllers
         {
             if (model == null)
             {
-                return Ok(new ServiceResponse() { StatusCode = 400 });
+                return BadRequest(new ServiceResponse() { Success = false, Message ="Visit not created", StatusCode = 400 });
             }
             else
             {
@@ -61,7 +61,7 @@ namespace DigitalEdge.Web.Controllers
                     return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Visit created successfully!" });
 
                 }
-                return Ok(new ServiceResponse() { Success = true, StatusCode = 400, Message = "Error: Visit not created" });
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Visit not created" });
             }
         }
         [HttpGet]
@@ -483,6 +483,48 @@ namespace DigitalEdge.Web.Controllers
                 return Ok(new ServiceResponse() { StatusCode = 500, Message = ex.Message.ToString() });
             }
 
+        }
+
+        [HttpGet]
+        [Route("CountClients")]
+        public int CountClients()
+        {
+            return _visitService.CountClients();
+        }
+
+        [HttpGet]
+        [Route("CountAppointments")]
+        public int CountAppointments()
+        {
+            return _visitService.CountAppointments();
+        }
+        
+        [HttpGet]
+        [Route("CountFacilities")]
+        public int CountFacilities()
+        {
+            return _visitService.CountFacilities();
+        }
+        
+        [HttpGet]
+        [Route("AvailableFacilities")]
+        public int AvailableFacilities()
+        {
+            return _visitService.AvailableFacilities();
+        }
+        
+        [HttpGet]
+        [Route("TodaysClients")]
+        public int TodaysClients()
+        {
+            return _visitService.TodaysClients();
+        }
+        
+        [HttpGet]
+        [Route("TodaysAppointments")]
+        public int TodaysAppoointments()
+        {
+            return _visitService.TodaysAppointments();
         }
     }
 }

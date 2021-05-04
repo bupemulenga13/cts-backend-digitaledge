@@ -21,7 +21,7 @@ namespace DigitalEdge.Repository
             this.AppointmentDate = appointmentDate;
         }
 
-        public Appointment(long appointmentId, long clientId, long facilityId, long serviceTypeId, DateTime appointmentDate, DateTime interactionDate, DateTime priorAppointmentDate, int appointmentStatus, string detail, DateTime dateEdited, long editedBy)
+        public Appointment(long appointmentId, long clientId, long facilityId, long serviceTypeId, DateTime appointmentDate, DateTime interactionDate, DateTime priorAppointmentDate, int appointmentStatus, string detail, DateTime dateEdited, DateTime dateCreated)  
         {
             AppointmentId = appointmentId;
             ClientId = clientId;
@@ -33,7 +33,7 @@ namespace DigitalEdge.Repository
             AppointmentStatus = appointmentStatus;
             Detail = detail;
             DateEdited = dateEdited;
-            EditedBy = editedBy;
+            DateCreated = dateCreated;
         }
 
         public Appointment(long id, long clientId,long facilityId, long serviceTypeId , DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy)
