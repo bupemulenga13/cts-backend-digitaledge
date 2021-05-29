@@ -24,7 +24,7 @@ namespace DigitalEdge.Domain
         public string LastName { get; set; }
         public string ClientPhoneNo { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int Age { get; set; }
+        public int? Age { get; set; }
         public int CurrentAge { get; set; }
         public string NextOfKinName { get; set; }
         public long NextOfKinContact { get; set; }

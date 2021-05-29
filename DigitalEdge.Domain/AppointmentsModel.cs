@@ -23,7 +23,7 @@ namespace DigitalEdge.Domain
         }
 
         public AppointmentsModel(long id,long clientId,long visitsId,string firstName, string lastName, string middleName, DateTime? priorAppointmentDate,DateTime appointmentDate,
-                DateTime appointmentTime, DateTime? nextAppointmentDate , long age)
+                DateTime appointmentTime, DateTime? nextAppointmentDate , int? age)
         {
             this.Id = id;
             this.ClientId = clientId;
@@ -54,26 +54,7 @@ namespace DigitalEdge.Domain
             this.AdviseNotes = adviseNotes;           
         }
 
-        public AppointmentsModel(long id, long ClientId,long FacilityId, long? ServicePointID, string firstName, string lastName, string middleName,
-            string clientPhoneNo, DateTime dateOfBirth, DateTime? priorAppointmentDate,
-           DateTime? nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes)
-        {
-            this.Id = id;
-            this.ClientId = ClientId;
-            this.FacilityId = FacilityId;
-            this.ServicePointId = ServicePointId;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.MiddleName = middleName;
-            this.ClientPhoneNo = clientPhoneNo;
-            this.DateOfBirth = dateOfBirth;
-            this.VisitDate = visitDate;
-            this.VisitType = visitType;
-            this.PriorAppointmentDate = priorAppointmentDate;
-            this.NextAppointmentDate = nextAppointmentDate;
-            this.ReasonOfVisit = reasonOfVisit;
-            this.AdviseNotes = adviseNotes;
-        }
+       
 
 
         public long Id { get; set; }
@@ -88,7 +69,7 @@ namespace DigitalEdge.Domain
         public string FullName {
             get
             {
-                return FirstName + " " + LastName;
+                return FirstName + "" + LastName;
             }       
         }
 
@@ -98,10 +79,7 @@ namespace DigitalEdge.Domain
         public string MiddleName { get; set; }
         public ClientModel ClientModel { get; set; }
         public FacilityModel FacilityModel { get; set; }
-
         public ServiceTypeModel ServiceTypeModel { get; set; }
-
-        public ServicePointModel ServicePointModel { get; set; }
 
         public string ClientPhoneNo { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -122,10 +100,9 @@ namespace DigitalEdge.Domain
         public string ProvinceName { get; set; }
         public long ProvinceId { get; set; }
         public long DistrictId { get; set; }
-        public long Age { get; set; }
+        public int? Age { get; set; }
         public int AppointmentStatus { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime InteractionDate { get; set; }  
+        public DateTime? InteractionDate { get; set; }  
         public long AppointmentId { get; }
         public string Detail { get; set; }
         public DateTime GetCreatedDate()

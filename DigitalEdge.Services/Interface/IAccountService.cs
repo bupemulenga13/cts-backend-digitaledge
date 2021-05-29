@@ -17,7 +17,8 @@ namespace DigitalEdge.Services
         string AddUser(UserModel adduser);
         string AddAppointment(RegistrationModel addappointment);
         string AddClient(RegistrationModel addclient);
-        string AddFacilityUser(UserBindingModel adduser);
+        string CreateFacility(UserBindingModel addfacility);
+
         string AddServicePoint(ServicePointModel adduser);
         void UpdateUser(UserModel adduser);
         void UpdateAppointment(RegistrationModel addupdate);

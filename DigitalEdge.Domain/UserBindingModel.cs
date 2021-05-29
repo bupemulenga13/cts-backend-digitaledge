@@ -16,7 +16,7 @@ namespace DigitalEdge.Domain
         public string DistrictId { get; set; }
         public string ProvinceId { get; set; }
         public string ProvinceName { get; set; }
-        public string FacilityContactNumber { get; set; }
+        public int FacilityContactNumber { get; set; }
         public long FacilityTypeId { get; set; }
         public string Address { get; set; }
 

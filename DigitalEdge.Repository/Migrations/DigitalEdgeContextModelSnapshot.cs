@@ -44,7 +44,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime>("DateEdited")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Detail")
+                    b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("EditedBy")
@@ -56,10 +56,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime>("InteractionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("PriorAppointmentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("ServicePointId")
+                    b.Property<long>("ServiceTypeId")
                         .HasColumnType("bigint");
 
                     b.HasKey("AppointmentId");
@@ -69,7 +66,7 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.HasIndex("FacilityId");
 
-                    b.HasIndex("ServicePointId");
+                    b.HasIndex("ServiceTypeId");
 
                     b.ToTable("Appointments");
                 });
@@ -124,8 +121,8 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("AccessToPhone")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -133,14 +130,14 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<string>("AlternativePhoneNumber1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AlternativePhoneNumber2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ArtNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClientPhoneNo")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ClientRelationship")
+                        .HasColumnType("int");
 
                     b.Property<long>("ClientStatusId")
                         .HasColumnType("bigint");
@@ -151,13 +148,10 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CurrentAge")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateEdit")
+                    b.Property<DateTime?>("DateEdit")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -166,7 +160,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("EditBy")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("EnrolledBy")
+                    b.Property<string>("EnrolledByName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EnrolledByPhone")
@@ -174,6 +168,9 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("EnrollmentType")
+                        .HasColumnType("int");
 
                     b.Property<long>("FacilityId")
                         .HasColumnType("bigint");
@@ -184,6 +181,12 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.Property<string>("GeneralComment")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HamornizedMobilePhone")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HarmonizedPhysicalAddress")
+                        .HasColumnType("int");
 
                     b.Property<long?>("LanguageId")
                         .HasColumnType("bigint");
@@ -196,21 +199,14 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<long>("NextOfClientId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("NextOfKinContact")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("NextOfKinName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
                     b.Property<bool>("PhoneVerifiedByAnalyst")
                         .HasColumnType("bit");
 
                     b.Property<bool>("PhoneVerifiedByFacilityStaff")
                         .HasColumnType("bit");
+
+                    b.Property<string>("PhysicalAddress")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("ServicePointId")
                         .HasColumnType("bigint");
@@ -397,21 +393,6 @@ namespace DigitalEdge.Repository.Migrations
                     b.HasIndex("ClientStatusId");
 
                     b.ToTable("StatusComments");
-                });
-
-            modelBuilder.Entity("DigitalEdge.Repository.Enitity.VisitServices", b =>
-                {
-                    b.Property<long>("ServiceTypedId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ServiceTypeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ServiceTypedId");
-
-                    b.ToTable("ServiceTypes");
                 });
 
             modelBuilder.Entity("DigitalEdge.Repository.Facility", b =>
@@ -734,8 +715,8 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("ClientId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ClientPhoneNo")
-                        .HasColumnType("bigint");
+                    b.Property<string>("ClientPhoneNo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClinicRemarks")
                         .HasColumnType("nvarchar(max)");
@@ -785,6 +766,12 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("ServicePointId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("ServiceTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ServiceTypesServiceTypeId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Therapy")
                         .HasColumnType("nvarchar(max)");
 
@@ -808,7 +795,24 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.HasIndex("ServicePointId");
 
+                    b.HasIndex("ServiceTypesServiceTypeId");
+
                     b.ToTable("Visits");
+                });
+
+            modelBuilder.Entity("DigitalEdge.Repository.VisitServices", b =>
+                {
+                    b.Property<long>("ServiceTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ServiceTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ServiceTypeId");
+
+                    b.ToTable("ServiceTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1021,9 +1025,11 @@ namespace DigitalEdge.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DigitalEdge.Repository.ServicePoint", "ServicePointModel")
+                    b.HasOne("DigitalEdge.Repository.VisitServices", "ServiceTypeModel")
                         .WithMany()
-                        .HasForeignKey("ServicePointId");
+                        .HasForeignKey("ServiceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DigitalEdge.Repository.BulkMessages", b =>
@@ -1187,6 +1193,10 @@ namespace DigitalEdge.Repository.Migrations
                         .HasForeignKey("ServicePointId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("DigitalEdge.Repository.VisitServices", "ServiceTypes")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypesServiceTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

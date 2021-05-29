@@ -7,72 +7,108 @@ namespace DigitalEdge.Domain
 {
     public class RegistrationModel
     {
-        public long ClientId { get; set; }
+
+        #region Client Properties 
+public long ClientId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public string ClientPhoneNo { get; set; }
+        public int ClientPhoneNo { get; set; }
         public string DateOfBirth { get; set; }
-        public int Age { get; set; }
-        public int CurrentAge { get; set; }
-        public string NextOfKinName { get; set; }
-        public long NextOfKinContact { get; set; }
-        public long NextOfClientID { get; set; }
+        public int? Age { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateEdit { get; set; }
-        public long EditBy { get; set; }
         public long CreatedBy { get; set; }
-        public string PriorAppointmentDate { get; set; }
+        public string PhysicalAddress { 
+            get 
+            {
+                if (Zone == null)
+                {
+                    return "*" + "," + Village + "," + HouseNo + "," + GISLocation;
+                }
+                else if (Village == null)
+                {
+                    return Zone + "," + "*" + "," + HouseNo + "," + GISLocation;
+                }
+                else if (HouseNo == null)
+                {
+                return Zone + "," + Village + "," + "*" + "," + GISLocation;
+                    
+                }
+                else if (GISLocation == null)
+                {
+                    return Zone + "," + Village + "," + HouseNo + "," + "*";
+                }
+                else if (Zone == null && Village == null && HouseNo == null && GISLocation == null)
+                {
+                    return "*" + "," + "*" + "," + "*" + "," + "*";
+                }
+                else
+                {
+                    return Zone + "," + Village + "," + HouseNo + "," + GISLocation;
+                }
+            }    
+        }
+        public string GeneralComment { get; set; }
+        public string EnrolledByName { get; set; }
+        public int AlternativePhoneNumber1 { get; set; }
+        public bool PhoneVerifiedByAnalyst { get; set; }
+        public bool PhoneVerifiedByFacilityStaff { get; set; }
+        public string EnrollmentDate { get; set; }
+        public int EnrolledByPhone { get; set; }
+        public string ArtNo { get; set; }
+        public long? LanguageId { get; set; }
+        public long ClientTypeId { get; set; }
+        public long StatusCommentId { get; set; }
+        public long SexId { get; set; }
+        public long ClientStatusId { get; set; }
+        public int ClientRelationship { get; set; }
+        public int EnrollmentType { get; set; }
+
+        public bool AccessToPhone { get; set; }
+
+        public int HamornizedMobilePhone { get; set; }
+
+        public int HarmonizedPhysicalAddress { get; set; }
+
+        //Physical Address Fields
+        public string Zone { get; set; }
+
+        public string Village { get; set; }
+
+        public string HouseNo { get; set; }
+
+        public string GISLocation { get; set; }
+
+
+
+
+        #endregion
+
+        #region Appointment Properties 
         public string AppointmentDate { get; set; }
         public string AppointmentTime { get; set; }
         public int AppointmentStatus { get; set; }
         public string InteractionDate { get; set; }
         public string InteractionTime { get; set; }
-
-        public DateTime? NextAppointmentDate { get; set; }
-        public string ReasonOfVisit { get; set; }
-        public string AdviseNotes { get; set; }
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }
 
-        public long Id { get; set; }
         public long FacilityId { get; set; }      
 
         public long? ServicePointId { get; set; }
 
         public long ServiceTypeId { get; set; }
 
-
-
-
         // Newly added properties from CTS
-        public string  Address { get; set; }
-        public string GeneralComment { get; set; }
-        public string EnrolledBy { get; set; }
-        public string AlternativePhoneNumber1 { get; set; }
-        public string AlternativePhoneNumber2 { get; set; }
-        public bool PhoneVerifiedByAnalyst { get; set; }
-        public bool PhoneVerifiedByFacilityStaff { get; set; }
-        public string EnrollmentDate { get; set; }
-        public string EnrolledByPhone { get; set; }
-
-        public string ArtNo { get; set; }
-
-        public long? LanguageId { get; set; }
-
-        public long ClientTypeId { get; set; }
-
-        public long StatusCommentId { get; set; }
-
-        public long SexId { get; set; }
-
-        public long ClientStatusId { get; set; }
+        
         public long AppointmentId { get; set; }
 
-        public string Detail { get; set; }
+        public string Comment { get; set; }
 
+        #endregion            
 
-
+        #region Method Extras
 
         public DateTime GetCreatedDate()
         {
@@ -108,20 +144,29 @@ namespace DigitalEdge.Domain
 
         public DateTime GetDateEdited() {
 
-            /*DateTime currentDate = DateTime.Now;
+            DateTime today = DateTime.Today.Date;
 
-            DateTime oldDate = DateCreated;
+            DateTime createdDate = DateCreated.Date;
 
-            var editDate = currentDate - oldDate;
-
-            return editDate;*/
-            return DateTime.Now;
+            var editedDate = createdDate - today;
+               
+            return Convert.ToDateTime(editedDate);
 
         }
 
+        public int CalculateAge()
+        {            
+                var today = DateTime.Today;
 
+                var dob = Convert.ToDateTime(DateOfBirth);
 
+                var age = today.Year - dob.Year;
 
+                if (dob > today.AddYears(-age)) age--;
+                return age;
+        }
+
+        #endregion
 
     }
 }

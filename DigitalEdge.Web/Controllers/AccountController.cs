@@ -187,11 +187,11 @@ namespace DigitalEdge.Web.Controllers
         }
 
         [HttpPost]
-        [Route("FacilityCreate")]
+        [Route("CreateFacility")]
         [Authorize]
-        public ActionResult FacilityCreate(UserBindingModel userFacility)
+        public ActionResult CreateFacility(UserBindingModel userFacility)
         {
-            string resultdata = this._accountService.AddFacilityUser(userFacility);
+            string resultdata = this._accountService.CreateFacility(userFacility);
             if (resultdata == "null")
                 return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Failed to create facility" });
            else

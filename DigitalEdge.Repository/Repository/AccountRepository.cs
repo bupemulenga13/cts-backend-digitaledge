@@ -97,7 +97,7 @@ namespace DigitalEdge.Repository
                 return null;
             return RoleName;
         }
-        public string createuser(Users users)
+        public string CreateUser(Users users)
         {
             if (_DigitalEdgeContext.Users.Any(u => u.FirstName.Equals(users.FirstName) && u.Email.Equals(users.Email))) return "null";
             this._loginRepository.Insert(users);
@@ -114,7 +114,6 @@ namespace DigitalEdge.Repository
         public string createclient(Client users)
         {
             if (_DigitalEdgeContext.Clients.Any(c => c.ArtNo.Equals(users.ArtNo))) return "null";
-            
             this._clientRepository.Insert(users);
             return "Ok";
         }
@@ -162,9 +161,9 @@ namespace DigitalEdge.Repository
                this._facilityRepository.Insert(addfacilityuser);
               return "ok";
         } 
-        public string facilitywithdistrictcreateuser(Facility adduser)
+        public string CreateFacility(Facility adduser)
         {
-            if (_DigitalEdgeContext.Facilities.Any(o => o.FacilityName.Equals(adduser.FacilityName) && o.DistrictId.Equals(adduser.DistrictId))) return "null";
+            if (_DigitalEdgeContext.Facilities.Any(o => o.FacilityName.Equals(adduser.FacilityName) )) return "null";
 
             this._facilityuserRepository.Insert(adduser);
               return "ok";

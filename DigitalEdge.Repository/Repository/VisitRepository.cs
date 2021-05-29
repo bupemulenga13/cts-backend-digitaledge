@@ -355,7 +355,7 @@ namespace DigitalEdge.Repository
                                              EnrollmentDate = client.EnrollmentDate,
                                              ClientPhoneNo = client.ClientPhoneNo,
                                              Facility = facility.FacilityName,
-                                             Address = client.Address,
+                                             Address = client.PhysicalAddress,
                                              ClientStatusId = client.ClientStatusId,
                                              ClientStatus = status.ClientStatusName,
                                              ClientTypeId = client.ClientTypeId,
@@ -372,7 +372,7 @@ namespace DigitalEdge.Repository
                                              PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff,
                                              AlternativePhoneNumber1 = client.AlternativePhoneNumber1,
                                              GeneralComment = client.GeneralComment,
-                                             EnrolledBy = client.EnrolledBy,
+                                             EnrolledBy = client.EnrolledByName,
                                              EnrolledByPhone = client.EnrolledByPhone
                                                                                          
  
@@ -392,12 +392,11 @@ namespace DigitalEdge.Repository
                                                         Id = appointment.AppointmentId,
                                                         ClientId = appointment.ClientId,
                                                         FacilityId = appointment.FacilityId,
-                                                        ServiceTypeId = department.ServiceTypeId,
+                                                        ServiceTypeId = appointment.ServiceTypeId,
                                                         AppointmentDate = appointment.AppointmentDate,
                                                         AppointmentStatus = appointment.AppointmentStatus,
                                                         InteractionDate = appointment.InteractionDate,
-                                                        PriorAppointmentDate = appointment.PriorAppointmentDate,
-                                                        Detail = appointment.Detail,
+                                                        Detail = appointment.Comment,
                                                         FirstName = client.FirstName,
                                                         LastName = client.LastName,
                                                         ArtNo = client.ArtNo,
@@ -407,7 +406,7 @@ namespace DigitalEdge.Repository
                                                         ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
                                                         FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
                                                         ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = department.ServiceTypeName }
-                                                                                                            }
+                                                    }
                                                     ).ToList();
             return appointments;
         }
@@ -1509,8 +1508,8 @@ namespace DigitalEdge.Repository
                               StatusCommentId = singleClient.StatusCommentId,
                               LanguageId = singleClient.LanguageId,
                               ServicePointId = singleClient.ServicePointId,
-                              Address = singleClient.Address,
-                              EnrolledBy = singleClient.EnrolledBy,
+                              PhysicalAddress = singleClient.PhysicalAddress,
+                              EnrolledByName = singleClient.EnrolledByName,
                               EnrolledByPhone = singleClient.EnrolledByPhone,
                               GeneralComment = singleClient.GeneralComment
                               
@@ -1575,7 +1574,7 @@ namespace DigitalEdge.Repository
                                             VisitDate = attendances.VisitDate,
                                             VisitType = attendances.VisitType,
                                             AppointmentId = attendances.AppointmentId,
-                                            ServicePointId = attendances.ServicePointId,
+                                            ServiceTypeId = attendances.ServiceTypeId,
                                             AppointmentStatus = attendances.AppointmentStatus,
                                             PriorAppointmentDate = attendances.PriorAppointmentDate,
                                             NextAppointmentDate = attendances.NextAppointmentDate,
@@ -1612,7 +1611,7 @@ namespace DigitalEdge.Repository
                                    ServiceTypeModel = clientServiceType,
                                    AppointmentStatus = appointments.AppointmentStatus,
                                    AppointmentDate = appointments.AppointmentDate,
-                                   Detail = appointments.Detail                             
+                                   Comment = appointments.Comment                             
                                }
 
                                ).SingleOrDefault();

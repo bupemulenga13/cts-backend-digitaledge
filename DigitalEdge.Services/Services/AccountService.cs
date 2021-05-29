@@ -78,29 +78,21 @@ namespace DigitalEdge.Services
             if (user.RoleId == 1)
             {
                Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.PhoneNo);
-                string result1 = this._accountRepository.createuser(superAdminData);
+                string result1 = this._accountRepository.CreateUser(superAdminData);
                 return result1;
 
             }
             Users userData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, false, false, true, user.PhoneNo);
-            string result = this._accountRepository.createuser(userData);
+            string result = this._accountRepository.CreateUser(userData);
             return result;
-
-            //Users userData = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.ClientPhoneNo,Convert.ToInt64(user.RoleId), false, user.Gender);
 
 
         }
-        public string AddFacilityUser(UserBindingModel user)
+        public string CreateFacility(UserBindingModel facility)
         {                   
-                Facility userData = new Facility(user.FacilityId, user.FacilityName,user.FacilityContactNumber, user.FacilityTypeId, user.IsAvailable, user.Address);
-                string result = this._accountRepository.facilitywithdistrictcreateuser(userData);
-                return result;
-
-            //else {
-            //    UserFacility userData = new UserFacility(Convert.ToInt32(user.Facility), user.UserId, false, user.UserFacilityId, Convert.ToInt32(user.ServicePoint));
-            //    result = this._accountRepository.facilitycreateuser(userData);
-            //    return result;
-            //}         
+                Facility facilityData = new Facility(facility.FacilityId, facility.FacilityName, Convert.ToString(facility.FacilityContactNumber), facility.FacilityTypeId, facility.IsAvailable, facility.Address);
+                string result = this._accountRepository.CreateFacility(facilityData);
+                return result;                   
         }
         public string AddServicePoint(ServicePointModel user)
         {
@@ -120,20 +112,21 @@ namespace DigitalEdge.Services
             Users adduser = new Users(user.Id, user.Password, false, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, false, true);
 
             this._accountRepository.updateUser(adduser);
-
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), appointment.GetAppointmentDateAndTime(), appointment.GetInteractionDateAndTime(), appointment.GetPriorAppointmentDate(), appointment.AppointmentStatus, appointment.Detail, appointment.GetDateEdited(), appointment.DateCreated);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.GetDateEdited(), appointment.DateCreated);
             this._accountRepository.UpdateAppointment(updateuser);
         }
         public void UpdateClient(RegistrationModel client)
         {
-            Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, Convert.ToDateTime(client.DateOfBirth), Convert.ToDateTime(client.EnrollmentDate), client.FacilityId, client.ClientStatusId, client.StatusCommentId, client.ArtNo, client.SexId, client.ClientTypeId, client.ServicePointId, client.LanguageId, client.Address,
-                client.EnrolledBy, client.EnrolledByPhone, client.GeneralComment, client.ClientPhoneNo, client.AlternativePhoneNumber1, client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.DateCreated, client.GetDateEdited());
+            Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, client.ArtNo, client.SexId, client.ClientTypeId, client.ClientStatusId,
+                client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth), client.Age, Convert.ToDateTime(client.EnrollmentDate), Convert.ToString(client.ClientPhoneNo), 
+                Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.PhysicalAddress, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
+                client.LanguageId, client.EnrolledByName, client.GeneralComment, client.EnrollmentType, client.ClientRelationship, client.AccessToPhone,
+                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetDateEdited());
             this._accountRepository.UpdateClient(updateclient);
         }
-
 
         public void DeleteUser(UserModel user)
         {
@@ -210,23 +203,23 @@ namespace DigitalEdge.Services
 
         public string AddAppointment(RegistrationModel addappointment)
         {
-            Appointment appointmentData = new Appointment(addappointment.Id, addappointment.ClientId, addappointment.FacilityId,
-              addappointment.ServiceTypeId, addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Detail,
-                addappointment.DateCreated = addappointment.GetCreatedDate(), addappointment.DateEdited,addappointment.EditedBy,addappointment.CreatedBy);  
+            Appointment appointmentData = new Appointment(addappointment.AppointmentId, addappointment.ClientId, addappointment.FacilityId, addappointment.ServiceTypeId,
+                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetCreatedDate());  
+
           string result=this._accountRepository.createappointment(appointmentData);
 
             return result;
         }
         public string AddClient(RegistrationModel addclient)
         {
-            //Client clientData = new Client(addclient.Id, addclient.FirstName, addclient.MiddleName, addclient.LastName, Convert.ToInt64(addclient.ClientPhoneNo)
-            //    , addclient.DateOfBirth, addclient.Age, addclient.CurrentAge, addclient.NextOfKinName, addclient.NextOfKinContact, addclient.NextOfClientID,
-            //    addclient.DateCreated, addclient.DateEdited, addclient.EditedBy, addclient.CreatedBy);
-            Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, Convert.ToDateTime(addclient.DateOfBirth), Convert.ToDateTime(addclient.EnrollmentDate), addclient.FacilityId, addclient.ClientStatusId, addclient.StatusCommentId, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ServicePointId, addclient.LanguageId, addclient.Address,
-                addclient.EnrolledBy, addclient.EnrolledByPhone, addclient.GeneralComment, addclient.ClientPhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.GetCreatedDate(), addclient.DateEdited);
+            
+            Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ClientStatusId,
+                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), Convert.ToString(addclient.ClientPhoneNo),Convert.ToString(addclient.AlternativePhoneNumber1), addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.PhysicalAddress, Convert.ToString(addclient.EnrolledByPhone), addclient.ServicePointId,
+                addclient.LanguageId, addclient.EnrolledByName, addclient.GeneralComment, addclient.EnrollmentType, addclient.ClientRelationship, addclient.AccessToPhone,
+                addclient.HamornizedMobilePhone, addclient.HarmonizedPhysicalAddress, addclient.DateCreated = addclient.GetDateCreated());
 
            string result =  this._accountRepository.createclient(clientData);
-
+           
             return result;
         }
         public List<ClientModel> getClient()

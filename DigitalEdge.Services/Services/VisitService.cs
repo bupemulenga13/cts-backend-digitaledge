@@ -539,14 +539,14 @@ namespace DigitalEdge.Services
             List<UserFacility> userfacilitys = _visitRepository.GetUserFacility(servicepoint.ServicePointId, type).ToList();
             List<Visit> visits = _visitRepository.GetVisit(servicepoint.ServicePointId, type).ToList();
 
-            if (appointments != null && appointments.Count > 0)
+            /*if (appointments != null && appointments.Count > 0)
             {
                 foreach (var appointment in appointments)
                 {
                     appointment.ServicePointId = servicepoint.AssignedServicePointId;
                 }
                 _visitRepository.UpdateAppointments(appointments);
-            }
+            }*/
             if (bulkmessages != null && bulkmessages.Count > 0)
             {
                 foreach (var bulkmsg in bulkmessages)
@@ -680,7 +680,7 @@ namespace DigitalEdge.Services
 
         public string AddVisit(VisitModel model)
         {
-            Visit visitData = new Visit(model.VisitId, model.ClientId, model.AppointmentId, model.FacilityId, model.ServicePointId, model.VisitDate, model.ReasonOfVisit, model.ClinicRemarks, model.Diagnosis, model.SecondDiagnosis, model.ThirdDiagnosis, model.Therapy);
+            Visit visitData = new Visit(model.VisitId, model.ClientId, model.AppointmentId, model.FacilityId, model.ServiceTypeId, model.VisitDate, model.ReasonOfVisit, model.ClinicRemarks, model.Diagnosis, model.SecondDiagnosis, model.ThirdDiagnosis, model.Therapy, model.ClientPhoneNo, model.PriorAppointmentDate, model.NextAppointmentDate, model.DateOfBirth, model.VisitType, model.FirstName, model.LastName, model.AppointmentStatus, model.DateCreated, model.DateEdited, model.Age);
             string result = this._visitRepository.CreateVisit(visitData);
 
             return result;

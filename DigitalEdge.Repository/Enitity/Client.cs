@@ -10,83 +10,105 @@ namespace DigitalEdge.Repository
         public Client()
         {
         }
-        public Client(long id , string firstName , string middleName , string lastName , string clientPhoneNo , DateTime dateOfBirth,int age, int CurrentAge, string nextOfkinName,
-            long nextofKinContact,long nextOfClientId, DateTime dateCreated , DateTime dateEdit,long editBy , long createdBy, long facilityId)
-        {
-            this.ClientId = id;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.MiddleName = middleName;
-            this.LastName = lastName;
-            this.ClientPhoneNo = clientPhoneNo;
-            this.DateOfBirth = dateOfBirth;
-            this.NextOfKinName = nextOfkinName;
-            this.NextOfKinContact = nextofKinContact;
-            this.NextOfClientId = nextOfClientId;
-            this.DateCreated = dateCreated;        
-            this.DateEdit = dateEdit;        
-            this.EditBy = editBy;        
-            this.CreatedBy = createdBy;        
-            this.Age = age;        
-            this.CurrentAge = CurrentAge;
-            this.FacilityId = facilityId;
-            
-        }
-
-        public Client(long id, string firstName, string lastName, DateTime dateOfBirth, DateTime enrollmentDate, long facilityId, long clientStatusId, long statusCommentId, string artNo, long sexId, long clientTypeId, long? servicePointId, long? languageId, string address, string enrolledBy, string enrolledByPhone, string generalComment, string clientPhoneNo, string alternativePhoneNumber1, bool phoneVerifiedByAnalyst, bool phoneVerifiedByFacilityStaff, DateTime dateCreated, DateTime dateEdited)
+        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
+            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string physicalAddress, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int enrollmentType, int clientRelationship, bool accessToPhone, 
+            int harmonizedPhone, int harmonizedAddress, DateTime dateCreated)
         {
             ClientId = id;
             FirstName = firstName;
             LastName = lastName;
-            DateOfBirth = dateOfBirth;
-            EnrollmentDate = enrollmentDate;
-            FacilityId = facilityId;
-            ClientStatusId = clientStatusId;
-            StatusCommentId = statusCommentId;
             ArtNo = artNo;
             SexId = sexId;
             ClientTypeId = clientTypeId;
-            ServicePointId = servicePointId;
-            LanguageId = languageId;
-            Address = address;
-            EnrolledBy = enrolledBy;
-            EnrolledByPhone = enrolledByPhone;
-            GeneralComment = generalComment;
+            ClientStatusId = clientStatusId;
+            StatusCommentId = statusCommentId;
+            FacilityId = facilityId;
+            DateOfBirth = dateOfBirth;
+            Age = age;
+            EnrollmentDate = enrollmentDate;
             ClientPhoneNo = clientPhoneNo;
             AlternativePhoneNumber1 = alternativePhoneNumber1;
-            PhoneVerifiedByAnalyst = phoneVerifiedByAnalyst;
-            PhoneVerifiedByFacilityStaff = phoneVerifiedByFacilityStaff;
+            PhoneVerifiedByAnalyst = verifiedByAnalyst;
+            PhoneVerifiedByFacilityStaff = verifiedByStaff;
+            PhysicalAddress = physicalAddress;
+            EnrolledByPhone = enrolledByPhone;
+            ServicePointId = servicePointId;
+            LanguageId = languageId;
+            EnrolledByName = enrolledByName;
+            GeneralComment = generalComment;
+            EnrollmentType = enrollmentType;
+            ClientRelationship = clientRelationship;
+            AccessToPhone = accessToPhone;
+            HamornizedMobilePhone = harmonizedPhone;
+            HarmonizedPhysicalAddress = harmonizedAddress;
+            DateCreated = dateCreated;            
+        }
+
+        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
+            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string physicalAddress, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int enrollmentType, int clientRelationship, bool accessToPhone,
+            int harmonizedPhone, int harmonizedAddress, DateTime dateCreated, DateTime dateEdited)
+        {
+            ClientId = id;
+            FirstName = firstName;
+            LastName = lastName;
+            ArtNo = artNo;
+            SexId = sexId;
+            ClientTypeId = clientTypeId;
+            ClientStatusId = clientStatusId;
+            StatusCommentId = statusCommentId;
+            FacilityId = facilityId;
+            DateOfBirth = dateOfBirth;
+            Age = age;
+            EnrollmentDate = enrollmentDate;
+            ClientPhoneNo = clientPhoneNo;
+            AlternativePhoneNumber1 = alternativePhoneNumber1;
+            PhoneVerifiedByAnalyst = verifiedByAnalyst;
+            PhoneVerifiedByFacilityStaff = verifiedByStaff;
+            PhysicalAddress = physicalAddress;
+            EnrolledByPhone = enrolledByPhone;
+            ServicePointId = servicePointId;
+            LanguageId = languageId;
+            EnrolledByName = enrolledByName;
+            GeneralComment = generalComment;
+            EnrollmentType = enrollmentType;
+            ClientRelationship = clientRelationship;
+            AccessToPhone = accessToPhone;
+            HamornizedMobilePhone = harmonizedPhone;
+            HarmonizedPhysicalAddress = harmonizedAddress;
             DateCreated = dateCreated;
             DateEdit = dateEdited;
-        }
+        }        
 
         [Key]
         public long ClientId  { get; set; }
+
         [MaxLength(50)]
         public string FirstName { get; set; }
+
         [MaxLength(50)]
         public string MiddleName { get; set; }
+
         [MaxLength(50)]
         public string LastName { get; set; }
+
         public string ArtNo { get; set; }
+
         public string ClientPhoneNo { get; set; } 
+
         public  DateTime DateOfBirth { get; set; } 
-        public int Age { get; set; } 
-        public int CurrentAge { get; set; }
-        [MaxLength(50)]
-        public string NextOfKinName { get; set; } 
-        public long NextOfKinContact { get; set; } 
-        public long NextOfClientId { get; set; } 
-        public DateTime DateCreated { get; set; } 
-        public DateTime DateEdit { get; set; } 
+
+        public int? Age { get; set; } 
+
+        public DateTime? DateCreated { get; set; } 
+        public DateTime? DateEdit { get; set; } 
+
         public long EditBy { get; set; } 
         public long CreatedBy { get; set; }
 
-        public string Address  { get; set; }
+        public string PhysicalAddress  { get; set; }
         public string GeneralComment { get; set; }
-        public string EnrolledBy { get; set; }
+        public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
-        public string AlternativePhoneNumber2 { get; set; }
         public bool PhoneVerifiedByAnalyst { get; set; }
         public bool PhoneVerifiedByFacilityStaff { get; set; }
         public DateTime EnrollmentDate { get; set; }
@@ -101,17 +123,18 @@ namespace DigitalEdge.Repository
 
         [ForeignKey("ClientTypeId")]
         public virtual ClientType ClientTypes { get; set; }
+
         public virtual Appointment ClientAppointments { get; set; }
+
         public virtual Visit ClientVisits { get; set; }
 
-
         public long? ServicePointId { get; set; }
-
 
         [ForeignKey("ServicePointId")]
         public virtual ServicePoint ServicePoints  { get; set; }
 
         public long? LanguageId { get; set; }
+
         [ForeignKey("LanguageId")]
         public virtual Language Languages { get; set; }
 
@@ -130,9 +153,24 @@ namespace DigitalEdge.Repository
         [ForeignKey("SexId")]
         public virtual Sex Sex { get; set; }
 
+        //New fields for live db
+        public int ClientRelationship { get; set; }
+
+        public int EnrollmentType { get; set; }
+
+        public bool AccessToPhone { get; set; }
+
+        public int HamornizedMobilePhone { get; set; }
+
+        public int HarmonizedPhysicalAddress { get; set; }
+
+
         
-        
-        
+
+
+
+
+
     }
 
 }

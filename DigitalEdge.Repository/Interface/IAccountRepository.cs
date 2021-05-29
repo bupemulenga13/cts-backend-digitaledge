@@ -15,11 +15,11 @@ namespace DigitalEdge.Repository
         void updateUserFacility(UserFacility deletebuilsinguser);
         void updateServicePoint(ServicePoint updateservicepoint);
         void updateFacility(Facility updatefacility);
-        string createuser(Users adduser);
+        string CreateUser(Users adduser);
         string createappointment(Appointment addappointment);
         string createclient(Client addclient);
         string facilitycreateuser(UserFacility addfacilityuser);
-        string facilitywithdistrictcreateuser(Facility addfacilityuser);
+        string CreateFacility(Facility addfacility);
         string servicecreateuser(ServicePoint addfacilityuser);
         void updateUser(Users adduser);
         void UpdateAppointment(Appointment adduser);
