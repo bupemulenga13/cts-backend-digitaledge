@@ -378,8 +378,7 @@ namespace DigitalEdge.Repository
                                              HamornizedMobilePhone = client.HamornizedMobilePhone,
                                              HarmonizedPhysicalAddress = client.HarmonizedPhysicalAddress,
                                              ClientRelationship = client.ClientRelationship,
-                                             PhysicalAddress = client.PhysicalAddress                                        
-                                                                                    
+                                             PhysicalAddress = client.PhysicalAddress                                                                                   
  
                                          }
                 ).ToList();
@@ -1516,7 +1515,8 @@ namespace DigitalEdge.Repository
                               PhysicalAddress = singleClient.PhysicalAddress,
                               EnrolledByName = singleClient.EnrolledByName,
                               EnrolledByPhone = singleClient.EnrolledByPhone,
-                              GeneralComment = singleClient.GeneralComment
+                              GeneralComment = singleClient.GeneralComment,
+                              
                               
                               
                           })         

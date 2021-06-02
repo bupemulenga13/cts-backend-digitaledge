@@ -18,6 +18,7 @@ namespace DigitalEdge.Repository
         string CreateUser(Users adduser);
         string createappointment(Appointment addappointment);
         string createclient(Client addclient);
+
         string facilitycreateuser(UserFacility addfacilityuser);
         string CreateFacility(Facility addfacility);
         string servicecreateuser(ServicePoint addfacilityuser);
@@ -33,5 +34,6 @@ namespace DigitalEdge.Repository
         int CountUsers();
 
         int ActiveUsers();
+        string AddVLResult(ViralLoad result);
     }
 }

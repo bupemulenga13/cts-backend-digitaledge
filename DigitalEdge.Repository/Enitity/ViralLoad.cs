@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace DigitalEdge.Repository.Enitity
+namespace DigitalEdge.Repository
 {
     public class ViralLoad
     {
@@ -13,9 +13,10 @@ namespace DigitalEdge.Repository.Enitity
 
         }
 
-        public ViralLoad(long id, int initlaVlCount, int currentVLcount, DateTime nextVLDueDate, DateTime dateCreated)
+        public ViralLoad(long id, long clientId, int initlaVlCount, int currentVLcount, DateTime nextVLDueDate, DateTime dateCreated)
         {
             ViralLoadId = id;
+            ClientId = clientId;
             InitialViralLoadCount = initlaVlCount;
             CurrentViralLoadCount = currentVLcount;
             NextVLDueDate = nextVLDueDate;

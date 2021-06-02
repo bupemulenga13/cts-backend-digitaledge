@@ -166,6 +166,16 @@ public long ClientId { get; set; }
                 return age;
         }
 
+        public int CalculateDaysLate()
+        {
+            var today = DateTime.Today;
+
+            var appointmentDate = Convert.ToDateTime(AppointmentDate);
+
+            var noDaysLate = today.Year - appointmentDate.Year;
+
+            return noDaysLate;
+        }
         #endregion
 
     }

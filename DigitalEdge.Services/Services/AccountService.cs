@@ -204,7 +204,7 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.AppointmentId, addappointment.ClientId, addappointment.FacilityId, addappointment.ServiceTypeId,
-                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetCreatedDate());  
+                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetCreatedDate(), addappointment.CalculateDaysLate());  
 
           string result=this._accountRepository.createappointment(appointmentData);
 
@@ -235,6 +235,16 @@ namespace DigitalEdge.Services
         public int ActiveUsers()
         {
             return _accountRepository.ActiveUsers();
+        }
+
+        public string AddViralLoad(ViralLoadModel viralLoad)
+        {
+            ViralLoad result = new ViralLoad(viralLoad.ViralLoadId, viralLoad.ClientId, viralLoad.InitialViralLoadCount, viralLoad.CurrentViralLoadCount, viralLoad.NextVLDueDate, viralLoad.DateCreated = DateTime.Now);
+
+            string vlResult = _accountRepository.AddVLResult(result);
+
+            return vlResult;
+                
         }
     }
 }

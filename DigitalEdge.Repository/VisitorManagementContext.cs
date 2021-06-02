@@ -32,6 +32,8 @@ namespace DigitalEdge.Repository
         public DbSet<StatusComments> StatusComments { get; set; }
         public DbSet<VisitServices> ServiceTypes { get; set; }
 
+        public DbSet<ViralLoad> ViralLoadResults { get; set; }
+
 
 
 

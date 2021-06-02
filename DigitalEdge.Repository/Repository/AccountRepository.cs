@@ -15,6 +15,7 @@ namespace DigitalEdge.Repository
         private readonly IBaseRepository<Facility> _facilityuserRepository;
         private readonly IBaseRepository<ServicePoint> _servicePointRepository;
         private readonly IBaseRepository<UserRoles> _userRolesRepository;
+        private readonly IBaseRepository<ViralLoad> _viralLoadRepository;
         private readonly DigitalEdgeContext _DigitalEdgeContext;
 
 
@@ -239,6 +240,14 @@ namespace DigitalEdge.Repository
             var users = _DigitalEdgeContext.Users.Where(u => u.IsActive == true).Count();
 
             return users;
+        }
+
+        public string AddVLResult(ViralLoad result)
+        {
+            if (_DigitalEdgeContext.ViralLoadResults.Any(o => o.ViralLoadId.Equals(result.ViralLoadId))) return "null";
+
+            this._viralLoadRepository.Insert(result);
+            return "ok";
         }
     }
 }
