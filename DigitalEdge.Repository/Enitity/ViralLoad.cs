@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DigitalEdge.Repository.Enitity
@@ -24,6 +25,12 @@ namespace DigitalEdge.Repository.Enitity
 
         [Key]
         public long ViralLoadId { get; set; }
+
+        public long ClientId { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual Client Clients { get; set; }
+
 
         public int InitialViralLoadCount { get; set; }
 
