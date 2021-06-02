@@ -13,7 +13,7 @@ public long ClientId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public int ClientPhoneNo { get; set; }
+        public string ClientPhoneNo { get; set; }
         public string DateOfBirth { get; set; }
         public int? Age { get; set; }
         public DateTime DateCreated { get; set; }
@@ -51,11 +51,11 @@ public long ClientId { get; set; }
         }
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
-        public int AlternativePhoneNumber1 { get; set; }
+        public string AlternativePhoneNumber1 { get; set; }
         public bool PhoneVerifiedByAnalyst { get; set; }
         public bool PhoneVerifiedByFacilityStaff { get; set; }
         public string EnrollmentDate { get; set; }
-        public int EnrolledByPhone { get; set; }
+        public string EnrolledByPhone { get; set; }
         public string ArtNo { get; set; }
         public long? LanguageId { get; set; }
         public long ClientTypeId { get; set; }

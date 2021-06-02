@@ -35,6 +35,9 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("ClientId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
 
@@ -44,8 +47,8 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime>("DateEdited")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("DaysLate")
+                        .HasColumnType("int");
 
                     b.Property<long>("EditedBy")
                         .HasColumnType("bigint");
@@ -53,7 +56,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long>("FacilityId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("InteractionDate")
+                    b.Property<DateTime?>("InteractionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("ServiceTypeId")
@@ -124,7 +127,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<bool>("AccessToPhone")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("AlternativePhoneNumber1")

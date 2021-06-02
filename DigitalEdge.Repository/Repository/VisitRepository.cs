@@ -355,7 +355,6 @@ namespace DigitalEdge.Repository
                                              EnrollmentDate = client.EnrollmentDate,
                                              ClientPhoneNo = client.ClientPhoneNo,
                                              Facility = facility.FacilityName,
-                                             Address = client.PhysicalAddress,
                                              ClientStatusId = client.ClientStatusId,
                                              ClientStatus = status.ClientStatusName,
                                              ClientTypeId = client.ClientTypeId,
@@ -373,8 +372,14 @@ namespace DigitalEdge.Repository
                                              AlternativePhoneNumber1 = client.AlternativePhoneNumber1,
                                              GeneralComment = client.GeneralComment,
                                              EnrolledBy = client.EnrolledByName,
-                                             EnrolledByPhone = client.EnrolledByPhone
-                                                                                         
+                                             EnrolledByPhone = client.EnrolledByPhone,
+                                             EnrollmentType = client.EnrollmentType,
+                                             AccessToPhone = client.AccessToPhone,
+                                             HamornizedMobilePhone = client.HamornizedMobilePhone,
+                                             HarmonizedPhysicalAddress = client.HarmonizedPhysicalAddress,
+                                             ClientRelationship = client.ClientRelationship,
+                                             PhysicalAddress = client.PhysicalAddress                                        
+                                                                                    
  
                                          }
                 ).ToList();

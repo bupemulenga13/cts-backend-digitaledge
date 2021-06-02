@@ -39,8 +39,7 @@ namespace DigitalEdge.Repository
             DateEdited = dateEdited;
             DateCreated = dateCreated;
         }
-
-        
+                
 
         [Key]
         public long AppointmentId { get; set; } 
@@ -67,6 +66,8 @@ namespace DigitalEdge.Repository
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }
         public long CreatedBy { get; set; }
+        public int? DaysLate { get; set; }
+
 
 
     }

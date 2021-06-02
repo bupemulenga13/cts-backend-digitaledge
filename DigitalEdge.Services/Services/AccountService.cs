@@ -214,7 +214,7 @@ namespace DigitalEdge.Services
         {
             
             Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ClientStatusId,
-                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), Convert.ToString(addclient.ClientPhoneNo),Convert.ToString(addclient.AlternativePhoneNumber1), addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.PhysicalAddress, Convert.ToString(addclient.EnrolledByPhone), addclient.ServicePointId,
+                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), addclient.ClientPhoneNo,addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.PhysicalAddress,addclient.EnrolledByPhone, addclient.ServicePointId,
                 addclient.LanguageId, addclient.EnrolledByName, addclient.GeneralComment, addclient.EnrollmentType, addclient.ClientRelationship, addclient.AccessToPhone,
                 addclient.HamornizedMobilePhone, addclient.HarmonizedPhysicalAddress, addclient.DateCreated = addclient.GetDateCreated());
 

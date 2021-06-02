@@ -6,18 +6,18 @@ using System.Text;
 
 namespace DigitalEdge.Domain
 {
-   public class ClientModel
+    public class ClientModel
     {
-        public ClientModel() { 
-        
+        public ClientModel() {
+
         }
-        public ClientModel(long clientId , string firstName , string lastName, string artNo) {
+        public ClientModel(long clientId, string firstName, string lastName, string artNo) {
             this.ClientId = clientId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.ArtNo = artNo;
-        } 
-       
+        }
+
         public long ClientId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -34,7 +34,6 @@ namespace DigitalEdge.Domain
         public long EditBy { get; set; }
         public long CreatedBy { get; set; }
         public string ArtNo { get; set; }
-        public string Address { get; set; }
         public string GeneralComment { get; set; }
         public string EnrolledBy { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
@@ -49,7 +48,7 @@ namespace DigitalEdge.Domain
 
         public long FacilityId { get; set; }
         public string Facility { get; set; }
-     
+
         public long ClientStatusId { get; set; }
         public string ClientStatus { get; set; }
 
@@ -65,11 +64,58 @@ namespace DigitalEdge.Domain
         public long SexId { get; set; }
         public string Sex { get; set; }
 
+        public int ClientRelationship { get; set; }
+        public int EnrollmentType { get; set; }
+
+        public bool AccessToPhone { get; set; }
+
+        public int HamornizedMobilePhone { get; set; }
+
+        public int HarmonizedPhysicalAddress { get; set; }
+
+        //Physical Address Fields
+        public string Zone { get; set; }
+
+        public string Village { get; set; }
+
+        public string HouseNo { get; set; }
+
+        public string GISLocation { get; set; }
+
+        public string PhysicalAddress
+        {
+            get; set;
+        }
         
+        public string GetAddress()
+        {
+            
+            string address = PhysicalAddress;
 
+            string[] subs = address.Split(",");
 
+            foreach (string sub in subs)
+            {
+                Zone = subs[0] = sub;
+                Village = subs[1] = sub;
+                HouseNo = subs[2] = sub;
+                GISLocation = subs[3] = sub;
 
+            }
+            Console.WriteLine($"Substring : {Zone}");
+            Console.WriteLine($"Substring : {Village}");
+            Console.WriteLine($"Substring : {HouseNo}");
+            Console.WriteLine($"Substring : {GISLocation}");
 
+            return address;
 
+        }
+        
     }
 }
+
+
+
+
+
+

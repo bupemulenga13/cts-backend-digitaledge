@@ -580,6 +580,7 @@ namespace DigitalEdge.Repository.Migrations
                     AppointmentStatus = table.Column<int>(nullable: false),
                     InteractionDate = table.Column<DateTime>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
+                    DaysLate = table.Column<int>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateEdited = table.Column<DateTime>(nullable: true),
                     EditedBy = table.Column<long>(nullable: true),
