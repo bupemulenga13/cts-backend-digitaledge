@@ -378,7 +378,10 @@ namespace DigitalEdge.Repository
                                              HamornizedMobilePhone = client.HamornizedMobilePhone,
                                              HarmonizedPhysicalAddress = client.HarmonizedPhysicalAddress,
                                              ClientRelationship = client.ClientRelationship,
-                                             PhysicalAddress = client.PhysicalAddress                                                                                   
+                                             Zone = client.Zone ,
+                                             Village = client.Village,
+                                             HouseNo = client.HouseNo,
+                                             GISLocation = client.GISLocation
  
                                          }
                 ).ToList();
@@ -1512,10 +1515,13 @@ namespace DigitalEdge.Repository
                               StatusCommentId = singleClient.StatusCommentId,
                               LanguageId = singleClient.LanguageId,
                               ServicePointId = singleClient.ServicePointId,
-                              PhysicalAddress = singleClient.PhysicalAddress,
+                              Zone = singleClient.Zone,
+                              HouseNo = singleClient.HouseNo,
+                              Village = singleClient.Village,
+                              GISLocation = singleClient.GISLocation,
                               EnrolledByName = singleClient.EnrolledByName,
                               EnrolledByPhone = singleClient.EnrolledByPhone,
-                              GeneralComment = singleClient.GeneralComment,
+                              GeneralComment = singleClient.GeneralComment,                        
                               
                               
                               
@@ -1742,5 +1748,7 @@ namespace DigitalEdge.Repository
 
             return clients;
         }
+
+        
     }
 }

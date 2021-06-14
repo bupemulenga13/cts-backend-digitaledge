@@ -87,7 +87,7 @@ namespace DigitalEdge.Domain
             get; set;
         }
         
-        public string GetAddress()
+        /*public string GetAddress()
         {
             
             string address = PhysicalAddress;
@@ -109,7 +109,7 @@ namespace DigitalEdge.Domain
 
             return address;
 
-        }
+        }*/
         
     }
 }

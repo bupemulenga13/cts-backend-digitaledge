@@ -210,7 +210,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<bool>("PhoneVerifiedByFacilityStaff")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PhysicalAddress")
+                    b.Property<string>("Zone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("ServicePointId")

@@ -53,6 +53,7 @@ namespace DigitalEdge.Repository
         void DeleteServicePoint(long servicePointId);
         Client ClientData();
         Client GetClientById(long id);
+
         List<AppointmentsModel> GetVisitHistory();
         List<AppointmentsModel> GetVisitHistoryByService(VisitsModel filterdata);
         List<FacilityModel> GetFacilities();
