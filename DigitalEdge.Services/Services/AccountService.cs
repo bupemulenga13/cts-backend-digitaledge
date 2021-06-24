@@ -19,49 +19,49 @@ namespace DigitalEdge.Services
         public AccountService(IAccountRepository accountRepository, Microsoft.Extensions.Options.IOptions<AppSettings> appSettings)
         {
             this._accountRepository = accountRepository;
-                _appSettings = appSettings.Value;
+            _appSettings = appSettings.Value;
 
         }
         public List<UserModel> getData()
         {
-            List<UserModel> users = _accountRepository.GetData().Where(x=>x.IsDeleted==false).Select(x => new UserModel(x.Id,x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.Gender,x.RoleName)).ToList();
+            List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.Gender, x.RoleName)).ToList();
 
-         
+
             if (users == null)
                 return null;
-                return (users);
-        }  
+            return (users);
+        }
         public List<UserRolesModel> getRoles()
         {
-                List<UserRolesModel> userRoles = _accountRepository.GetRoles().Where(x=>x.IsDeleted==false).Select(x => new UserRolesModel(x.RoleId ,x.RoleName,x.Description,x.IsDeleted,x.CreatedBy,x.ModifiedBy)).ToList();
+            List<UserRolesModel> userRoles = _accountRepository.GetRoles().Where(x => x.IsDeleted == false).Select(x => new UserRolesModel(x.RoleId, x.RoleName, x.Description, x.IsDeleted, x.CreatedBy, x.ModifiedBy)).ToList();
             if (userRoles == null)
                 return null;
-                return (userRoles);
+            return (userRoles);
         }
         public UserModel GetData(long id)
         {
-                Users user = _accountRepository.GetData(id);
-                UserModel userModel= new UserModel(user.Id,user.Password,user.IsSuperAdmin.ToString(),user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.Gender);
-                if (userModel == null)
-                    return null;
-                return (userModel);
+            Users user = _accountRepository.GetData(id);
+            UserModel userModel = new UserModel(user.Id, user.Password, user.IsSuperAdmin.ToString(), user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.Gender);
+            if (userModel == null)
+                return null;
+            return (userModel);
         }
 
-        public AppointmentsModel  GetAppointment(long id)
+        public AppointmentsModel GetAppointment(long id)
         {
             Appointment appointment = _accountRepository.GetAppointment(id);
             AppointmentsModel appointmentModel = new AppointmentsModel(appointment.AppointmentId, appointment.ClientId, appointment.FacilityId, appointment.ServiceTypeId, appointment.AppointmentDate, appointment.DateCreated, appointment.DateEdited, appointment.EditedBy, appointment.CreatedBy, appointment.AppointmentStatus);
             if (appointmentModel == null)
-                return null; 
+                return null;
             return (appointmentModel);
 
         }
         public UserModel ValidateUser(string email, string password)
         {
             Users user = _accountRepository.GetLogin(email, password);
-                if (user == null)
-                    return null;
-                UserModel userModel = new UserModel(user.Id,user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.Gender, "");
+            if (user == null)
+                return null;
+            UserModel userModel = new UserModel(user.Id, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.Gender, "");
             return (userModel);
         }
         public ClientModel ValidateClient(RegistrationModel data)
@@ -69,7 +69,7 @@ namespace DigitalEdge.Services
             Client user = _accountRepository.GetClient(data);
             if (user == null)
                 return null;
-            ClientModel userModel = new ClientModel(user.ClientId,user.FirstName,user.LastName, user.ArtNo);
+            ClientModel userModel = new ClientModel(user.ClientId, user.FirstName, user.LastName, user.ArtNo);
             return (userModel);
         }
 
@@ -77,7 +77,7 @@ namespace DigitalEdge.Services
         {
             if (user.RoleId == 1)
             {
-               Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.PhoneNo);
+                Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.PhoneNo);
                 string result1 = this._accountRepository.CreateUser(superAdminData);
                 return result1;
 
@@ -89,16 +89,16 @@ namespace DigitalEdge.Services
 
         }
         public string CreateFacility(UserBindingModel facility)
-        {                   
-                Facility facilityData = new Facility(facility.FacilityId, facility.FacilityName, Convert.ToString(facility.FacilityContactNumber), facility.FacilityTypeId, facility.IsAvailable, facility.Address);
-                string result = this._accountRepository.CreateFacility(facilityData);
-                return result;                   
+        {
+            Facility facilityData = new Facility(facility.FacilityId, facility.FacilityName, Convert.ToString(facility.FacilityContactNumber), facility.FacilityTypeId, facility.IsAvailable, facility.Address);
+            string result = this._accountRepository.CreateFacility(facilityData);
+            return result;
         }
         public string AddServicePoint(ServicePointModel user)
         {
-            ServicePoint userData = new ServicePoint(user.ServicePointId,user.ServicePointName , user.FacilityId);
+            ServicePoint userData = new ServicePoint(user.ServicePointId, user.ServicePointName, user.FacilityId);
 
-        string reuslt= this._accountRepository.servicecreateuser(userData);
+            string reuslt = this._accountRepository.servicecreateuser(userData);
             return reuslt;
         }
         public void UpdateUser(UserModel user)
@@ -113,18 +113,18 @@ namespace DigitalEdge.Services
 
             this._accountRepository.updateUser(adduser);
         }
-        public void UpdateAppointment (RegistrationModel appointment)
+        public void UpdateAppointment(RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.GetDateEdited(), appointment.DateCreated);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.GetDateCreated(), appointment.DateCreated);
             this._accountRepository.UpdateAppointment(updateuser);
         }
         public void UpdateClient(RegistrationModel client)
         {
             Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, client.ArtNo, client.SexId, client.ClientTypeId, client.ClientStatusId,
-                client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth), client.Age, Convert.ToDateTime(client.EnrollmentDate), Convert.ToString(client.ClientPhoneNo), 
+                client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), client.Age, Convert.ToDateTime(client.EnrollmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), Convert.ToString(client.ClientPhoneNo),
                 Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.Zone, client.HouseNo, client.Village, client.GISLocation, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
                 client.LanguageId, client.EnrolledByName, client.GeneralComment, client.EnrollmentType, client.ClientRelationship, client.AccessToPhone,
-                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetDateEdited());
+                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetCreatedDate());
             this._accountRepository.UpdateClient(updateclient);
         }
 
@@ -159,7 +159,7 @@ namespace DigitalEdge.Services
 
         public List<UserBindingModel> getFacilityData()
         {
-            List<UserBindingModel> userFacility= _accountRepository.getFacilityDetails().Where(x=>x.IsAvailable == false).ToList();
+            List<UserBindingModel> userFacility = _accountRepository.getFacilityDetails().Where(x => x.IsAvailable == false).ToList();
 
             if (userFacility == null)
                 return null;
@@ -167,7 +167,7 @@ namespace DigitalEdge.Services
         }
         public List<FacilityModel> getFacilityUserData()
         {
-            List<FacilityModel> facilitydetails= _accountRepository.getFacilityUserDetails().ToList();
+            List<FacilityModel> facilitydetails = _accountRepository.getFacilityUserDetails().ToList();
 
             if (facilitydetails == null)
                 return null;
@@ -175,22 +175,22 @@ namespace DigitalEdge.Services
         }
         public void UpdateFacilityUser(UserBindingModel user)
         {
-            UserFacility deletefacilityUser = new UserFacility(user.FacilityId ,user.UserId,user.IsAvailable, user.UserFacilityId , user.ServicePointId);
+            UserFacility deletefacilityUser = new UserFacility(user.FacilityId, user.UserId, user.IsAvailable, user.UserFacilityId, user.ServicePointId);
 
             this._accountRepository.updateUserFacility(deletefacilityUser);
-        } 
+        }
         public void UpdateFacility(FacilityModel updateFacility)
         {
-            Facility updateFacilityDetails = new Facility(updateFacility.FacilityId,updateFacility.FacilityName, updateFacility.FacilityContactNumber, updateFacility.FacilityTypeId, updateFacility.IsAvailable, updateFacility.Address);
+            Facility updateFacilityDetails = new Facility(updateFacility.FacilityId, updateFacility.FacilityName, updateFacility.FacilityContactNumber, updateFacility.FacilityTypeId, updateFacility.IsAvailable, updateFacility.Address);
             this._accountRepository.updateFacility(updateFacilityDetails);
-            
+
         }
         public void UpdateServicePoint(ServicePointModel servicePoint)
         {
-            ServicePoint updatefacilityUser = new ServicePoint(servicePoint.ServicePointId,servicePoint.ServicePointName,servicePoint.FacilityId );
+            ServicePoint updatefacilityUser = new ServicePoint(servicePoint.ServicePointId, servicePoint.ServicePointName, servicePoint.FacilityId);
 
             this._accountRepository.updateServicePoint(updatefacilityUser);
-        }   
+        }
 
         public List<ServicePointModel> getServiceData()
         {
@@ -204,22 +204,22 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.AppointmentId, addappointment.ClientId, addappointment.FacilityId, addappointment.ServiceTypeId,
-                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetCreatedDate(), addappointment.CalculateDaysLate());  
+                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetCreatedDate(), addappointment.CalculateDaysLate());
 
-          string result=this._accountRepository.createappointment(appointmentData);
+            string result = this._accountRepository.createappointment(appointmentData);
 
             return result;
         }
         public string AddClient(RegistrationModel addclient)
         {
-            
+
             Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ClientStatusId,
-                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), addclient.ClientPhoneNo,addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.Zone, addclient.HouseNo, addclient.Village, addclient.GISLocation,addclient.EnrolledByPhone, addclient.ServicePointId,
+                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), addclient.ClientPhoneNo, addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.Zone, addclient.HouseNo, addclient.Village, addclient.GISLocation, addclient.EnrolledByPhone, addclient.ServicePointId,
                 addclient.LanguageId, addclient.EnrolledByName, addclient.GeneralComment, addclient.EnrollmentType, addclient.ClientRelationship, addclient.AccessToPhone,
                 addclient.HamornizedMobilePhone, addclient.HarmonizedPhysicalAddress, addclient.DateCreated = addclient.GetDateCreated());
 
-           string result =  this._accountRepository.createclient(clientData);
-           
+            string result = this._accountRepository.createclient(clientData);
+
             return result;
         }
         public List<ClientModel> getClient()
@@ -244,7 +244,7 @@ namespace DigitalEdge.Services
             string vlResult = _accountRepository.AddVLResult(result);
 
             return vlResult;
-                
+
         }
     }
 }

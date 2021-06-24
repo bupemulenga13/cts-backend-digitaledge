@@ -9,7 +9,7 @@ namespace DigitalEdge.Domain
     {
 
         #region Client Properties 
-public long ClientId { get; set; }
+        public long ClientId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -19,8 +19,9 @@ public long ClientId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateEdit { get; set; }
         public long CreatedBy { get; set; }
-        public string PhysicalAddress { 
-            get 
+        public string PhysicalAddress
+        {
+            get
             {
                 if (Zone == null)
                 {
@@ -32,8 +33,8 @@ public long ClientId { get; set; }
                 }
                 else if (HouseNo == null)
                 {
-                return Zone + "," + Village + "," + "*" + "," + GISLocation;
-                    
+                    return Zone + "," + Village + "," + "*" + "," + GISLocation;
+
                 }
                 else if (GISLocation == null)
                 {
@@ -47,7 +48,7 @@ public long ClientId { get; set; }
                 {
                     return Zone + "," + Village + "," + HouseNo + "," + GISLocation;
                 }
-            }    
+            }
         }
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
@@ -62,14 +63,14 @@ public long ClientId { get; set; }
         public long StatusCommentId { get; set; }
         public long SexId { get; set; }
         public long ClientStatusId { get; set; }
-        public int ClientRelationship { get; set; }
-        public int EnrollmentType { get; set; }
+        public int? ClientRelationship { get; set; }
+        public int? EnrollmentType { get; set; }
 
         public bool AccessToPhone { get; set; }
 
-        public int HamornizedMobilePhone { get; set; }
+        public int? HamornizedMobilePhone { get; set; }
 
-        public int HarmonizedPhysicalAddress { get; set; }
+        public int? HarmonizedPhysicalAddress { get; set; }
 
         //Physical Address Fields
         public string Zone { get; set; }
@@ -94,14 +95,14 @@ public long ClientId { get; set; }
         public DateTime DateEdited { get; set; }
         public long EditedBy { get; set; }
 
-        public long FacilityId { get; set; }      
+        public long FacilityId { get; set; }
 
         public long? ServicePointId { get; set; }
 
         public long ServiceTypeId { get; set; }
 
         // Newly added properties from CTS
-        
+
         public long AppointmentId { get; set; }
 
         public string Comment { get; set; }
@@ -134,36 +135,38 @@ public long ClientId { get; set; }
             return DateTime.Parse(string.Format("{0} {1}", InteractionDate, InteractionTime));
         }
 
-        public DateTime GetPriorAppointmentDate() { 
-        
+        public DateTime GetPriorAppointmentDate()
+        {
+
             return DateTime.Parse(string.Format("{0}", AppointmentDate));
 
         }
 
         public DateTime GetDateCreated() { return DateTime.Now; }
 
-        public DateTime GetDateEdited() {
+        public DateTime GetDateEdited()
+        {
 
             DateTime today = DateTime.Today.Date;
 
             DateTime createdDate = DateCreated.Date;
 
             var editedDate = createdDate - today;
-               
+
             return Convert.ToDateTime(editedDate);
 
         }
 
         public int CalculateAge()
-        {            
-                var today = DateTime.Today;
+        {
+            var today = DateTime.Today;
 
-                var dob = Convert.ToDateTime(DateOfBirth);
+            var dob = Convert.ToDateTime(DateOfBirth);
 
-                var age = today.Year - dob.Year;
+            var age = today.Year - dob.Year;
 
-                if (dob > today.AddYears(-age)) age--;
-                return age;
+            if (dob > today.AddYears(-age)) age--;
+            return age;
         }
 
         public int CalculateDaysLate()

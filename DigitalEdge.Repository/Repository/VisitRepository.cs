@@ -81,7 +81,7 @@ namespace DigitalEdge.Repository
             List<AppointmentsModel> appointmentsdetails = (from appointment in _DigitalEdgeContext.Appointments
                                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                                            from clients in list.DefaultIfEmpty()
-                                                           where clients.FirstName == model.FirstName &&  appointment.AppointmentDate >= DateTime.UtcNow
+                                                           where clients.FirstName == model.FirstName && appointment.AppointmentDate >= DateTime.UtcNow
                                                            select new AppointmentsModel
                                                            {
                                                                Id = appointment.AppointmentId,
@@ -103,27 +103,27 @@ namespace DigitalEdge.Repository
         {
 
             List<AppointmentsModel> upcommingappointmentsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                           from visits in appointments.DefaultIfEmpty()
-                                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                           from clients in list.DefaultIfEmpty()                                                          
-                                                           where appointment.ServiceTypeId == upcommingfilterdata.ServiceTypeId && appointment.AppointmentDate >= DateTime.UtcNow
-                                                           select new AppointmentsModel
-                                                           {
-                                                               Id = appointment.AppointmentId,
-                                                               ClientId = clients.ClientId,
-                                                               FirstName = clients.FirstName,
-                                                               LastName = clients.LastName,
-                                                               MiddleName = clients.MiddleName,
-                                                               PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                               AppointmentDate = appointment.AppointmentDate,
-                                                               AppointmentTime = appointment.AppointmentDate,
-                                                               NextAppointmentDate = visits.NextAppointmentDate,
-                                                               VisitsId = visits.VisitId,
-                                                               VisitDate = visits.VisitDate,
-                                                               Age = clients.Age,
-                                                               ServiceTypeId = visits.ServicePointId,                                                               
-                                                           }).ToList();
+                                                                   join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                                   from visits in appointments.DefaultIfEmpty()
+                                                                   join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                                   from clients in list.DefaultIfEmpty()
+                                                                   where appointment.ServiceTypeId == upcommingfilterdata.ServiceTypeId && appointment.AppointmentDate >= DateTime.UtcNow
+                                                                   select new AppointmentsModel
+                                                                   {
+                                                                       Id = appointment.AppointmentId,
+                                                                       ClientId = clients.ClientId,
+                                                                       FirstName = clients.FirstName,
+                                                                       LastName = clients.LastName,
+                                                                       MiddleName = clients.MiddleName,
+                                                                       PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                       AppointmentDate = appointment.AppointmentDate,
+                                                                       AppointmentTime = appointment.AppointmentDate,
+                                                                       NextAppointmentDate = visits.NextAppointmentDate,
+                                                                       VisitsId = visits.VisitId,
+                                                                       VisitDate = visits.VisitDate,
+                                                                       Age = clients.Age,
+                                                                       ServiceTypeId = visits.ServicePointId,
+                                                                   }).ToList();
 
             return upcommingappointmentsfilter;
         }
@@ -158,55 +158,55 @@ namespace DigitalEdge.Repository
         {
 
             List<AppointmentsModel> appointmentsmissedfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                                                 join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                                 from visits in appointments.DefaultIfEmpty()
-                                                                 join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                                 from clients in list.DefaultIfEmpty()
-                                                                 where appointment.ServiceTypeId == missedfilter.ServiceTypeId && appointment.AppointmentDate < DateTime.UtcNow
-                                                                 select new AppointmentsModel
-                                                                 {
-                                                                     Id = appointment.AppointmentId,
-                                                                     ClientId = clients.ClientId,
-                                                                     FirstName = clients.FirstName,
-                                                                     LastName = clients.LastName,
-                                                                     MiddleName = clients.MiddleName,
-                                                                     PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                                     AppointmentDate = appointment.AppointmentDate,
-                                                                     AppointmentTime = appointment.AppointmentDate,
-                                                                     NextAppointmentDate = visits.NextAppointmentDate,
-                                                                     VisitsId = visits.VisitId,
-                                                                     VisitDate = visits.VisitDate,
-                                                                     Age = clients.Age,
-                                                                     //FacilityId = visits.FacilityId,
-                                                                     ServicePointId = visits.ServicePointId,
-                                                                     ServiceTypeId = visits.ServiceTypeId
-                                                                 }).ToList();
+                                                                join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                                from visits in appointments.DefaultIfEmpty()
+                                                                join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                                from clients in list.DefaultIfEmpty()
+                                                                where appointment.ServiceTypeId == missedfilter.ServiceTypeId && appointment.AppointmentDate < DateTime.UtcNow
+                                                                select new AppointmentsModel
+                                                                {
+                                                                    Id = appointment.AppointmentId,
+                                                                    ClientId = clients.ClientId,
+                                                                    FirstName = clients.FirstName,
+                                                                    LastName = clients.LastName,
+                                                                    MiddleName = clients.MiddleName,
+                                                                    PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                    AppointmentDate = appointment.AppointmentDate,
+                                                                    AppointmentTime = appointment.AppointmentDate,
+                                                                    NextAppointmentDate = visits.NextAppointmentDate,
+                                                                    VisitsId = visits.VisitId,
+                                                                    VisitDate = visits.VisitDate,
+                                                                    Age = clients.Age,
+                                                                    //FacilityId = visits.FacilityId,
+                                                                    ServicePointId = visits.ServicePointId,
+                                                                    ServiceTypeId = visits.ServiceTypeId
+                                                                }).ToList();
 
             return appointmentsmissedfilter;
         }
         public List<AppointmentsModel> GetUpcommingVisitsDetailsfilter(VisitsModel filterdata)
         {
             List<AppointmentsModel> upcommingvisitsdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                                              join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                              from visits in appointments.DefaultIfEmpty()
-                                                              join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                              from clients in list.DefaultIfEmpty()
-                                                              where  visits.ServicePointId==filterdata.ServicePointId && visits.VisitDate >= DateTime.UtcNow
-                                                              select new AppointmentsModel
-                                                              {
-                                                                  Id = appointment.AppointmentId,
-                                                                  ClientId = clients.ClientId,
-                                                                  FirstName = clients.FirstName,
-                                                                  LastName = clients.LastName,
-                                                                  ArtNo = clients.ArtNo,
-                                                                  Age = clients.Age,
-                                                                  PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                                  AppointmentDate = appointment.AppointmentDate,
-                                                                  AppointmentTime = appointment.AppointmentDate,
-                                                                  NextAppointmentDate = visits.NextAppointmentDate,
-                                                                  VisitsId = visits.VisitId,
-                                                                  VisitDate = visits.VisitDate
-                                                              }).ToList();
+                                                                    join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                                    from visits in appointments.DefaultIfEmpty()
+                                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                                    from clients in list.DefaultIfEmpty()
+                                                                    where visits.ServicePointId == filterdata.ServicePointId && visits.VisitDate >= DateTime.UtcNow
+                                                                    select new AppointmentsModel
+                                                                    {
+                                                                        Id = appointment.AppointmentId,
+                                                                        ClientId = clients.ClientId,
+                                                                        FirstName = clients.FirstName,
+                                                                        LastName = clients.LastName,
+                                                                        ArtNo = clients.ArtNo,
+                                                                        Age = clients.Age,
+                                                                        PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                        AppointmentDate = appointment.AppointmentDate,
+                                                                        AppointmentTime = appointment.AppointmentDate,
+                                                                        NextAppointmentDate = visits.NextAppointmentDate,
+                                                                        VisitsId = visits.VisitId,
+                                                                        VisitDate = visits.VisitDate
+                                                                    }).ToList();
 
 
             return upcommingvisitsdetailsfilter;
@@ -214,26 +214,26 @@ namespace DigitalEdge.Repository
         public List<AppointmentsModel> GetUpcommingVisitsDetails()
         {
             List<AppointmentsModel> upcommingvisitsdetails = (from appointment in _DigitalEdgeContext.Appointments
-                                                                    join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                                    from visits in appointments.DefaultIfEmpty()
-                                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                                    from clients in list.DefaultIfEmpty()
-                                                                    where visits.VisitDate >= DateTime.UtcNow
-                                                                    select new AppointmentsModel
-                                                                    {
-                                                                        Id = appointment.AppointmentId,
-                                                                        ClientId = clients.ClientId,
-                                                                        FirstName = clients.FirstName,
-                                                                        LastName = clients.LastName,
-                                                                        MiddleName = clients.MiddleName,
-                                                                        Age = clients.Age,
-                                                                        PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                                        AppointmentDate = appointment.AppointmentDate,
-                                                                        AppointmentTime = appointment.AppointmentDate,
-                                                                        NextAppointmentDate = visits.NextAppointmentDate,
-                                                                        VisitDate = visits.VisitDate,
-                                                                        VisitsId = visits.VisitId
-                                                                    }).ToList();
+                                                              join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                              from visits in appointments.DefaultIfEmpty()
+                                                              join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                              from clients in list.DefaultIfEmpty()
+                                                              where visits.VisitDate >= DateTime.UtcNow
+                                                              select new AppointmentsModel
+                                                              {
+                                                                  Id = appointment.AppointmentId,
+                                                                  ClientId = clients.ClientId,
+                                                                  FirstName = clients.FirstName,
+                                                                  LastName = clients.LastName,
+                                                                  MiddleName = clients.MiddleName,
+                                                                  Age = clients.Age,
+                                                                  PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                  AppointmentDate = appointment.AppointmentDate,
+                                                                  AppointmentTime = appointment.AppointmentDate,
+                                                                  NextAppointmentDate = visits.NextAppointmentDate,
+                                                                  VisitDate = visits.VisitDate,
+                                                                  VisitsId = visits.VisitId
+                                                              }).ToList();
 
 
             return upcommingvisitsdetails;
@@ -265,31 +265,31 @@ namespace DigitalEdge.Repository
                                                           }).ToList();
 
             return missedvisitdetails;
-        } 
+        }
         public List<AppointmentsModel> GetVisitsMissedFilter(VisitsModel fileterdata)
         {
 
             List<AppointmentsModel> missedvisitfilterdetails = (from appointment in _DigitalEdgeContext.Appointments
-                                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                          from visits in appointments.DefaultIfEmpty()
-                                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                          from clients in list.DefaultIfEmpty()
-                                                          where visits.ServicePointId == fileterdata.ServicePointId && visits.VisitDate < DateTime.UtcNow
-                                                          select new AppointmentsModel
-                                                          {
-                                                              Id = appointment.AppointmentId,
-                                                              ClientId = clients.ClientId,
-                                                              FirstName = clients.FirstName,
-                                                              LastName = clients.LastName,
-                                                              MiddleName = clients.MiddleName,
-                                                              Age = clients.Age,
-                                                              PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                              AppointmentDate = appointment.AppointmentDate,
-                                                              AppointmentTime = appointment.AppointmentDate,
-                                                              NextAppointmentDate = visits.NextAppointmentDate,
-                                                              VisitsId = visits.VisitId,
-                                                              VisitDate = visits.VisitDate
-                                                          }).ToList();
+                                                                join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                                from visits in appointments.DefaultIfEmpty()
+                                                                join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                                from clients in list.DefaultIfEmpty()
+                                                                where visits.ServicePointId == fileterdata.ServicePointId && visits.VisitDate < DateTime.UtcNow
+                                                                select new AppointmentsModel
+                                                                {
+                                                                    Id = appointment.AppointmentId,
+                                                                    ClientId = clients.ClientId,
+                                                                    FirstName = clients.FirstName,
+                                                                    LastName = clients.LastName,
+                                                                    MiddleName = clients.MiddleName,
+                                                                    Age = clients.Age,
+                                                                    PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                    AppointmentDate = appointment.AppointmentDate,
+                                                                    AppointmentTime = appointment.AppointmentDate,
+                                                                    NextAppointmentDate = visits.NextAppointmentDate,
+                                                                    VisitsId = visits.VisitId,
+                                                                    VisitDate = visits.VisitDate
+                                                                }).ToList();
 
             return missedvisitfilterdetails;
         }
@@ -297,50 +297,50 @@ namespace DigitalEdge.Repository
         {
 
             List<AppointmentsModel> viewClientdetails = (from appointment in _DigitalEdgeContext.Appointments
-                                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                          from visits in appointments.DefaultIfEmpty()
-                                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                          from clients in list.DefaultIfEmpty()
-                                                          select new AppointmentsModel
-                                                          {
-                                                              Id = appointment.AppointmentId,
-                                                              ClientId = clients.ClientId,
-                                                              FirstName = clients.FirstName,
-                                                              LastName = clients.LastName,
-                                                              MiddleName = clients.MiddleName,
-                                                              PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                              AppointmentDate = appointment.AppointmentDate,
-                                                              AppointmentTime = appointment.AppointmentDate,
-                                                              NextAppointmentDate = visits.NextAppointmentDate,
-                                                              VisitsId = visits.VisitId,                                                            
-                                                              VisitDate = visits.VisitDate,                                                            
-                                                              Age = clients.Age,                                                            
-                                                          }).ToList();
+                                                         join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                         from visits in appointments.DefaultIfEmpty()
+                                                         join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                         from clients in list.DefaultIfEmpty()
+                                                         select new AppointmentsModel
+                                                         {
+                                                             Id = appointment.AppointmentId,
+                                                             ClientId = clients.ClientId,
+                                                             FirstName = clients.FirstName,
+                                                             LastName = clients.LastName,
+                                                             MiddleName = clients.MiddleName,
+                                                             PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                             AppointmentDate = appointment.AppointmentDate,
+                                                             AppointmentTime = appointment.AppointmentDate,
+                                                             NextAppointmentDate = visits.NextAppointmentDate,
+                                                             VisitsId = visits.VisitId,
+                                                             VisitDate = visits.VisitDate,
+                                                             Age = clients.Age,
+                                                         }).ToList();
             return viewClientdetails;
         }
         public List<ClientModel> GetClientDetails(string searchTerm)
-        { 
-            
+        {
+
             List<ClientModel> viewClientdetails = (from client in _DigitalEdgeContext.Clients
-                                                          where client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm)
+                                                   where client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm)
                                                    select new ClientModel
-                                                          {
-                                                              ClientId = client.ClientId,
-                                                              FirstName = client.FirstName,
-                                                              LastName = client.LastName,
-                                                              MiddleName = client.MiddleName,
-                                                              Age = client.Age,
-                                                              ClientPhoneNo = client.ClientPhoneNo,
-                                                              DateOfBirth = client.DateOfBirth,
-                                                              ArtNo = client.ArtNo,
-                                                              EnrollmentDate = client.EnrollmentDate,
-                                                              Facility = client.Facilities.FacilityName
-                                                          }).ToList();
+                                                   {
+                                                       ClientId = client.ClientId,
+                                                       FirstName = client.FirstName,
+                                                       LastName = client.LastName,
+                                                       MiddleName = client.MiddleName,
+                                                       Age = client.Age,
+                                                       ClientPhoneNo = client.ClientPhoneNo,
+                                                       DateOfBirth = client.DateOfBirth,
+                                                       ArtNo = client.ArtNo,
+                                                       EnrollmentDate = client.EnrollmentDate,
+                                                       Facility = client.Facilities.FacilityName
+                                                   }).ToList();
             return viewClientdetails;
         }
         public List<ClientModel> GetClients()
         {
-            
+
 
             List<ClientModel> clients = (from client in _DigitalEdgeContext.Clients
                                          join facility in _DigitalEdgeContext.Facilities on client.FacilityId equals facility.FacilityId
@@ -363,7 +363,7 @@ namespace DigitalEdge.Repository
                                              StatusCommentId = client.StatusCommentId,
                                              StatusComment = client.StatusComments.StatusCommentName,
                                              SexId = client.SexId,
-                                             Sex= sex.SexName,
+                                             Sex = sex.SexName,
                                              ServicePointId = client.ServicePointId,
                                              LanguageId = client.LanguageId,
                                              FacilityId = client.FacilityId,
@@ -378,15 +378,15 @@ namespace DigitalEdge.Repository
                                              HamornizedMobilePhone = client.HamornizedMobilePhone,
                                              HarmonizedPhysicalAddress = client.HarmonizedPhysicalAddress,
                                              ClientRelationship = client.ClientRelationship,
-                                             Zone = client.Zone ,
+                                             Zone = client.Zone,
                                              Village = client.Village,
                                              HouseNo = client.HouseNo,
                                              GISLocation = client.GISLocation
- 
+
                                          }
                 ).ToList();
             return clients;
-            
+
         }
         public List<AppointmentsModel> GetAppointments()
         {
@@ -425,362 +425,11 @@ namespace DigitalEdge.Repository
             if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
             {
                 viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId 
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-
-            }
-            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId && provinces.ProvinceId == filterdata.ProvinceId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-
-            }
-            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
-                                            && provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId==filterdata.DistrictId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-
-            }
-            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            where visits.ServicePointId==filterdata.ServicePointId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where provinces.ProvinceId == filterdata.ProvinceId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId > 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where districts.DistrictId == filterdata.DistrictId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId==filterdata.ProvinceId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId 
-                                            && districts.DistrictId==filterdata.DistrictId                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
-            {
-                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
-                return viewClientdetailsfilter;
-            }
-
-            return this.GetClientDetails();
-        }
-        public List<AppointmentsModel> GetClientVisitPastDetails()
-        {
-            List<AppointmentsModel> clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                                          from visits in appointments.DefaultIfEmpty()
-                                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                                          from clients in list.DefaultIfEmpty()
-                                                          where visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                                          select new AppointmentsModel
-                                                          {
-                                                              Id = appointment.AppointmentId,
-                                                              ClientId = clients.ClientId,
-                                                              FirstName = clients.FirstName,
-                                                              LastName = clients.LastName,
-                                                              MiddleName = clients.MiddleName,
-                                                              PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                              AppointmentDate = appointment.AppointmentDate,
-                                                              AppointmentTime = appointment.AppointmentDate,
-                                                              NextAppointmentDate = visits.NextAppointmentDate,
-                                                              VisitsId = visits.VisitId,
-                                                              VisitDate = visits.VisitDate,
-                                                              Age = clients.Age,
-                                                          }).ToList();
-            return clientVisitPastDetails;
-        }
-        public List<AppointmentsModel> GetActiveClientFilter(VisitsModel filterdata)
-        {
-            List<AppointmentsModel> clientVisitPastDetails = new List<AppointmentsModel>();
-
-            if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
-            {
-                clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
                                            from visits in appointments.DefaultIfEmpty()
                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
                                            from clients in list.DefaultIfEmpty()
-                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                           from facilitys in facilitylist.DefaultIfEmpty()
-                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                           from districts in districtlist.DefaultIfEmpty()
-                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                           from provinces in provincelist.DefaultIfEmpty()
-                                           where visits.FacilityId == filterdata.FacilityId && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                           where visits.FacilityId == filterdata.FacilityId
                                            select new AppointmentsModel
                                            {
                                                Id = appointment.AppointmentId,
@@ -797,9 +446,361 @@ namespace DigitalEdge.Repository
                                                Age = clients.Age,
                                                FacilityId = visits.FacilityId,
                                                ServicePointId = visits.ServicePointId,
-                                               ProvinceId = provinces.ProvinceId,
-                                               DistrictId = districts.DistrictId,
                                            }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+
+            }
+            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId && provinces.ProvinceId == filterdata.ProvinceId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+
+            }
+            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
+                                           && provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+
+            }
+            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           where visits.ServicePointId == filterdata.ServicePointId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where provinces.ProvinceId == filterdata.ProvinceId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId > 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where districts.DistrictId == filterdata.DistrictId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
+                                           && districts.DistrictId == filterdata.DistrictId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+            else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
+            {
+                viewClientdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                           join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                           from visits in appointments.DefaultIfEmpty()
+                                           join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                           from clients in list.DefaultIfEmpty()
+                                           join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                           from facilitys in facilitylist.DefaultIfEmpty()
+                                           join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                           from districts in districtlist.DefaultIfEmpty()
+                                           join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                           from provinces in provincelist.DefaultIfEmpty()
+                                           where provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
+                                           select new AppointmentsModel
+                                           {
+                                               Id = appointment.AppointmentId,
+                                               ClientId = clients.ClientId,
+                                               FirstName = clients.FirstName,
+                                               LastName = clients.LastName,
+                                               MiddleName = clients.MiddleName,
+                                               PriorAppointmentDate = visits.PriorAppointmentDate,
+                                               AppointmentDate = appointment.AppointmentDate,
+                                               AppointmentTime = appointment.AppointmentDate,
+                                               NextAppointmentDate = visits.NextAppointmentDate,
+                                               VisitsId = visits.VisitId,
+                                               VisitDate = visits.VisitDate,
+                                               Age = clients.Age,
+                                               FacilityId = visits.FacilityId,
+                                               ServicePointId = visits.ServicePointId,
+                                           }).ToList();
+                return viewClientdetailsfilter;
+            }
+
+            return this.GetClientDetails();
+        }
+        public List<AppointmentsModel> GetClientVisitPastDetails()
+        {
+            List<AppointmentsModel> clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
+                                                              join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                              from visits in appointments.DefaultIfEmpty()
+                                                              join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                              from clients in list.DefaultIfEmpty()
+                                                              where visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                                              select new AppointmentsModel
+                                                              {
+                                                                  Id = appointment.AppointmentId,
+                                                                  ClientId = clients.ClientId,
+                                                                  FirstName = clients.FirstName,
+                                                                  LastName = clients.LastName,
+                                                                  MiddleName = clients.MiddleName,
+                                                                  PriorAppointmentDate = visits.PriorAppointmentDate,
+                                                                  AppointmentDate = appointment.AppointmentDate,
+                                                                  AppointmentTime = appointment.AppointmentDate,
+                                                                  NextAppointmentDate = visits.NextAppointmentDate,
+                                                                  VisitsId = visits.VisitId,
+                                                                  VisitDate = visits.VisitDate,
+                                                                  Age = clients.Age,
+                                                              }).ToList();
+            return clientVisitPastDetails;
+        }
+        public List<AppointmentsModel> GetActiveClientFilter(VisitsModel filterdata)
+        {
+            List<AppointmentsModel> clientVisitPastDetails = new List<AppointmentsModel>();
+
+            if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
+            {
+                clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                              ProvinceId = provinces.ProvinceId,
+                                              DistrictId = districts.DistrictId,
+                                          }).ToList();
                 return clientVisitPastDetails;
 
 
@@ -807,299 +808,299 @@ namespace DigitalEdge.Repository
             else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
 
             }
             else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId && provinces.ProvinceId == filterdata.ProvinceId
-                                             && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                            select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId && provinces.ProvinceId == filterdata.ProvinceId
+                                           && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId > 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
-                                            && provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && visits.ServicePointId == filterdata.ServicePointId
+                                          && provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
 
             }
             else if (filterdata.FacilityId == 0 && filterdata.ServicePointId > 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId == 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            where visits.ServicePointId == filterdata.ServicePointId
-                                             && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          where visits.ServicePointId == filterdata.ServicePointId
+                                           && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where provinces.ProvinceId == filterdata.ProvinceId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where provinces.ProvinceId == filterdata.ProvinceId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId == 0 && filterdata.DistrictId > 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where districts.DistrictId == filterdata.DistrictId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where districts.DistrictId == filterdata.DistrictId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId == 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId > 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
-                                            && districts.DistrictId == filterdata.DistrictId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where visits.FacilityId == filterdata.FacilityId && provinces.ProvinceId == filterdata.ProvinceId
+                                          && districts.DistrictId == filterdata.DistrictId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
             }
             else if (filterdata.FacilityId == 0 && filterdata.ServicePointId == 0 && filterdata.ProvinceId > 0 && filterdata.DistrictId > 0)
             {
                 clientVisitPastDetails = (from appointment in _DigitalEdgeContext.Appointments
-                                            join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
-                                            from visits in appointments.DefaultIfEmpty()
-                                            join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
-                                            from clients in list.DefaultIfEmpty()
-                                            join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
-                                            from facilitys in facilitylist.DefaultIfEmpty()
-                                            join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
-                                            from districts in districtlist.DefaultIfEmpty()
-                                            join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
-                                            from provinces in provincelist.DefaultIfEmpty()
-                                            where provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
-                                            && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
-                                           select new AppointmentsModel
-                                            {
-                                                Id = appointment.AppointmentId,
-                                                ClientId = clients.ClientId,
-                                                FirstName = clients.FirstName,
-                                                LastName = clients.LastName,
-                                                MiddleName = clients.MiddleName,
-                                                PriorAppointmentDate = visits.PriorAppointmentDate,
-                                                AppointmentDate = appointment.AppointmentDate,
-                                                AppointmentTime = appointment.AppointmentDate,
-                                                NextAppointmentDate = visits.NextAppointmentDate,
-                                                VisitsId = visits.VisitId,
-                                                VisitDate = visits.VisitDate,
-                                                Age = clients.Age,
-                                                FacilityId = visits.FacilityId,
-                                                ServicePointId = visits.ServicePointId,
-                                            }).ToList();
+                                          join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                          from visits in appointments.DefaultIfEmpty()
+                                          join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                          from clients in list.DefaultIfEmpty()
+                                          join facility in _DigitalEdgeContext.Facilities on visits.FacilityId equals facility.FacilityId into facilitylist
+                                          from facilitys in facilitylist.DefaultIfEmpty()
+                                          join district in _DigitalEdgeContext.Districts on facilitys.DistrictId equals district.DistrictId into districtlist
+                                          from districts in districtlist.DefaultIfEmpty()
+                                          join province in _DigitalEdgeContext.Provinces on districts.ProvinceId equals province.ProvinceId into provincelist
+                                          from provinces in provincelist.DefaultIfEmpty()
+                                          where provinces.ProvinceId == filterdata.ProvinceId && districts.DistrictId == filterdata.DistrictId
+                                          && visits.VisitDate >= DateTime.UtcNow.AddMonths(-1)
+                                          select new AppointmentsModel
+                                          {
+                                              Id = appointment.AppointmentId,
+                                              ClientId = clients.ClientId,
+                                              FirstName = clients.FirstName,
+                                              LastName = clients.LastName,
+                                              MiddleName = clients.MiddleName,
+                                              PriorAppointmentDate = visits.PriorAppointmentDate,
+                                              AppointmentDate = appointment.AppointmentDate,
+                                              AppointmentTime = appointment.AppointmentDate,
+                                              NextAppointmentDate = visits.NextAppointmentDate,
+                                              VisitsId = visits.VisitId,
+                                              VisitDate = visits.VisitDate,
+                                              Age = clients.Age,
+                                              FacilityId = visits.FacilityId,
+                                              ServicePointId = visits.ServicePointId,
+                                          }).ToList();
                 return clientVisitPastDetails;
-            }     
-            
+            }
+
             return GetClientVisitPastDetails();
         }
         public List<SMSRecords> GetAppointementsDetailsForSMS()
@@ -1111,7 +1112,7 @@ namespace DigitalEdge.Repository
                                            from clients in list.DefaultIfEmpty()
                                            join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
-                                           join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails 
+                                           join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails
                                            from serviceTypes in serviceTypesDetails.DefaultIfEmpty()
                                            where (appointment.AppointmentDate >= DateTime.UtcNow && appointment.AppointmentDate < DateTime.UtcNow.Date.AddDays(8)) ||
                                            (visits.NextAppointmentDate >= DateTime.UtcNow && visits.NextAppointmentDate < DateTime.UtcNow.Date.AddDays(8))
@@ -1164,8 +1165,8 @@ namespace DigitalEdge.Repository
                                            from clients in list.DefaultIfEmpty()
                                            join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into facilityDetais
                                            from facilitys in facilityDetais.DefaultIfEmpty()
-                                           /*//join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails  
-                                           from serviceTypes in serviceTypesDetails.DefaultIfEmpty()*/
+                                               /*//join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into serviceTypesDetails  
+                                               from serviceTypes in serviceTypesDetails.DefaultIfEmpty()*/
                                            where ((appointment.AppointmentDate >= DateTime.UtcNow || visits.NextAppointmentDate >= DateTime.UtcNow) && appointment.AppointmentId == id)
                                            select new SMSRecords
                                            {
@@ -1439,48 +1440,48 @@ namespace DigitalEdge.Repository
         public List<AppointmentsModel> GetVisitHistory()
         {
             List<AppointmentsModel> visitHistorydetails = (from visit in _DigitalEdgeContext.Visits
-                                                                    join client in _DigitalEdgeContext.Clients on visit.ClientId equals client.ClientId into list
-                                                                    from clients in list.DefaultIfEmpty()
-                                                                    select new AppointmentsModel
-                                                                    {
-                                                                        ServicePointId = visit.ServicePointId,
-                                                                        ClientId = clients.ClientId,
-                                                                        FirstName = clients.FirstName,
-                                                                        LastName = clients.LastName,
-                                                                        MiddleName = clients.MiddleName,
-                                                                        PriorAppointmentDate = visit.PriorAppointmentDate,
-                                                                        NextAppointmentDate = visit.NextAppointmentDate,
-                                                                        VisitsId = visit.VisitId,
-                                                                        VisitDate = visit.VisitDate,
-                                                                        VisitType = visit.VisitType,
-                                                                        ReasonOfVisit = visit.ReasonOfVisit,
-                                                                        AdviseNotes = visit.AdviseNotes,
-                                                                        ClientPhoneNo = clients.ClientPhoneNo
-                                                                    }).ToList();
+                                                           join client in _DigitalEdgeContext.Clients on visit.ClientId equals client.ClientId into list
+                                                           from clients in list.DefaultIfEmpty()
+                                                           select new AppointmentsModel
+                                                           {
+                                                               ServicePointId = visit.ServicePointId,
+                                                               ClientId = clients.ClientId,
+                                                               FirstName = clients.FirstName,
+                                                               LastName = clients.LastName,
+                                                               MiddleName = clients.MiddleName,
+                                                               PriorAppointmentDate = visit.PriorAppointmentDate,
+                                                               NextAppointmentDate = visit.NextAppointmentDate,
+                                                               VisitsId = visit.VisitId,
+                                                               VisitDate = visit.VisitDate,
+                                                               VisitType = visit.VisitType,
+                                                               ReasonOfVisit = visit.ReasonOfVisit,
+                                                               AdviseNotes = visit.AdviseNotes,
+                                                               ClientPhoneNo = clients.ClientPhoneNo
+                                                           }).ToList();
             return visitHistorydetails;
         }
         public List<AppointmentsModel> GetVisitHistoryByService(VisitsModel filterdata)
         {
             List<AppointmentsModel> visitHistorydetails = (from visit in _DigitalEdgeContext.Visits
-                                                                    join client in _DigitalEdgeContext.Clients on visit.ClientId equals client.ClientId into list
-                                                                    from clients in list.DefaultIfEmpty()
-                                                                    where visit.ServicePointId == filterdata.ServicePointId
-                                                                    select new AppointmentsModel
-                                                                    {
-                                                                        ServicePointId = visit.ServicePointId,
-                                                                        ClientId = clients.ClientId,
-                                                                        FirstName = clients.FirstName,
-                                                                        LastName = clients.LastName,
-                                                                        MiddleName = clients.MiddleName,
-                                                                        PriorAppointmentDate = visit.PriorAppointmentDate,
-                                                                        NextAppointmentDate = visit.NextAppointmentDate,
-                                                                        VisitsId = visit.VisitId,
-                                                                        VisitDate = visit.VisitDate,
-                                                                        VisitType = visit.VisitType,
-                                                                        ReasonOfVisit = visit.ReasonOfVisit,
-                                                                        AdviseNotes = visit.AdviseNotes,
-                                                                        ClientPhoneNo = clients.ClientPhoneNo
-                                                                    }).ToList();
+                                                           join client in _DigitalEdgeContext.Clients on visit.ClientId equals client.ClientId into list
+                                                           from clients in list.DefaultIfEmpty()
+                                                           where visit.ServicePointId == filterdata.ServicePointId
+                                                           select new AppointmentsModel
+                                                           {
+                                                               ServicePointId = visit.ServicePointId,
+                                                               ClientId = clients.ClientId,
+                                                               FirstName = clients.FirstName,
+                                                               LastName = clients.LastName,
+                                                               MiddleName = clients.MiddleName,
+                                                               PriorAppointmentDate = visit.PriorAppointmentDate,
+                                                               NextAppointmentDate = visit.NextAppointmentDate,
+                                                               VisitsId = visit.VisitId,
+                                                               VisitDate = visit.VisitDate,
+                                                               VisitType = visit.VisitType,
+                                                               ReasonOfVisit = visit.ReasonOfVisit,
+                                                               AdviseNotes = visit.AdviseNotes,
+                                                               ClientPhoneNo = clients.ClientPhoneNo
+                                                           }).ToList();
 
             return visitHistorydetails;
         }
@@ -1490,7 +1491,7 @@ namespace DigitalEdge.Repository
             var client = (from singleClient in _DigitalEdgeContext.Clients
                           join sex in _DigitalEdgeContext.Sexes on singleClient.SexId equals sex.SexId into clients
                           from sexes in clients.DefaultIfEmpty()
-                          join clientStatus in _DigitalEdgeContext.ClientStatuses on singleClient.ClientStatusId equals clientStatus.ClientStatusId into statuses    
+                          join clientStatus in _DigitalEdgeContext.ClientStatuses on singleClient.ClientStatusId equals clientStatus.ClientStatusId into statuses
                           from clientStatuses in statuses.DefaultIfEmpty()
                           join facility in _DigitalEdgeContext.Facilities on singleClient.FacilityId equals facility.FacilityId into facilities
                           from clientFacility in facilities.DefaultIfEmpty()
@@ -1521,11 +1522,13 @@ namespace DigitalEdge.Repository
                               GISLocation = singleClient.GISLocation,
                               EnrolledByName = singleClient.EnrolledByName,
                               EnrolledByPhone = singleClient.EnrolledByPhone,
-                              GeneralComment = singleClient.GeneralComment,                        
-                              
-                              
-                              
-                          })         
+                              GeneralComment = singleClient.GeneralComment,
+                              HamornizedMobilePhone = singleClient.HamornizedMobilePhone,
+                              HarmonizedPhysicalAddress = singleClient.HarmonizedPhysicalAddress
+
+
+
+                          })
                           .SingleOrDefault();
 
             return client;
@@ -1535,19 +1538,19 @@ namespace DigitalEdge.Repository
         {
             List<FacilityModel> facilities = (from facility in _DigitalEdgeContext.Facilities
                                               join facilityType in _DigitalEdgeContext.FacilityTypes on facility.FacilityTypeId equals facilityType.FacilityTypeId
-                                              
-                                                    select new FacilityModel
-                                                    {
-                                                        FacilityId = facility.FacilityId,
-                                                        FacilityName = facility.FacilityName,
-                                                        FacilityTypeId = facility.FacilityTypeId,
-                                                        FacilityContactNumber = facility.FacilityContactNumber,
-                                                        IsAvailable = facility.IsAvailable,
-                                                        FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
-                                                        Address = facility.Address
-                                                        
 
-                                                    }
+                                              select new FacilityModel
+                                              {
+                                                  FacilityId = facility.FacilityId,
+                                                  FacilityName = facility.FacilityName,
+                                                  FacilityTypeId = facility.FacilityTypeId,
+                                                  FacilityContactNumber = facility.FacilityContactNumber,
+                                                  IsAvailable = facility.IsAvailable,
+                                                  FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
+                                                  Address = facility.Address
+
+
+                                              }
                                               ).ToList();
             return facilities;
         }
@@ -1555,10 +1558,11 @@ namespace DigitalEdge.Repository
         public List<VisitsServiceModel> GetServiceTypes()
         {
             List<VisitsServiceModel> serviceTypes = (from serviceType in _DigitalEdgeContext.ServiceTypes
-                                                     select new VisitsServiceModel{
+                                                     select new VisitsServiceModel
+                                                     {
                                                          ServiceTypeId = serviceType.ServiceTypeId,
                                                          ServiceTypeName = serviceType.ServiceTypeName
-            }).ToList();
+                                                     }).ToList();
 
             return serviceTypes;
         }
@@ -1568,8 +1572,8 @@ namespace DigitalEdge.Repository
             List<ServicePointModel> servicePoints = (from departments in _DigitalEdgeContext.ServicePoints
                                                      select new ServicePointModel
                                                      {
-                                                        ServicePointId = departments.ServicePointId,
-                                                        ServicePointName = departments.ServicePointName,
+                                                         ServicePointId = departments.ServicePointId,
+                                                         ServicePointName = departments.ServicePointName,
                                                      }
             ).ToList();
 
@@ -1579,25 +1583,25 @@ namespace DigitalEdge.Repository
         public List<VisitModel> GetVisits()
         {
             List<VisitModel> visits = (from attendances in _DigitalEdgeContext.Visits
-                                        select new VisitModel
-                                        {
-                                            VisitId = attendances.VisitId,
-                                            VisitDate = attendances.VisitDate,
-                                            VisitType = attendances.VisitType,
-                                            AppointmentId = attendances.AppointmentId,
-                                            ServiceTypeId = attendances.ServiceTypeId,
-                                            AppointmentStatus = attendances.AppointmentStatus,
-                                            PriorAppointmentDate = attendances.PriorAppointmentDate,
-                                            NextAppointmentDate = attendances.NextAppointmentDate,
-                                            ClinicRemarks = attendances.ClinicRemarks,
-                                            Diagnosis = attendances.Diagnosis,
-                                            SecondDiagnosis = attendances.SecondDiagnosis,
-                                            ThirdDiagnosis = attendances.ThirdDiagnosis,
-                                            Therapy = attendances.Therapy,
-                                            FacilityId = attendances.FacilityId,
+                                       select new VisitModel
+                                       {
+                                           VisitId = attendances.VisitId,
+                                           VisitDate = attendances.VisitDate,
+                                           VisitType = attendances.VisitType,
+                                           AppointmentId = attendances.AppointmentId,
+                                           ServiceTypeId = attendances.ServiceTypeId,
+                                           AppointmentStatus = attendances.AppointmentStatus,
+                                           PriorAppointmentDate = attendances.PriorAppointmentDate,
+                                           NextAppointmentDate = attendances.NextAppointmentDate,
+                                           ClinicRemarks = attendances.ClinicRemarks,
+                                           Diagnosis = attendances.Diagnosis,
+                                           SecondDiagnosis = attendances.SecondDiagnosis,
+                                           ThirdDiagnosis = attendances.ThirdDiagnosis,
+                                           Therapy = attendances.Therapy,
+                                           FacilityId = attendances.FacilityId,
 
 
-                                        }).ToList();
+                                       }).ToList();
             return visits;
         }
 
@@ -1608,10 +1612,10 @@ namespace DigitalEdge.Repository
                                from clientAppointments in clients.DefaultIfEmpty()
                                join facility in _DigitalEdgeContext.Facilities on appointments.FacilityId equals facility.FacilityId into facilities
                                from appointmentInFacility in facilities.DefaultIfEmpty()
-                               join serviceType in _DigitalEdgeContext.ServiceTypes on appointments.ServiceTypeId equals serviceType.ServiceTypeId into serviceType   
-                               from clientServiceType  in serviceType.DefaultIfEmpty()
+                               join serviceType in _DigitalEdgeContext.ServiceTypes on appointments.ServiceTypeId equals serviceType.ServiceTypeId into serviceType
+                               from clientServiceType in serviceType.DefaultIfEmpty()
                                where (appointments.AppointmentId == id)
-                               select new Appointment   
+                               select new Appointment
                                {
                                    AppointmentId = id,
                                    ClientId = clientAppointments.ClientId,
@@ -1622,7 +1626,7 @@ namespace DigitalEdge.Repository
                                    ServiceTypeModel = clientServiceType,
                                    AppointmentStatus = appointments.AppointmentStatus,
                                    AppointmentDate = appointments.AppointmentDate,
-                                   Comment = appointments.Comment                             
+                                   Comment = appointments.Comment
                                }
 
                                ).SingleOrDefault();
@@ -1695,7 +1699,7 @@ namespace DigitalEdge.Repository
                              Diagnosis = visits.Diagnosis,
                              SecondDiagnosis = visits.SecondDiagnosis,
                              ThirdDiagnosis = visits.ThirdDiagnosis,
-                             ClinicRemarks = visits.ClinicRemarks                         
+                             ClinicRemarks = visits.ClinicRemarks
 
                          }
                          ).SingleOrDefault();
@@ -1749,6 +1753,6 @@ namespace DigitalEdge.Repository
             return clients;
         }
 
-        
+
     }
 }

@@ -29,6 +29,7 @@ namespace DigitalEdge.Services
             services.AddScoped<IBaseRepository<District>, BaseRepository<District>>();
             services.AddScoped<IBaseRepository<Visit>, BaseRepository<Visit>>();
             services.AddScoped<IBaseRepository<Client>, BaseRepository<Client>>();
+            services.AddScoped<IBaseRepository<ViralLoad>, BaseRepository<ViralLoad>>();
         }
         public static void InitializeServices(IServiceCollection services, IConfiguration configuration)
         {

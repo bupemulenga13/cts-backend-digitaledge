@@ -1,4 +1,4 @@
-﻿ using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -19,9 +19,9 @@ namespace DigitalEdge.Repository
         private readonly DigitalEdgeContext _DigitalEdgeContext;
 
 
-        public AccountRepository(IBaseRepository<Users> loginRepository,IBaseRepository<Client> clientRepository,IBaseRepository<Appointment> appointmentRepository, IBaseRepository<UserRoles> userRolesRepository,
-            DigitalEdgeContext DigitalEdgeContext, IBaseRepository<UserFacility> facilityRepository,IBaseRepository<ServicePoint> servicePointRepository
-            ,IBaseRepository<Facility> facilityuserRepository)
+        public AccountRepository(IBaseRepository<Users> loginRepository, IBaseRepository<Client> clientRepository, IBaseRepository<Appointment> appointmentRepository, IBaseRepository<UserRoles> userRolesRepository,
+            DigitalEdgeContext DigitalEdgeContext, IBaseRepository<UserFacility> facilityRepository, IBaseRepository<ServicePoint> servicePointRepository
+            , IBaseRepository<Facility> facilityuserRepository, IBaseRepository<ViralLoad> viralLoadRepository)
         {
             this._loginRepository = loginRepository;
             this._clientRepository = clientRepository;
@@ -31,6 +31,7 @@ namespace DigitalEdge.Repository
             _facilityRepository = facilityRepository;
             _servicePointRepository = servicePointRepository;
             this._facilityuserRepository = facilityuserRepository;
+            this._viralLoadRepository = viralLoadRepository;
         }
         public List<UserModel> GetData()
         {
@@ -48,7 +49,7 @@ namespace DigitalEdge.Repository
                                          PhoneNo = p.PhoneNo,
                                          IsDeleted = p.IsDeleted,
                                          RoleName = c.RoleName,
-                                         RoleId=c.RoleId
+                                         RoleId = c.RoleId
                                      }).ToList();
             return users;
         }
@@ -68,7 +69,7 @@ namespace DigitalEdge.Repository
             if (user == null)
                 return null;
             return user;
-        } 
+        }
         public Client GetClient(RegistrationModel data)
         {
             var user = _clientRepository.GetAll().Where(x => x.FirstName == data.FirstName && x.LastName == data.LastName && x.ArtNo == data.ArtNo).SingleOrDefault();
@@ -78,7 +79,7 @@ namespace DigitalEdge.Repository
         }
         public Appointment GetAppointment(long id)
         {
-            var appointment = _DigitalEdgeContext.Appointments.Find(id);  
+            var appointment = _DigitalEdgeContext.Appointments.Find(id);
             if (appointment == null)
                 return null;
             return appointment;
@@ -106,7 +107,7 @@ namespace DigitalEdge.Repository
         }
         public string createappointment(Appointment users)
         {
-            if(_DigitalEdgeContext.Appointments.Any(o => o.AppointmentId.Equals(users.AppointmentId))) return "null";
+            if (_DigitalEdgeContext.Appointments.Any(o => o.AppointmentId.Equals(users.AppointmentId))) return "null";
 
             this._appointmentRepository.Insert(users);
             return "ok";
@@ -141,11 +142,11 @@ namespace DigitalEdge.Repository
         public void updateServicePoint(ServicePoint servicepoint)
         {
             this._servicePointRepository.Update(servicepoint);
-        }  
+        }
         public void updateFacility(Facility updatefacility)
         {
             this._facilityuserRepository.Update(updatefacility);
-            
+
         }
         public void Delete(Users deleteuser)
         {
@@ -157,17 +158,17 @@ namespace DigitalEdge.Repository
         }
         public string facilitycreateuser(UserFacility addfacilityuser)
         {
-            if (_DigitalEdgeContext.Userfacility.Any(o => o.FacilityId == addfacilityuser.FacilityId && o.ServicePointId==addfacilityuser.ServicePointId && o.IsActive==false && o.UserId.Equals(addfacilityuser.UserId))) return "null";
+            if (_DigitalEdgeContext.Userfacility.Any(o => o.FacilityId == addfacilityuser.FacilityId && o.ServicePointId == addfacilityuser.ServicePointId && o.IsActive == false && o.UserId.Equals(addfacilityuser.UserId))) return "null";
 
-               this._facilityRepository.Insert(addfacilityuser);
-              return "ok";
-        } 
+            this._facilityRepository.Insert(addfacilityuser);
+            return "ok";
+        }
         public string CreateFacility(Facility adduser)
         {
-            if (_DigitalEdgeContext.Facilities.Any(o => o.FacilityName.Equals(adduser.FacilityName) )) return "null";
+            if (_DigitalEdgeContext.Facilities.Any(o => o.FacilityName.Equals(adduser.FacilityName))) return "null";
 
             this._facilityuserRepository.Insert(adduser);
-              return "ok";
+            return "ok";
 
         }
         public string servicecreateuser(ServicePoint addserviceuser)
@@ -180,46 +181,46 @@ namespace DigitalEdge.Repository
         public List<UserBindingModel> getFacilityDetails()
         {
             List<UserBindingModel> facilityuserslist = (from d in _DigitalEdgeContext.Users
-                                                       join c in _DigitalEdgeContext.Userfacility on d.Id equals c.UserId
-                                                       join s in _DigitalEdgeContext.Facilities on c.FacilityId equals s.FacilityId
+                                                        join c in _DigitalEdgeContext.Userfacility on d.Id equals c.UserId
+                                                        join s in _DigitalEdgeContext.Facilities on c.FacilityId equals s.FacilityId
                                                         join g in _DigitalEdgeContext.ServicePoints on c.ServicePointId equals g.ServicePointId
 
                                                         where (c.IsActive == false)
                                                         select new UserBindingModel
-                                                       {
-                                                           UserId = d.Id,
-                                                           FacilityName = s.FacilityName,
-                                                           UserName = d.Email,
-                                                           UserFacilityId=c.UserFacilityId,
-                                                           FacilityId = s.FacilityId,
-                                                           ServicePointId=g.ServicePointId,
-                                                           ServicePointName = g.ServicePointName,                                                           
-                                                       }).ToList();
+                                                        {
+                                                            UserId = d.Id,
+                                                            FacilityName = s.FacilityName,
+                                                            UserName = d.Email,
+                                                            UserFacilityId = c.UserFacilityId,
+                                                            FacilityId = s.FacilityId,
+                                                            ServicePointId = g.ServicePointId,
+                                                            ServicePointName = g.ServicePointName,
+                                                        }).ToList();
             return facilityuserslist;
         }
-          public List<FacilityModel> getFacilityUserDetails()
+        public List<FacilityModel> getFacilityUserDetails()
         {
             List<FacilityModel> facilityuserslist = (from d in _DigitalEdgeContext.Facilities
-                                                       join c in _DigitalEdgeContext.Districts on d.DistrictId equals c.DistrictId
-                                                       join f in _DigitalEdgeContext.Provinces on c.ProvinceId equals f.ProvinceId
+                                                     join c in _DigitalEdgeContext.Districts on d.DistrictId equals c.DistrictId
+                                                     join f in _DigitalEdgeContext.Provinces on c.ProvinceId equals f.ProvinceId
                                                      select new FacilityModel
-                                                        {
-                                                           FacilityName = d.FacilityName,
-                                                           FacilityId = d.FacilityId,
-                                                           DistrictName = c.DistrictName,
-                                                            DistrictId = c.DistrictId.ToString(),
-                                                            FacilityContactNumber=d.FacilityContactNumber,
-                                                            ProvinceId=f.ProvinceId.ToString(),
-                                                            ProvinceName=f.ProvinceName
-                                                       }).ToList();
+                                                     {
+                                                         FacilityName = d.FacilityName,
+                                                         FacilityId = d.FacilityId,
+                                                         DistrictName = c.DistrictName,
+                                                         DistrictId = c.DistrictId.ToString(),
+                                                         FacilityContactNumber = d.FacilityContactNumber,
+                                                         ProvinceId = f.ProvinceId.ToString(),
+                                                         ProvinceName = f.ProvinceName
+                                                     }).ToList();
             return facilityuserslist;
-        }        
+        }
         public List<ServicePointModel> getServiceDetails()
         {
             List<ServicePointModel> serviceuserslist = (from d in _DigitalEdgeContext.Facilities
                                                         join c in _DigitalEdgeContext.ServicePoints on d.FacilityId equals c.FacilityId
                                                         select new ServicePointModel
-                                                      {                                                            
+                                                        {
                                                             FacilityId = d.FacilityId,
                                                             ServicePointId = c.ServicePointId,
                                                             ServicePointName = c.ServicePointName,

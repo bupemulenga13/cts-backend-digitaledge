@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DigitalEdge.Repository
 {
-   public class Client
+    public class Client
     {
         public Client()
         {
         }
-        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int enrollmentType, int clientRelationship, bool accessToPhone, 
-            int harmonizedPhone, int harmonizedAddress, DateTime dateCreated)
+        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
+            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string houseNo, string village, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
+            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated)
         {
             ClientId = id;
             FirstName = firstName;
@@ -44,12 +44,12 @@ namespace DigitalEdge.Repository
             AccessToPhone = accessToPhone;
             HamornizedMobilePhone = harmonizedPhone;
             HarmonizedPhysicalAddress = harmonizedAddress;
-            DateCreated = dateCreated;            
+            DateCreated = dateCreated;
         }
 
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string houseNo, string village, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int enrollmentType, int clientRelationship, bool accessToPhone,
-            int harmonizedPhone, int harmonizedAddress, DateTime dateCreated, DateTime dateEdited)
+            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string houseNo, string village, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
+            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, DateTime dateEdited)
         {
             ClientId = id;
             FirstName = firstName;
@@ -83,10 +83,10 @@ namespace DigitalEdge.Repository
             HarmonizedPhysicalAddress = harmonizedAddress;
             DateCreated = dateCreated;
             DateEdit = dateEdited;
-        }        
+        }
 
         [Key]
-        public long ClientId  { get; set; }
+        public long ClientId { get; set; }
 
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -99,16 +99,16 @@ namespace DigitalEdge.Repository
 
         public string ArtNo { get; set; }
 
-        public string ClientPhoneNo { get; set; } 
+        public string ClientPhoneNo { get; set; }
 
-        public  DateTime DateOfBirth { get; set; } 
+        public DateTime DateOfBirth { get; set; }
 
-        public int? Age { get; set; } 
+        public int? Age { get; set; }
 
-        public DateTime? DateCreated { get; set; } 
-        public DateTime? DateEdit { get; set; } 
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdit { get; set; }
 
-        public long EditBy { get; set; } 
+        public long EditBy { get; set; }
         public long CreatedBy { get; set; }
 
 
@@ -145,7 +145,7 @@ namespace DigitalEdge.Repository
         public long? ServicePointId { get; set; }
 
         [ForeignKey("ServicePointId")]
-        public virtual ServicePoint ServicePoints  { get; set; }
+        public virtual ServicePoint ServicePoints { get; set; }
 
         public long? LanguageId { get; set; }
 
@@ -168,18 +168,18 @@ namespace DigitalEdge.Repository
         public virtual Sex Sex { get; set; }
 
         //New fields for live db
-        public int ClientRelationship { get; set; }
+        public int? ClientRelationship { get; set; }
 
-        public int EnrollmentType { get; set; }
+        public int? EnrollmentType { get; set; }
 
         public bool AccessToPhone { get; set; }
 
-        public int HamornizedMobilePhone { get; set; }
+        public int? HamornizedMobilePhone { get; set; }
 
-        public int HarmonizedPhysicalAddress { get; set; }
+        public int? HarmonizedPhysicalAddress { get; set; }
 
 
-        
+
 
 
 
