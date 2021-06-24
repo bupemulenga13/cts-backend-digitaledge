@@ -8,10 +8,12 @@ namespace DigitalEdge.Domain
 {
     public class ClientModel
     {
-        public ClientModel() {
+        public ClientModel()
+        {
 
         }
-        public ClientModel(long clientId, string firstName, string lastName, string artNo) {
+        public ClientModel(long clientId, string firstName, string lastName, string artNo)
+        {
             this.ClientId = clientId;
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -64,14 +66,14 @@ namespace DigitalEdge.Domain
         public long SexId { get; set; }
         public string Sex { get; set; }
 
-        public int ClientRelationship { get; set; }
-        public int EnrollmentType { get; set; }
+        public int? ClientRelationship { get; set; }
+        public int? EnrollmentType { get; set; }
 
         public bool AccessToPhone { get; set; }
 
-        public int HamornizedMobilePhone { get; set; }
+        public int? HamornizedMobilePhone { get; set; }
 
-        public int HarmonizedPhysicalAddress { get; set; }
+        public int? HarmonizedPhysicalAddress { get; set; }
 
         //Physical Address Fields
         public string Zone { get; set; }
@@ -86,7 +88,7 @@ namespace DigitalEdge.Domain
         {
             get; set;
         }
-        
+
         /*public string GetAddress()
         {
             
@@ -110,7 +112,7 @@ namespace DigitalEdge.Domain
             return address;
 
         }*/
-        
+
     }
 }
 
