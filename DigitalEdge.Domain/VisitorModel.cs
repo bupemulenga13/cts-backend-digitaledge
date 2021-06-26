@@ -8,10 +8,12 @@ namespace DigitalEdge.Domain
 {
     public class ClientModel
     {
-        public ClientModel() {
+        public ClientModel()
+        {
 
         }
-        public ClientModel(long clientId, string firstName, string lastName, string artNo) {
+        public ClientModel(long clientId, string firstName, string lastName, string artNo)
+        {
             this.ClientId = clientId;
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -82,8 +84,16 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
+<<<<<<< HEAD
         
         
+=======
+        public string PhysicalAddress
+        {
+            get; set;
+        }
+
+>>>>>>> 30d4e45cbdc2825eaf7ee3736f2ac8f82ad66265
         /*public string GetAddress()
         {
             
@@ -107,7 +117,7 @@ namespace DigitalEdge.Domain
             return address;
 
         }*/
-        
+
     }
 }
 
