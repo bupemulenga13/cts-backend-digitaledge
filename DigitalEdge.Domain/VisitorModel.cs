@@ -35,7 +35,7 @@ namespace DigitalEdge.Domain
         public long CreatedBy { get; set; }
         public string ArtNo { get; set; }
         public string GeneralComment { get; set; }
-        public string EnrolledBy { get; set; }
+        public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
         public string AlternativePhoneNumber2 { get; set; }
         public bool PhoneVerifiedByAnalyst { get; set; }
@@ -64,14 +64,14 @@ namespace DigitalEdge.Domain
         public long SexId { get; set; }
         public string Sex { get; set; }
 
-        public int ClientRelationship { get; set; }
-        public int EnrollmentType { get; set; }
+        public int? ClientRelationship { get; set; }
+        public int? EnrollmentType { get; set; }
 
         public bool AccessToPhone { get; set; }
 
-        public int HamornizedMobilePhone { get; set; }
+        public int? HamornizedMobilePhone { get; set; }
 
-        public int HarmonizedPhysicalAddress { get; set; }
+        public int? HarmonizedPhysicalAddress { get; set; }
 
         //Physical Address Fields
         public string Zone { get; set; }
@@ -82,10 +82,7 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
-        public string PhysicalAddress
-        {
-            get; set;
-        }
+        
         
         /*public string GetAddress()
         {

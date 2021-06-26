@@ -115,16 +115,16 @@ namespace DigitalEdge.Services
         }
         public void UpdateAppointment (RegistrationModel appointment)
         {
-            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.GetDateEdited(), appointment.DateCreated);
+            Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.DateEdit = appointment.GetDateCreated(), appointment.DateCreated);
             this._accountRepository.UpdateAppointment(updateuser);
         }
         public void UpdateClient(RegistrationModel client)
         {
             Client updateclient = new Client(client.ClientId, client.FirstName, client.LastName, client.ArtNo, client.SexId, client.ClientTypeId, client.ClientStatusId,
                 client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth), client.Age, Convert.ToDateTime(client.EnrollmentDate), Convert.ToString(client.ClientPhoneNo), 
-                Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.Zone, client.HouseNo, client.Village, client.GISLocation, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
+                Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.Zone, client.Village, client.HouseNo, client.GISLocation, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
                 client.LanguageId, client.EnrolledByName, client.GeneralComment, client.EnrollmentType, client.ClientRelationship, client.AccessToPhone,
-                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetDateEdited());
+                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetCreatedDate());
             this._accountRepository.UpdateClient(updateclient);
         }
 
@@ -214,7 +214,7 @@ namespace DigitalEdge.Services
         {
             
             Client clientData = new Client(addclient.ClientId, addclient.FirstName, addclient.LastName, addclient.ArtNo, addclient.SexId, addclient.ClientTypeId, addclient.ClientStatusId,
-                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), addclient.ClientPhoneNo,addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.Zone, addclient.HouseNo, addclient.Village, addclient.GISLocation,addclient.EnrolledByPhone, addclient.ServicePointId,
+                addclient.StatusCommentId, addclient.FacilityId, Convert.ToDateTime(addclient.DateOfBirth), addclient.CalculateAge(), Convert.ToDateTime(addclient.EnrollmentDate), addclient.ClientPhoneNo,addclient.AlternativePhoneNumber1, addclient.PhoneVerifiedByAnalyst, addclient.PhoneVerifiedByFacilityStaff, addclient.Zone, addclient.Village, addclient.HouseNo, addclient.GISLocation,addclient.EnrolledByPhone, addclient.ServicePointId,
                 addclient.LanguageId, addclient.EnrolledByName, addclient.GeneralComment, addclient.EnrollmentType, addclient.ClientRelationship, addclient.AccessToPhone,
                 addclient.HamornizedMobilePhone, addclient.HarmonizedPhysicalAddress, addclient.DateCreated = addclient.GetDateCreated());
 
@@ -239,12 +239,13 @@ namespace DigitalEdge.Services
 
         public string AddViralLoad(ViralLoadModel viralLoad)
         {
-            ViralLoad result = new ViralLoad(viralLoad.ViralLoadId, viralLoad.ClientId, viralLoad.InitialViralLoadCount, viralLoad.CurrentViralLoadCount, viralLoad.NextVLDueDate, viralLoad.DateCreated = DateTime.Now);
+            ViralLoad result = new ViralLoad(viralLoad.ViralLoadId, viralLoad.ClientId, viralLoad.InitialViralLoadCount, viralLoad.CurrentViralLoadCount, viralLoad.NextVLDueDate, viralLoad.GetCreatedDate());
 
             string vlResult = _accountRepository.AddVLResult(result);
 
-            return vlResult;
-                
+            return vlResult;                
         }
+
+        
     }
 }

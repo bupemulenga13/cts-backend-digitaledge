@@ -371,7 +371,7 @@ namespace DigitalEdge.Repository
                                              PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff,
                                              AlternativePhoneNumber1 = client.AlternativePhoneNumber1,
                                              GeneralComment = client.GeneralComment,
-                                             EnrolledBy = client.EnrolledByName,
+                                             EnrolledByName = client.EnrolledByName,
                                              EnrolledByPhone = client.EnrolledByPhone,
                                              EnrollmentType = client.EnrollmentType,
                                              AccessToPhone = client.AccessToPhone,
@@ -1521,8 +1521,14 @@ namespace DigitalEdge.Repository
                               GISLocation = singleClient.GISLocation,
                               EnrolledByName = singleClient.EnrolledByName,
                               EnrolledByPhone = singleClient.EnrolledByPhone,
-                              GeneralComment = singleClient.GeneralComment,                        
-                              
+                              GeneralComment = singleClient.GeneralComment, 
+                              Age = singleClient.Age,
+                              EnrollmentType = singleClient.EnrollmentType,
+                              ClientRelationship = singleClient.ClientRelationship,
+                              AccessToPhone = singleClient.AccessToPhone,
+                              HarmonizedPhysicalAddress = singleClient.HarmonizedPhysicalAddress,
+                              HamornizedMobilePhone = singleClient.HamornizedMobilePhone,
+                              DateCreated = singleClient.DateCreated                             
                               
                               
                           })         

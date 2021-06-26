@@ -62,14 +62,14 @@ public long ClientId { get; set; }
         public long StatusCommentId { get; set; }
         public long SexId { get; set; }
         public long ClientStatusId { get; set; }
-        public int ClientRelationship { get; set; }
-        public int EnrollmentType { get; set; }
+        public int? ClientRelationship { get; set; }
+        public int? EnrollmentType { get; set; }
 
         public bool AccessToPhone { get; set; }
 
-        public int HamornizedMobilePhone { get; set; }
+        public int? HamornizedMobilePhone { get; set; }
 
-        public int HarmonizedPhysicalAddress { get; set; }
+        public int? HarmonizedPhysicalAddress { get; set; }
 
         //Physical Address Fields
         public string Zone { get; set; }
@@ -112,6 +112,7 @@ public long ClientId { get; set; }
 
         public DateTime GetCreatedDate()
         {
+
             return DateTime.Now;
         }
 

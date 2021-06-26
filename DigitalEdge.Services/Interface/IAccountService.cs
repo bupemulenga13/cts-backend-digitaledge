@@ -33,6 +33,8 @@ namespace DigitalEdge.Services
         int CountUsers();
 
         int ActiveUsers();
-        string AddViralLoad(ViralLoadModel viralLoad);
+
+        string AddViralLoad(ViralLoadModel viralLoadResult);
+
     }
 }

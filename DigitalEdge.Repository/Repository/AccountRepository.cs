@@ -8,6 +8,8 @@ namespace DigitalEdge.Repository
 {
     public class AccountRepository : IAccountRepository
     {
+
+        private readonly DigitalEdgeContext _DigitalEdgeContext;
         private readonly IBaseRepository<Users> _loginRepository;
         private readonly IBaseRepository<Client> _clientRepository;
         private readonly IBaseRepository<Appointment> _appointmentRepository;
@@ -16,21 +18,22 @@ namespace DigitalEdge.Repository
         private readonly IBaseRepository<ServicePoint> _servicePointRepository;
         private readonly IBaseRepository<UserRoles> _userRolesRepository;
         private readonly IBaseRepository<ViralLoad> _viralLoadRepository;
-        private readonly DigitalEdgeContext _DigitalEdgeContext;
 
 
-        public AccountRepository(IBaseRepository<Users> loginRepository,IBaseRepository<Client> clientRepository,IBaseRepository<Appointment> appointmentRepository, IBaseRepository<UserRoles> userRolesRepository,
-            DigitalEdgeContext DigitalEdgeContext, IBaseRepository<UserFacility> facilityRepository,IBaseRepository<ServicePoint> servicePointRepository
-            ,IBaseRepository<Facility> facilityuserRepository)
+        public AccountRepository(DigitalEdgeContext DigitalEdgeContext,IBaseRepository<Users> loginRepository,IBaseRepository<Client> clientRepository,IBaseRepository<Appointment> appointmentRepository, IBaseRepository<UserRoles> userRolesRepository,
+             IBaseRepository<UserFacility> facilityRepository,IBaseRepository<ServicePoint> servicePointRepository
+            ,IBaseRepository<Facility> facilityuserRepository, IBaseRepository<ViralLoad> viralLoadRepository)
         {
+
+            this._DigitalEdgeContext = DigitalEdgeContext;
             this._loginRepository = loginRepository;
             this._clientRepository = clientRepository;
             this._appointmentRepository = appointmentRepository;
             this._userRolesRepository = userRolesRepository;
-            this._DigitalEdgeContext = DigitalEdgeContext;
             _facilityRepository = facilityRepository;
             _servicePointRepository = servicePointRepository;
             this._facilityuserRepository = facilityuserRepository;
+            this._viralLoadRepository = viralLoadRepository;
         }
         public List<UserModel> GetData()
         {
@@ -247,6 +250,7 @@ namespace DigitalEdge.Repository
             if (_DigitalEdgeContext.ViralLoadResults.Any(o => o.ViralLoadId.Equals(result.ViralLoadId))) return "null";
 
             this._viralLoadRepository.Insert(result);
+
             return "ok";
         }
     }

@@ -22,6 +22,11 @@ namespace DigitalEdge.Domain
 
         public DateTime DateCreated { get; set; }
 
+        public DateTime GetCreatedDate()
+        {
+            return DateTime.Now;
+        }
+
 
 
     }

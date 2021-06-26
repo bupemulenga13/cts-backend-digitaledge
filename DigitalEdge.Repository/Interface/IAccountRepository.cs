@@ -17,6 +17,7 @@ namespace DigitalEdge.Repository
         void updateFacility(Facility updatefacility);
         string CreateUser(Users adduser);
         string createappointment(Appointment addappointment);
+
         string createclient(Client addclient);
 
         string facilitycreateuser(UserFacility addfacilityuser);

@@ -158,13 +158,13 @@ namespace DigitalEdge.Web.Controllers
         [HttpPost]
         [Route("AddViralLoadResult")]
         [Authorize]
-        public ActionResult AddViralLoadResult([FromBody] ViralLoadModel viralLoad)
+        public ActionResult AddViralLoadResult([FromBody] ViralLoadModel addVLresult)
         {
-            if (viralLoad == null)
+            if (addVLresult == null)
             {
                 return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Failed to add viral load result" });
             }
-            this._accountService.AddViralLoad(viralLoad);
+            this._accountService.AddViralLoad(addVLresult);
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Viral Load result successfully added" });
         }
 
