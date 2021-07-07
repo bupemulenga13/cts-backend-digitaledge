@@ -193,6 +193,16 @@ namespace DigitalEdge.Services
             return(clients);
             
         }
+
+        public List<ClientModel> GetClientsByFacility(long facilityId)
+        {
+            List<ClientModel> clients = _visitRepository.GetClientsByFacility(facilityId).ToList();
+
+            if (clients == null)
+                return null;
+            return (clients);
+        }
+
         public List<AppointmentsModel> GetAppointments()
         {
             List<AppointmentsModel> appointments = _visitRepository.GetAppointments().ToList();
@@ -632,6 +642,8 @@ namespace DigitalEdge.Services
             return _visitRepository.GetClientById(id);
         }
 
+       
+
         public List<FacilityModel> GetFacilities()
         {
             List<FacilityModel> facilities = _visitRepository.GetFacilities().ToList();
@@ -720,5 +732,7 @@ namespace DigitalEdge.Services
         {
             return _visitRepository.TodaysClients();
         }
+
+        
     }
 }

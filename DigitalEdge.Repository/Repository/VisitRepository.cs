@@ -371,7 +371,7 @@ namespace DigitalEdge.Repository
                                              PhoneVerifiedByFacilityStaff = client.PhoneVerifiedByFacilityStaff,
                                              AlternativePhoneNumber1 = client.AlternativePhoneNumber1,
                                              GeneralComment = client.GeneralComment,
-                                             EnrolledBy = client.EnrolledByName,
+                                             EnrolledByName = client.EnrolledByName,
                                              EnrolledByPhone = client.EnrolledByPhone,
                                              EnrollmentType = client.EnrollmentType,
                                              AccessToPhone = client.AccessToPhone,
@@ -382,12 +382,55 @@ namespace DigitalEdge.Repository
                                              Village = client.Village,
                                              HouseNo = client.HouseNo,
                                              GISLocation = client.GISLocation
-
                                          }
                 ).ToList();
             return clients;
 
         }
+        public List<ClientModel> GetClientsByFacility(long facilityId)
+        {
+            List<ClientModel> clientsInFacility = (from clients in _DigitalEdgeContext.Clients
+                                                   where clients.FacilityId == facilityId
+                                                   select new ClientModel
+                                                   {
+                                                       ClientId = clients.ClientId,
+                                                       FirstName = clients.FirstName,
+                                                       LastName = clients.LastName,
+                                                       ArtNo = clients.ArtNo,
+                                                       ClientPhoneNo = clients.ClientPhoneNo,
+                                                       DateOfBirth = clients.DateOfBirth,
+                                                       Age = clients.Age,
+                                                       Zone = clients.Zone,
+                                                       Village = clients.Village,
+                                                       HouseNo = clients.HouseNo,
+                                                       GISLocation = clients.GISLocation,
+                                                       GeneralComment = clients.GeneralComment,
+                                                       EnrolledByName = clients.EnrolledByName,
+                                                       AlternativePhoneNumber1 = clients.AlternativePhoneNumber1,
+                                                       PhoneVerifiedByAnalyst = clients.PhoneVerifiedByAnalyst,
+                                                       PhoneVerifiedByFacilityStaff = clients.PhoneVerifiedByFacilityStaff,
+                                                       EnrollmentDate = clients.EnrollmentDate,
+                                                       EnrolledByPhone = clients.EnrolledByPhone,
+                                                       FacilityId = clients.FacilityId,
+                                                       ClientTypeId = clients.ClientTypeId,
+                                                       ServicePointId = clients.ServicePointId,
+                                                       LanguageId = clients.LanguageId,
+                                                       ClientStatusId = clients.ClientStatusId,
+                                                       StatusCommentId = clients.StatusCommentId,
+                                                       SexId = clients.SexId,
+                                                       ClientRelationship = clients.ClientRelationship,
+                                                       EnrollmentType = clients.EnrollmentType,
+                                                       AccessToPhone = clients.AccessToPhone,
+                                                       HamornizedMobilePhone = clients.HamornizedMobilePhone,
+                                                       HarmonizedPhysicalAddress = clients.HarmonizedPhysicalAddress
+                                                   }
+
+                ).ToList();
+
+            return clientsInFacility;
+
+        }
+
         public List<AppointmentsModel> GetAppointments()
         {
             List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
@@ -1753,6 +1796,6 @@ namespace DigitalEdge.Repository
             return clients;
         }
 
-
+       
     }
 }

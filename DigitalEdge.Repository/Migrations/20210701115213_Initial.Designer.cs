@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalEdge.Repository.Migrations
 {
     [DbContext(typeof(DigitalEdgeContext))]
-    [Migration("20210617083927_NewDatabase")]
-    partial class NewDatabase
+    [Migration("20210701115213_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -669,12 +669,12 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
+                    b.Property<long>("FacilityId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -701,6 +701,8 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
 
                     b.HasIndex("RoleId");
 
@@ -1206,6 +1208,12 @@ namespace DigitalEdge.Repository.Migrations
 
             modelBuilder.Entity("DigitalEdge.Repository.Users", b =>
                 {
+                    b.HasOne("DigitalEdge.Repository.Facility", "Facilities")
+                        .WithMany()
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DigitalEdge.Repository.UserRoles", "UserRoles")
                         .WithMany()
                         .HasForeignKey("RoleId")

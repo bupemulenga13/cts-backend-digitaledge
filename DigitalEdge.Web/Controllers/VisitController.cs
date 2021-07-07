@@ -235,12 +235,24 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult GetClients()
         {
-            // We add method override to accept user with facility.
-            // Method in service should host the parameters that are going to be needed
-            // to invoke the Hierarchical Feature for our users.
             var clients = _visitService.getClients();
             return Ok(clients);
         }
+
+        [HttpGet]
+        [Route("GetClientsByFacility")]
+        [Authorize]
+        public ActionResult GetClients(long facilityId)
+        {
+            // We add method override to accept user with facility.
+            // Method in service should host the parameters that are going to be needed
+            // to invoke the Hierarchical Feature for our users.
+            var clientsInFacility = _visitService.GetClientsByFacility(facilityId);
+
+            return Ok(clientsInFacility);
+        }
+
+
 
         [HttpGet]
         [Route("GetFacilityTypes")]

@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
         public Users()
         {
         }
-        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, bool isActive)
+        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, long facilityId, long roleId, bool isDeleted, bool isActive, string phoneNo)
         {
             this.Id = id;
             this.Password = password;
@@ -20,10 +20,11 @@ namespace DigitalEdge.Repository
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
-            this.PhoneNo = phoneNo;
+            this.FacilityId = facilityId;
             this.RoleId = roleId;
             this.IsDeleted = isDeleted;
             this.IsActive = isActive;
+            PhoneNo = phoneNo;
         }
         public Users(string password, Boolean isSuperAdmin, string firstName, string email, long roleId)
         {
@@ -33,7 +34,7 @@ namespace DigitalEdge.Repository
             this.Email = email;
             this.RoleId = roleId;
         }
-        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, string phoneNo)
+        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long facilityId, string phoneNo)
         {   
             this.Id = id;
             this.FirstName = firstName;
@@ -44,7 +45,8 @@ namespace DigitalEdge.Repository
             this.IsSuperAdmin = isSuperAdmin;
             this.IsDeleted = isDeleted;
             this.IsActive = isActive;
-
+            FacilityId = facilityId;
+            PhoneNo = phoneNo;
         }
 
         //public Users(long id, string firstName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted)
@@ -69,12 +71,18 @@ namespace DigitalEdge.Repository
         public string LastName { get; set; }
         [MaxLength(100)]
         public string Email { get; set; }
+        
         [MaxLength(15)]
         public string PhoneNo { get; set; }
         public bool IsSuperAdmin { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsActive { get; set; }
-        public string Gender { get; set; }
+
+        public long FacilityId { get; set; }
+
+        [ForeignKey("FacilityId")]
+        public virtual Facility Facilities { get; set; }
+
         public long RoleId { get; set; }
 
         public bool GetSuperAdmin()

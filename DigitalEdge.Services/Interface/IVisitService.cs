@@ -61,5 +61,6 @@ namespace DigitalEdge.Services
         int TodaysAppointments();
 
         int TodaysClients();
+        List<ClientModel> GetClientsByFacility(long facilityId);
     }
 }

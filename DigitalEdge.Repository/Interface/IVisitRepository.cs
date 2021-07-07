@@ -73,8 +73,7 @@ namespace DigitalEdge.Repository
         int AvailableFacilities();
         int TodaysAppointments();
         int TodaysClients();
-
-        
+        List<ClientModel> GetClientsByFacility(long facilityId);
     }
 
 }

@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         public UserModel()
         {
         }
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, string gender, string roleName)
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long facilityId, string roleName)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -17,7 +17,7 @@ namespace DigitalEdge.Domain
             this.PhoneNo = phoneNo;
             this.RoleId = roleId;
             this.IsDeleted = isDeleted;
-            this.Gender = gender;
+            this.FacilityId = facilityId;
             this.RoleName = roleName;
         }
         public UserModel(long id, string firstName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted )
@@ -31,7 +31,7 @@ namespace DigitalEdge.Domain
             this.IsDeleted = isDeleted;
 
         }
-        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, string gender)
+        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long facilityId)
         {
             this.Id = id;
             this.Password = password;
@@ -42,7 +42,7 @@ namespace DigitalEdge.Domain
             this.PhoneNo = phoneNo;
             this.RoleId = roleId;
             this.IsDeleted = isDeleted;
-            this.Gender = gender;
+            this.FacilityId = facilityId;
 
         }
         public long Id { get; set; }
@@ -54,7 +54,8 @@ namespace DigitalEdge.Domain
         public long RoleId { get; set; }
         public bool IsSuperAdmin { get; set; }
         public bool IsDeleted { get; set; }
-        public string Gender { get; set; }
+
+        public long FacilityId { get; set; }
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
 

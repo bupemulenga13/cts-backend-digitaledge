@@ -45,7 +45,7 @@ namespace DigitalEdge.Repository
                                          LastName = p.LastName,
                                          Password = p.Password,
                                          Email = p.Email,
-                                         Gender = p.Gender,
+                                         FacilityId = p.FacilityId,
                                          PhoneNo = p.PhoneNo,
                                          IsDeleted = p.IsDeleted,
                                          RoleName = c.RoleName,

@@ -52,7 +52,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientStatusId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientStatusName = table.Column<string>(nullable: true)
+                    ClientStatusName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,7 +65,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientTypeName = table.Column<string>(nullable: true)
+                    ClientTypeName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +78,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     FacilityTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacilityTypeName = table.Column<string>(nullable: true)
+                    FacilityTypeName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,7 +91,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     LanguageId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageName = table.Column<string>(nullable: true)
+                    LanguageName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,7 +125,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ProvinceId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProvinceName = table.Column<string>(nullable: true),
+                    ProvinceName = table.Column<string>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateEdited = table.Column<DateTime>(nullable: true),
                     EditedBy = table.Column<long>(nullable: true),
@@ -142,7 +142,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ServiceTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceTypeName = table.Column<string>(nullable: true)
+                    ServiceTypeName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -155,7 +155,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     SexId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SexName = table.Column<string>(nullable: true)
+                    SexName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,8 +171,8 @@ namespace DigitalEdge.Repository.Migrations
                     RoleName = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedBy = table.Column<long>(nullable: true),
-                    ModifiedBy = table.Column<long>(nullable: true)
+                    CreatedBy = table.Column<long>(nullable: false),
+                    ModifiedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -291,7 +291,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     StatusCommentId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusCommentName = table.Column<string>(nullable: true),
+                    StatusCommentName = table.Column<string>(nullable: false),
                     ClientStatusId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -313,10 +313,10 @@ namespace DigitalEdge.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DistrictName = table.Column<string>(nullable: true),
                     ProvinceId = table.Column<long>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: true),
-                    DateEdited = table.Column<DateTime>(nullable: true),
-                    EditedBy = table.Column<long>(nullable: true),
-                    CreatedBy = table.Column<long>(nullable: true)
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
+                    EditedBy = table.Column<long>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -330,40 +330,12 @@ namespace DigitalEdge.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
-                    Password = table.Column<string>(maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    Email = table.Column<string>(maxLength: 100, nullable: false),
-                    PhoneNo = table.Column<string>(maxLength: 15, nullable: true),
-                    IsSuperAdmin = table.Column<bool>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: true),
-                    Gender = table.Column<string>(nullable: true),
-                    RoleId = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_UserRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "UserRoles",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.NoAction);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Facilities",
                 columns: table => new
                 {
                     FacilityId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacilityName = table.Column<string>(nullable: true),
+                    FacilityName = table.Column<string>(nullable: false),
                     FacilityContactNumber = table.Column<string>(nullable: true),
                     FacilityTypeId = table.Column<long>(nullable: false),
                     DistrictId = table.Column<long>(nullable: true),
@@ -397,7 +369,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ServicePointId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServicePointName = table.Column<string>(nullable: true),
+                    ServicePointName = table.Column<string>(nullable: false),
                     FacilityId = table.Column<long>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateEdited = table.Column<DateTime>(nullable: true),
@@ -413,6 +385,40 @@ namespace DigitalEdge.Repository.Migrations
                         principalTable: "Facilities",
                         principalColumn: "FacilityId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
+                    Password = table.Column<string>(maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: true),
+                    Email = table.Column<string>(maxLength: 100, nullable: false),
+                    PhoneNo = table.Column<string>(maxLength: 15, nullable: true),
+                    IsSuperAdmin = table.Column<bool>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    FacilityId = table.Column<long>(nullable: true),
+                    RoleId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Facilities_FacilityId",
+                        column: x => x.FacilityId,
+                        principalTable: "Facilities",
+                        principalColumn: "FacilityId",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Users_UserRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "UserRoles",
+                        principalColumn: "RoleId",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -454,9 +460,9 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     MiddleName = table.Column<string>(maxLength: 50, nullable: true),
-                    LastName = table.Column<string>(maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
                     ArtNo = table.Column<string>(nullable: false),
                     ClientPhoneNo = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
@@ -466,9 +472,9 @@ namespace DigitalEdge.Repository.Migrations
                     EditBy = table.Column<long>(nullable: true),
                     CreatedBy = table.Column<long>(nullable: true),
                     Zone = table.Column<string>(nullable: true),
-                    HouseNo = table.Column<string>(nullable: true),
                     Village = table.Column<string>(nullable: true),
-                    GisLocation = table.Column<string>(nullable: true),
+                    HouseNo = table.Column<string>(nullable: true),
+                    GISLocation = table.Column<string>(nullable: true),
                     GeneralComment = table.Column<string>(nullable: true),
                     EnrolledByName = table.Column<string>(nullable: true),
                     AlternativePhoneNumber1 = table.Column<string>(nullable: true),
@@ -675,28 +681,29 @@ namespace DigitalEdge.Repository.Migrations
                         principalColumn: "ServicePointId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
             migrationBuilder.CreateTable(
-                            name: "ViralLoadResults",
-                            columns: table => new
-                            {
-                                ViralLoadId = table.Column<long>(nullable: false)
-                                    .Annotation("SqlServer:Identity", "1, 1"),
-                                ClientId = table.Column<long>(nullable: false),
-                                InitialViralLoadCount = table.Column<int>(nullable: true),
-                                CurrentViralLoadCount = table.Column<int>(nullable: true),
-                                NextVLDueDate = table.Column<DateTime>(nullable: true),
-                                DateCreated = table.Column<DateTime>(nullable: false)
-                            },
-                            constraints: table =>
-                            {
-                                table.PrimaryKey("PK_ViralLoadResults", x => x.ViralLoadId);
-                                table.ForeignKey(
-                                    name: "FK_ViralLoadResults_Clients_ClientId",
-                                    column: x => x.ClientId,
-                                    principalTable: "Clients",
-                                    principalColumn: "ClientId",
-                                    onDelete: ReferentialAction.NoAction);
-                            });
+                name: "ViralLoadResults",
+                columns: table => new
+                {
+                    ViralLoadId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientId = table.Column<long>(nullable: false),
+                    InitialViralLoadCount = table.Column<int>(nullable: false),
+                    CurrentViralLoadCount = table.Column<int>(nullable: false),
+                    NextVLDueDate = table.Column<DateTime>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ViralLoadResults", x => x.ViralLoadId);
+                    table.ForeignKey(
+                        name: "FK_ViralLoadResults_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "ClientId",
+                        onDelete: ReferentialAction.NoAction);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Visits",
@@ -928,13 +935,19 @@ namespace DigitalEdge.Repository.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_FacilityId",
+                table: "Users",
+                column: "FacilityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
+
             migrationBuilder.CreateIndex(
-                            name: "IX_ViralLoadResults_ClientId",
-                            table: "ViralLoadResults",
-                            column: "ClientId");
+                name: "IX_ViralLoadResults_ClientId",
+                table: "ViralLoadResults",
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Visits_AppointmentId",
