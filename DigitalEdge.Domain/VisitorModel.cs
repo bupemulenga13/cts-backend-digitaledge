@@ -84,16 +84,8 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
-<<<<<<< HEAD
         
         
-=======
-        public string PhysicalAddress
-        {
-            get; set;
-        }
-
->>>>>>> 30d4e45cbdc2825eaf7ee3736f2ac8f82ad66265
         /*public string GetAddress()
         {
             

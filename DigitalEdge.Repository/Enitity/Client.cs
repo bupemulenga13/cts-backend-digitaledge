@@ -10,13 +10,8 @@ namespace DigitalEdge.Repository
         public Client()
         {
         }
-<<<<<<< HEAD
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone, 
-=======
-        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string houseNo, string village, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
->>>>>>> 30d4e45cbdc2825eaf7ee3736f2ac8f82ad66265
             int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated)
         {
             ClientId = id;
@@ -53,11 +48,7 @@ namespace DigitalEdge.Repository
         }
 
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
-<<<<<<< HEAD
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
-=======
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string houseNo, string village, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
->>>>>>> 30d4e45cbdc2825eaf7ee3736f2ac8f82ad66265
             int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, DateTime dateEdited)
         {
             ClientId = id;
@@ -184,14 +175,8 @@ namespace DigitalEdge.Repository
         public bool AccessToPhone { get; set; }
 
         public int? HamornizedMobilePhone { get; set; }
-<<<<<<< HEAD
 
         public int? HarmonizedPhysicalAddress { get; set; }
-=======
-
-        public int? HarmonizedPhysicalAddress { get; set; }
-
->>>>>>> 30d4e45cbdc2825eaf7ee3736f2ac8f82ad66265
 
 
 
