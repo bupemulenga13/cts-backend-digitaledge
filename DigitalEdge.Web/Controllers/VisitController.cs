@@ -242,7 +242,7 @@ namespace DigitalEdge.Web.Controllers
         [HttpGet]
         [Route("GetClientsByFacility")]
         [Authorize]
-        public ActionResult GetClients(long facilityId)
+        public ActionResult GetClientsByFacility(long facilityId)   
         {
             // We add method override to accept user with facility.
             // Method in service should host the parameters that are going to be needed
