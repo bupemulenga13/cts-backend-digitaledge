@@ -703,9 +703,9 @@ namespace DigitalEdge.Services
             return _visitRepository.GetVisitById(id);
         }
 
-        public int CountFacilities()
+        public int CountFacilities(long facilityId)
         {
-            return _visitRepository.CountFacilities();
+            return _visitRepository.CountFacilities(facilityId);
         }
 
         public int CountClients()
@@ -733,6 +733,40 @@ namespace DigitalEdge.Services
             return _visitRepository.TodaysClients();
         }
 
-        
+        public List<AppointmentsModel> GetAppointmentsByFacility(long facilityId)
+        {
+            List<AppointmentsModel> appointments = _visitRepository.GetAppointmentsByFacility(facilityId).ToList();
+            if (appointments == null)
+                return null;
+            return (appointments);
+        }
+
+        public int CountClientsInFacility(long facilityId)
+        {
+            return _visitRepository.CountClientsInFacility(facilityId);
+        }
+
+        public int CountAppointmentsInFacility(long facilityId)
+        {
+            return _visitRepository.CountAppointmentsInFacility(facilityId);
+        }
+
+        public List<FacilityModel> GetFacilities(long facilityId)
+        {
+            List<FacilityModel> facilities = _visitRepository.GetFacilities(facilityId).ToList();
+            if (facilities == null)
+                return null;
+            return (facilities);
+        }
+
+        public List<FacilityModel> GetFacilitiesInDistrict(long id)
+        {
+            List<FacilityModel> facilities = _visitRepository.GetFacilitiesInDistrict(id).ToList();
+
+            if (facilities == null)
+                return null;
+            return (facilities);
+            
+        }
     }
 }

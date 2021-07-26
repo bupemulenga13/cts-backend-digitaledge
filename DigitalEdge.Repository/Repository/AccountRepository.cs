@@ -208,7 +208,7 @@ namespace DigitalEdge.Repository
                                                          FacilityName = d.FacilityName,
                                                          FacilityId = d.FacilityId,
                                                          DistrictName = c.DistrictName,
-                                                         DistrictId = c.DistrictId.ToString(),
+                                                         DistrictId = c.DistrictId,
                                                          FacilityContactNumber = d.FacilityContactNumber,
                                                          ProvinceId = f.ProvinceId.ToString(),
                                                          ProvinceName = f.ProvinceName
@@ -249,6 +249,36 @@ namespace DigitalEdge.Repository
 
             this._viralLoadRepository.Insert(result);
             return "ok";
+        }
+
+        public int CountUsersInFacility(long facilityId)
+        {
+            var count = _DigitalEdgeContext.Users.Count(user => user.FacilityId == facilityId);
+
+            return count;
+        }
+
+        
+
+        public List<UserModel> GetUsersByFacility(long facilityId)
+        {
+            List<UserModel> users = (from p in _DigitalEdgeContext.Users
+                                     from c in _DigitalEdgeContext.UserRoles
+                                     where (p.FacilityId == facilityId &&  p.RoleId == c.RoleId)
+                                     select new UserModel
+                                     {
+                                         Id = p.Id,
+                                         FirstName = p.FirstName,
+                                         LastName = p.LastName,
+                                         Password = p.Password,
+                                         Email = p.Email,
+                                         FacilityId = p.FacilityId,
+                                         PhoneNo = p.PhoneNo,
+                                         IsDeleted = p.IsDeleted,
+                                         RoleName = c.RoleName,
+                                         RoleId = c.RoleId
+                                     }).ToList();
+            return users;
         }
     }
 }

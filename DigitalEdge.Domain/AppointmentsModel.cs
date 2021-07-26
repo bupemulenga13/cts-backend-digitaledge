@@ -104,7 +104,7 @@ namespace DigitalEdge.Domain
         public int AppointmentStatus { get; set; }
         public DateTime? InteractionDate { get; set; }  
         public long AppointmentId { get; }
-        public string Detail { get; set; }
+        public string Comment { get; set; }
         public DateTime GetCreatedDate()
         {
             return DateTime.Now;

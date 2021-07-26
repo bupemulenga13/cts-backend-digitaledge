@@ -12,10 +12,10 @@ namespace DigitalEdge.Repository
         public long ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]
         public virtual Province Provinces { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdited { get; set; }
-        public long EditedBy { get; set; }
-        public long CreatedBy { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdited { get; set; }
+        public long? EditedBy { get; set; }
+        public long? CreatedBy { get; set; }
 
      
 

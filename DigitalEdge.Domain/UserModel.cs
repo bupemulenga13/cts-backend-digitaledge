@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         public UserModel()
         {
         }
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long facilityId, string roleName)
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId, string roleName)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -31,7 +31,7 @@ namespace DigitalEdge.Domain
             this.IsDeleted = isDeleted;
 
         }
-        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long facilityId)
+        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId)
         {
             this.Id = id;
             this.Password = password;
@@ -55,7 +55,7 @@ namespace DigitalEdge.Domain
         public bool IsSuperAdmin { get; set; }
         public bool IsDeleted { get; set; }
 
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
 

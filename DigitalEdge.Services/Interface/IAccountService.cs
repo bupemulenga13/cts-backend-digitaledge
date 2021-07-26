@@ -5,7 +5,7 @@ namespace DigitalEdge.Services
 {
     public interface IAccountService
     {
-        List<UserModel> getData();
+        List<UserModel> GetData();  
         List<ClientModel> getClient();
         List<UserBindingModel> getFacilityData();
         List<ServicePointModel> getServiceData();
@@ -35,6 +35,7 @@ namespace DigitalEdge.Services
         int ActiveUsers();
 
         string AddViralLoad(ViralLoadModel viralLoadResult);
-
+        int CountUsersInFacility(long facilityId);
+        List<UserModel> GetUsersByFacility(long facilityId);
     }
 }

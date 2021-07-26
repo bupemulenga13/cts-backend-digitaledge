@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
         public Users()
         {
         }
-        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, long facilityId, long roleId, bool isDeleted, bool isActive, string phoneNo)
+        public Users(long id, string password, Boolean isSuperAdmin, string firstName, string lastName, string email, long? facilityId, long roleId, bool isDeleted, bool isActive, string phoneNo)
         {
             this.Id = id;
             this.Password = password;
@@ -26,15 +26,8 @@ namespace DigitalEdge.Repository
             this.IsActive = isActive;
             PhoneNo = phoneNo;
         }
-        public Users(string password, Boolean isSuperAdmin, string firstName, string email, long roleId)
-        {
-            this.Password = password;
-            this.IsSuperAdmin = isSuperAdmin;
-            this.FirstName = firstName;
-            this.Email = email;
-            this.RoleId = roleId;
-        }
-        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long facilityId, string phoneNo)
+       
+        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long? facilityId, string phoneNo)
         {   
             this.Id = id;
             this.FirstName = firstName;
@@ -78,10 +71,23 @@ namespace DigitalEdge.Repository
         public bool IsDeleted { get; set; }
         public bool IsActive { get; set; }
 
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]
         public virtual Facility Facilities { get; set; }
+
+        public long? DistrictId { get; set; }
+
+        [ForeignKey("DistrictId")]
+        public virtual District Districts { get; set; }
+
+        public long? ProvinceId { get; set; }
+
+
+        [ForeignKey("ProvinceId")]
+        public virtual Province Provinces { get; set; }
+
+
 
         public long RoleId { get; set; }
 

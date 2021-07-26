@@ -22,7 +22,7 @@ namespace DigitalEdge.Services
             _appSettings = appSettings.Value;
 
         }
-        public List<UserModel> getData()
+        public List<UserModel> GetData()
         {
             List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.FacilityId, x.RoleName)).ToList();
 
@@ -245,6 +245,21 @@ namespace DigitalEdge.Services
 
             return vlResult;
 
+        }
+
+        public int CountUsersInFacility(long facilityId)
+        {
+            return _accountRepository.CountUsersInFacility(facilityId);
+        }
+
+        public List<UserModel> GetUsersByFacility(long facilityId)
+        {
+            List<UserModel> users = _accountRepository.GetUsersByFacility(facilityId).ToList();
+
+            if (users == null)
+                return null;
+             return (users);
+                    
         }
     }
 }

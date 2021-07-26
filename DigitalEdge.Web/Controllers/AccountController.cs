@@ -121,7 +121,16 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult GetData()
         {
-            var user = _accountService.getData();
+            var user = _accountService.GetData();
+            return Ok(user);
+        }
+        
+        [HttpGet]
+        [Route("GetUsersByFacility/{facilityId}")]
+        [Authorize]
+        public ActionResult GetUsersByFacility(long facilityId)
+        {
+            var user = _accountService.GetUsersByFacility(facilityId);
             return Ok(user);
         }
 
@@ -287,6 +296,14 @@ namespace DigitalEdge.Web.Controllers
         public int CountUsers()
         {
             return _accountService.CountUsers();
+        }
+        
+        [HttpGet]
+        [Route("CountUsersInFacility")]
+        [Authorize]
+        public int CountUsersInFacility(long facilityId)
+        {
+            return _accountService.CountUsersInFacility(facilityId);
         }
 
         [HttpGet]

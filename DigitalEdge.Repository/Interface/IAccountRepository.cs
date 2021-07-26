@@ -36,5 +36,7 @@ namespace DigitalEdge.Repository
 
         int ActiveUsers();
         string AddVLResult(ViralLoad result);
+        int CountUsersInFacility(long facilityId);
+        List<UserModel> GetUsersByFacility(long facilityId);
     }
 }

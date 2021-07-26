@@ -66,7 +66,7 @@ namespace DigitalEdge.Repository
         Visit GetVisitById(long id);
         List<VisitsServiceModel> GetServiceTypes();
 
-        int CountFacilities();
+        int CountFacilities(long facilityId);
         int CountClients();
         int CountAppointments();      
 
@@ -74,6 +74,12 @@ namespace DigitalEdge.Repository
         int TodaysAppointments();
         int TodaysClients();
         List<ClientModel> GetClientsByFacility(long facilityId);
+        List<AppointmentsModel> GetAppointmentsByFacility(long facilityId);
+        long CountAppointmentsFacility(long facilityId);
+        int CountClientsInFacility(long facilityId);
+        int CountAppointmentsInFacility(long facilityId);
+        List<FacilityModel> GetFacilities(long facilityId);
+        List<FacilityModel> GetFacilitiesInDistrict(long id);
     }
 
 }

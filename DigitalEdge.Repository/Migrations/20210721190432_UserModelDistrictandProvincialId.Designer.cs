@@ -4,14 +4,16 @@ using DigitalEdge.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalEdge.Repository.Migrations
 {
     [DbContext(typeof(DigitalEdgeContext))]
-    partial class DigitalEdgeContextModelSnapshot : ModelSnapshot
+    [Migration("20210721190432_UserModelDistrictandProvincialId")]
+    partial class UserModelDistrictandProvincialId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

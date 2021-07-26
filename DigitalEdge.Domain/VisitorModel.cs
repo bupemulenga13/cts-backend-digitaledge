@@ -84,8 +84,13 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
-        
-        
+        public long DistrictId { get; set; }
+
+        public string DistrictName { get; set; }
+
+
+
+
         /*public string GetAddress()
         {
             

@@ -1,4 +1,5 @@
 ﻿
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -390,6 +391,9 @@ namespace DigitalEdge.Repository
         public List<ClientModel> GetClientsByFacility(long facilityId)
         {
             List<ClientModel> clientsInFacility = (from clients in _DigitalEdgeContext.Clients
+                                                   join facility in _DigitalEdgeContext.Facilities on clients.FacilityId equals facility.FacilityId
+                                                   join status in _DigitalEdgeContext.ClientStatuses on clients.ClientStatusId equals status.ClientStatusId
+                                                   join sex in _DigitalEdgeContext.Sexes on clients.SexId equals sex.SexId
                                                    where clients.FacilityId == facilityId
                                                    select new ClientModel
                                                    {
@@ -415,15 +419,19 @@ namespace DigitalEdge.Repository
                                                        ClientTypeId = clients.ClientTypeId,
                                                        ServicePointId = clients.ServicePointId,
                                                        LanguageId = clients.LanguageId,
-                                                       ClientStatusId = clients.ClientStatusId,
+                                                       ClientStatusId = clients.ClientStatusId,                                                      
                                                        StatusCommentId = clients.StatusCommentId,
                                                        SexId = clients.SexId,
                                                        ClientRelationship = clients.ClientRelationship,
                                                        EnrollmentType = clients.EnrollmentType,
                                                        AccessToPhone = clients.AccessToPhone,
                                                        HamornizedMobilePhone = clients.HamornizedMobilePhone,
-                                                       HarmonizedPhysicalAddress = clients.HarmonizedPhysicalAddress
-                                                   }
+                                                       HarmonizedPhysicalAddress = clients.HarmonizedPhysicalAddress,
+                                                       ClientStatus = status.ClientStatusName,
+                                                       ClientType = clients.ClientTypes.ClientTypeName,
+                                                       StatusComment = clients.StatusComments.StatusCommentName,
+                                                       Sex = sex.SexName,
+                                                       Facility = facility.FacilityName                                                   }
 
                 ).ToList();
 
@@ -446,7 +454,7 @@ namespace DigitalEdge.Repository
                                                         AppointmentDate = appointment.AppointmentDate,
                                                         AppointmentStatus = appointment.AppointmentStatus,
                                                         InteractionDate = appointment.InteractionDate,
-                                                        Detail = appointment.Comment,
+                                                        Comment = appointment.Comment,
                                                         FirstName = client.FirstName,
                                                         LastName = client.LastName,
                                                         ArtNo = client.ArtNo,
@@ -1750,9 +1758,9 @@ namespace DigitalEdge.Repository
             return visit;
         }
 
-        public int CountFacilities()
+        public int CountFacilities(long facilityId)
         {
-            var count = _DigitalEdgeContext.Facilities.Count();
+            var count = _DigitalEdgeContext.Facilities.Count(facility => facility.FacilityId == facilityId);
 
             return count;
         }
@@ -1782,7 +1790,7 @@ namespace DigitalEdge.Repository
         {
             DateTime today = DateTime.Now.Date;
 
-            var appointments = _DigitalEdgeContext.Appointments.Where(a => a.DateCreated >= today).Count();
+            var appointments = _DigitalEdgeContext.Appointments.Where(a => a.DateCreated == today).Count();
 
             return appointments;
         }
@@ -1791,11 +1799,104 @@ namespace DigitalEdge.Repository
         {
             DateTime today = DateTime.Now.Date;
 
-            var clients = _DigitalEdgeContext.Clients.Where(c => c.DateCreated >= today).Count();
+            var clients = _DigitalEdgeContext.Clients.Where(c => c.DateCreated == today).Count();
 
             return clients;
         }
 
-       
+        public List<AppointmentsModel> GetAppointmentsByFacility(long facilityId)
+        {
+            List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
+                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into dbClients
+                                                    from clientAppointments in dbClients.DefaultIfEmpty()
+                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId
+                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId
+                                                    where(appointment.FacilityId == facilityId)
+                                                    select new AppointmentsModel
+                                                    {
+                                                        Id = appointment.AppointmentId,
+                                                        ClientId = appointment.ClientId,
+                                                        FacilityId = appointment.FacilityId,
+                                                        ServiceTypeId = appointment.ServiceTypeId,
+                                                        AppointmentDate = appointment.AppointmentDate,
+                                                        AppointmentStatus = appointment.AppointmentStatus,
+                                                        InteractionDate = appointment.InteractionDate,
+                                                        Comment = appointment.Comment,
+                                                        FirstName  = appointment.ClientModel.FirstName,
+                                                        LastName = appointment.ClientModel.LastName,
+                                                        ArtNo = appointment.ClientModel.ArtNo,
+                                                        ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
+                                                        FacilityName = appointment.FacilityModel.FacilityName,
+                                                        AppointmentTime = appointment.AppointmentDate,
+                                                        ClientModel = new ClientModel { FirstName = clientAppointments.FirstName, LastName = clientAppointments.LastName, ArtNo = clientAppointments.ArtNo, ClientPhoneNo = clientAppointments.ClientPhoneNo },
+                                                        FacilityModel = new FacilityModel { FacilityId = facility.FacilityId, FacilityName = facility.FacilityName },
+                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeId = department.ServiceTypeId, ServiceTypeName = department.ServiceTypeName }
+                                                    }
+                                                   ).ToList();
+            return appointments;
+        }
+
+        public long CountAppointmentsFacility(long facilityId)
+        {
+            var count = _DigitalEdgeContext.Facilities.Count(facility => facility.FacilityId == facilityId);
+
+            return count;
+        }
+
+        public int CountClientsInFacility(long facilityId)
+        {
+            var count = _DigitalEdgeContext.Clients.Count(client => client.FacilityId == facilityId);
+
+            return count;
+        }
+
+        public int CountAppointmentsInFacility(long facilityId)
+        {
+            var count = _DigitalEdgeContext.Appointments.Count(appointment => appointment.FacilityId == facilityId);
+
+            return count;
+        }
+
+        public List<FacilityModel> GetFacilities(long facilityId)
+        {
+            List<FacilityModel> facilities = (from facility in _DigitalEdgeContext.Facilities
+                                              join facilityType in _DigitalEdgeContext.FacilityTypes on facility.FacilityTypeId equals facilityType.FacilityTypeId
+                                              where (facility.FacilityId == facilityId)
+                                              select new FacilityModel
+                                              {
+                                                  FacilityId = facility.FacilityId,
+                                                  FacilityName = facility.FacilityName,
+                                                  FacilityTypeId = facility.FacilityTypeId,
+                                                  FacilityContactNumber = facility.FacilityContactNumber,
+                                                  IsAvailable = facility.IsAvailable,
+                                                  FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
+                                                  Address = facility.Address
+                                              }
+                                              ).ToList();
+            return facilities;
+        }
+
+        public List<FacilityModel> GetFacilitiesInDistrict(long id)
+        {
+            List<FacilityModel> facilitiesInDistrict    = (from facility in _DigitalEdgeContext.Facilities
+                                                           join district in _DigitalEdgeContext.Districts on facility.DistrictId equals district.DistrictId
+                                                           join facilityType in _DigitalEdgeContext.FacilityTypes on facility.FacilityTypeId equals facilityType.FacilityTypeId
+                                                           where (facility.DistrictId == id)
+                                                            select new FacilityModel
+                                                            {
+                                                                FacilityId = facility.FacilityId,
+                                                                FacilityName = facility.FacilityName,
+                                                                FacilityTypeId = facility.FacilityTypeId,
+                                                                FacilityContactNumber = facility.FacilityContactNumber,
+                                                                IsAvailable = facility.IsAvailable,
+                                                                FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
+                                                                Address = facility.Address
+
+                                                            }).ToList();
+
+            return facilitiesInDistrict;
+        }
+
+        
     }
 }

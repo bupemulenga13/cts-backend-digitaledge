@@ -81,6 +81,16 @@ namespace DigitalEdge.Web.Controllers
             var appointments = _visitService.GetAppointments();
             return Ok(appointments);
         }
+
+        [HttpGet]
+        [Route("GetAppointments/{facilityId}")]
+        [Authorize]
+        public ActionResult GetAppointments(long facilityId)
+        {
+            var appointments = _visitService.GetAppointmentsByFacility(facilityId);
+
+            return Ok(appointments);
+        }
         [HttpPost]
         [Route("GetAppointmentsCheck")]
         [Authorize]
@@ -240,9 +250,9 @@ namespace DigitalEdge.Web.Controllers
         }
 
         [HttpGet]
-        [Route("GetClientsByFacility")]
+        [Route("GetClients/{facilityId}")]
         [Authorize]
-        public ActionResult GetClientsByFacility(long facilityId)   
+        public ActionResult GetClients(long facilityId)   
         {
             // We add method override to accept user with facility.
             // Method in service should host the parameters that are going to be needed
@@ -251,7 +261,6 @@ namespace DigitalEdge.Web.Controllers
 
             return Ok(clientsInFacility);
         }
-
 
 
         [HttpGet]
@@ -264,12 +273,23 @@ namespace DigitalEdge.Web.Controllers
             return Ok(clients);
         }
 
+
         [HttpGet]
         [Route("GetFacilities")]
         [Authorize]
         public ActionResult GetFacilities()
         {
             var facilities = _visitService.GetFacilities();
+
+            return Ok(facilities);
+        }
+        
+        [HttpGet]
+        [Route("GetFacilities/{facilityId}")]
+        [Authorize]
+        public ActionResult GetFacilities(long facilityId)
+        {
+            var facilities = _visitService.GetFacilities(facilityId);
 
             return Ok(facilities);
         }
@@ -345,6 +365,8 @@ namespace DigitalEdge.Web.Controllers
             return Ok(userfilter);
 
         }
+
+
         [HttpPost]
         [Route("ViewActiveClientFilter")]
         [Authorize]
@@ -353,6 +375,7 @@ namespace DigitalEdge.Web.Controllers
             var userfilter = _visitService.getActiveClientFilter(data);
             return Ok(userfilter);
         }
+        
         [HttpPost]
         [Route("ViewUpcommingAppointment")]
         [Authorize]
@@ -378,6 +401,8 @@ namespace DigitalEdge.Web.Controllers
             var user = _visitService.getClientVisitPastDetails();
             return Ok(user);
         }
+
+
         [HttpGet]
         [Route("SMSSendScheduler")]
         [AllowAnonymous]
@@ -386,6 +411,8 @@ namespace DigitalEdge.Web.Controllers
             var user = _smsSchedulerService.ClientsList();
             return Ok(user);
         }
+
+
         [HttpGet]
         [Route("ViewDetails/{id}")]
         [Authorize]
@@ -394,6 +421,8 @@ namespace DigitalEdge.Web.Controllers
             var user = _visitService.viewDetails(id);
             return Ok(user);
         }
+
+
         [HttpPost]
         [Route("SendReminder")]
         [Authorize]
@@ -406,6 +435,8 @@ namespace DigitalEdge.Web.Controllers
                 user = _visitService.smsRecords(appointmentsModel.VisitsId, false);
             return Ok(new ServiceResponse() { StatusCode = 200, Message = user });
         }
+
+
         [HttpGet]
         [Route("GetFacility")]
         [Authorize]
@@ -415,9 +446,6 @@ namespace DigitalEdge.Web.Controllers
         }
 
 
-
-
-
         [HttpGet]
         [Route("GetDistrict/{id}")]
         [Authorize]
@@ -425,6 +453,8 @@ namespace DigitalEdge.Web.Controllers
         {
             return Ok(_visitService.getDistrict(id));
         }
+
+
         [HttpGet]
         [Route("GetProvince")]
         [Authorize]
@@ -511,6 +541,14 @@ namespace DigitalEdge.Web.Controllers
         {
             return _visitService.CountClients();
         }
+        
+        [HttpGet]
+        [Route("CountClientsInFacility")]
+        public int CountClientsInFacility(long facilityId)
+        {
+            return _visitService.CountClientsInFacility(facilityId);
+        }
+        
 
         [HttpGet]
         [Route("CountAppointments")]
@@ -518,12 +556,20 @@ namespace DigitalEdge.Web.Controllers
         {
             return _visitService.CountAppointments();
         }
+        
+        [HttpGet]
+        [Route("CountAppointmentsInFacility")]
+        public int CountAppointmentsInFacility(long facilityId)
+        {
+            return _visitService.CountAppointmentsInFacility(facilityId);
+        }
+        
 
         [HttpGet]
         [Route("CountFacilities")]
-        public int CountFacilities()
+        public int CountFacilities(long facilityId)
         {
-            return _visitService.CountFacilities();
+            return _visitService.CountFacilities(facilityId);
         }
 
         [HttpGet]
@@ -545,6 +591,18 @@ namespace DigitalEdge.Web.Controllers
         public int TodaysAppoointments()
         {
             return _visitService.TodaysAppointments();
+        }
+
+        // User Access Methods
+
+        [HttpGet]
+        [Route("GetFacilitiesInDistrict/{id}")]
+        [Authorize]
+        public ActionResult GetFacilitiesInDistrict(long id)
+        {
+            var clients = _visitService.GetFacilitiesInDistrict(id);
+
+            return Ok(clients);
         }
     }
 }
