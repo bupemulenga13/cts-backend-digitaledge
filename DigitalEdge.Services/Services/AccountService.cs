@@ -24,7 +24,7 @@ namespace DigitalEdge.Services
         }
         public List<UserModel> GetData()
         {
-            List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.FacilityId, x.RoleName)).ToList();
+            List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.FacilityId, x.RoleName, x.ProvinceId, x.DistrictId)).ToList();
 
 
             if (users == null)
@@ -41,7 +41,7 @@ namespace DigitalEdge.Services
         public UserModel GetData(long id)
         {
             Users user = _accountRepository.GetData(id);
-            UserModel userModel = new UserModel(user.Id, user.Password, user.IsSuperAdmin.ToString(), user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.FacilityId);
+            UserModel userModel = new UserModel(user.Id, user.Password, user.IsSuperAdmin.ToString(), user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.ProvinceId, user.DistrictId, user.FacilityId);
             if (userModel == null)
                 return null;
             return (userModel);
@@ -61,7 +61,7 @@ namespace DigitalEdge.Services
             Users user = _accountRepository.GetLogin(email, password);
             if (user == null)
                 return null;
-            UserModel userModel = new UserModel(user.Id, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.FacilityId, "");
+            UserModel userModel = new UserModel(user.Id, user.FirstName, user.LastName, user.Email, user.PhoneNo, user.RoleId, user.IsDeleted, user.FacilityId, "", user.ProvinceId, user.DistrictId);
             return (userModel);
         }
         public ClientModel ValidateClient(RegistrationModel data)

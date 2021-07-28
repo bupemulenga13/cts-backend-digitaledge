@@ -49,7 +49,9 @@ namespace DigitalEdge.Repository
                                          PhoneNo = p.PhoneNo,
                                          IsDeleted = p.IsDeleted,
                                          RoleName = c.RoleName,
-                                         RoleId = c.RoleId
+                                         RoleId = c.RoleId,
+                                         ProvinceId = p.ProvinceId,
+                                         DistrictId = p.DistrictId
                                      }).ToList();
             return users;
         }

@@ -1699,7 +1699,7 @@ namespace DigitalEdge.Repository
                                 IsAvailable = facilities.IsAvailable,
                                 FacilityContactNumber = facilities.FacilityContactNumber,
                                 Address = facilities.Address,
-                                FacilityTypeModel = building
+                                FacilityTypeModel = building,
                             }
                             ).SingleOrDefault();
             return facility;
@@ -1870,7 +1870,8 @@ namespace DigitalEdge.Repository
                                                   FacilityContactNumber = facility.FacilityContactNumber,
                                                   IsAvailable = facility.IsAvailable,
                                                   FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
-                                                  Address = facility.Address
+                                                  Address = facility.Address,
+                                                  DistrictName = facility.Districts.DistrictName
                                               }
                                               ).ToList();
             return facilities;
@@ -1890,7 +1891,8 @@ namespace DigitalEdge.Repository
                                                                 FacilityContactNumber = facility.FacilityContactNumber,
                                                                 IsAvailable = facility.IsAvailable,
                                                                 FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
-                                                                Address = facility.Address
+                                                                Address = facility.Address,
+                                                                DistrictName = facility.Districts.DistrictName
 
                                                             }).ToList();
 
