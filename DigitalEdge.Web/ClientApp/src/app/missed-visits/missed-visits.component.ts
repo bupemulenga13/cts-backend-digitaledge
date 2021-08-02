@@ -47,7 +47,7 @@ export class MissedVisitsComponent implements OnInit {
         }.bind(this));
         this.allDates.forEach((date) => {
           let jsdate = new Date(date);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
           this.missedDates.push(jsdate.toLocaleDateString(undefined, options));
         })
         this.myChart = new Chart('canvas', {
@@ -120,7 +120,7 @@ export class MissedVisitsComponent implements OnInit {
         }.bind(this));
         this.allDates.forEach((date) => {
           let jsdate = new Date(date);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
           this.missedDates.push(jsdate.toLocaleDateString(undefined, options));
         })
         this.myChart.destroy();

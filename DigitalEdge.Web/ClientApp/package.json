@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration production",
     "build:ssr": "ng run DigitalEdge.Web:server:dev",
     "test": "ng test",
     "lint": "ng lint",

@@ -57,7 +57,7 @@ export class BUActiveClientsComponent implements OnInit {
         }.bind(this));
         this.clientPast_alldates.forEach((date) => {
           let jsdate = new Date(date);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
           this.clientPast_visitDate.push(jsdate.toLocaleDateString(undefined, options));
         })
         this.clientPastMyChart = new Chart('clientPastcanvas', {
@@ -153,8 +153,8 @@ export class BUActiveClientsComponent implements OnInit {
           this.clientPast_alldates.push(item.visitDate);
           }.bind(this));
         this.clientPast_alldates.forEach((date) => {
-            let jsdate = new Date(date);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          let jsdate = new Date(date);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
           this.clientPast_visitDate.push(jsdate.toLocaleDateString(undefined, options));
           })
         this.clientPastMyChart.destroy();
