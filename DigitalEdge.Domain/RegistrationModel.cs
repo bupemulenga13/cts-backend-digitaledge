@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿
+using System;
 
 namespace DigitalEdge.Domain
 {
@@ -18,38 +16,7 @@ namespace DigitalEdge.Domain
         public int? Age { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateEdit { get; set; }
-        public long CreatedBy { get; set; }
-        public string PhysicalAddress
-        {
-            get
-            {
-                if (Zone == null)
-                {
-                    return "*" + "," + Village + "," + HouseNo + "," + GISLocation;
-                }
-                else if (Village == null)
-                {
-                    return Zone + "," + "*" + "," + HouseNo + "," + GISLocation;
-                }
-                else if (HouseNo == null)
-                {
-                    return Zone + "," + Village + "," + "*" + "," + GISLocation;
-
-                }
-                else if (GISLocation == null)
-                {
-                    return Zone + "," + Village + "," + HouseNo + "," + "*";
-                }
-                else if (Zone == null && Village == null && HouseNo == null && GISLocation == null)
-                {
-                    return "*" + "," + "*" + "," + "*" + "," + "*";
-                }
-                else
-                {
-                    return Zone + "," + Village + "," + HouseNo + "," + GISLocation;
-                }
-            }
-        }
+        public long CreatedBy { get; set; }        
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
@@ -111,11 +78,12 @@ namespace DigitalEdge.Domain
 
         #region Method Extras
 
-        public DateTime GetCreatedDate()
+        public DateTime GetDateToday()
         {
-
             return DateTime.Now;
         }
+
+        
 
         public DateTime GetBirthDate()
         {

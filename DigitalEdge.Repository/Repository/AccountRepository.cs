@@ -37,6 +37,7 @@ namespace DigitalEdge.Repository
         {
             List<UserModel> users = (from p in _DigitalEdgeContext.Users
                                      from c in _DigitalEdgeContext.UserRoles
+                                     join province in _DigitalEdgeContext.Provinces on p.ProvinceId equals province.ProvinceId
                                      where p.RoleId == c.RoleId
                                      select new UserModel
                                      {

@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ServiceStack;
-using ServiceStack.Messaging;
 using DigitalEdge.Domain;
 using DigitalEdge.Repository;
 using MessageForSMS = DigitalEdge.Domain.Messages;

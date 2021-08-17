@@ -13,7 +13,7 @@ namespace DigitalEdge.Repository
         }
 
         //Add Appointment
-        public Appointment(long id, long clientId, long facilityId, long serviceTypeId, DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, int daysLate)
+        public Appointment(long id, long clientId, long facilityId, long serviceTypeId, DateTime appointmentDate, int appointmentStatus, string detail, DateTime dateCreated, int daysLate, long createdBy)
         {
             AppointmentId = id;
             ClientId = clientId;
@@ -24,10 +24,11 @@ namespace DigitalEdge.Repository
             Comment = detail;
             DateCreated = dateCreated;
             DaysLate = daysLate;
+            CreatedBy = createdBy;
         }
 
         //Edit Appointment
-        public Appointment(long id, long clientId , long facilityId, long serviceTypeId, DateTime appointmentDate, DateTime? appointmentDateFulfilled, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited)
+        public Appointment(long id, long clientId , long facilityId, long serviceTypeId, DateTime appointmentDate, DateTime? appointmentDateFulfilled, int appointmentStatus, string detail, DateTime dateCreated, DateTime dateEdited, long createdBy, long editedBy)
         {
             AppointmentId = id;
             ClientId = clientId;
@@ -39,6 +40,8 @@ namespace DigitalEdge.Repository
             Comment = detail;
             DateEdited = dateEdited;
             DateCreated = dateCreated;
+            CreatedBy = createdBy;
+            EditedBy = editedBy;
         }
                 
 

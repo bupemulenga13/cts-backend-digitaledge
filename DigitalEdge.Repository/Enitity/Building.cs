@@ -12,16 +12,8 @@ namespace DigitalEdge.Repository
         {
         }
 
-        public Facility(long facilityId, string facilityName, string facilityContactNumber, bool isAvailable, string address)
-        {
-            FacilityId = facilityId;
-            FacilityName = facilityName;
-            FacilityContactNumber = facilityContactNumber;
-            IsAvailable = isAvailable;
-            Address = address;
-        }
 
-        public Facility(long facilityId, string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address)
+        public Facility(long facilityId, string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address, DateTime dateCreated, long createdBy, long? districtId)
         {
             FacilityId = facilityId;
             FacilityName = facilityName;
@@ -29,17 +21,26 @@ namespace DigitalEdge.Repository
             FacilityTypeId = facilityTypeId;
             IsAvailable = isAvailable;
             Address = address;
+            DateCreated = dateCreated;
+            CreatedBy = createdBy;
+            DistrictId = districtId;
         }
 
-        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address)
+        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address, DateTime dateCreated, DateTime dateEdited, long? createdBy, long? editedBy)
         {
-            this.FacilityId = facilityId;
-            this.FacilityTypeId = facilityTypeId;
-            this.DistrictId = districtId;
-            this.FacilityName = facilityName;
-            this.FacilityContactNumber = facilityContactNumber;
-            this.IsAvailable = isAvailable;
-            this.Address = address;
+            Facility facility = this;
+            facility.FacilityId = facilityId;
+            facility.DistrictId = districtId;
+            facility.FacilityName = facilityName;
+            facility.FacilityContactNumber = facilityContactNumber;
+            facility.FacilityTypeId = facilityTypeId;
+            facility.IsAvailable = isAvailable;
+            facility.Address = address;
+            facility.DateCreated = dateCreated;
+            facility.DateEdited = dateEdited;
+            facility.CreatedBy = createdBy;
+            facility.EditedBy = editedBy;
+
 
         }
 
@@ -60,8 +61,8 @@ namespace DigitalEdge.Repository
 
         public DateTime DateCreated { get; set; }
         public DateTime DateEdited { get; set; }
-        public long EditedBy { get; set; }
-        public long CreatedBy { get; set; }
+        public long? EditedBy { get; set; }
+        public long? CreatedBy { get; set; }
         public bool IsAvailable { get; set; }
         public string Address { get; set; }
 

@@ -1,0 +1,2479 @@
+FacilityName,DistrictId,FacilityTypeId,ProvinceId
+Chamakubi Health Post,1,4,1
+Chibombo Rural Health Center,1,6,1
+Chikobo Rural Health Center,1,6,1
+Chikumbi ZNS Health Post,1,4,1
+Chipeso Rural Health Center,1,6,1
+Chisamba ZNS Rural Health Centre,1,6,1
+Chitanda Rural Health Center,1,6,1
+Golden Valley Rural Health,1,6,1
+Ipongo Rural Health Center,1,6,1
+Itumbwe Health Post,1,4,1
+Kabangalala Rural Health,1,6,1
+Kamaila Health Post,1,4,1
+Kanwanjiba Health Post,1,4,1
+Kapila Health Post,1,4,1
+Kapopo Health Post,1,4,1
+Kayosha Rural Health Center,1,6,1
+Keembe Rural Health Center,1,6,1
+Makoka Health Center,1,6,1
+Malambanyama Rural Health,1,6,1
+Mboshya Rural Health Center,1,6,1
+Mukasichimbwe Health Post,1,4,1
+Mungule Rural Health Center,1,6,1
+Muntemba Rural Health Center,1,6,1
+Musopelo Health Post,1,4,1
+Mwachisompola Demo Zone,1,6,1
+Mwachisompola Rural Health,1,4,1
+Mwanjuni Health Post,1,4,1
+Mwelebi Keembe Ranch Health Post,1,4,1
+Naluyanda Rural Health Center,1,6,1
+Namayani Health Post,1,4,1
+Shifwankula Health Post,1,4,1
+Shimukuni Rural Health Center,1,6,1
+Twalumba Rural Health Center,1,6,1
+Malundu Health Post,1,4,1
+Bombwe Health Post,2,4,1
+Bruneli Health Post,2,4,1
+Chikonkomene Health Post,2,4,1
+Chipembi Rural Health Center,2,6,1
+Chisamba Ranch Health Post,2,4,1
+Chisamba Rural Health Center,2,6,1
+Kachele Health Post,2,4,1
+Kanakantapa Rural Health,2,4,1
+Kaputi Health Post,2,4,1
+Kasosolo Health Post,2,4,1
+Lifwambula Health Post,2,4,1
+Liteta District Hospital,2,1,1
+Liteta HAHC,2,7,1
+Malombe Rural Health Center,2,6,1
+Momboshi Health Post,2,4,1
+Mulungushi Agro Rural Health,2,6,1
+Muswishi Rural Health Center,2,6,1
+Mwantaya Health Post,2,4,1
+Mwapula Health Post,2,4,1
+Chalilo Health Post,3,4,1
+Chipundu Health Post,3,4,1
+Chitambo District Hospital,3,1,1
+Chitambo HAHC,3,6,1
+Gibson Rural Health Center,3,6,1
+Kafinda Health Post,3,4,1
+Mapepala Rural Health Center,3,6,1
+Mpelembe Rural Health Center,3,6,1
+Muchinka Rural Health Center,3,6,1
+Mulaushi Health Post,3,4,1
+Nakatambo Health Post,3,4,1
+Yorum Mwanje Health Post,3,4,1
+Basanga Rural Health Center,4,6,1
+Bushinga Rural Health Center,4,6,1
+Buunga Health Post,4,4,1
+Itezhi-tezhi District Hospital,4,1,1
+Itumbi Health Post,4,4,1
+Kaanzwa Rural Health Center,4,6,1
+Lubanda Rural Health Center,4,6,1
+Luubwe Health Post,4,4,1
+Makuzu Health Post,4,4,1
+Masasabi Rural Health post,4,4,1
+Mbila Rural Health Center,4,6,1
+Mutende Health Post,4,4,1
+Muunga Rural Health Center,4,6,1
+Nansenga Rural Health Center,4,6,1
+Nanzhila Rural Health Center,4,6,1
+Ngoma Rural Health Center,4,6,1
+Masemu Rural Health Centre,4,6,1
+Brunelli Health Post,5,4,1
+Bwacha Urban Health Center,5,7,1
+Chankalamo Health Post,5,5,1
+Chililalila Health Post,5,4,1
+Chindwin Camp Urban Health,5,7,1
+Chitakata A Health Post,5,4,1
+Chitakata B Health Post,5,4,1
+Chowa Forest Health Post,5,4,1
+Chowa Urban Health Center,5,7,1
+Fibale Health Post,5,4,1
+Hamududu Health Post,5,4,1
+Kabwe General Hospital,5,2,1
+Kabwe Mine Hospital,5,2,1
+Kafulamase health post,5,4,1
+Kalima Health Post,5,4,1
+Kalwelwe Health Center,5,6,1
+Kamakuti Health Post,5,4,1
+Kang'omba Health Post,5,4,1
+Kasanda Urban Health Center,5,7,1
+Kasavasa Rural Health Center,5,6,1
+Katondo Urban HC,5,7,1
+Kawama Urban Health Center,5,7,1
+Lukanga Home Based Care,5,5,1
+Mahatma Gandhi Urban Health,5,7,1
+Makululu Urban Health Center,5,7,1
+Makupu A Health Post,5,4,1
+Makupu B Health Post,5,4,1
+Mpima Correctional Urban Health,5,7,1
+Mpima Diary Urban Health,5,7,1
+Mukobeko Maximum Prison HC,5,7,1
+Mukobeko Medium Prison,5,7,1
+Mukobeko Township Urban,5,7,1
+Munga Health Post,5,5,1
+Munyama health post (kabwe),5,4,1
+Nakoli Urban Health Center,5,7,1
+Natuseko Urban Health Center,5,7,1
+Ngungu Urban Health Center,5,7,1
+Nkhruma Teachers College,5,5,1
+Police Urban Health Center,5,7,1
+Pollen Urban Health Center,5,7,1
+Railway Surgery Urban HC,5,7,1
+ZAF Kabwe Urban Health,5,7,1
+ZNS Kabwe Urban Health,5,7,1
+Chambulumina Rural Health Post,6,4,1
+Chankomo Rural Health Center,6,6,1
+Chapusha Health Post,6,4,1
+Chawama Rural Health Center,6,6,1
+Chibwe Rural Health Center,6,6,1
+Chilumba Rural Health Center,6,6,1
+Chipepo Rural Health Center,6,6,1
+Chishinka Rural Health Center,6,6,1
+Chitaba Rural Health Center,6,6,1
+Kafinda Health Post,6,4,1
+Kakulu Rural Health Center,6,6,1
+Kampumba Rural Health Center,6,6,1
+Kapiri Mposhi District Hospital,6,1,1
+Kapiri Mposhi Urban Clinic,6,7,1
+Kaswende Health Post,6,4,1
+Kawama Health Center,6,5,1
+Likumbi Health Post,6,4,1
+Luanshimba Rural Health,6,4,1
+Lukomba Health Center,6,4,1
+Lunchu B Rural Health Center,6,6,1
+Lunsemfwa Rural Health Center,6,6,1
+Mpunde Mission Rural Health,6,4,1
+Mukonchi Rural Health Center,6,6,1
+Mulungshi University Clinic,6,7,1
+Mulungushi Rural Health Center,6,6,1
+Mutaba Urban Center,6,7,1
+Ndeke UrbanHealth Center,6,7,1
+Nkole Rural Health Center,6,6,1
+St. Pauls Rural Health Center,6,6,1
+Tazara Urban Health Centre,6,7,1
+Waya Rural Health Center,6,6,1
+Chembe Health Post,7,4,1
+Chikupili Rural Health Center,7,6,1
+Chingombe Rural Health Center,7,6,1
+Kampelembe Rural Health,7,4,1
+Kandula Rural Health Center,7,6,1
+Kanyensha Health Post,7,4,1
+Mboroma Health Center,7,6,1
+Mboshya Health Post,7,4,1
+Mkushi Coppermine Health Center,7,4,1
+Old Mkushi Rural Health Center,7,6,1
+Tuyu Health Post,7,4,1
+Chalata Rural Health Center,8,6,1
+Changilo Health Post,8,4,1
+Chengelo Rural Health Post,8,4,1
+Chibefwe Rural Health Center,8,6,1
+Chisanga Health Post,8,4,1
+Chitina Health Post,8,4,1
+Fiwila Rural Health Center,8,6,1
+Kabengeshi Health Post,8,4,1
+Kakushi Health Post,8,4,1
+Kangalati Health Post,8,4,1
+Kasalamakanga Health Post,8,4,1
+kasokota Health post,8,4,1
+Katuba Health Post,8,4,1
+Lilanda Health Post,8,4,1
+Luanshimba ZNS Rural Health Post,8,4,1
+Malubila Health Post,8,4,1
+Masansa Rural Health Center,8,6,1
+Matuku Health Post,8,4,1
+Mikunku Health Post,8,4,1
+Miloso Health Post,8,4,1
+Mkushi District Hospital,8,1,1
+Momboshi Health Post,8,4,1
+Mulundu Health Post,8,4,1
+Mulungwe Health Center,8,4,1
+Munsakamba ZNS Camp Health Post,8,4,1
+Musofu Rural Health Center,8,6,1
+Mutende Health Centre,8,7,1
+Nambo Health Post,8,4,1
+Nkolonga Farm Clinic,8,4,1
+Nkolonga Health Post,8,4,1
+Nkumbi Rural Health Center,8,6,1
+Nshinso Rural Health Center,8,6,1
+Nyenje Health Post,8,4,1
+Shaibila Health Post,8,4,1
+Twatasha Health Post,8,4,1
+Upper Lusemfwa Health Post,8,4,1
+Tazara Health Post,8,5,1
+Bulungu (mumbwa) Urban Health Center,9,7,1
+Chiwena Rural Health Center,9,6,1
+Kabwanga Rural Health Center,9,6,1
+Kafwikamo Health Post,9,4,1
+Kalenda ZNS Rural Health,9,6,1
+Kashinka health Post,9,4,1
+Keezwa Rural Health Center,9,6,1
+Luili Rural Health Center,9,6,1
+Lungobe Rural Health Center,9,6,1
+Lutale Rural Health Center,9,6,1
+Maimwene Health Post,9,4,1
+Mpusu Health Post,9,4,1
+Muchabi Rural Health Center,9,6,1
+Mumbwa District Hospital,9,1,1
+Myooye Rural Health Center,9,6,1
+Nakanjoli Rural Health Center,9,6,1
+Nalubanda Rural Health Center,9,6,1
+Nalusanga Health Post,9,4,1
+Naluvwi Health Post,9,4,1
+Namabanga Rural Health Center,9,6,1
+Nambala Rural Health Center,9,6,1
+Nangoma Mission Hospital,9,1,1
+Prisons Health Post,9,5,1
+Shimbizhi Health Post,9,4,1
+ZAF Mumbwa Rural Health Center,9,6,1
+Mulungushi RHC,9,6,1
+Chibale Rural Health Center,11,6,1
+Chibobo Rural Health Center,11,6,1
+Chisomo Rural Health Center,11,6,1
+Kabamba Rural Health Center,11,6,1
+Kabundi Rural Health Center,11,6,1
+Kalela Health Post,11,4,1
+Kanona Health Post,11,4,1
+Kaseba Health Post,11,4,1
+Kunda Lumwansha Health Post,11,4,1
+Lumpampa Rural Health Center,11,6,1
+Lusiwasi Health Post,11,4,1
+Lusiwasi Zesco Staff Clinic,11,6,1
+Mailo Rural Health Center,11,6,1
+Malcom Moffat Rural Health,11,4,1
+Masase Health Post,11,4,1
+Miswema Health Post,11,4,1
+Mpepetwe (Mecco) Rural Health,11,6,1
+Mulilima Rural Health Center,11,6,1
+Muzamani Health Post,11,4,1
+Nchimishi Rural Health Center,11,6,1
+Serenje District Hospital,11,1,1
+Serenje Hospital HAHC,11,7,1
+Serenje urban clinic,11,7,1
+Sote Health Post,11,4,1
+Zambia Compound Health Post,11,4,1
+Ngabwe Health Centre,10,6,1
+Mumbachala Health Centre,10,6,1
+Chilwa Island Health Centre,10,6,1
+Nsengwa Health Post,10,4,1
+Mukubwe Health Centre,10,6,1
+Chimfunshi Rural Health Center,13,6,2
+Fitobaula Health Post,13,4,2
+Kakoso Urban Health Center,13,7,2
+Kasumbalesa Urban Health Center,13,7,2
+Kawama Health Post,13,5,2
+konkola Health Post,13,4,2
+Chililabombwe District Hospital,13,1,2
+Lubengele Urban Health Center,13,7,2
+Chawama Urban Health Center,14,7,2
+Chingola Council Urban Health,14,7,2
+Chiwempala Urban Health,14,7,2
+Ipafu Rural Health Center,14,6,2
+Iseni,14,7,2
+Kabundi East Urban Health,14,7,2
+Kalilo Rural Health Center,14,6,2
+Kasompe Urban Health Center,14,7,2
+Katuba Health Post,14,4,2
+Luano kapisha Clinic,14,7,2
+Lulamba HP,14,5,2
+Lushishi Health Post,14,4,2
+Muchinshi Rural Health Center,14,6,2
+Musenga Health Post,14,4,2
+Mutenda Rural Health Center,14,6,2
+Nchanga North General Hospital,14,2,2
+Shimulala Health Post,14,4,2
+Kawama RHP,14,4,2
+Prisons Clinic,14,5,2
+Dental Clinic,14,7,2
+Chambishi GRZ Clinic,15,7,2
+Chati Rural Health Center,15,6,2
+Chembe Health Post,15,4,2
+Chibote Health Post,15,5,2
+Chibuluma Urban Health Center,15,7,2
+Chiwembashi Health Post,15,4,2
+Denovan Health Post,15,4,2
+Fitanda Health Post,15,4,2
+Ichimpe rural Health Center,15,6,2
+Kalengwa South Health Post,15,5,2
+Kalulushi General Hospital,15,2,2
+Kalulushi GRZ Health Center,15,7,2
+Kalulushi Main Urban Health Center,15,7,2
+Kalulushi Township Urban,15,7,2
+Kite Rural Health Center,15,6,2
+Lukoshi Rural Health Center,15,6,2
+Mindolo Training Farms Health Post,15,4,2
+Minsenga Health Post,15,4,2
+Musakashi Health Post,15,4,2
+Sitwe Health post,15,4,2
+Twaiteka Health Center,15,4,2
+Buchi Main Urban Health,16,7,2
+Buchi Small Chest Urban Health,16,7,2
+Bulangililo Urban Health Center,16,7,2
+Chamboli GRZ Urban Health,16,7,2
+Chavuma Clinic (UHC),16,7,2
+Chilobwe Rural Health Center,16,6,2
+Chiminwa Health Post,16,4,2
+Chimwemwe Urban Health,16,7,2
+Community Development College Clinic,16,5,2
+Cosetco Health Post,16,4,2
+East of garnaton health post,16,5,2
+Garnatone Urban Health Center,16,7,2
+Ipusukilo Urban Health Center,16,7,2
+Itimpi Urban Health Center,16,7,2
+kakolo RHC,16,6,2
+Kamakonde Rural Health,16,7,2
+Kamfinsa Urban Health Center,16,7,2
+Kamitondo Urban Health Center,16,7,2
+Kawama Kitwe Urban Health Center,16,7,2
+Kitwe College of education Health post,16,5,2
+Kitwe District Police Clinic,16,6,2
+Kitwe Teaching Hospital,16,3,2
+Kwacha Urban Health Center,16,7,2
+Luangwa Urban Health Center,16,7,2
+Luongo Health Post,16,4,2
+Mawlaick ZCCF Kitwe Camp Clinic,16,5,2
+Mindolo 1 Urban Health Center,16,7,2
+Misaka Health Post,16,4,2
+Miseshi Urban Health Center,16,7,2
+Mulenga Urban Health Center,16,7,2
+Mwaiseni Urban Health Center,16,7,2
+Mwekera Urban Health Center,16,7,2
+Ndeke Urban Health Center,16,7,2
+Ndeke Village Hospital,16,7,2
+Nkana East Urban Health Center,16,7,2
+Riverside Urban Health Center,16,7,2
+Twatasha Urban Health Center,16,7,2
+Wusakile GRZ Urban Health Center,16,7,2
+Zamtan Urban Health Center,16,7,2
+ZNS Kitwe Camp Clinic,16,6,2
+Kamfinsa prison clinic,16,4,2
+Allessandros Urban Health,17,7,2
+Chaisa Urban Health Center,17,7,2
+Chilabula Urban Health Center,17,7,2
+Fisenge Urban Health Center,17,7,2
+Franco Urban Health Center,17,7,2
+Kafubu Block Urban Health,17,7,2
+Kampelembe Health Post,17,4,2
+Kapenda Health Post,17,4,2
+Kapupulu Chawama Health Post,17,4,2
+Kasongo Health Post,17,4,2
+Kawama Urban Health Center,17,7,2
+Main Urban Health Center,17,7,2
+Malaika Clinic,17,7,2
+Mansansa Health Post,17,4,2
+Maposa Health Post,17,4,2
+Mikomfwa Health Center,17,7,2
+Mikomfwa Urban Clinic,17,7,2
+Mpatamato Section 26 Urban,17,7,2
+New Town Clinic,17,7,2
+Nkulumashiba Health Post,17,4,2
+Poleline HP Luanshya,17,5,2
+Roan Antelope Referral Hospital,17,2,2
+Roan Section 25 Health Center,17,7,2
+Thomson District Hospital,17,1,2
+TVTC Urban Health Center,17,7,2
+Kapupulu RHC,17,6,2
+Bulaya Rural Health Center,18,6,2
+Chantete Rural Health Post,18,4,2
+Chikabuke Health Center,18,6,2
+Chinemu Rural Health Center,18,6,2
+Fungulwe Rural Health Center,18,6,2
+Kamakanga H Post,18,4,2
+Kansanta Health Post,18,4,2
+Kansoka Health Post,18,4,2
+Kapilamikwa Health Post,18,4,2
+Lufwanyama District Hospital,18,1,2
+Lumpuma Rural Health Center,18,6,2
+Lumwana Health Post,18,4,2
+Mbalango Health Post,18,4,2
+Mibenge Health Post,18,4,2
+Mibila Health Post,18,4,2
+Milopa Health Post,18,4,2
+Mukumbo Rural Health Center,18,6,2
+Mukutuma Rural Health Center,18,6,2
+Mushingashi Rural HC,18,6,2
+Nkana Rural Health Center,18,6,2
+Shimukunami Rural Health,18,6,2
+St. Josephs Mission Rural Health,18,6,2
+St. Mary's Rural Health Center,18,6,2
+Kashininkisha Health post,18,4,2
+Bangwe Health Post,19,4,2
+Chikumbi Rural Health Center,19,6,2
+Chilese Rural Health Center,19,6,2
+Chinondo Rural Health Center,19,6,2
+Chiwala Health Post,19,4,2
+Chondwe Rural Post,19,4,2
+Fiwale Rural Health Center,19,6,2
+Kafulafuta GRZ Rural Health,19,6,2
+Kafulafuta Mission Rural Health,19,6,2
+Kaloko Rural Health Center,19,6,2
+Kambowa Rural Health Center,19,6,2
+Kamifungo Health Post,19,4,2
+Kashitu Rural Health Center,19,6,2
+Katonto Health Post,19,4,2
+Lupiya Health Post,19,4,2
+Masaiti Boma Clinic,19,6,2
+Masaiti Council Clinic,19,6,2
+Masaiti District Hospital,19,1,2
+Matipa Health Post,19,4,2
+Michinka Health Post,19,4,2
+Miengwe Rural Health Center,19,6,2
+Miputu Health Post,19,4,2
+Mishikishi Rural Health Center,19,6,2
+Mukolwe Health Post,19,4,2
+Mupapa Rural Health Center,19,6,2
+Mutaba Rural Health Center,19,6,2
+Njelemani Rural Health Center,19,6,2
+Silangwa Health Post,19,4,2
+Eden Health Post,19,4,2
+Masaiti Boarding Health Post,19,4,2
+Lumano Health Post,19,4,2
+Butikili Health Post,20,4,2
+Chibuli Health Center,20,4,2
+Chisanga Health Post,20,4,2
+Chisapa Health Post,20,4,2
+Ipumbu Rural Health Center,20,6,2
+Intanda Health Post,20,4,2
+Kalweo Rural Health Center,20,6,2
+Kanyenda Rural Health Center,20,6,2
+Kasamba Rural Health Center,20,6,2
+Luamambwe Health post,20,5,2
+Luankuni Health Post,20,4,2
+Luswishi Health Post,20,4,2
+Lyobeka Health Post,20,4,2
+Machiya Rural Health Center,20,6,2
+Mfulabunga Health Post,20,4,2
+Mikata Rural Health Center,20,6,2
+Muchindushi Health Post,20,4,2
+Mushipashi Health Post,20,4,2
+Mushiwe Health Post,20,4,2
+Mwinuna Rural Health Center,20,6,2
+St. Anthony Rural Health Center,20,6,2
+Mpongwe Mission Hospital,20,1,2
+St. Theresa Mission Hospital,20,1,2
+14 Miles Health Post,21,4,2
+Buteko Urban Health Center,21,7,2
+Butondo Urban Health Center,21,7,2
+Chibolya Urban HC,21,7,2
+Clinic 1 Urban Health Center,21,7,2
+Clinic 3 Urban Health Center,21,7,2
+Clinic 5 Urban Health Center,21,7,2
+Kafironda Health Post,21,4,2
+Kamuchanga District Hospital HAHC,21,1,2
+Kamuchanga Urban Health Center,21,7,2
+Kansuswa Urban Health Center,21,7,2
+Kawama West Health Post,21,5,2
+Luansobe Rural Health Center,21,6,2
+Mokambo Rural Health Center,21,6,2
+Mufulira Prisons Urban Health,21,7,2
+Mufulira T. College Urban,21,7,2
+Mupena Health Post,21,4,2
+Murundu Rural Health Center,21,6,2
+Mutundu Rural Health Center,21,6,2
+Ronald Ross General Hospital,21,2,2
+Taungn/aup Army Urban Health,21,7,2
+Twatasha Urban Health Center,21,7,2
+Mupena Health Post,21,5,2
+21 Miles Health Post,22,4,2
+Arthur Davison Hospital,22,2,2
+Chipokota Mayamba Urban,22,7,2
+Commando Unit UHC Ndola,22,7,2
+Dagn/ahammerskjoeld health post,22,4,2
+Dola Hill Urban Health Center,22,7,2
+Itawa Health Center,22,6,2
+Kabushi Urban Health Center,22,7,2
+Kalewa Barracks Urban Health,22,1,2
+Kaloko Urban Health Center,22,7,2
+Kamensopanshi Health Post,22,5,2
+Kaniki Urban Health Center,22,7,2
+Kansenshi Prisons Urban Health,22,7,2
+Katondo Urban Health Center,22,7,2
+Kawama Urban Health Center,22,7,2
+Lubuto Urban Health Center,22,7,2
+Madando Health Post,22,4,2
+Mahatma Gandhi Clinic,22,7,2
+Masala Main Urban Health,22,7,2
+Masala New,22,5,2
+Misaka Health Post,22,4,2
+Mushili Urban Health Center,22,7,2
+Ndeke Urban Health Center,22,7,2
+Ndola Teaching Hospital,22,3,2
+Nkwazi Urban Health Center,22,7,2
+Northern Command Military,22,2,2
+Peter Singogo Police Urban,22,7,2
+Railway Surgery Urban Health,22,7,2
+Roma Health Post,22,4,2
+Sathya Sai Urban Health,22,7,2
+St. Dominics Mission (Kavu)Hospital,22,1,2
+Tugn/aArgan Urban Health Center,22,7,2
+Twapia Urban Health Center,22,7,2
+New Mushili HC,22,7,2
+Chipokota 2 HP,22,4,2
+Ndola Girls RHC,22,6,2
+Bwanunkha Rural Health Center,23,6,3
+Chadiza District Hospital,23,1,3
+Chadiza Urban Health Center,23,7,3
+Chamandala Health Post,23,4,3
+Chanida Boarder Health Post,23,4,3
+Chanida Rural Health Center,23,6,3
+Chanjowe Health Post,23,4,3
+Chilenga Health Post,23,4,3
+John Farms Rural Health Center,23,6,3
+Kabvumo Community Health,23,4,3
+Kapilipika Health Post,23,4,3
+Madzaela Health Post,23,4,3
+Miti Rural Health Center,23,6,3
+Mkumbuzi Rural Health Center,23,6,3
+msokosela Health Post,23,4,3
+Mutaya Health Post,23,4,3
+Naviluli Health Post,23,4,3
+Nsadzu Mental Rehabilitation,23,6,3
+Nsadzu Rural Health Center,23,6,3
+Sinalo Health Post,23,4,3
+Tafelansoni Rural Health Center,23,6,3
+Zemba Rural Health Center,23,6,3
+Zingalume Health Post,23,4,3
+Chakoloma Health Post,26,4,3
+Chamoto Health Post,26,4,3
+Champhande Rural Health,26,6,3
+Chanyumbu Health Post,26,4,3
+Chest Clinic,26,7,3
+Chikando Rural Health Center,26,6,3
+Chikungu Health Post,26,4,3
+Chinjala Health Post,26,4,3
+Chinunda Rural Health Center,26,6,3
+Chinyaku Health Post,26,4,3
+Chipangali Rural Health Center,26,6,3
+Chiparamba Rural Health,26,6,3
+Chipata Central Hospital,26,3,3
+Chipata District Hospital,26,1,3
+Chipata UHC/Chipata OPD,26,7,3
+Chipungo Rural Health Center,26,6,3
+CHISWA Health Post,26,4,3
+Chiwoko Rural Health Center,26,6,3
+Chizenje Rural Health Center,26,6,3
+Dambe hp,26,4,3
+Dwankhonzi hp,26,4,3
+Eastern Commando,26,5,3
+Feni Health Post,26,4,3
+Gondar Camp Barracks 4ZR,26,2,3
+Jerusalem Rural Health Center,26,6,3
+Kadama Health Post,26,4,3
+Kamboma Health Post,26,4,3
+Kamulaza Rural Health Center,26,6,3
+Kapara Rural Health Center,26,6,3
+Kapata Urban Health Center,26,7,3
+Kasenengwa Rural Health,26,6,3
+Kasenga Rural Health Center,26,6,3
+Katambo Health Post,26,4,3
+Katandala Rural Health Center,26,6,3
+Katondo Health Post,26,4,3
+Kayeka Health Post,26,4,3
+Kwenje Rural Health Center,26,6,3
+Lunkhwakwa Urban Health,26,6,3
+Madziatuwa Rural Health,26,6,3
+Madzimawe Rural Health,26,6,3
+Madzimoyo Rural Health Center,26,6,3
+Mafuta Rural Health Center,26,6,3
+Magwero Rural Health Center,26,6,3
+Makungwa Health Post,26,4,3
+Makwe Health Post,26,4,3
+Mbenjere Health Post,26,4,3
+Mchini Health Post,26,4,3
+Mkanda Rural Health Center,26,6,3
+Mlanga Rural Health Center,26,6,3
+Mnduwi,26,4,3
+Mnoro Rural Health Center,26,6,3
+Mnukwa Rural Health Center,26,6,3
+Msekera Rural Health Center,26,6,3
+Mshawa Rural Health Center,26,6,3
+Muzeyi Rural Health Center,26,6,3
+Mwami Mission HAHC,26,6,3
+Mwami Mission Hospital,26,1,3
+Mwasauka Health Post,26,4,3
+Mwita Health Post,26,4,3
+Namseche Urban Health Center,26,7,3
+Rukuzye Rural Health Center,26,6,3
+Samuel Rural Health Center,26,6,3
+SOS Chipata Medical Centre,26,7,3
+St.Benedict Health Post,26,4,3
+Tamanda Rural Health Center,26,6,3
+Vizenge Rural Health Center,26,6,3
+Walela Health Post,26,5,3
+Chibolya Rural Health Centre,28,6,3
+Chimtende Rural Health Center,28,6,3
+Chindwale HP,28,4,3
+Chinkhombe Rural Health,28,6,3
+Kafumbwe Rural Health Center,28,6,3
+Kafunkha Health Post,28,4,3
+Kagoro Rural Health Center,28,6,3
+Kakula Health Post,28,4,3
+Kalimeta Health Post,28,4,3
+Kamiza Rural Health Center,28,6,3
+Kamphambe Rural Health,28,6,3
+Kani Health Post,28,4,3
+Katete Boma Health Center,28,6,3
+Katiula Health Post,28,4,3
+Kawaza Health Post,28,4,3
+Kwenje Health Post,28,4,3
+Lukweta Health Post,28,4,3
+Lunga Health Post,28,4,3
+Magobo Health Post,28,4,3
+Makwenda Health Post,28,4,3
+Matunga Health Post,28,4,3
+Mbinga Health Post,28,4,3
+Mindola Rural Health Center,28,6,3
+Mnthipa Health Post,28,4,3
+Mphangwe Rural Health Center,28,6,3
+Mtetezi-ZNS RHC,28,6,3
+Mwandafisi Health Post,28,4,3
+Mzime Health Post,28,4,3
+Mzuza Health Post,28,4,3
+Network of Zambia People,28,5,3
+Nyembe Rural Health Center,28,6,3
+St. Francis Mission Hospital,28,7,3
+Umodzi Health Post,28,4,3
+Undi Rural Health Center,28,6,3
+Vulamkoko Rural Health Center,28,6,3
+Boyole Health Post,30,4,3
+Chanyalubwe Health Post,30,4,3
+Chasefu Rural Health Center,30,6,3
+Chasera Health Post,30,4,3
+Chijemu Health Post,30,4,3
+Chikomeni Rural Health Center,30,6,3
+Chitungulu Rural Health Center,30,6,3
+Egichikeni Rural Health Centre,30,6,3
+Hoya Health Post,30,4,3
+Kakumba Health Post,30,5,3
+Kamilenje Health Post,30,4,3
+Kamsaro Health Post,30,4,3
+Kanyanga Mission Health,30,6,3
+Kapichila Rural Health Center,30,6,3
+Kapongolo Health Post,30,4,3
+Katube Health Post,30,4,3
+Khuli-Khuli CHP,30,4,3
+Lukwizizi Health Post,30,4,3
+Lumezi HAHC,30,7,3
+Lumezi Mission Hospital,30,1,3
+Lundazi District Hospital,30,1,3
+Lundazi urban clinic,30,7,3
+Lunzi Rural Health Center,30,6,3
+Lusuntha Rural Health Center,30,6,3
+Malandula Rural Health Center,30,6,3
+Mankhaka Health Post,30,4,3
+Manyi Health Post,30,4,3
+Mkasanga Health Post,30,4,3
+Mkomba Health Post,30,4,3
+Mtwalo Rural Health Center,30,6,3
+Mucheleka Health Post,30,4,3
+Munyukwa Rural Health Center,30,6,3
+Mwanya Rural Health Center,30,6,3
+Mwase Lundazi Zonal Rural,30,6,3
+Mwase Mphangwe Zonal Rural,30,6,3
+Mwase-Mphangwe Schemes,30,6,3
+Mwimba Health Post,30,4,3
+Ndaiwala Rural Health Center,30,6,3
+Ng'onga Rural Health Center,30,6,3
+Njoka Health Post,30,4,3
+Nkhanga Rural Health Center,30,6,3
+Nkhanyu Health Post,30,4,3
+Nthitimila Health Post,30,4,3
+Nyangwe Rural Health Center,30,6,3
+Phikamalaza Rural Health,30,6,3
+Thandizane Health centre,30,7,3
+Umi Health Post,30,4,3
+ZASP Health Post,30,4,3
+Zokwe Rural Health Center,30,6,3
+Zumwanda RHC,30,6,3
+Chikowa Rural Health Center,32,6,3
+Chilanga Health Post,32,4,3
+Chisengu Health Post,32,4,3
+Chiwawatala Rural Health Centre,32,6,3
+Jumbe Clinic,32,7,3
+Just Africa Dental Clinic,32,4,3
+Kakumbi Rural Health Center,32,6,3
+Kamoto HAHC,32,6,3
+Kamoto Mission Hospital,32,1,3
+Kapole Rural Health Post,32,4,3
+Kasamanda Rural Health,32,6,3
+Malama Rural Health Center,32,6,3
+Masumba Rural Health Center,32,6,3
+Mfuwe Airport Clinic,32,6,3
+Mpomwa Rural Health Center,32,6,3
+Ncheka Health Post,32,4,3
+Nsefu Rural Health Center,32,6,3
+Nyakatokori Health Post,32,4,3
+Nyamaluma Rural Health Post,32,4,3
+St. Luke /Msoro Rural Health,32,6,3
+Chamubobo Health Post,32,4,3
+Kamubaba Health Post,32,4,3
+Lusandwa South Health Post,32,4,3
+Chalubilo Rural Health Center,33,6,3
+Chifukuzi Health Post,33,4,3
+Chimphanje Health Post,33,4,3
+Chinambi Rural Health Center,33,6,3
+Chinsimbwe Rural Health,33,6,3
+Chipembe Rural Health Center,33,6,3
+Hofmeyr Rural Health Center,33,6,3
+Kacholola Rural Health Center,33,6,3
+Kalingindi Health Post,33,4,3
+Luembe Rural Health Center,33,6,3
+Mkopeka Rural Health Center,33,6,3
+Msima Health Post,33,4,3
+Mtilizi Health Post,33,4,3
+Mtilizi Rural Health Center,33,6,3
+Mwape Rural Health Center,33,6,3
+Ndake Rural Health Post,33,4,3
+Nyalugwe Rural Health Center,33,6,3
+Nyimba District Hospital,33,1,3
+Nyimba Urban Health Centre,33,7,3
+Nyimba-ZNS,33,6,3
+St. Joseph's Health Centre,33,6,3
+Chaka Rural Health Center,34,6,3
+Chibale Health Post,34,4,3
+Chikowa Rural Health Center,34,6,3
+Chikuse Rural Health Center,34,6,3
+Chipungu Rural Health Center,34,6,3
+Chisenjere Rural Health Center,34,6,3
+Chisonso Health Post,34,4,3
+Kakwiya Rural Health Center,34,6,3
+Kalindawalo Rural Health,34,6,3
+Kamvumbe Health Post,34,4,3
+Kaselo health Post,34,4,3
+Luamphaande Rural Health,34,6,3
+Makale Health Post,34,4,3
+Mankhungwe Health Post,34,4,3
+Manyane Rural Health Center,34,6,3
+Matonga Health Post,34,4,3
+Matonje Health Post,34,4,3
+Mawanda Rural Health Center,34,6,3
+Merwe Rural Health Center,34,6,3
+Minga Mission HAHC,34,6,3
+Minga Mission Hospital,34,1,3
+Misolo health Post,34,4,3
+Mkonda Health Post,34,4,3
+Msanzala Rural Health Center,34,6,3
+Mtukuzi Health Post,34,4,3
+Mtumbata Health Post,34,4,3
+Mumbi Rural Health Center,34,6,3
+Mwanika Rural Health Center,34,6,3
+Mwanjawanthu Rural Health,34,6,3
+Nyamphande Rural Health,34,6,3
+Nyamphondolo Rural Health,34,6,3
+Ongolwe health post,34,4,3
+Petauke District Hospital,34,1,3
+Petauke Urban Health Center,34,7,3
+Prison Health Post,34,5,3
+Refugee Health Post,34,4,3
+Riverside Health Post,34,4,3
+Sandwe Rural Health Center,34,6,3
+Sasu Rural Health Center,34,6,3
+Satelite 18 Rural Health Center,34,6,3
+Satelite 30 Rural Health Center,34,6,3
+Sichilima Health Post,34,4,3
+Ukwimi A Rural Health Center,34,6,3
+Ukwimi B Rural Health Center,34,6,3
+Zuze Health Post,34,4,3
+Chafulu Health Post,35,4,3
+Champhala Health Post,35,4,3
+Chanjobvu Rural Health Center,35,6,3
+Chanjoka Health Post,35,4,3
+Chataika Rural Health Center,35,6,3
+Chilasa Rural Health Center,35,6,3
+Chimtengo Health Post,35,4,3
+Chimunsi Rural Health Center,35,6,3
+Chindeza Rural Health Center,35,6,3
+Chitawe Rural Health Center,35,6,3
+Chiwuyu Health Center,35,6,3
+Kamphamule Health Post,35,4,3
+Kanjiwa Rural Health Center,35,6,3
+Kapungwe Health Post,35,4,3
+Kasamba Rural Health Center,35,6,3
+Katema Rural Health Center,35,6,3
+Kondwerani Rural Health Center,35,6,3
+Maela Health Post,35,4,3
+Matambazi Rural Health Center,35,6,3
+Mng'omba Rural Health Center,35,6,3
+Mng'ona Health post,35,4,3
+Mtandaza Rural Health Center,35,6,3
+Mthunya Rural Health Center,35,6,3
+Mulala Rural Health Center,35,6,3
+Nyaluwiro Health Post,35,4,3
+Nyamutuma Health Post,35,5,3
+Nyanje Mission HAHC,35,6,3
+Nyanje Mission Hospital,35,1,3
+Seya Health Post,35,4,3
+Sinda Zonal Rural Health,35,6,3
+Chigwe Health Post,36,4,3
+Chikoma Rural Health Center,36,6,3
+Likawe Health Post,36,4,3
+Manota Health Post,36,4,3
+Matemba Health Post,36,4,3
+Maumba Health Post,36,4,3
+Mbande Health Post,36,4,3
+Mchenjeza Rural Health Center,36,6,3
+Mlawe Health Post,36,4,3
+Mzigawa HP,36,4,3
+Sindemisale Rural Health,36,6,3
+Songea Health Post,36,4,3
+Chembe Rural Health Center,37,6,4
+Chipete Rural Health Center,37,6,4
+Fikombo Health Post,37,4,4
+Kalasa Kando Health Post,37,4,4
+Kasanga Health Post,37,4,4
+Kasomalwela Rural Health,37,6,4
+Kundamfumu Rural Health,37,6,4
+Lukola Rural Health Center,37,6,4
+Mwami Health Post,37,4,4
+Chiengi District Hospital,38,1,4
+Chipungu Rural Health Center,38,6,4
+Kabole Rural Health Center,38,6,4
+Kabwe RHC Chiengi,38,6,4
+Kalembwe Rural Health Center,38,6,4
+Kapako Health Post,38,4,4
+Lambwe Chikwama Health Post,38,4,4
+Lambwe Chomba Rural Health,38,6,4
+Lunchida Health Post,38,4,4
+Mukunta Rural Health Center,38,6,4
+Mwabu Rural Health Center,38,6,4
+Puta Rural Health Center,38,6,4
+Sambula Rural Health Center,38,6,4
+Chipili Rural Health Center,40,6,4
+Chisheta Rural Health Center,40,6,4
+Kabongo Health Post,40,4,4
+Kalundu Rural Health Center,40,6,4
+Kaoma Makasa Rural Health,40,6,4
+Luminu Rural Health Center,40,6,4
+Lupososhi Rural Health Center,40,6,4
+Mukabi Health Post,40,4,4
+Mukanga Rural Health Post,40,4,4
+Mukonshi Rural Health Center,40,6,4
+Musele Health Post,40,4,4
+Mupeta Rural Health Center,40,6,4
+Musalango Health Post,40,4,4
+Mutipula Rural Health Center,40,6,4
+Mwenda Rural Health Center,40,6,4
+Shimumbi RHP,40,4,4
+Kamwami RHP,40,4,4
+Chama Rural Health Center,41,6,4
+Chibote Rural Health Center,41,6,4
+Buyaka Health Post,41,4,4
+Chimpempe Rural Health,41,6,4
+Chimpili Rural Health Center,41,6,4
+Chitondo Rural Health Center,41,6,4
+Chitotela Health Post,41,4,4
+Kabanda Rural Health Center,41,6,4
+Kabila Rural Health Center,41,6,4
+Kala Camp Health Center,41,6,4
+Kanengo Rural Health Center,41,6,4
+Kapako Health Post,41,4,4
+Kawambwa District Hospital,41,1,4
+Kawambwa HAHC/Kawambwa Central RHC,41,6,4
+Kawambwa Tea Estate Rural,41,6,4
+Lusambo Health Post,41,4,4
+Lwatuala Health Post,41,4,4
+Mambwe Health Post,41,4,4
+Mufwaya Rural Health Center,41,6,4
+Munkanta Rural Health Center,41,6,4
+Mushota Rural Health Center,41,6,4
+Musungu Rural Health Center,41,6,4
+Muyembe Rural Health Center,41,6,4
+Shikalaba Health Post,41,4,4
+Bwalya Mponda Rural Health,42,6,4
+Kalima Nkonde Rural Health,42,6,4
+Kasoma Lunga Rural Health,42,6,4
+Nsalushi RHC,42,6,4
+Bahati Health Post,43,4,4
+Buntungwa Urban Health,43,7,4
+Chansa Health Post,43,4,4
+chikonshi HP,43,4,4
+Chisembe Post,43,4,4
+Chisongo Health Post,43,4,4
+Chisunka Rural Health Center,43,6,4
+Fibale Health Post,43,4,4
+Fimpulu Rural Health Center,43,6,4
+Fiyongoli Health Post,43,5,4
+James Health Post,43,4,4
+Kabunda Rural Health Center,43,6,4
+Kafula OPD,43,4,4
+Kalaba Rural Health Center,43,6,4
+Kale Health Post,43,4,4
+Kalyongo Rural Health Center,43,6,4
+Kansenga Rural Health Center,43,6,4
+Kapisha Health Post,43,4,4
+Kasanse Health Post,43,4,4
+Katangwe Rural Health Center,43,6,4
+Luapula Region Camp Health,43,5,4
+Lubende Rural Health Center,43,6,4
+Mabo Health Post,43,4,4
+Mabumba Rural Health Center,43,6,4
+Malamba Health Post,43,4,4
+Mano Rural Health Center,43,6,4
+Mansa Central Urban Clinic,43,7,4
+Mansa General Hospital,43,2,4
+Mantumbusa Rural Health,43,6,4
+Masaba Health Post,43,4,4
+Mashimi Health Post,43,4,4
+Matanda Rural Health Center,43,6,4
+Matelo Health Post,43,4,4
+Mibenge Rural Health Center,43,6,4
+Mikula Health Post,43,4,4
+Moloshi Rural Health Center,43,6,4
+Mufuma maternity annex Health Post,43,4,4
+Musaba Health Post,43,4,4
+Musaila Rural Health Center,43,6,4
+Mutiti Rural Health Center,43,6,4
+Mutwenankoko,43,6,4
+Muwang'uni Rural Health,43,6,4
+Namwandwe Health Post,43,5,4
+Ndoba Rural Health Center,43,6,4
+Nsonga Rural Health Center,43,6,4
+Paul Mambilima Rural Health,43,6,4
+Sande Health Post,43,4,4
+Senama Urban Health Center,43,7,4
+Sepe Health Post,43,4,4
+Shoti Health Post,43,4,4
+Tiyali Health Post,43,4,4
+ZNS Luamfumu Rural Health,43,6,4
+Mwela Health Post,43,4,4
+Kanseke HP,43,4,4
+Sumbu HP,43,4,4
+Musumali HP,43,4,4
+Chimfula HP,43,4,4
+Kasamba HP,43,4,4
+Mulonga Rural Health Centre,43,6,4
+Kapompwa Rural Health Centre,43,6,4
+Musesha Rural Health Centre,43,6,4
+Changwe Lungo Health Post,44,4,4
+Chibende Rural Health Center,44,6,4
+Kabange Rural Health center,44,6,4
+Kapalala Rural Health Center,44,6,4
+Lungo Mukuta Rural Health,44,6,4
+Lwela Rural Health Center,44,6,4
+Milenge District Hospital,44,1,4
+Milenge East 7 Rural Health,44,6,4
+Mulumbi Rural Health Center,44,6,4
+Sokontwe Rural Health Center,44,6,4
+Chipunka Rural Health Center,45,6,4
+Kazembe Rural Health Center,45,6,4
+Lufubu Rural Health Center,45,6,4
+Mbereshi HAHC/ Clinic,45,6,4
+Mbereshi Mission Hospital,45,1,4
+Mukamba Rural Health Center,45,6,4
+Salanga Rural Health Center,45,6,4
+Chalwe Health Post,46,4,4
+Chibondo Rural Health Center,46,6,4
+Kabila Health Post,46,4,4
+Kankomba Health Post,46,4,4
+Kapamba Rural Health Center,46,6,4
+Kashiba Rural Health Center,46,6,4
+Katuta Rural Health Center,46,6,4
+Kawama Rural Health Center,46,6,4
+Loto Health Post,46,4,4
+Luamfwe Health Post,46,4,4
+Lubunda Rural Health Center,46,6,4
+Lukwesa Rural Health Center,46,6,4
+Mambilima Mission Hospital,46,1,4
+Mubende Rural Health Center,46,6,4
+Mununshi Rural Health Center,46,6,4
+Musangu Rural Health Center,46,6,4
+Mwense District Hospital,46,1,4
+Mwense Stage II Rural Health,46,6,4
+Mweshi Health Post,46,4,4
+Zesco Musonda Falls Clinic,46,6,4
+Bumi Bwesu Youth Health,47,4,4
+Chabilikila Rural Health Center,47,6,4
+Chisenga Island Rural Health,47,6,4
+Kabalenge Rural Health Center,47,6,4
+Kabuta Rural Health Center,47,6,4
+Kafutuma Rural Health Center,47,6,4
+Kambwali Rural Health Center,47,6,4
+Kanyembo Rural Health Center,47,6,4
+Kapambwe Health Post,47,4,4
+Kapema Health Post,47,4,4
+Katumpa Health Post,47,4,4
+Kefulwa Health Post,47,4,4
+Kilwa Island Rural Health,47,6,4
+Lushiba Health Post,47,4,4
+Mulwe Health Post,47,4,4
+Munkombwe Health Post,47,4,4
+Nchelenge Rural Health Center,47,6,4
+St. Pauls General Hospital,47,2,4
+Toka Toka Health Post,47,4,4
+Kashikishi Rural Health Center,47,6,4
+Chibuye Rural Health Center,48,6,4
+Chikunyu Health Post,48,4,4
+Chikuwe Health Post,48,4,4
+Chimanda Rural Health Center,48,6,4
+Chimembe Rural Health Center,48,6,4
+Chinsanka Health Centre,48,6,4
+Chipako Rural Health Center,48,6,4
+Chishi Island Rural Health,48,6,4
+Fwaka East 8 Rural Health,48,6,4
+Kabongo Rural Health Center,48,6,4
+Kalasa Mukoso Rural Health,48,6,4
+Kapata E1 Rural Health Center,48,6,4
+Kapata Rural Health Center,48,6,4
+Kasaba / St. Margaret's Mission Hospital,48,1,4
+Kasaba/St. Margret's Mission HAHC,48,6,4
+Kasanka Rural Health Center,48,6,4
+Kasomabangweulu HP,48,4,4
+Kasuba Health Post,48,4,4
+Katanshya Rural Health Center,48,6,4
+Lubwe Mission Hospital,48,1,4
+Lubwe Mission Hospital HAHC,48,6,4
+Mabo Kunda Rural Health,48,6,4
+Mano Health Post,48,4,4
+Mbabala Island Rural Health,48,6,4
+Miponda Rural Health Center,48,6,4
+Mpanta Rural Health Centre,48,6,4
+Mundubi Rural Health Center,48,6,4
+Mungulube Rural Health Center,48,6,4
+Mushili Rural Health Center,48,6,4
+Mwansakombe Rural Health,48,6,4
+Nambale Rural Health Center,48,6,4
+Ninge Rural Health Center,48,6,4
+Njipi Rural Health Center,48,6,4
+Samfya District Hospital,48,1,4
+Samfya Stage II Rural Health,48,6,4
+Shikamushile Rural Health,48,6,4
+Balmora Health Post,49,4,5
+Chilanga Hospice,49,2,5
+Chilanga Urban Health Centre,49,7,5
+Human Service Trust Hospice,49,1,5
+Kazimva Rural Health Center,49,6,5
+Kris Katumba Health Post,49,4,5
+Maano Health Post,49,4,5
+Makeni GRZ Health Centre,49,7,5
+Mt. Eugenia Rural Health,49,6,5
+Mt. Makulu Health Post,49,5,5
+Mt. Makulu Urban Health,49,7,5
+Munyeu Health Post,49,4,5
+Mwembeshi Prisons Health Post,49,4,5
+Mwembeshi Rural Health,49,6,5
+Neri Clinic,49,5,5
+Paramilitary Health Post,49,4,5
+ZA Appollo Rural Health,49,6,5
+Zambian Helpers society hospital,49,1,5
+ZNS-BB Health Post,49,4,5
+ZNS-LDB Health Post,49,5,5
+ZNS-Safari Health Post,49,4,5
+ZNS-Sopelo Health Post,49,4,5
+Chibende Health Post,50,4,5
+Chikanzaya Rural Health Center,50,6,5
+Chipepo Rural Health Center,50,6,5
+Hachipilika,50,6,5
+Ibbwemunyama Rural Health,50,6,5
+Jamba Rural Health Center,50,6,5
+Kapululira Rural Health Center,50,6,5
+Lumbembe Health Post*,50,4,5
+Lusitu Rural Health Center,50,6,5
+Maunga Health Post*,50,4,5
+Mtendere Mission Hospital,50,1,5
+Mtendere Mission Hospital HAHC,50,7,5
+Nabbanda Health Post*,50,4,5
+Sikoongo RHC,50,6,5
+Bimbe Health Post,51,4,5
+Chainda Rural Health Center,51,6,5
+Chalimbana Rural Health,51,6,5
+Chansu Health Post,51,4,5
+Chikumbi Health Post,51,4,5
+Chiliabale,51,4,5
+Chongwe District hospital,51,1,5
+Chongwe Referal Rural Health Center,51,6,5
+Ellensdale Health Post,51,4,5
+Kabeleka Rural Health Centre,51,6,5
+Kampekete Rural Health Center,51,6,5
+Kanakantapa Rural Health,51,6,5
+Kapete Health Post,51,4,5
+Kasenga Health Post,51,4,5
+Kasisi Rural Health Center,51,6,5
+Katoba Rural Health Center,51,6,5
+Lwimba Rural Health Center,51,6,5
+Mikango Camp Rural Health Center,51,6,5
+Mpango Rural Health Center,51,6,5
+MRI,51,4,5
+Mulalika Health Post,51,4,5
+Mutamino Health Post,51,4,5
+Mwalumina Rural Health Center,51,6,5
+Nachitete,51,6,5
+Ndafula Health post,51,4,5
+Ngwerere Health Post,51,4,5
+Ngwerere Main Rural Health,51,6,5
+Palabana Rural Health Center,51,6,5
+Shiyala Health Post,51,4,5
+Village of Hope Health Center,51,6,5
+Waterfalls Rural Health Center,51,6,5
+ZAF 71 Rural Health Center,51,6,5
+ZAF Base Rural Health Center,51,6,5
+ZASTI Rural Health Centre,51,6,5
+ZNS Airport Camp Health,51,4,5
+ZNS Chongwe Clinic,51,4,5
+Margaret Mwachiyeya HP,51,4,5
+Village of Hope HP,51,4,5
+Chanyanya Rural Health Center,52,6,5
+Chiawa Rural Health Center,52,6,5
+Chikoka Health Post,52,4,5
+Chikupi Rural Health Center,52,6,5
+Chipapa Rural Health Center,52,6,5
+chisakila,52,4,5
+Chisankane Rural Health Center,52,6,5
+Estates Urban Rural Health,52,7,5
+Kabweza Health post,52,4,5
+Kafue District Hospital,52,1,5
+kafue east,52,5,5
+Kafue Mission Urban Health,52,6,5
+Kambale Rural Health Center,52,6,5
+mtendere,52,4,5
+Mugurameno Health Post,52,4,5
+mungu,52,4,5
+Nangongwe Maternity Urban,52,7,5
+Nangongwe OPD Urban Health,52,7,5
+old kabweza,52,4,5
+Railway Urban Health Center,52,7,5
+Shimabala Health Post,52,4,5
+ZNS Kafue Urban Health Center,52,7,5
+Shikoswe Health Post,52,4,5
+Lukolongo HP,52,4,5
+Amoro Health Post,53,4,5
+Chitope Rural Health Centre,53,6,5
+Feira Day Health Post,53,4,5
+Janeiro Health Post,53,4,5
+Kanemela Health Post,53,4,5
+Kapoche Health Post,53,4,5
+Kasinsa Rural Health Centre,53,6,5
+Katondwe Mission Hospital,53,1,5
+Kaunga Health Post,53,4,5
+Kavalamanja Rural Health Centre,53,6,5
+Luangwa Boma Rural Health Centre,53,6,5
+Luangwa District Hospital,53,1,5
+Luangwa High School Rural Health Centre,53,6,5
+Mandombe Rural Health Centre,53,6,5
+Mangelengele Health Post,53,4,5
+Mphuka Rural Health Centre,53,6,5
+Sinyawagora Rural Health Centre,53,6,5
+Airport Urban Health Center,54,7,5
+Arakan Camp Hospital,54,1,5
+Bauleni Urban Health Center,54,7,5
+Cancer Diseases Hospital,54,3,5
+Chainama Hills Hospital,54,3,5
+Chainda Urban Health Center,54,7,5
+Chaisa Health Centre,54,7,5
+Chalala Health Post,54,5,5
+Chawama 1st Level Hospital,54,1,5
+Chazanga Urban Health Center,54,7,5
+Chelstone Urban Health Center,54,7,5
+Chilenje 1st Level Hospital,54,1,5
+Chimwemwe Health Post,54,5,5
+Chipata 1st Level Hospital,54,1,5
+Chunga Health Post,54,5,5
+Civic Center Urban Health,54,7,5
+Eden Health Post,54,5,5
+Evelyn Hone College Health post,54,4,5
+Freedom UHC,54,7,5
+Fumbelo Health Post,54,5,5
+Garden Health Post,54,4,5
+George Urban Health Center,54,7,5
+John Howard Health Post,54,5,5
+Kabanana Health Post,54,4,5
+Kabwata Urban Health Center,54,7,5
+Kalikiliki Health Post,54,5,5
+Kalingalinga Urban Health,54,7,5
+Kamanga Health Post,54,5,5
+Kamulanga Health Post,54,5,5
+Kamwala Health Post,54,5,5
+Kamwala Urban Health Center,54,7,5
+Kanyama 1st Level Hospital,54,1,5
+Kanyama Self Help,54,5,5
+Kanyama West Urban Health Center,54,7,5
+Kapwepwe Health Post,54,5,5
+Kaunda Square Urban Health,54,7,5
+Kuku Health Post,54,5,5
+Levy Mwanawasa General,54,3,5
+Lilayi Urban Health Center,54,7,5
+Mahopo Health Post,54,5,5
+Maina Soko Military Hospital,54,2,5
+Makeni UNHCR Health Post,54,5,5
+Makeni Urban Health Center,54,7,5
+Makeni Villa Health Post,54,5,5
+Malata Health Post,54,5,5
+Mandevu Urban Health Center,54,7,5
+Matero 1st Level Hospital,54,1,5
+Matero Main Urban Health,54,7,5
+Ministry of Health HQ health post,54,4,5
+Mtendere Urban Health Center,54,7,5
+Ngombe Health Post,54,5,5
+Ng'ombe Urban Health Center,54,7,5
+Prisons Urban Health Center,54,7,5
+Railway Urban Health Center,54,7,5
+Sikanze Hospital,54,1,5
+St. Agnes Urban Health Center,54,7,5
+State House Clinic,54,7,5
+State Lodge Urban Health,54,7,5
+Twatasha Health Post,54,5,5
+Twikatane Health Post (Paradise HP),54,5,5
+University of Zambia Clinic,54,7,5
+UTH Adult Hospital,54,3,5
+UTH Children's Hospital,54,3,5
+UTH Eye Hospital,54,3,5
+UTH Maternal Hospital,54,3,5
+ZAF Headquarters,54,1,5
+ZAF Logistics Command,54,7,5
+Zambia Tuberculosis & Leprosy Trust,54,7,5
+ZNS Chamba Valley,54,7,5
+ZNS Headquarters Clinic,54,5,5
+ZNS Makeni Garrison Clinic,54,7,5
+Bundabunda Health Post,55,4,5
+Chifundo Rural Health Centre,55,6,5
+Chilimba Health Post,55,4,5
+Chimunsanya Health Post,55,4,5
+Chinyunyu Rural Health Center,55,6,5
+Chipeketi Health Post,55,4,5
+Chitemalesa Health Post,55,4,5
+Chiyota Rural Health Centre,55,4,5
+Kankumba Rural Health Center,55,6,5
+Kanyongoloka Rural Health Post,55,4,5
+Kapanda (Lunsemfwa) Health Post,55,4,5
+Kazemba Health Post,55,4,5
+Luangwa Bridge Health Post,55,4,5
+Lukwipa Rural Health Center,55,6,5
+Mpanshya (St. Luke) Mission Hospital,55,1,5
+Mpanshya HAHC,55,1,5
+Mulamba Health Post,55,4,5
+Munyeta Health Post,55,4,5
+Mwachilele Health Post,55,4,5
+Namanongo Health Post,55,4,5
+Nyangwena Rural Health Center,55,6,5
+Rufunsa Rural Health Center,55,6,5
+Rutech Health Post,55,4,5
+Shikabeta Rural Health Center,55,6,5
+Tengama Health Post,55,4,5
+Chabota Health Post,12,4,5
+Kapyanga Rural Health Center,12,6,5
+Kayanga Health Post,12,4,5
+Masteak Health Post,12,4,5
+Mwembezhi Lutheran Rural Health Center,12,6,5
+Mukulaikwa Rural Health Center,12,6,5
+Nampundwe Rural Health Center,12,6,5
+Shabasonje Rural Health Center,12,6,5
+Shacele Health Post,12,4,5
+Sichobo Rural Health Center,12,6,5
+Buli Rural Health Center,56,6,6
+Chama District Hospital,56,1,6
+Chama HAHC,56,7,6
+Chibale Rural Health Center,56,6,6
+Chifunda Rural Health Center,56,6,6
+Chigoma Rural Health Center,56,6,6
+Chikwa Rural Health Center,56,6,6
+Chilubanama Rural Health,56,6,6
+Chitukula Health Post,56,4,6
+Fulaza Rural Health Center,56,6,6
+Kalovya Health Post,56,4,6
+Kambombo Rural Health Center,56,6,6
+Kambwili Rural Health Centre,56,6,6
+Kamfutu Health Post,56,4,6
+Kanyelele Rural Health Center,56,6,6
+Kapichila Senga Rural Health,56,6,6
+Kapilingizya Health Post,56,4,6
+Kasela Health Post,56,4,6
+Lundu Rural Health Center,56,6,6
+Manga Rural Health Centre,56,6,6
+Mapamba Rural Health Center,56,6,6
+Mphyanakunda Rural Health,56,4,6
+Mulilo Rural Health Center,56,6,6
+Mwalala Rural Health Center,56,6,6
+Nthonkho Rural Health Center,56,6,6
+Pondo Rural Health Center,56,6,6
+Sitwe Rural Health Center,56,6,6
+Tembwe Rural Health Center,56,6,6
+Kapalankonje Rural Health Post,56,4,6
+Chinsali General Hospital,57,2,6
+Chinsali HAHC/Location Urban Health Center,57,7,6
+Chunga Rural Health Center,57,6,6
+Kalela Health Post,57,4,6
+Kalwala Health Post,57,4,6
+Lubwa Rural Health Center,57,6,6
+mu Nkweto Health Post,57,4,6
+Mulilansolo Rural Health Center,57,6,6
+Mundu Rural Health Center,57,6,6
+Munsanya Health Post,57,4,6
+Nambuluma Police Clinic,57,7,6
+Nkula Health Post,57,4,6
+Association of Lay Missionery,58,7,6
+Isoka District Hospital,58,1,6
+Kafwimbi Rural Health Center,58,6,6
+Kalungu Rural Health Center,58,6,6
+Kampumbu Rural Health Center,58,6,6
+Kantenshya Health Post,58,4,6
+Kapililonga Health Post,58,4,6
+Kasoka Urban Health Center,58,7,6
+Katyetye Health Post,58,4,6
+Lualizi Health Post,58,4,6
+Mwenekombe Health Post,58,4,6
+Nzoche Health Post,58,4,6
+Sansamwanje Health Post,58,4,6
+Chalabesa Rural Health Centre,59,6,6
+Chikakala Health Post,59,4,6
+Chinkobo Health Post,59,4,6
+Kabinga Rural Health Centre,59,6,6
+Kaonda Rural Health Centre,59,6,6
+Kopa Rural Health Centre,59,6,6
+Lubunga Rural Health Centre,59,6,6
+Luchembe Health Post,59,4,6
+Mapoma Rural Health Centre,59,6,6
+Mbati Rural Health Centre,59,6,6
+Mpepo Rural Health Centre,59,6,6
+Mununga Health,59,4,6
+Chaya Health Post,60,4,6
+Kalimba Health Post,60,4,6
+kaluba Health Post,60,4,6
+Lufila Rural Health Centre,60,6,6
+Lwitikila HP(Sick bay),60,4,6
+Mabonga Health Post,60,4,6
+Chiunda Ponde Rural Health Centre,60,6,6
+Mpumba Rural Health Centre,60,6,6
+Muwele Rural Health Centre,60,6,6
+Salamo Heath Post,60,4,6
+Chanama Health Post,61,4,6
+Chifunda Health Post,61,4,6
+Kalyamani Health Post,61,4,6
+Mulekatembo Rural Health,61,6,6
+Muyombe Rural Health Center,61,6,6
+Mweniwisi Rural Health Post,61,4,6
+Nachisitu Rural Health Center,61,6,6
+Sichitambule Health Post,61,4,6
+Thendere Rural Health Center,61,6,6
+wenela Health Post,61,4,6
+Wiya Health Post,61,4,6
+Zumbe Rural Health Center,61,6,6
+Chibansa Urban Health Centre,62,6,6
+Chikwanda Health Post,62,4,6
+Chilonga Mission Hospital,62,2,6
+Chilonga OPD Urban Health Centre,62,6,6
+Chitulika Health Post,62,5,6
+Kamwanya Health Post,62,5,6
+Kasenga Rural Health Centre,62,4,6
+Michael Chilufya Sata Hospital,62,1,6
+Mpika District Hospital,62,1,6
+Tazara Health Post,62,5,6
+Tazara Residential Health Centre,62,7,6
+ZCA Rural Health Centre,62,6,6
+ZNS Mpika Rural Health Centre,62,6,6
+Tazara Workshop Clinic,62,7,6
+Katibunga RHC,62,6,6
+Chibaye Health Post,62,4,6
+kazembe Health Post,62,4,6
+Mukungule Rural Health Centre,62,6,6
+Nabwalya Rural Health Centre,62,6,6
+Chilolwa Rural Health Center,63,6,6
+Chitamba Health Post,63,4,6
+Chozi Rural Health Center,63,6,6
+Ibrahim Health Post,63,5,6
+Ilola Health Post,63,4,6
+Kaombwe Health Post,63,4,6
+Katozi Health Post,63,5,6
+Mayembe Health Post,63,4,6
+Mukalizi Health Post,63,4,6
+Mwenichanka Rural Health,63,4,6
+Mwenzo Rural Health Center,63,6,6
+Nakonde District Hospital,63,1,6
+Nakonde Urban Health Centre,63,7,6
+Ntantumbila Rural Health,63,6,6
+Shemu Rural Health Center,63,6,6
+Waitwika Rural Health Center,63,6,6
+Kantongo rural health Post,63,4,6
+Chibamba Health Post,64,4,6
+Chilanga RHC(Shiwang'andu),64,6,6
+Ilondola Rural Health Center,64,6,6
+Kabanda Rural Health Center,64,6,6
+Kapisha Health Post,64,4,6
+Konja Rural Health Center,64,6,6
+Lukaka Rural Health Center,64,6,6
+Lwanya Health Post,64,4,6
+Matumbo Rural Health Center,64,6,6
+mu Mukwikile Health Post,64,4,6
+Mulanga Rural Health Center,64,6,6
+Mwika Rural Health Center,64,6,6
+Philip Health Post,64,4,6
+Sele Health Post,64,4,6
+Shiwa Ng'andu Rural Health,64,6,6
+Lukulu Rural Health Centre,63,6,6
+Chavuma District Hospital,77,1,7
+Chavuma Mission Hospital,77,1,7
+Chingi Rural Health Center,77,6,7
+Chivombo Rural Health Center,77,6,7
+Chiyeke Rural Health Center,77,6,7
+Kambuya Health Post,77,4,7
+Lihukwa Health Post,77,4,7
+Lukolwe Rural Health Center,77,6,7
+Nguvu Health Post,77,4,7
+Nyatanda Rural Health Center,77,6,7
+Ikelenge Rural Health Center,78,6,7
+Jimbe Rural Health Center,78,6,7
+Kalene Mission Hospital,78,1,7
+Kawota Rural Health Center,78,6,7
+Kayipaka Rural Health Center,78,6,7
+Mukangala Rural Health Center,78,6,7
+Sachibondu Rural Health Center,78,6,7
+Salujinga Rural Health Center,78,6,7
+Kamafumbu Health Post,78,4,7
+Mwininyilamba Health Post,78,4,7
+Muzeya Health Post,78,4,7
+Lwakela Rural Health Centre,78,4,7
+Kamukanda Health Post,78,4,7
+Kafweku Rural Health Centre,78,6,7
+Chifuwe South Health center,79,6,7
+Chikonkwelo Rural Health,79,6,7
+Dikolonga Health Post,79,4,7
+Kabompo District Hospital,79,1,7
+Kabompo HAHC,79,7,7
+Kabulamema Rural Health,79,6,7
+Kalunga Rural Health Center,79,6,7
+Kavungu Health Post,79,4,7
+Kayombo Rural Health Center,79,6,7
+Litoya Health Post,79,4,7
+Mbulunda Health Post,79,4,7
+Mufuli Wanjamba Health Post,79,4,7
+Mumbeji Rural Health Center,79,6,7
+Ndungo Rural Health Center,79,6,7
+Nkulwashi Rural Health Center,79,6,7
+Samununga Health Post,79,4,7
+Chisasa Rural Health Center,81,6,7
+Chitungu Rural Health Center,81,6,7
+Chovwe Rural Health Center,81,6,7
+Holy Family Rural Health Center,81,6,7
+Jagaimo Rural Health Center,81,6,7
+Jiwundu Rural Health Center,81,6,7
+Kalengelenge Rural,81,6,7
+Kamala Health Post,81,4,7
+Kamano Health Post,81,4,7
+Kambishi Rural Health Center,81,6,7
+Kamiba Rural Health Center,81,6,7
+Kananga Health Post,81,4,7
+Kankonzhi Rural Health Center,81,6,7
+Kanzala Health Center,81,4,7
+Kyabankaka Health Post,81,4,7
+Kyanyika (ZFDS W8) Rural,81,6,7
+Lukendo Rural Health Center,81,6,7
+Lumwana District Hospital,81,1,7
+Lumwana East Rural Health,81,6,7
+Lunsala Health Post,81,4,7
+Maheba A Rural Health Center,81,6,7
+Maheba B Rural Heath Center,81,6,7
+Maheba D Rural Health Center,81,6,7
+Mangala (ZFDS W9) Rural,81,6,7
+Matebo A Rural Health Center,81,6,7
+Matebo B Rural Health Centre,81,6,7
+Mukumbi Rural Health Center,81,6,7
+Mumbezhi ZNS Rural Health,81,6,7
+Mumena Rural Health Center,81,6,7
+Musele Rural Health Center,81,6,7
+Mushingashi Health Post,81,4,7
+Mutanda (Mission) Rural Health,81,6,7
+Mutanda Research Rural Health,81,6,7
+Muyashi Rural Health Center,81,6,7
+Nkulumazhiba Rural Health,81,6,7
+Northern Settlement Rural Health Center,81,6,7
+Nyansowe Rural Health Center,81,6,7
+Shilenda Rural Health Center,81,6,7
+Shinengene Rural Health,81,6,7
+Tundula Health Post,81,4,7
+Wamafwaha Rural Health Center,81,6,7
+Kakaindu Rural Health Centre,81,6,7
+Kambazhi Rural Health Centre,81,6,7
+Kimikanaga Rural Health Centre,81,6,7
+Lumwana HAHC,81,6,7
+Shinda Health Post,81,4,7
+Dengwe Rural Health Center,80,6,7
+Jifumpa Rural Health Center,80,6,7
+Kalombe Rural Health Center,80,6,7
+Kamakechi Rural Health Center,80,6,7
+Kamakuku Rural Health Center,80,6,7
+Kanjibiji Rural Health Center,80,6,7
+Kankolonkolo Rural Health,80,6,7
+Kasempa Urban Heath Center,80,7,7
+Kelongwa Rural Health Center,80,6,7
+Kivuku Rural Health Center,80,6,7
+Lubofu Rural Health Center,80,6,7
+Lunga Rural Health Center,80,6,7
+Mako Health Post,80,4,7
+Mbulumunene RHC,80,6,7
+Mpungu Rural Health Center,80,6,7
+Mukema Health Post,80,4,7
+Mukinge Mission Hospital,80,2,7
+Mukunashi Rural Health Center,80,6,7
+Njenga Rural Health Center,80,6,7
+Nselauke Rural Health Center,80,6,7
+Ntemwa Rural Health Center,80,6,7
+Nyoka Rural Health Center,80,6,7
+Shivuma Health Post,80,4,7
+Chifuwe North Health Post,82,4,7
+Chiteve Health Post,82,4,7
+Dyambombola Rural Health,82,6,7
+Kasamba Rural Heath Center,82,6,7
+Kashinakaji Rural Health Center,82,6,7
+Kawanda Health Post,82,4,7
+Loloma HAHC,82,7,7
+Loloma Mission Hospital,82,1,7
+Luansongwa Rural Health,82,6,7
+Mayawu Health Post,82,4,7
+Mukosho Health Post,82,4,7
+St. Kalemba Rural Health Centre,82,6,7
+Boma Rural Health Center,83,6,7
+Jivundu Rural Health Center,83,6,7
+Kabanda Rural Health Center,83,6,7
+Kabipupu Rural Health Center,83,6,7
+Kalengwa Rural Health Center,83,6,7
+Kaminzekenzeke Rural Health,83,6,7
+Kashima Rural Health Center,83,6,7
+Kikonge Health Post,83,4,7
+Lalafuta RHC,83,6,7
+Lubilo Rural Health Center,83,6,7
+Matushi Rural Health Center,83,6,7
+Miluji Health Post,83,4,7
+Mufumbwe District Hospital,83,1,7
+Mufumbwe HAHC,83,1,7
+Munyambala Rural Health,83,6,7
+Mushima Rural Health Center,83,6,7
+Musonweji RHC,83,6,7
+Nyansonso Rural Health Centre,83,6,7
+Chibwika Rural Health Center,85,6,7
+Chisengisengi Rural Health Center,85,6,7
+Chiwoma Rural Health Center,85,6,7
+Kakoma Rural Health Center,85,6,7
+Kamapanda Rural Health Center,85,6,7
+Kanyama Rural Health Center,85,6,7
+Kanzenzi Health Post,85,4,7
+Kapundu Rural Health Center,85,6,7
+Katuyola Rural Health Center,85,6,7
+Kawiko Health Post,85,4,7
+Kazozu Rural Health Center,85,6,7
+Lumwana West Rural Health,85,6,7
+Luwi Mission Hospital,85,1,7
+Lwawu Rural Health Center,85,6,7
+Minyanya Rural Health Center,85,6,7
+Musangila Rural Health Center,85,6,7
+Mwinilunga District Hospital,85,1,7
+Mwinilunga HAHC,85,7,7
+Ntambu Sachitolu Health Post,85,4,7
+Nyangombe Rural Health Center,85,6,7
+Sailunga Rural Health Center,85,6,7
+Sakapoti Health Post,85,4,7
+Tom-Ilunga Rural Health Center,85,6,7
+Nyangombe Bible School Health Post,85,4,7
+Kabwela rural health center,86,6,7
+Kainamfumu Health Post,86,4,7
+Kakombe Rural Health Center,86,6,7
+Kamitonte ZNS Rural Health Center,86,6,7
+Kapijimpanga Rural Health Center,86,6,7
+Katandano ZNS Rural Health,86,6,7
+Kazhiba Rural Health Center,86,6,7
+Kazomba urban Health Center,86,7,7
+Kimasala Urban Health Center,86,7,7
+Kimiteto Rural Health Center,86,6,7
+Kimtubwanga Health Post,86,4,7
+Kisalala Rural Health Center,86,6,7
+Kyafukuma Rural Health Center,86,6,7
+Mbonge RHC,86,6,7
+Mitukutuku Rural Health Center,86,6,7
+Mulenga HP (Solwezi),86,4,7
+Mushitala Urban Health Center,86,7,7
+Muzabula Health Post,86,4,7
+Prisons Clinic,86,7,7
+Sandangombe Rural Health,86,6,7
+Solwezi General Hospital,86,2,7
+Solwezi TT College Urban,86,7,7
+Solwezi Urban Health Center,86,7,7
+St. Francis Rural Heath Center,86,6,7
+weigh bridge urban health centre,86,7,7
+Zambia Compound Clinic,86,7,7
+Zangamenu Rural health centre,86,6,7
+Wisdom Health Post,86,4,7
+Chilenga Rural Health Center,87,6,7
+Chinyama Litapi Rural Health,87,6,7
+Chinyingi Rural Health Center,87,6,7
+Chitokoloki HAHC,87,6,7
+Chitokoloki Mission Hospital,87,1,7
+Chizozu RHC,87,6,7
+Dipalata Rural Health Center,87,6,7
+Kamakala Health post,87,4,7
+Kangulunga Health Post,87,4,7
+Kayenge Health post,87,4,7
+Kucheka Rural Health Center,87,6,7
+Lunkunyi Health Post,87,4,7
+Matondo Rural Health Post,87,4,7
+Mize Rural Health Center,87,6,7
+Mpindi Rural Health Center,87,6,7
+Mukandankunda Health Center,87,6,7
+Muyembe Health Post,87,4,7
+Nyakulenga Rural Health Center,87,6,7
+Nyawanda Health Post,87,4,7
+Sakayi Health Post,87,4,7
+Zambezi District Hospital,87,1,7
+Zambezi Urban HAHC,87,1,7
+Kasesi Rural Health Center,87,6,7
+Kakeki RHP,87,4,7
+Israel Health Post,84,4,7
+Kalomboshi Health Post,84,4,7
+Kamisenga Rural Health Centre,84,4,7
+Kangwena Health Post,84,4,7
+Kanuma Rural Health Center,84,6,7
+Kichikwe RHC,84,6,7
+Kilumba Rural Health Center,84,6,7
+Kipushi Health Post,84,4,7
+Kishela Health Post,84,4,7
+Luamala Rural Health Center,84,6,7
+Luamfula ZFDS Rural Health,84,6,7
+Mapunga Rural Health Center,84,6,7
+Mujimanzovu Rural Health,84,6,7
+Mushindano Rural Health,84,4,7
+Mututubanya (Chikula)Health Post,84,4,7
+St. Dorothy Rural Health Center,84,6,7
+Chaba Rural Health Center,65,6,8
+Chifwenge Rural Health Center,65,6,8
+Chilubi Mainland Hospital,65,1,8
+Chilubi Rural Health Center,65,6,8
+Chitunkubwe Health Post,65,4,8
+Fube Health Post,65,4,8
+Kapofu Health Post,65,4,8
+Kawena Health Post,65,4,8
+Matipa Rural Health Center,65,6,8
+Mayuka Rural Health Center,65,6,8
+Mofu Rural Health Center,65,6,8
+Mubili Health Post,65,4,8
+Mwenge Health Post,65,4,8
+Nsumbu Rural Health Center,65,6,8
+Santa Maria Rural Health,65,6,8
+Mule Rural Health Post,65,4,8
+Chocha Health Post,66,4,8
+Kafwimbi Health post,66,4,8
+Kalaba Rural Health Center,66,6,8
+Kapala Health Post,66,4,8
+Kapepula Health Post,66,4,8
+Kaputa Rural Health Center,66,6,8
+Kaputa District Hospital,66,1,8
+Kasongole Rural Health Center,66,6,8
+Mukupa Katandula Rural Health,66,6,8
+Nkosha Health Post,66,4,8
+Kapalwe RHP,66,4,8
+Army Rural Health Center,67,6,8
+Chanda Mukulu Health post,67,4,8
+Chilongoshi Rural Health Center,67,6,8
+Chilubula Health Center (St.Fedelis),67,1,8
+Chiombo Rural Health Center,67,6,8
+Chisanga Urban Health Center,67,7,8
+College/Namulundu Health Post,67,5,8
+Kasakula Rural Health Center,67,6,8
+Kasama General Hospital,67,2,8
+Kasama Police Clinic,67,5,8
+Kasama Urban Health Center,67,7,8
+Kasonde Chisuna Health Post,67,4,8
+Kasonde Mutokwa Health Post,67,4,8
+Kateshi Rural Health Center,67,6,8
+Location Urban Health Center,67,7,8
+Lubushi Hospital,67,6,8
+Lukashi/Selu Health Post,67,4,8
+Lukashya Rural Health Center,67,6,8
+Lukupa Rural Health Center,67,6,8
+Lwabwe Health Post,67,4,8
+Mbusa Rural Health Center,67,6,8
+Milima Rural Health Center,67,6,8
+Misambo Health Post,67,4,8
+Misamfu Rural Health Center,67,6,8
+Misengo Rural Health Center,67,6,8
+Monica Health Post,67,4,8
+Mulanshi Rural Health Center,67,6,8
+Mulenga Hills Health Post,67,5,8
+Mulobola Rural Health Center,67,6,8
+Mumbi Mfumu Health Post,67,4,8
+Mumbi Mukulu Health Post,67,4,8
+Munkonge Rural Health Center,67,6,8
+Musa Rural Health Center,67,6,8
+Mwamba Rural Health Center,67,6,8
+Mwasha Health Post,67,4,8
+Nkolemfumu Rural Health,67,6,8
+Tazara Rural Health Center,67,6,8
+ZNS Chishimba (Kasama) Rural Health,67,6,8
+New Kasama RHP,67,4,8
+Chikoyi Peri Urban Clinic,70,7,8
+Chungu Rural Health Center,70,6,8
+Fikonkota Health Post,70,4,8
+Ipusukilo Rural Health Center,70,6,8
+Kalaba Health Post,70,4,8
+Kasonde kombon/akombo HP,70,4,8
+Katuta Rural Health Center,70,6,8
+Laurent Chita Health Post,70,4,8
+Luena Rural Health Center,70,6,8
+Lufubu Health Post,70,4,8
+Lukolongo Health Post,70,4,8
+Lundu Health Post,70,4,8
+Luwingu District Hospital,70,1,8
+Menga Health Post,70,4,8
+Mumba Health Post,70,4,8
+Mutondo Health Post,70,4,8
+Mwando Health Post,70,4,8
+Namukolo Urban Health Centre,70,7,8
+Ndoki Rural Health Centre,70,6,8
+Njoko Health Post,70,4,8
+Nsanja Health Post,70,4,8
+Nsombo Rural Health Center,70,6,8
+Shimumbi Rural Health Center,70,6,8
+Tungati Rural Health Center,70,6,8
+Mucheleka health post,70,4,8
+Mwingilila health post,70,4,8
+Misambula health center,70,4,8
+Mapulanga RHP,70,4,8
+Chisanza Rural Health Center,71,6,8
+Isofu Rural Health Center,71,6,8
+Kaka Rural Health Center,71,6,8
+Kamuzwazi Health Post,71,4,8
+Kaseshya Health Post,71,4,8
+Kawimbe Rural Health Center,71,6,8
+Luka Health Post( Mbala),71,4,8
+Masamba Rural Health Center,71,6,8
+Mbala General Hospital,71,2,8
+Mbala Urban Health Center,71,7,8
+mulefu Health Post,71,4,8
+Musipazi Rural Health Center,71,6,8
+Mutwizi Health Post,71,4,8
+Mwamba Rural Health Center,71,6,8
+Mwenda Health Post,71,4,8
+Special Forces clinic,71,6,8
+Tulemane Health Center,71,7,8
+ZAF Mbala (samora) Urban,71,7,8
+ZNS Mbala (Munyezi) Camp,71,6,8
+Bweupe Health Post,72,4,8
+Chalabesa Health Post,72,4,8
+Chewe Health Post,68,4,8
+Chishamwamba Rural Health,72,6,8
+Chitoshi Rural Health Center,68,6,8
+Chiwala Rural Health Center,72,6,8
+Kalabwe Rural Health Center,72,6,8
+Kambowe Health Post,72,4,8
+Kapatu Rural Health Center,68,6,8
+Moseni Health Post,72,4,8
+Mpalapata Health Post,68,4,8
+Mporokoso District Hospital,72,1,8
+Mporokoso Township Rural Health Center,72,6,8
+Mukolwe Rural Health Center,68,6,8
+Mukupa Kaoma Rural Health,68,6,8
+Mulenga mapesa Health post,68,4,8
+Njalamimba Rural Health,72,6,8
+Shibwalya Kapila Rural Health,68,6,8
+Sunkutu Rural Health Center,72,6,8
+Vincent Bulaya Health Post,68,4,8
+Chibote Health Post,73,4,8
+Chinakila Rural Health Center,73,6,8
+Chitimbwa Rural Health Center,73,6,8
+Isoko Rural Health Center,73,6,8
+Iyendwe Rural Health Center,73,6,8
+Kalongola Health Post,73,4,8
+Kasakalawe Health Post,73,4,8
+Kopeka Rural Health Center,73,6,8
+Mpulungu District Hospital,73,1,8
+Mpulungu Urban Health Center,73,7,8
+Vyamba Rural Health Center,73,6,8
+Chifulo Health Post,74,4,8
+Chimba Rural Health Center,74,6,8
+Chimbola Health Post,74,4,8
+Chitimukulu Rural Health,74,5,8
+Kalulu Rural Health Center,74,6,8
+Kampamba Health Post,74,4,8
+Kapolyo Rural Health Center,74,6,8
+Kaseke Health Post,74,4,8
+Katilungu Health Post,74,4,8
+Kayambi Rural Health Center,74,6,8
+Makasa Rural Health Center,74,6,8
+Malole Rural Health Center,74,6,8
+Mumba Rural Health Center,74,6,8
+Mungwi Baptist Rural Health,74,6,8
+Ndasa Rural Health Center,74,6,8
+Ngoli Rural Health Center,74,6,8
+Ngulula Health Post,74,4,8
+Nseluka Urban Health Center,74,7,8
+Peleti Rural Health Center,74,6,8
+Rosa Rural Health Center,74,6,8
+Sampa Health Post,74,4,8
+Mabula Health Post,74,4,8
+Mungwi District Hospital,74,1,8
+Chishela Rural Health Center,75,6,8
+Kakoma Health Post,75,4,8
+Kampinda Rural Health Center,75,6,8
+Kapisha Rural Health Center,75,6,8
+Mwewe Rural Health Center,75,6,8
+Nsama Rural Health Center,75,6,8
+Nsumbu Rural Health Center,75,6,8
+chikunta Rural Health Center,76,6,8
+Chileshya Rural Health Center,76,6,8
+Chindo Health Post,76,4,8
+Chomba Health Post,76,4,8
+Chozi Tazara clinic,76,6,8
+Iyanda Health Post,76,4,8
+kapufi Health Post,76,4,8
+Kavumbo Health Post,76,4,8
+Mambwe Mission Rural Health,76,6,8
+Maule Health Post,76,4,8
+Mpande Rural Health Center,76,6,8
+Nondo Rural Health Center,76,6,8
+Nsokolo Rural Health Center,76,6,8
+Senga Rural Health Center,76,6,8
+Senka Rural Health Center,76,6,8
+Shikulumusonda Health Post,76,4,8
+Sumbi Health Post,76,4,8
+Tanzuka Health Post,76,4,8
+Nsenga Hill District Hospital,76,1,8
+Cheeba Rural Health Center,88,6,9
+Chikani Health Post,88,4,9
+Chikankanta HAHC,88,6,9
+Chikankata Mission Hospital,88,2,9
+Chikombola Rural Health,88,6,9
+Chikonkomene RHC,88,6,9
+Kafue Gorge Hospital,88,1,9
+Manyonyo Health Post,88,4,9
+Moobe Health Post,88,4,9
+Mubuyu Health Post,88,4,9
+Nadezwe Rural Health Center,88,6,9
+Naluama Rural Health Center,88,6,9
+Nameembo Rural Health Center,88,6,9
+Nanduba Health Post,88,4,9
+Nansenga Health Center,88,6,9
+Riverside Farm Rural Health,88,6,9
+Simwaamba Health Post,88,4,9
+Terranova,88,6,9
+Hapiku Health Post,88,4,9
+Chileleka HP,88,4,9
+Batoka Rural Health Center,89,6,9
+Chilalantambo Health Post,89,4,9
+Choma HAHC,89,5,9
+Choma General Hospital,89,2,9
+Choma Secondary School Clinic,89,5,9
+Harmony Health Post,89,4,9
+Kabanga Rural Health Post,89,4,9
+Kabanze Rural Health Post,89,4,9
+Kamwanu Rural Health Center,89,6,9
+Macha Mission Hospital,89,1,9
+Macha Mission Hospital HAHC,89,6,9
+Mangunza Rural Health Center,89,6,9
+Mapanza Rural Health Center,89,6,9
+Masuku Mines Terminal Rural,89,6,9
+Masuku Mission Rural Health,89,6,9
+Mbabala Rural Health Center,89,6,9
+Mochipapa Rural Health Center,89,6,9
+Nakeempa Rural Health Center,89,6,9
+Nalituba Health Post,89,4,9
+Nalube Health Post,89,4,9
+Njase Rural Health Center,89,6,9
+Pangwe Rural Health Post,89,4,9
+Popota Rural Health Center,89,6,9
+PPAZ Choma Reproductive Health Post,89,5,9
+Prisons Urban Health Center,89,7,9
+Railway Surgery Urban Health,89,7,9
+Shampande Urban Health,89,7,9
+Siaskabole Health Post,89,4,9
+Siankope Health Post,89,4,9
+Sibanyati Rural Health Center,89,6,9
+Sikalongo Rural Health Center,89,6,9
+Simakutu Rural Health Center,89,6,9
+Simaubi Rural Health Center,89,6,9
+Simeno Health Post,89,4,9
+Simukanka Health Post,89,4,9
+ZNS Choma Rural Health,89,6,9
+Bbondo Rural Health Center,90,6,9
+Chaamwe/Nyanga Rural Health,90,4,9
+Chabbobboma Rural Health,90,6,9
+Chipepo Rural Health Center,90,6,9
+Chisanga Health Post,90,4,9
+Gulumunyanga Health Post,90,4,9
+Gwembe District Hospital,90,1,9
+Gwembe HAHC,90,6,9
+Kalelezhi Rural Health Center,90,6,9
+Lukonde Rural Health Center,90,6,9
+Luumbo Rural Health Center,90,6,9
+Makuyu Health Post,90,4,9
+Munyumbwe Rural Health,90,6,9
+Siabbamba Rural Health Center,90,6,9
+Sinafala Rural Health Center,90,6,9
+Sompani Rural Health Center,90,6,9
+Siampande Health Post,90,4,9
+Ntanga Health Post,90,4,9
+Hamatuba,90,4,9
+New Gwembe District Hospital,90,1,9
+Bbilili Rural Health Center,91,6,9
+Bulyambeba Rural Health,91,6,9
+Chifusa Rural Health Center,91,6,9
+Chilala Zonal Rural Health Center,91,6,9
+Choonga Urban Health Center,91,7,9
+Dimbwe Rural Health Center,91,6,9
+Habulile Rural Health Center,91,6,9
+Kalemu Health Post,91,4,9
+Kalomo District Hospital,91,1,9
+Kalomo HAHC,91,7,9
+Kalonda Rural Health Center,91,6,9
+Kanchele Rural Health Center,91,6,9
+Kasukwe Health Post,91,4,9
+Mabombo Health Post,91,4,9
+Masempela Rural Health Center,91,6,9
+Mawaya Urban Health Center,91,7,9
+Mayoba Rural Health Center,91,6,9
+Moonde Rural Health Centre,91,6,9
+Mubanga Rural Health Center,91,6,9
+Mukwela Rural Health Center,91,6,9
+Munkolo Rural Health Center,91,6,9
+Munyeke Health Post,91,4,9
+Naluja Rural Health Center,91,6,9
+Nameto Rural Health Center,91,6,9
+Namwianga Zonal Mission Urban,91,7,9
+Nantale Health Post,91,4,9
+Nazilongo Rural Health Center,91,6,9
+Nkandanzovu Rural Health,91,6,9
+Siabunkululu Rural Health,91,6,9
+Siachitema ZonalHealth Center,91,6,9
+Sipatunyana Rural Health,91,6,9
+Sikweya Health Post,91,4,9
+Mabuya Health Post,91,4,9
+Katungu Health Post,91,4,9
+Nabulanga Health Post,91,4,9
+New Kalomo District Hospital,91,1,9
+RR,91,6,9
+Nalilombwe RHP,91,4,9
+Bungashiya RHP,91,4,9
+Kabuyu Rural Health Center,92,6,9
+Katapazi Rural Health Center,92,6,9
+Katombora Health Post,92,4,9
+Kauwe Rural Health Center,92,6,9
+Kazungula Health Post,92,4,9
+Makunka Rural Health Center,92,6,9
+Mambova Rural Health Center,92,6,9
+Mandia Health Post,92,4,9
+Manyemunyemu Health Post,92,4,9
+Moomba Rural Health Center,92,6,9
+Mukuni Rural Health Center,92,6,9
+Musokotwane Rural Health,92,6,9
+Nanyati Rural Health Center,92,6,9
+Ngwezi Rural Health Center,92,6,9
+Nyawa Rural Health Center,92,6,9
+Sekute Health Post,92,4,9
+Siakasipa Health Post,92,4,9
+Sikachapa Health Post,92,4,9
+Sikaunzwe Rural Health Center,92,6,9
+Simango Rural Health Center,92,6,9
+Sinde Health Post,92,4,9
+Singwamba RHC,92,6,9
+Sons Of Thunder Health Centre,92,6,9
+Kazungula District Hospital,92,1,9
+Kazungula High School Health Post,92,5,9
+New Kazungula District Hospital,92,1,9
+Airport Urban Health Center,93,7,9
+Army School of Ordinance,93,7,9
+Boma Urban Health Center,93,7,9
+Chaba Health Post,93,4,9
+Chreso Ministries Livingstone,93,7,9
+DALICE Clinic,93,7,9
+Dambwa North Urban Health,93,7,9
+Dental Clinic,93,7,9
+Hillcrest Health Post,93,5,9
+Kasiya Health Post,93,4,9
+Libuyu Urban Health Center,93,7,9
+Linda Urban Health Center,93,7,9
+Livingstone Central Hospital,93,3,9
+Mahuluhulu Health Post,93,4,9
+Mahatima Ghandi Health,93,7,9
+Maramba Urban Health Center,93,7,9
+Mosi-oa-Tunya Health Center,93,7,9
+Nakatindi Health Centre,93,7,9
+Namatama Clinic,93,5,9
+Nsongwe Health Post,93,4,9
+Police Urban Health Center,93,7,9
+PPAZ Livingstone,93,7,9
+Prisons Urban Health Center,93,7,9
+Sepo Urban Health Center,93,7,9
+Simonga Rural Health Centre,93,4,9
+St Joseph's Hospice,93,7,9
+St. Francis Project - Livingstone,93,7,9
+Victoria Falls Urban Health,93,5,9
+ZAF Livingstone Urban Health,93,7,9
+Chalimbana Health Post,94,4,9
+Chivuna Rural Health Center,94,6,9
+Hanjalika Health Post,94,4,9
+Hanzala Rural Health Center,94,6,9
+Itebe Rural Health Center,94,6,9
+Kalama Rural Health Center,94,6,9
+Kaleya Urban Health Center,94,7,9
+Kangila Health Post,94,4,9
+Kaonga Urban Health Center,94,7,9
+Lubombo Rural Health Center,94,6,9
+Mainza Rural Health Centre,94,4,9
+Makuku Health Post,94,4,9
+Manyana Health Post,94,4,9
+Mazabuka General Hospital,94,2,9
+Mazabuka Hospital HAHC,94,7,9
+Mbaya Musuma Rural Health,94,6,9
+Mugoto Rural Health Center,94,6,9
+Mukuyu Rural Health Center,94,6,9
+Munenga Rural Health Center,94,6,9
+Munjile Rural Health Center,94,6,9
+Musangu Health Post,94,5,9
+Musikili Health Post,94,4,9
+Mweemba Health Post,94,4,9
+Nakambala Urban Health,94,7,9
+Namaila Rural Health Center,94,6,9
+Nanga Farms PLC,94,4,9
+Nanga Rural Health Centre,94,6,9
+Nega Nega Rural Health Center,94,6,9
+NKonkola Rural Health Center,94,6,9
+Research Station Urban Health,94,7,9
+Shimungalu Health Post,94,4,9
+Lungwe HP,94,4,9
+Siyowi-Kabange HP,94,4,9
+Dimba HP,94,4,9
+Nachilyombwe RHP,94,4,9
+Mazabuka Correctional Centre clinic,94,7,9
+Banakaila Rural Health Center,95,6,9
+Bweengwa Rural Health Center,95,6,9
+Charles Lwanga Rural Health,95,6,9
+Chikuni Mission Hospital,95,1,9
+Chisekesi Rural Health Center,95,6,9
+Hakunkula Rural Health Center,95,6,9
+Hamangaba Rural Health,95,6,9
+Hamapande Rural Health,95,6,9
+Kanundwa Rural Health Center,95,6,9
+Katimba Rural Health Center,95,6,9
+Kaumba Health Post,95,4,9
+Kayola Health Post,95,4,9
+Keemba Rural Health Center,95,6,9
+Luyaba Rural Health Center,95,6,9
+Malundu Rural Health Center,95,6,9
+Manungu Urban Health Center,95,7,9
+Monze Mission Hospital,95,2,9
+Monze Urban Health Center,95,7,9
+Moomba Rural Health Center,95,6,9
+Moonzwe Rural Health Center,95,6,9
+Munyumabisi Health Post,95,4,9
+Nadongo health Post,95,4,9
+Nalutanda Health Post,95,4,9
+Nampeyo Rural Health Center,95,6,9
+Njola-Mwanza Rural Health,95,6,9
+Nteme Health Post,95,4,9
+Rusangu Rural Health Center,95,6,9
+Siatontola Rural Health Center,95,6,9
+Simukoboma Home Based Care,95,5,9
+St. Marys Health Post,95,4,9
+ZCA (Monze) Rural Health,95,6,9
+Mahimba Health Post,95,4,9
+Mulumbwa HP,95,4,9
+Chipembele HP,95,4,9
+Molongalwili HP,95,4,9
+Bbombo HP,95,4,9
+Bwantu HP,95,5,9
+Ntambo HP,95,4,9
+Mujika Health Post,95,4,9
+Namataba Health Post,95,4,9
+Baambwe Rural Health Center,96,6,9
+Chitongo Rural Health Center,96,6,9
+Ichila Rural Health Center,96,6,9
+Itapa Health Post,96,4,9
+Kabanga Health Post,96,4,9
+Kabulamwanda Rural Health,96,6,9
+Kantengwa Rural Health Center,96,6,9
+Kasenga Rural Health Center,96,6,9
+Maala Rural Health Center,96,6,9
+Masele Urban Health Center,96,7,9
+Moobola Rural Health Center,96,6,9
+Moomba Health Post,96,4,9
+Muchila Rural Health Center,96,6,9
+Nakamboma Rural Health,96,6,9
+Namwala District Hospital,96,1,9
+Namwala Hospital HAHC,96,7,9
+Ngabo Health Post,96,4,9
+Niko Health Post,96,4,9
+Mandondo HP,96,4,9
+Nchoole HP,96,4,9
+Makalo HP,96,4,9
+Bisangu HP,96,4,9
+Nalukwale HP,96,4,9
+Kazuni Kalila HP,96,4,9
+Ndema HP,96,4,9
+Mantolo HP,96,4,9
+New Namwala District Hospital,96,1,9
+Chilundu Health Post,97,4,9
+Chiyumbabenzu Health Post,97,4,9
+Choompa Health Post,97,4,9
+Demu Health Post,97,4,9
+Habbanyuka Health Post,97,4,9
+Jembo Rural Health Center,97,6,9
+Kanchomba Rural Health Center,97,6,9
+Kasikili Health Post,97,4,9
+Kasiya Rural Health Center,97,6,9
+Kazimaulu Health Post,97,4,9
+Moyo Rural Health Center,97,6,9
+Muzoka Rural Health Center,97,6,9
+Ndondi Health Post,97,4,9
+Pemba Main Rural Health,97,4,9
+Pemba Sub RuralHealth Post,97,4,9
+Siamuleya Health Post,97,4,9
+Sibalumbi Health Post,97,4,9
+Simooya Health Post,97,4,9
+Hajamba Health Post,97,4,9
+Munyama Health Post,97,4,9
+Mayassanino Health Post,97,4,9
+Michelo Health Post,97,4,9
+Chaanga Rural Health Center,98,6,9
+Chalokwa Health Post,98,4,9
+Chizilika Health Post,98,4,9
+Dambilo Health Post,98,4,9
+Dambwe Health Post,98,4,9
+Kabila Health Post,98,4,9
+Kabuyu Health Post,98,4,9
+Kariba Rural Health Center,98,6,9
+Manchanvwa Rural Health,98,6,9
+Matua Rural Health Center,98,6,9
+Mpango Health Post,98,4,9
+Muntanga Health Post,98,4,9
+Munyama Rural Health Center,98,6,9
+Nabutezi Rural Health Centre,98,6,9
+Namoomba RHC,98,6,9
+Siamatika Health Post,98,4,9
+Sianyolo Rural Health Center,98,6,9
+Siavonga District Hospital,98,1,9
+Siavonga HAHC,98,7,9
+Game boarder Health Post,98,4,9
+Lake shore Health Post,98,4,9
+Namumu Health Post,98,4,9
+Siamwinga Health Post,98,4,9
+Moonga Health Post,98,4,9
+Borders Health Post,98,4,9
+Buleya Malima Rural Health,99,6,9
+Chimonselo Health Post,99,4,9
+Chiyabi Rural Health Center,99,6,9
+GVDC Rural Health Center,99,6,9
+Kafwambila Rural Health Center,99,6,9
+Maamba General Hospital,99,2,9
+Maamba HAHC,99,6,9
+Muziyo Health Post,99,4,9
+Mwela Health Post,99,4,9
+Nabukowa Health Post,99,4,9
+Siameja Rural Health Center,99,6,9
+Siampondo Health Post,99,4,9
+Siansowa Rural Health Center,99,6,9
+Siatwinda Rural Health Center,99,6,9
+Sikaneka Rural Health Center,99,6,9
+Sinakasikili Health Post,99,4,9
+Sinamalima Rural Health,99,6,9
+Sinazeze Rural Health Center,99,6,9
+Sinazongwe Rural Health,99,6,9
+Sulwegonde Rural Health,99,6,9
+Sinankumbi health post,99,4,9
+Malabali Health Post,99,4,9
+Dengeza Health Post,99,4,9
+Namafulo Health Post,99,4,9
+sianyuka Health Post,99,4,9
+muuka Health Post,99,4,9
+Chalimongela Health Center,100,6,9
+Chiidi Health Center,100,6,9
+Kanyanga Health Center,100,4,9
+Luyaba Rural Health Center,100,6,9
+Mapatizya Rural Health Center,100,6,9
+Muzya Rural Health Center,100,6,9
+Nakowa Rural Health Center,100,6,9
+Siamafumba Rural Health,100,6,9
+Simalundu Rural Health Center,100,6,9
+Simwatachela Rural Health,100,6,9
+Zimba Mission Hospital,100,1,9
+Buleya Health Post,101,4,10
+Kalabo District Hospital,101,1,10
+Kuuli Rural Health Center,101,6,10
+Libonda Rural Health Center,101,6,10
+Liumba Rural Health Center,101,6,10
+Liyoyelo Urban HC (Kalabo),101,5,10
+Lukena Rural Health Center,101,6,10
+Lukoko HP,101,4,10
+Lukona Rural Health Center,101,6,10
+Lumei HP,101,4,10
+Luola Health Post,101,4,10
+Lutwi Health Post,101,4,10
+Mapungu Rural Health Center,101,6,10
+Mishulundu HP,101,4,10
+Mitwi HP,101,4,10
+Muchicha HP,101,4,10
+Mulinga HP,101,4,10
+Mutaa Health Post,101,4,10
+Namatindi Rural Health Center,101,6,10
+Namundale HP,101,4,10
+Ndoka Health Post,101,4,10
+N'uma Health Post,101,4,10
+salunda Health Post,101,4,10
+Sihole Rural Health Center,101,6,10
+Siluwe Health Post,101,4,10
+Sishekanu Health Post,101,4,10
+Tapo Rural Health Center,101,6,10
+Wenela Health Centre,101,7,10
+Yuka Mission Hospital,101,1,10
+Yuka Mission Hospital HAHC,101,1,10
+Chitwa Rural Health Centre,102,6,10
+Kaaba Rural Health Center,102,6,10
+Kabilamwandi Rural Health,102,4,10
+Kalwalo Health Post,102,4,10
+Kaoma District Hospital,102,1,10
+Kaoma Urban Health Center,102,7,10
+Kasabi Rural Health Center,102,6,10
+Kasimba Rural Health Center,102,6,10
+Katoya Rural Health Post,102,4,10
+Longe Health Post,102,4,10
+Luena Camp Hospital,102,2,10
+Lunyati RHC,102,6,10
+Mangango Mission Hospital,102,1,10
+Mangango Mission Hospital HAHC,102,7,10
+Mangango ZNS (Kaoma) RHC,102,6,10
+Mayukwayukwa 2 Rural Health,102,6,10
+Mayukwayukwa Rural Health,102,6,10
+Mulalila Health Post,102,4,10
+Mulamba Urban Health Center,102,7,10
+Mushwala Health Post,102,4,10
+Mutondo Rural Health Center,102,6,10
+Mwanambuyu Rural Health,102,6,10
+Nalulebwe Rural Health Post,102,4,10
+Namaloba Rural Health Post,102,4,10
+Shibanga Aha Health Post,102,4,10
+Winda Rural Health Center,102,6,10
+Ikabako Health Post,103,4,10
+Ikwichi Rural Health Center,103,6,10
+Iloke Rural Health Center,103,6,10
+Kasheke Health Post,103,4,10
+Limulunga Stage II Rural Health,103,6,10
+Miulwe Health Post,103,4,10
+Mwanawina Rural Health,103,6,10
+Namitome Rural Health Center,103,6,10
+Nangili Health Post,103,4,10
+Nang'oko Health post,103,4,10
+Nangula Rural Health Center,103,6,10
+Ndanda Rural Health Center,103,6,10
+Salondo Health Post,103,4,10
+Simaa Health Post,103,4,10
+Sitoya Rural Health Center,103,6,10
+Ushaa Rural Health Center,103,6,10
+Afumba Rural Health Center,104,6,10
+Inkunikila Health Post,104,4,10
+Katunda Rural Health Center,104,6,10
+Luampa Mission Hospital,104,1,10
+Lububa Health Post,104,4,10
+Lui Rural Health Center,104,6,10
+Mbale Health Post,104,4,10
+Mbanyutu Rural Health Center,104,6,10
+Mulwa Health Post,104,4,10
+Mwandasengo Health Post,104,4,10
+Nakayembe Rural Health Center,104,6,10
+Namando Health Post,104,4,10
+Nkenga Rural Health Center,104,6,10
+Nyambi 1 Rural Health Center,104,6,10
+Nyambi 2 Rural Health Center,104,6,10
+Dongwe Rural Health Center,105,6,10
+Kamilende Rural Health Center,105,6,10
+Kasheke Health Post,105,4,10
+Kawaya Health Post,105,4,10
+Likapai Health Post,105,4,10
+Lishuwa Rural Health Center,105,6,10
+Luanchuma Health Post,105,4,10
+Lubosi Health Post,105,4,10
+Lubosi Urban Clinic,105,7,10
+Lukau Health Post,105,4,10
+Lukulu District Hosptial,105,1,10
+Luvuzi Rural Health Center,105,6,10
+Mayankwa Rural Health Center,105,6,10
+Mbanga Rural Health Center,105,6,10
+Mulongo Health Post,105,4,10
+Namayula Health Post,105,4,10
+Ngimbu Rural Health Center,105,6,10
+Ngulwana Health Post,105,4,10
+Sancta Maria CTC Rural Health,105,6,10
+Simakumba Rural Health,105,6,10
+Sitaka Health Centre,105,6,10
+Watopa Rural Health Center,105,6,10
+West Five Rural Health Center,105,6,10
+Kakulunda Rural Health Center,106,6,10
+Lubelele HP,106,4,10
+Lutembwe HP,106,4,10
+Mambungo Health Post,106,4,10
+Manjolo Health Post,106,4,10
+Mataba Health Post,106,4,10
+Mbangweta Health Post,106,4,10
+Mitete Rural Health Center,106,6,10
+Nyaala Health Post,106,4,10
+Sikunduko RHC,106,6,10
+Namakando Rural Health Post,106,4,10
+Washishi,106,4,10
+Lupui,106,4,10
+Burton Millitary Urban Health Center,107,7,10
+Caritas Diocess of Mongu n/a HBC,107,5,10
+Church of Hope Clinic,107,7,10
+Ilute Health Post,107,5,10
+Imwiko Health Post,107,5,10
+Kaande Health Post,107,5,10
+Kalundwana Rural Health,107,6,10
+Kama Rural Health Center,107,6,10
+Lealui Rural Health Center,107,6,10
+Lewanika General Hospital,107,2,10
+Lewanika Urban Health Center,107,7,10
+Lilelelo VCT Centre,107,5,10
+Litawa Rural Health Center,107,6,10
+Liyoyelo (Mongu) Urban HC,107,7,10
+Looma Health Post,107,4,10
+Luandui Rural Health Center,107,6,10
+Luatembo Health Post,107,4,10
+Lukalanya Rural Health Center,107,6,10
+Lukweta Rural Health Center,107,6,10
+Lulambo Heath Post,107,4,10
+Mabumbu Rural Health Center,107,6,10
+Mawawa Rural Health Center,107,6,10
+Mulambwa Urban Health Center,107,7,10
+Mutalaeti Health Post,107,4,10
+Mweeke Health post,107,4,10
+Nalikwanda Stage II Rural,107,6,10
+Nalwei Rural Health Center,107,6,10
+Namengo Health Post,107,4,10
+Namushakende Rural Health,107,6,10
+Natonga Health Post,107,4,10
+Ndau Rural Health Center,107,6,10
+Nomai Health Post,107,4,10
+Prison Urban Health Center,107,7,10
+Sefula Rural Health Center,107,6,10
+Sibongo Health Post,107,4,10
+Simulumbe Rural Health Center,107,6,10
+Siwa Health Post,107,4,10
+Mongu District Hospital,107,1,10
+Bwina Rural Health Center,108,6,10
+Kamanga Health Post,108,4,10
+Kasima Health Post,108,4,10
+Kasompa Health Post,108,4,10
+Kaywala Rural Health Center,108,6,10
+Mulauli Health Post,108,4,10
+Mulobezi District Hospital,108,1,10
+Mulobezi Rural Health Center,108,6,10
+Namakombwe Health Post,108,4,10
+Nawinda Rural Health Center,108,6,10
+Sanembo Health Post,108,4,10
+Sejamba Rural Health Center,108,6,10
+Sichili HAHC Rural Health,108,6,10
+Sichili Mission Hospital,108,1,10
+Lwazamba Health Post,109,4,10
+Magumwi Health Post,109,4,10
+Masese Rural Health Center,109,6,10
+Matoya Rural Health Center,109,6,10
+Mushukula Rural Health Center,109,6,10
+Mwandi HAHC,109,5,10
+Mwandi Mission Hospital,109,1,10
+Situlu Health Post,109,4,10
+Kalundu Health post,109,4,10
+Sankolonga Health post,109,4,10
+Chipungu Health Post,110,4,10
+Kataba Rural Health Center,110,6,10
+Kaunga Lueti Rural Health,110,6,10
+Liliachi Rural Health Center,110,6,10
+Litoya Rural Health Center,110,6,10
+Malombe Health Post,110,4,10
+Mande Health Post,110,4,10
+Mapungu Health Post,110,4,10
+Mukukutu Health Post,110,4,10
+Muoyo Rural Health Center,110,6,10
+Nakatwelenge Health Post,110,4,10
+Nalolo Rural Health Center,110,6,10
+Naniucha Rural Health Center,110,6,10
+Nasilimwe Rural Health Center,110,6,10
+Siloloti Health Post,110,4,10
+Sinungu Rural Health Center,110,6,10
+Suu Health Post,110,4,10
+Kahare Rural Health Center,111,6,10
+Kakanda Health Post,111,4,10
+Kandende Rural Health Center,111,6,10
+LombeLombe Health post,111,4,10
+Maloba Health post,111,4,10
+Mimpongo health post,111,4,10
+Namilangi Rural Health Center,111,6,10
+Njonjolo Rural Health Center,111,6,10
+Nkeyema Rural Health Center,111,6,10
+Itufa Rural Health Center,112,6,10
+Liangati Health Post,112,4,10
+Litambya Rural Health Center,112,6,10
+Lui Namabunga Health Post,112,4,10
+Lui River Rural Health Center,112,6,10
+Lui Wanyau Health Post,112,4,10
+Lumben/ananyezu,112,4,10
+Mata Rural Health Center,112,6,10
+Maziba Health Post,112,4,10
+Mumbula Health Post,112,4,10
+Mutwa Health Post,112,4,10
+Muweswa Health Post,112,4,10
+Mwanamwalye Rural Health,112,6,10
+Ngundi Health Post,112,4,10
+Senanga General Hospital,112,2,10
+Senanga Urban Health Centre,112,7,10
+Sibukali Rural Health Center,112,6,10
+Sikumbi Rural Health Center,112,6,10
+Situnga Health Post,112,4,10
+Imusho Rural Health Center,113,6,10
+Kalobolelwa Rural Health,113,6,10
+Katima Mulilo Rural Health,113,6,10
+Lumbe Health Post,113,4,10
+Lusu Rural Health Center,113,6,10
+Lwampungu Health Post,113,4,10
+Mazaba Health Post,113,4,10
+Mukusi Sawmills Rural Health,113,6,10
+Mulimambango Health Center,113,4,10
+Neongelo Health Post,113,4,10
+Njoko Mission Rural Health,113,6,10
+Silolo Rural Health Post,113,4,10
+Silumbu Rural Health Center,113,6,10
+Yeta District Hospital,113,1,10
+Yeta HAHC,113,7,10
+Zambezi Rural Health Center,113,6,10
+Ngwezi Health post,113,4,10
+Sizuka health Post,113,6,10
+Maundu RHC,113,6,10
+Keyana Rural Health Center,114,6,10
+Lupuka Health Post,114,4,10
+Mambolomoka Rural Health,114,6,10
+Maweleya Health Post,114,4,10
+Mbanda Rural Health Center,114,6,10
+Mulonga Rural Health Center,114,6,10
+Shang'ombo District Hospital,114,1,10
+Shang'ombo Rural Health,114,6,10
+Sipuma Rural Health Center,114,6,10
+Siwelewele Health Post,114,4,10
+State Ranch Health Post,114,4,10
+Kaluwe Rural Health Center,115,6,10
+Lueti Rural Health Center,115,6,10
+Lulang'unyi Health Post,115,4,10
+Luoke West Rural Health Center,115,6,10
+Lwahumba Health Post,115,4,10
+mabua Health Post,115,4,10
+Mwenyi Health Post,115,4,10
+Nyengo Rural Health Center,115,6,10
+Sikongo Rural Health Center,115,6,10
+Sikushi Health Post,115,4,10
+Situlu Health Post,115,4,10
+Tuuwa Rural Health Center,115,6,10
+Silumena HP,115,4,10
+Makeya HP,115,4,10
+Mutala HP,115,4,10
+Liundu HP,115,4,10
+Luoke HP,115,4,10
+Kabumbu HP,115,4,10
+Kaanja Rural Health Center,116,6,10
+Kabula 2 Health Post,116,4,10
+Kalenge Health Post,116,4,10
+Kaunga Mashi Rural Health,116,6,10
+Lipaneno Health Post,116,4,10
+Liwandamo Health Post,116,4,10
+Lyabangu Health Post,116,4,10
+Mbeta Health Post,116,4,10
+Mulele Health Post,116,4,10
+Mutomena Rural Health Center,116,6,10
+Mwanambao Health Post,116,4,10
+Nalwashi Rural Health Center,116,6,10
+Nangweshi Rural Health Center,116,6,10
+Sankandi Health Post,116,4,10
+Silowana Rural Health Center,116,6,10
+Sinjembela Rural Health Center,116,6,10
+Sioma Rural Health Center,116,6,10
+Sitoti Rural Health Center,116,6,10

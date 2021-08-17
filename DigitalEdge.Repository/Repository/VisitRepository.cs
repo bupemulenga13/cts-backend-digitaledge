@@ -1589,7 +1589,8 @@ namespace DigitalEdge.Repository
         {
             List<FacilityModel> facilities = (from facility in _DigitalEdgeContext.Facilities
                                               join facilityType in _DigitalEdgeContext.FacilityTypes on facility.FacilityTypeId equals facilityType.FacilityTypeId
-
+                                              join districtName in _DigitalEdgeContext.Districts on facility.DistrictId equals districtName.DistrictId
+                                              
                                               select new FacilityModel
                                               {
                                                   FacilityId = facility.FacilityId,
@@ -1598,9 +1599,9 @@ namespace DigitalEdge.Repository
                                                   FacilityContactNumber = facility.FacilityContactNumber,
                                                   IsAvailable = facility.IsAvailable,
                                                   FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
-                                                  Address = facility.Address
-
-
+                                                  Address = facility.Address,
+                                                  DistrictId = facility.DistrictId,
+                                                  DistrictName = facility.Districts.DistrictName
                                               }
                                               ).ToList();
             return facilities;

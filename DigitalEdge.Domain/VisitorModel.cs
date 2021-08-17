@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -91,29 +92,7 @@ namespace DigitalEdge.Domain
 
 
 
-        /*public string GetAddress()
-        {
-            
-            string address = PhysicalAddress;
-
-            string[] subs = address.Split(",");
-
-            foreach (string sub in subs)
-            {
-                Zone = subs[0] = sub;
-                Village = subs[1] = sub;
-                HouseNo = subs[2] = sub;
-                GISLocation = subs[3] = sub;
-
-            }
-            Console.WriteLine($"Substring : {Zone}");
-            Console.WriteLine($"Substring : {Village}");
-            Console.WriteLine($"Substring : {HouseNo}");
-            Console.WriteLine($"Substring : {GISLocation}");
-
-            return address;
-
-        }*/
+       
 
     }
 }

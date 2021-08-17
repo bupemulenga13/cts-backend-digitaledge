@@ -52,7 +52,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientStatusId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientStatusName = table.Column<string>(nullable: false)
+                    ClientStatusName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,7 +65,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientTypeName = table.Column<string>(nullable: false)
+                    ClientTypeName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -78,7 +78,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     FacilityTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacilityTypeName = table.Column<string>(nullable: false)
+                    FacilityTypeName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,7 +91,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     LanguageId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageName = table.Column<string>(nullable: false)
+                    LanguageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,11 +125,11 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ProvinceId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProvinceName = table.Column<string>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: true),
-                    DateEdited = table.Column<DateTime>(nullable: true),
-                    EditedBy = table.Column<long>(nullable: true),
-                    CreatedBy = table.Column<long>(nullable: true)
+                    ProvinceName = table.Column<string>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
+                    EditedBy = table.Column<long>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,7 +142,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ServiceTypeId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceTypeName = table.Column<string>(nullable: false)
+                    ServiceTypeName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -155,7 +155,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     SexId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SexName = table.Column<string>(nullable: false)
+                    SexName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -168,7 +168,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     RoleId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleName = table.Column<string>(nullable: false),
+                    RoleName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
@@ -291,7 +291,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     StatusCommentId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusCommentName = table.Column<string>(nullable: false),
+                    StatusCommentName = table.Column<string>(nullable: true),
                     ClientStatusId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -313,10 +313,10 @@ namespace DigitalEdge.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DistrictName = table.Column<string>(nullable: true),
                     ProvinceId = table.Column<long>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    DateEdited = table.Column<DateTime>(nullable: false),
-                    EditedBy = table.Column<long>(nullable: false),
-                    CreatedBy = table.Column<long>(nullable: false)
+                    DateCreated = table.Column<DateTime>(nullable: true),
+                    DateEdited = table.Column<DateTime>(nullable: true),
+                    EditedBy = table.Column<long>(nullable: true),
+                    CreatedBy = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -335,15 +335,15 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     FacilityId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacilityName = table.Column<string>(nullable: false),
+                    FacilityName = table.Column<string>(nullable: true),
                     FacilityContactNumber = table.Column<string>(nullable: true),
                     FacilityTypeId = table.Column<long>(nullable: false),
                     DistrictId = table.Column<long>(nullable: true),
-                    DateCreated = table.Column<DateTime>(nullable: true),
-                    DateEdited = table.Column<DateTime>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
                     EditedBy = table.Column<long>(nullable: true),
                     CreatedBy = table.Column<long>(nullable: true),
-                    IsAvailable = table.Column<bool>(nullable: true),
+                    IsAvailable = table.Column<bool>(nullable: false),
                     Address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -369,12 +369,12 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ServicePointId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServicePointName = table.Column<string>(nullable: false),
+                    ServicePointName = table.Column<string>(nullable: true),
                     FacilityId = table.Column<long>(nullable: true),
-                    DateCreated = table.Column<DateTime>(nullable: true),
-                    DateEdited = table.Column<DateTime>(nullable: true),
-                    EditedBy = table.Column<long>(nullable: true),
-                    CreatedBy = table.Column<long>(nullable: true)
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
+                    EditedBy = table.Column<long>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -394,25 +394,43 @@ namespace DigitalEdge.Repository.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
-                    Password = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    Email = table.Column<string>(maxLength: 100, nullable: false),
+                    Email = table.Column<string>(maxLength: 100, nullable: true),
                     PhoneNo = table.Column<string>(maxLength: 15, nullable: true),
                     IsSuperAdmin = table.Column<bool>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
                     FacilityId = table.Column<long>(nullable: true),
+                    DistrictId = table.Column<long>(nullable: true),
+                    ProvinceId = table.Column<long>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false),
+                    EditedBy = table.Column<long>(nullable: false),
                     RoleId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Users_Districts_DistrictId",
+                        column: x => x.DistrictId,
+                        principalTable: "Districts",
+                        principalColumn: "DistrictId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Users_Facilities_FacilityId",
                         column: x => x.FacilityId,
                         principalTable: "Facilities",
                         principalColumn: "FacilityId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Users_Provinces_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Provinces",
+                        principalColumn: "ProvinceId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_UserRoles_RoleId",
                         column: x => x.RoleId,
@@ -460,17 +478,17 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     ClientId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     MiddleName = table.Column<string>(maxLength: 50, nullable: true),
-                    LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    ArtNo = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: true),
+                    ArtNo = table.Column<string>(nullable: true),
                     ClientPhoneNo = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     Age = table.Column<int>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateEdit = table.Column<DateTime>(nullable: true),
-                    EditBy = table.Column<long>(nullable: true),
-                    CreatedBy = table.Column<long>(nullable: true),
+                    EditBy = table.Column<long>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false),
                     Zone = table.Column<string>(nullable: true),
                     Village = table.Column<string>(nullable: true),
                     HouseNo = table.Column<string>(nullable: true),
@@ -478,8 +496,8 @@ namespace DigitalEdge.Repository.Migrations
                     GeneralComment = table.Column<string>(nullable: true),
                     EnrolledByName = table.Column<string>(nullable: true),
                     AlternativePhoneNumber1 = table.Column<string>(nullable: true),
-                    PhoneVerifiedByAnalyst = table.Column<bool>(nullable: true),
-                    PhoneVerifiedByFacilityStaff = table.Column<bool>(nullable: true),
+                    PhoneVerifiedByAnalyst = table.Column<bool>(nullable: false),
+                    PhoneVerifiedByFacilityStaff = table.Column<bool>(nullable: false),
                     EnrollmentDate = table.Column<DateTime>(nullable: false),
                     EnrolledByPhone = table.Column<string>(nullable: true),
                     FacilityId = table.Column<long>(nullable: false),
@@ -491,7 +509,7 @@ namespace DigitalEdge.Repository.Migrations
                     SexId = table.Column<long>(nullable: false),
                     ClientRelationship = table.Column<int>(nullable: true),
                     EnrollmentType = table.Column<int>(nullable: true),
-                    AccessToPhone = table.Column<bool>(nullable: true),
+                    AccessToPhone = table.Column<bool>(nullable: false),
                     HamornizedMobilePhone = table.Column<int>(nullable: true),
                     HarmonizedPhysicalAddress = table.Column<int>(nullable: true)
                 },
@@ -589,10 +607,10 @@ namespace DigitalEdge.Repository.Migrations
                     AppointmentStatus = table.Column<int>(nullable: false),
                     InteractionDate = table.Column<DateTime>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
-                    DateCreated = table.Column<DateTime>(nullable: true),
-                    DateEdited = table.Column<DateTime>(nullable: true),
-                    EditedBy = table.Column<long>(nullable: true),
-                    CreatedBy = table.Column<long>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateEdited = table.Column<DateTime>(nullable: false),
+                    EditedBy = table.Column<long>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false),
                     DaysLate = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -935,9 +953,19 @@ namespace DigitalEdge.Repository.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_DistrictId",
+                table: "Users",
+                column: "DistrictId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_FacilityId",
                 table: "Users",
                 column: "FacilityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_ProvinceId",
+                table: "Users",
+                column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",

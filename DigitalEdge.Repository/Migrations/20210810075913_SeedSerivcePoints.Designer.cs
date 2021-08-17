@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalEdge.Repository.Migrations
 {
     [DbContext(typeof(DigitalEdgeContext))]
-    [Migration("20210701115213_Initial")]
-    partial class Initial
+    [Migration("20210810075913_SeedSerivcePoints")]
+    partial class SeedSerivcePoints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -289,19 +289,19 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("CreatedBy")
+                    b.Property<long?>("CreatedBy")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateEdited")
+                    b.Property<DateTime?>("DateEdited")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DistrictName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("EditedBy")
+                    b.Property<long?>("EditedBy")
                         .HasColumnType("bigint");
 
                     b.Property<long>("ProvinceId")
@@ -419,7 +419,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("CreatedBy")
+                    b.Property<long?>("CreatedBy")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateCreated")
@@ -431,7 +431,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long?>("DistrictId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("EditedBy")
+                    b.Property<long?>("EditedBy")
                         .HasColumnType("bigint");
 
                     b.Property<string>("FacilityContactNumber")
@@ -665,11 +665,26 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateEdited")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DistrictId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("EditedBy")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<long>("FacilityId")
+                    b.Property<long?>("FacilityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("FirstName")
@@ -697,12 +712,19 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
+                    b.Property<long?>("ProvinceId")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DistrictId");
+
                     b.HasIndex("FacilityId");
+
+                    b.HasIndex("ProvinceId");
 
                     b.HasIndex("RoleId");
 
@@ -1208,11 +1230,17 @@ namespace DigitalEdge.Repository.Migrations
 
             modelBuilder.Entity("DigitalEdge.Repository.Users", b =>
                 {
+                    b.HasOne("DigitalEdge.Repository.District", "Districts")
+                        .WithMany()
+                        .HasForeignKey("DistrictId");
+
                     b.HasOne("DigitalEdge.Repository.Facility", "Facilities")
                         .WithMany()
-                        .HasForeignKey("FacilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacilityId");
+
+                    b.HasOne("DigitalEdge.Repository.Province", "Provinces")
+                        .WithMany()
+                        .HasForeignKey("ProvinceId");
 
                     b.HasOne("DigitalEdge.Repository.UserRoles", "UserRoles")
                         .WithMany()

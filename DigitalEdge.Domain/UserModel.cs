@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace DigitalEdge.Domain
@@ -8,7 +9,7 @@ namespace DigitalEdge.Domain
         public UserModel()
         {
         }
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId, string roleName, long? provinceId, long? districtId)
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -18,26 +19,17 @@ namespace DigitalEdge.Domain
             this.RoleId = roleId;
             this.IsDeleted = isDeleted;
             this.FacilityId = facilityId;
-            this.RoleName = roleName;
-            this.ProvinceId = provinceId;
             this.DistrictId = districtId;
+            this.ProvinceId = provinceId;
+            this.DateCreated = dateCreated;
+            this.CreatedBy = createdBy;
         }
-        public UserModel(long id, string firstName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted )
+
+        public UserModel(long id, string password, bool isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId, DateTime dateCreated, long createdBy)
         {
             this.Id = id;
-            this.FirstName = firstName;
             this.Password = password;
-            this.Email = email;
-            this.RoleId = roleId;
             this.IsSuperAdmin = isSuperAdmin;
-            this.IsDeleted = isDeleted;
-
-        }
-        public UserModel(long id, string password, string isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId)
-        {
-            this.Id = id;
-            this.Password = password;
-            this.IsSuperAdmin = IsSuperAdmin;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
@@ -49,6 +41,25 @@ namespace DigitalEdge.Domain
             this.FacilityId = facilityId;
 
         }
+
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy, DateTime dateEdited, long editedBy) 
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.PhoneNo = phoneNo;
+            this.RoleId = roleId;
+            this.IsDeleted = isDeleted;
+            this.FacilityId = facilityId;
+            this.ProvinceId = provinceId;
+            this.DistrictId = districtId;
+            this.DateCreated = dateCreated;
+            this.CreatedBy = createdBy;
+            this.DateEdited = dateEdited;
+            this.EditedBy = editedBy;
+        }
+
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string Password { get; set; }
@@ -60,6 +71,13 @@ namespace DigitalEdge.Domain
         public bool IsDeleted { get; set; }
 
         public long? FacilityId { get; set; }
+
+        public string FacilityName { get; set; }
+
+        public string DistrictName { get; set; }
+
+        public string ProvinceName { get; set; }
+
         public long? ProvinceId { get; set; }
 
         public long? DistrictId { get; set; }
@@ -67,7 +85,14 @@ namespace DigitalEdge.Domain
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
 
-        
+        public DateTime DateCreated { get; set; }
+
+        public DateTime DateEdited { get; set; }
+
+        public long CreatedBy { get; set; }
+
+        public long EditedBy { get; set; }
+
 
 
     }

@@ -13,7 +13,7 @@ namespace DigitalEdge.Repository
 
         public Visit(long VisitId, long ClientId, long FacilityId, long ServicePointId, string firstName, string lastName, string middleName,
           string clientPhoneNo, DateTime? dateOfBirth, DateTime priorAppointmentDate,
-         DateTime nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes, long age)
+         DateTime nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes, long age, DateTime dateCreated, long createdBy)
         {
             this.VisitId = VisitId;
             this.ClientId = ClientId;
@@ -31,8 +31,38 @@ namespace DigitalEdge.Repository
             this.ReasonOfVisit = reasonOfVisit;
             this.AdviseNotes = adviseNotes;
             this.Age = age;
+            this.DateCreated = dateCreated;
+            this.CreatedBy = createdBy;
         }
+
         public Visit(long visitId, long clientId, long? appointmentId, long facilityId, long serviceTypeId, DateTime visitDate, string reasonOfVisit, string clinicRemarks, string diagnosis, string secondDiagnosis, string thirdDiagnosis, string therapy, string clientPhoneNo, DateTime priorAppointmentDate, DateTime nextAppointmentDate, DateTime? dateOfBirth, string visitType, string firstName, string lastName, long appointmentStatus, DateTime dateCreated, DateTime dateEdited, long age)
+        {
+            VisitId = visitId;
+            ClientId = clientId;
+            AppointmentId = appointmentId;
+            FacilityId = facilityId;
+            ServiceTypeId = serviceTypeId;
+            VisitDate = visitDate;
+            ReasonOfVisit = reasonOfVisit;
+            ClinicRemarks = clinicRemarks;
+            Diagnosis = diagnosis;
+            SecondDiagnosis = secondDiagnosis;
+            ThirdDiagnosis = thirdDiagnosis;
+            Therapy = therapy;
+            ClientPhoneNo = clientPhoneNo;
+            PriorAppointmentDate = priorAppointmentDate;
+            NextAppointmentDate = nextAppointmentDate;
+            DateOfBirth = dateOfBirth;
+            VisitType = visitType;
+            FirstName = firstName;
+            LastName = lastName;
+            AppointmentStatus = appointmentStatus;
+            DateCreated = dateCreated;
+            DateEdited = dateEdited;
+            Age = age;
+        }
+
+        public Visit(long visitId, long clientId, long? appointmentId, long facilityId, long serviceTypeId, DateTime visitDate, string reasonOfVisit, string clinicRemarks, string diagnosis, string secondDiagnosis, string thirdDiagnosis, string therapy, string clientPhoneNo, DateTime priorAppointmentDate, DateTime nextAppointmentDate, DateTime? dateOfBirth, string visitType, string firstName, string lastName, long appointmentStatus, DateTime dateCreated, DateTime dateEdited, long age, long createdBy, long editedBy)
         {
             this.VisitId = visitId;
             this.ClientId = clientId;
@@ -57,6 +87,8 @@ namespace DigitalEdge.Repository
             this.AppointmentStatus = appointmentStatus;
             this.DateCreated = dateCreated;
             this.DateEdited = dateEdited;
+            this.CreatedBy = createdBy;
+            this.EditedBy = editedBy;
 
         }
 

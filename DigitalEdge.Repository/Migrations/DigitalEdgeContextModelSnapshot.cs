@@ -417,7 +417,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("CreatedBy")
+                    b.Property<long?>("CreatedBy")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateCreated")
@@ -429,7 +429,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<long?>("DistrictId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("EditedBy")
+                    b.Property<long?>("EditedBy")
                         .HasColumnType("bigint");
 
                     b.Property<string>("FacilityContactNumber")
@@ -663,7 +663,19 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateEdited")
+                        .HasColumnType("datetime2");
+
                     b.Property<long?>("DistrictId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("EditedBy")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Email")

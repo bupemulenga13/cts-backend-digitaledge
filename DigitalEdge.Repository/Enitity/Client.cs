@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
         }
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone, 
-            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated)
+            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, long createdBy)
         {
             ClientId = id;
             FirstName = firstName;
@@ -45,11 +45,12 @@ namespace DigitalEdge.Repository
             HamornizedMobilePhone = harmonizedPhone;
             HarmonizedPhysicalAddress = harmonizedAddress;
             DateCreated = dateCreated;
+            CreatedBy = createdBy;
         }
 
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
-            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, DateTime dateEdited)
+            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, DateTime dateEdited, long createdBy, long editedBy)
         {
             ClientId = id;
             FirstName = firstName;
@@ -83,6 +84,8 @@ namespace DigitalEdge.Repository
             HarmonizedPhysicalAddress = harmonizedAddress;
             DateCreated = dateCreated;
             DateEdit = dateEdited;
+            CreatedBy = createdBy;
+            EditBy = editedBy;
         }
 
         [Key]

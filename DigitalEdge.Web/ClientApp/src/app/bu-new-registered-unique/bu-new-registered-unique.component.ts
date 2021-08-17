@@ -74,7 +74,7 @@ export class BUNewRegisteredUniqueComponent implements OnInit {
         }.bind(this));
         this.client_alldates.forEach((date) => {
           let jsdate = new Date(date);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
           this.client_visitDate.push(jsdate.toLocaleDateString(undefined, options));
         })
         this.clientMyChart = new Chart('clientuniquecanvas', {
@@ -170,7 +170,7 @@ export class BUNewRegisteredUniqueComponent implements OnInit {
           }.bind(this));
           this.client_alldates.forEach((date) => {
             let jsdate = new Date(date);
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
             this.client_visitDate.push(jsdate.toLocaleDateString(undefined, options));
           })
         this.clientMyChart.destroy();
