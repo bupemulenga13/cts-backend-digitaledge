@@ -24,7 +24,7 @@ namespace DigitalEdge.Services
         }
         public List<UserModel> GetData()
         {
-            List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.FacilityId, x.DistrictId, x.ProvinceId, x.DateCreated, x.CreatedBy, x.DateEdited, x.EditedBy)).ToList();
+            List<UserModel> users = _accountRepository.GetData().Where(x => x.IsDeleted == false).Select(x => new UserModel(x.Id, x.FirstName, x.LastName, x.Email, x.PhoneNo, x.RoleId, x.IsDeleted, x.FacilityId, x.DistrictId, x.ProvinceId, x.DateCreated, x.CreatedBy, x.DateEdited, x.EditedBy, x.RoleName, x.DistrictName, x.ProvinceName)).ToList();
 
 
             if (users == null)

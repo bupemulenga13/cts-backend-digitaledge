@@ -36,8 +36,13 @@ namespace DigitalEdge.Repository
         public List<UserModel> GetData()
         {
             List<UserModel> users = (from p in _DigitalEdgeContext.Users
-                                     from c in _DigitalEdgeContext.UserRoles
-                                     where p.RoleId == c.RoleId
+                                     join c in _DigitalEdgeContext.UserRoles on p.RoleId equals c.RoleId into roles
+                                     from u in roles.DefaultIfEmpty()
+                                     join pr in _DigitalEdgeContext.Provinces on p.ProvinceId equals pr.ProvinceId into provinces
+                                     from us in provinces.DefaultIfEmpty()
+                                     join di in _DigitalEdgeContext.Districts on p.DistrictId equals di.DistrictId into districts
+                                     from use in districts.DefaultIfEmpty()
+                                     where p.RoleId == u.RoleId
                                      select new UserModel
                                      {
                                          Id = p.Id,
@@ -48,10 +53,12 @@ namespace DigitalEdge.Repository
                                          FacilityId = p.FacilityId,
                                          PhoneNo = p.PhoneNo,
                                          IsDeleted = p.IsDeleted,
-                                         RoleName = c.RoleName,
-                                         RoleId = c.RoleId,
+                                         RoleName = u.RoleName,
+                                         RoleId = u.RoleId,
                                          ProvinceId = p.ProvinceId,
-                                         DistrictId = p.DistrictId
+                                         DistrictId = p.DistrictId,
+                                         ProvinceName = us.ProvinceName,
+                                         DistrictName = use.DistrictName
                                      }).ToList();
             return users;
         }

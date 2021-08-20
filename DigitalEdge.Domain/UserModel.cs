@@ -60,6 +60,30 @@ namespace DigitalEdge.Domain
             this.EditedBy = editedBy;
         }
 
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy, DateTime dateEdited, long editedBy, 
+            string roleName, string districtName, string provinceName) 
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNo = phoneNo;
+            RoleId = roleId;
+            IsDeleted = isDeleted;
+            FacilityId = facilityId;
+            DistrictId = districtId;
+            ProvinceId = provinceId;
+            DateCreated = dateCreated;
+            CreatedBy = createdBy;
+            DateEdited = dateEdited;
+            EditedBy = editedBy;
+            RoleName = roleName;
+            DistrictName = districtName;
+            ProvinceName = provinceName;
+
+              
+        }
+
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string Password { get; set; }
