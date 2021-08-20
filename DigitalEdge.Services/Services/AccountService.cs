@@ -90,7 +90,7 @@ namespace DigitalEdge.Services
         }
         public string CreateFacility(UserBindingModel facility)
         {
-            Facility facilityData = new Facility(facility.FacilityId, facility.FacilityName, Convert.ToString(facility.FacilityContactNumber), facility.FacilityTypeId, facility.IsAvailable, facility.Address, facility.DateCreated, facility.CreatedBy, facility.DistrictId);
+            Facility facilityData = new Facility(facility.FacilityId, facility.FacilityName, Convert.ToString(facility.FacilityContactNumber), facility.FacilityTypeId, facility.IsAvailable, facility.Address, facility.DateCreated = DateTime.Now, facility.CreatedBy, facility.DistrictId);
             string result = this._accountRepository.CreateFacility(facilityData);
             return result;
         }
