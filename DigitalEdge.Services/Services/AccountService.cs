@@ -77,12 +77,12 @@ namespace DigitalEdge.Services
         {
             if (user.RoleId == 1)
             {
-                Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.FacilityId, user.DistrictId, user.ProvinceId, user.PhoneNo, user.DateCreated, user.CreatedBy);
+                Users superAdminData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, true, false, true, user.FacilityId, user.DistrictId, user.ProvinceId, user.PhoneNo, user.DateCreated = user.GetDateToday(), user.CreatedBy);
                 string result1 = this._accountRepository.CreateUser(superAdminData);
                 return result1;
 
             }
-            Users userData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, false, false, true, user.FacilityId, user.DistrictId, user.ProvinceId, user.PhoneNo, user.DateCreated, user.CreatedBy);
+            Users userData = new Users(user.Id, user.FirstName, user.LastName, user.Password, user.Email, user.RoleId, false, false, true, user.FacilityId, user.DistrictId, user.ProvinceId, user.PhoneNo, user.DateCreated = user.GetDateToday(), user.CreatedBy);
             string result = this._accountRepository.CreateUser(userData);
             return result;
 

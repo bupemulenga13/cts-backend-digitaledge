@@ -90,15 +90,14 @@ namespace DigitalEdge.Repository
             //User Roles
             var roles = new UserRoles[]
             {
-                
-                new UserRoles{RoleName = "National Admin",Description="National Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Provincial Admin",Description="Provincial Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "District Admin",Description="District Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Facility Admin",Description="Facility Adminstrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Technical Administrator",Description="Technical Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Supervisor",Description="Facility Supervisor",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Facility Staff",Description="Facility Staff",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
                 new UserRoles{RoleName = "Health Analyst",Description="Facility Analyst",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Facility Staff",Description="Facility Staff",IsDeleted=false,CreatedBy=1,ModifiedBy=0},                              
-                new UserRoles{RoleName = "Supervisor",Description="Facility Supervisor",IsDeleted=false,CreatedBy=1,ModifiedBy=0},                              
-                new UserRoles{RoleName = "Technical Administrator",Description="Technical Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},                              
+                new UserRoles{RoleName = "Facility Admin",Description="Facility Adminstrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "District Admin",Description="District Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Provincial Admin",Description="Provincial Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Central Admin",Description="Central Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
             };
 
             context.UserRoles.AddRange(roles);
@@ -107,11 +106,11 @@ namespace DigitalEdge.Repository
             //Application Users
             var users = new Users[]
             {
-                new Users{FirstName = "National",LastName="Administrator", Password="NationalAdmin@cts21",Email="admin@national.cts",IsSuperAdmin=true,RoleId=1, DateCreated= DateTime.Now, CreatedBy = 1},
                 new Users{FirstName = "Facility",LastName="Administrator", Password="FacilityAdmin@cts21",Email="admin@facility.cts",IsSuperAdmin=false,RoleId=4, DateCreated= DateTime.Now,CreatedBy = 1},
                 new Users{FirstName = "Technical",LastName="Administrator", Password="TechAdmin@cts11",Email="bupe@digiprophets.com",IsSuperAdmin=true,RoleId=8, DateCreated= DateTime.Now, CreatedBy = 1},
+                new Users{FirstName = "Central",LastName="Administrator", Password="CentralAdmin@cts21",Email="admin@central.cts",IsSuperAdmin=true,RoleId=1, DateCreated= DateTime.Now, CreatedBy = 1},
             };
-
+            
             context.Users.AddRange(users);
             context.SaveChanges();
 
@@ -148,13 +147,13 @@ namespace DigitalEdge.Repository
             //Facility Type
             var facilityType = new FacilityType[]
             {
-                new FacilityType{FacilityTypeName = "First Level Hospital"},
-                new FacilityType{FacilityTypeName = "Second Level Hospital"},
-                new FacilityType{FacilityTypeName = "Third Level Hospital"},
-                new FacilityType{FacilityTypeName = "Health Post (Rural)"},
-                new FacilityType{FacilityTypeName = "Health Post (Urban)"},
+                new FacilityType{FacilityTypeName = "Urban Health Center"},
                 new FacilityType{FacilityTypeName = "Rural Health Center"},
-                new FacilityType{FacilityTypeName = "Urban Health Center"}
+                new FacilityType{FacilityTypeName = "Health Post (Urban)"},
+                new FacilityType{FacilityTypeName = "Health Post (Rural)"},
+                new FacilityType{FacilityTypeName = "Third Level Hospital"},
+                new FacilityType{FacilityTypeName = "Second Level Hospital"},
+                new FacilityType{FacilityTypeName = "First Level Center"}
             };
             context.FacilityTypes.AddRange(facilityType);
             context.SaveChanges();
@@ -176,15 +175,15 @@ namespace DigitalEdge.Repository
 
             var serviceType = new VisitServices[]
             {
-                new VisitServices{ServiceTypeName = "Clinical"},
-                new VisitServices{ServiceTypeName = "Pharmacy"},
-                new VisitServices{ServiceTypeName = "Lab CD4"},
-                new VisitServices{ServiceTypeName = "Lab Viral Load"},
-                new VisitServices{ServiceTypeName = "Cervical Cancer Screening"},
-                new VisitServices{ServiceTypeName = "Cervical Cancer Treatment"},
-                new VisitServices{ServiceTypeName = "PREP"},
-                new VisitServices{ServiceTypeName = "Referral"},
                 new VisitServices{ServiceTypeName = "Other"},
+                new VisitServices{ServiceTypeName = "Referral"},
+                new VisitServices{ServiceTypeName = "PREP"},
+                new VisitServices{ServiceTypeName = "Cervical Cancer Treatment"},
+                new VisitServices{ServiceTypeName = "Cervical Cancer Screening"},
+                new VisitServices{ServiceTypeName = "Lab Viral Load"},
+                new VisitServices{ServiceTypeName = "Lab CD4"},
+                new VisitServices{ServiceTypeName = "Pharmacy"},
+                new VisitServices{ServiceTypeName = "Clinical"}
             };
             context.ServiceTypes.AddRange(serviceType);
             context.SaveChanges();

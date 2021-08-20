@@ -20,8 +20,8 @@ namespace DigitalEdge.Domain
         public DistrictModel Districts { get; set; }
         public string FacilityTypeName { get; set; }
 
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdited { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdited { get; set; }
         public long? EditedBy { get; set; }
         public long? CreatedBy { get; set; }
         public long FacilityTypeId { get; set; }

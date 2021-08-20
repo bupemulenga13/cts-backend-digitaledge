@@ -93,12 +93,19 @@ namespace DigitalEdge.Domain
 
         public long EditedBy { get; set; }
 
+        public DateTime GetDateToday()
+        {
+            return DateTime.Now;
+        }
 
 
     }
+    
     public class FormFileData
     {
         public IFormFileCollection FileToUpload { get; set; }
     }
+
+
 }
 
