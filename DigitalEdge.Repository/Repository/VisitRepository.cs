@@ -1782,7 +1782,7 @@ namespace DigitalEdge.Repository
 
         public int AvailableFacilities()
         {
-            var facilities = _DigitalEdgeContext.Facilities.Where(f => f.IsAvailable).Count();
+            var facilities = _DigitalEdgeContext.Facilities.Where(f => f.IsAvailable == true).Count();
 
             return facilities;
         }

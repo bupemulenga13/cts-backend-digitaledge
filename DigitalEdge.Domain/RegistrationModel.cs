@@ -14,9 +14,11 @@ namespace DigitalEdge.Domain
         public string ClientPhoneNo { get; set; }
         public string DateOfBirth { get; set; }
         public int? Age { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdit { get; set; }
-        public long CreatedBy { get; set; }        
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdit { get; set; }
+        public long? CreatedBy { get; set; }
+        public long? EditBy { get; set; }
+            
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
@@ -60,7 +62,7 @@ namespace DigitalEdge.Domain
         public string InteractionDate { get; set; }
         public string InteractionTime { get; set; }
         public DateTime DateEdited { get; set; }
-        public long EditedBy { get; set; }
+        public long? EditedBy { get; set; }
 
         public long FacilityId { get; set; }
 
@@ -112,19 +114,7 @@ namespace DigitalEdge.Domain
         }
 
         public DateTime GetDateCreated() { return DateTime.Now; }
-
-        public DateTime GetDateEdited()
-        {
-
-            DateTime today = DateTime.Today.Date;
-
-            DateTime createdDate = DateCreated.Date;
-
-            var editedDate = createdDate - today;
-
-            return Convert.ToDateTime(editedDate);
-
-        }
+        
 
         public int CalculateAge()
         {

@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         {
         }
 
-        public AppointmentsModel(long appointmentId, long clientId, long facilityId, long? servicePointId, DateTime appointmentDate, DateTime dateCreated, DateTime dateEdited, long editedBy, long createdBy, int appointmentStatus)
+        public AppointmentsModel(long appointmentId, long clientId, long facilityId, long? servicePointId, DateTime appointmentDate, DateTime? dateCreated, DateTime? dateEdited, long? editedBy, long? createdBy, int appointmentStatus)
         {
             this.AppointmentId = appointmentId;
             this.ClientId = clientId;
@@ -91,10 +91,10 @@ namespace DigitalEdge.Domain
         public DateTime? NextAppointmentDate { get; set; }
         public string ReasonOfVisit { get; set; }
         public string AdviseNotes { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdited { get; set; }
-        public long EditedBy { get; set; }
-        public long CreatedBy { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdited { get; set; }
+        public long? EditedBy { get; set; }
+        public long? CreatedBy { get; set; }
         public string FacilityName { get; set; }
         public string DistrictName { get; set; }
         public string ProvinceName { get; set; }

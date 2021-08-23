@@ -13,7 +13,7 @@ namespace DigitalEdge.Repository
         }
 
 
-        public Facility(long facilityId, string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address, DateTime? dateCreated, long createdBy, long? districtId)
+        public Facility(long facilityId, string facilityName, string facilityContactNumber, long facilityTypeId, bool? isAvailable, string address, DateTime? dateCreated, long createdBy, long? districtId)
         {
             FacilityId = facilityId;
             FacilityName = facilityName;
@@ -26,7 +26,7 @@ namespace DigitalEdge.Repository
             DistrictId = districtId;
         }
 
-        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId, bool isAvailable, string address, DateTime? dateCreated, DateTime? dateEdited, long? createdBy, long? editedBy)
+        public Facility(long facilityId , long? districtId , string facilityName, string facilityContactNumber, long facilityTypeId, bool? isAvailable, string address, DateTime? dateCreated, DateTime? dateEdited, long? createdBy, long? editedBy)
         {
             Facility facility = this;
             facility.FacilityId = facilityId;
@@ -63,7 +63,7 @@ namespace DigitalEdge.Repository
         public DateTime? DateEdited { get; set; }
         public long? EditedBy { get; set; }
         public long? CreatedBy { get; set; }
-        public bool IsAvailable { get; set; }
+        public bool? IsAvailable { get; set; }
         public string Address { get; set; }
 
 

@@ -12,7 +12,7 @@ namespace DigitalEdge.Repository
         }
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone, 
-            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, long createdBy)
+            int? harmonizedPhone, int? harmonizedAddress, DateTime? dateCreated, long? createdBy)
         {
             ClientId = id;
             FirstName = firstName;
@@ -50,7 +50,7 @@ namespace DigitalEdge.Repository
 
         public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
             string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
-            int? harmonizedPhone, int? harmonizedAddress, DateTime dateCreated, DateTime dateEdited, long createdBy, long editedBy)
+            int? harmonizedPhone, int? harmonizedAddress, DateTime? dateCreated, DateTime? dateEdited, long? createdBy, long? editedBy)
         {
             ClientId = id;
             FirstName = firstName;
@@ -111,8 +111,8 @@ namespace DigitalEdge.Repository
         public DateTime? DateCreated { get; set; }
         public DateTime? DateEdit { get; set; }
 
-        public long EditBy { get; set; }
-        public long CreatedBy { get; set; }
+        public long? EditBy { get; set; }
+        public long? CreatedBy { get; set; }
 
 
         //Physical Address

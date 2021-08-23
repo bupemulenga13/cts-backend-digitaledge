@@ -25,7 +25,7 @@ namespace DigitalEdge.Domain
         public long? EditedBy { get; set; }
         public long? CreatedBy { get; set; }
         public long FacilityTypeId { get; set; }
-        public bool IsAvailable { get; set; }
+        public bool? IsAvailable { get; set; }
         public string Address { get; set; }
 
 

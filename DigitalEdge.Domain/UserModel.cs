@@ -9,7 +9,7 @@ namespace DigitalEdge.Domain
         public UserModel()
         {
         }
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy)
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime? dateCreated, long? createdBy)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -25,7 +25,7 @@ namespace DigitalEdge.Domain
             this.CreatedBy = createdBy;
         }
 
-        public UserModel(long id, string password, bool isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId, DateTime dateCreated, long createdBy)
+        public UserModel(long id, string password, bool isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId, DateTime? dateCreated, long? createdBy)
         {
             this.Id = id;
             this.Password = password;
@@ -42,7 +42,7 @@ namespace DigitalEdge.Domain
 
         }
 
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy, DateTime dateEdited, long editedBy) 
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime? dateCreated, long? createdBy, DateTime? dateEdited, long? editedBy) 
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -60,7 +60,7 @@ namespace DigitalEdge.Domain
             this.EditedBy = editedBy;
         }
 
-        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime dateCreated, long createdBy, DateTime dateEdited, long editedBy, 
+        public UserModel(long id, string firstName, string lastName, string email, string phoneNo, long roleId, bool isDeleted, long? facilityId, long? districtId, long? provinceId, DateTime? dateCreated, long? createdBy, DateTime? dateEdited, long? editedBy, 
             string roleName, string districtName, string provinceName) 
         {
             Id = id;
@@ -109,13 +109,13 @@ namespace DigitalEdge.Domain
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
-        public DateTime DateEdited { get; set; }
+        public DateTime? DateEdited { get; set; }
 
-        public long CreatedBy { get; set; }
+        public long? CreatedBy { get; set; }
 
-        public long EditedBy { get; set; }
+        public long? EditedBy { get; set; }
 
         public DateTime GetDateToday()
         {

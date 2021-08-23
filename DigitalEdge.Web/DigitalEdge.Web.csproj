@@ -12,6 +12,9 @@
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <UserSecretsId>f1f4c78c-d6cd-45bf-a32a-09d0a43c7690</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>

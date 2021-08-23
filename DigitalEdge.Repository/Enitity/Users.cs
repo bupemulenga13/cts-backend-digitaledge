@@ -22,7 +22,7 @@ namespace DigitalEdge.Repository
         {
         }
         // Create User
-        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long? facilityId, long? districtId, long? provinceId, string phoneNo, DateTime dateCreated, long createdBy)
+        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long? facilityId, long? districtId, long? provinceId, string phoneNo, DateTime? dateCreated, long? createdBy)
         {   
             this.Id = id;
             this.FirstName = firstName;
@@ -44,7 +44,7 @@ namespace DigitalEdge.Repository
         
         
         // Update User
-        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long? facilityId, long? districtId, long? provinceId, string phoneNo, DateTime dateCreated, long createdBy, DateTime dateEdited, long editedBy)
+        public Users(long id, string firstName, string lastName, string password, string email, long roleId, bool isSuperAdmin, bool isDeleted, bool isActive, long? facilityId, long? districtId, long? provinceId, string phoneNo, DateTime? dateCreated, long? createdBy, DateTime? dateEdited, long? editedBy)
         {   
             this.Id = id;
             this.FirstName = firstName;
@@ -66,7 +66,7 @@ namespace DigitalEdge.Repository
 
         }
 
-        public Users(long id, string password, bool isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId, DateTime dateCreated, long createdBy)
+        public Users(long id, string password, bool isSuperAdmin, string firstName, string lastName, string email, string phoneNo, long roleId, Boolean isDeleted, long? provinceId, long? districtId, long? facilityId, DateTime? dateCreated, long? createdBy)
         {
             this.Id = id;
             this.Password = password;
@@ -130,14 +130,14 @@ namespace DigitalEdge.Repository
         [ForeignKey("ProvinceId")]
         public virtual Province Provinces { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
-        public DateTime DateEdited { get; set; }
+        public DateTime? DateEdited { get; set; }
 
 
-        public long CreatedBy { get; set; }
+        public long? CreatedBy { get; set; }
 
-        public long EditedBy { get; set; }
+        public long? EditedBy { get; set; }
 
 
 
