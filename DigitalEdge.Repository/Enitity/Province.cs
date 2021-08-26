@@ -12,5 +12,6 @@ namespace DigitalEdge.Repository
         public DateTime? DateEdited { get; set; }
         public long? EditedBy { get; set; }
         public long? CreatedBy { get; set; }
+        public string SenderId { get; set; }
     }
 }

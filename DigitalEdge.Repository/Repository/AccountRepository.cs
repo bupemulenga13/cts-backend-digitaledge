@@ -58,7 +58,11 @@ namespace DigitalEdge.Repository
                                          ProvinceId = p.ProvinceId,
                                          DistrictId = p.DistrictId,
                                          ProvinceName = us.ProvinceName,
-                                         DistrictName = use.DistrictName
+                                         DistrictName = use.DistrictName,
+                                         DateCreated = p.DateCreated,
+                                         DateEdited = p.DateEdited,
+                                         CreatedBy = p.CreatedBy,
+                                         EditedBy = p.EditedBy
                                      }).ToList();
             return users;
         }

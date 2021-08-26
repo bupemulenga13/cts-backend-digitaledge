@@ -382,7 +382,11 @@ namespace DigitalEdge.Repository
                                              Zone = client.Zone,
                                              Village = client.Village,
                                              HouseNo = client.HouseNo,
-                                             GISLocation = client.GISLocation
+                                             GISLocation = client.GISLocation,
+                                             DateCreated = client.DateCreated,
+                                             DateEdit = client.DateEdit,
+                                             CreatedBy = client.CreatedBy,
+                                             EditBy = client.EditBy
                                          }
                 ).ToList();
             return clients;
@@ -463,7 +467,11 @@ namespace DigitalEdge.Repository
                                                         ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
                                                         ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
                                                         FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
-                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = department.ServiceTypeName }
+                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = department.ServiceTypeName },
+                                                        DateCreated = appointment.DateCreated,
+                                                        DateEdited = appointment.DateEdited,
+                                                        CreatedBy = appointment.CreatedBy,
+                                                        EditedBy = appointment.EditedBy
                                                     }
                                                     ).ToList();
             return appointments;
@@ -1575,10 +1583,11 @@ namespace DigitalEdge.Repository
                               EnrolledByPhone = singleClient.EnrolledByPhone,
                               GeneralComment = singleClient.GeneralComment,
                               HamornizedMobilePhone = singleClient.HamornizedMobilePhone,
-                              HarmonizedPhysicalAddress = singleClient.HarmonizedPhysicalAddress
-
-
-
+                              HarmonizedPhysicalAddress = singleClient.HarmonizedPhysicalAddress,
+                              DateCreated = singleClient.DateCreated,
+                              DateEdit = singleClient.DateEdit,
+                              CreatedBy = singleClient.CreatedBy,
+                              EditBy = singleClient.EditBy
                           })
                           .SingleOrDefault();
 
@@ -1601,7 +1610,11 @@ namespace DigitalEdge.Repository
                                                   FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
                                                   Address = facility.Address,
                                                   DistrictId = facility.DistrictId,
-                                                  DistrictName = facility.Districts.DistrictName
+                                                  DistrictName = facility.Districts.DistrictName,
+                                                  DateCreated = facility.DateCreated,
+                                                  DateEdited = facility.DateEdited,
+                                                  CreatedBy = facility.CreatedBy,
+                                                  EditedBy = facility.EditedBy
                                               }
                                               ).ToList();
             return facilities;
@@ -1678,7 +1691,11 @@ namespace DigitalEdge.Repository
                                    ServiceTypeModel = clientServiceType,
                                    AppointmentStatus = appointments.AppointmentStatus,
                                    AppointmentDate = appointments.AppointmentDate,
-                                   Comment = appointments.Comment
+                                   Comment = appointments.Comment,
+                                   DateCreated = appointments.DateCreated,
+                                   DateEdited = appointments.DateEdited,
+                                   CreatedBy = appointments.CreatedBy,
+                                   EditedBy = appointments.EditedBy
                                }
 
                                ).SingleOrDefault();
@@ -1691,16 +1708,24 @@ namespace DigitalEdge.Repository
             var facility = (from facilities in _DigitalEdgeContext.Facilities
                             join facilityTypes in _DigitalEdgeContext.FacilityTypes on facilities.FacilityTypeId equals facilityTypes.FacilityTypeId into buildings
                             from building in buildings.DefaultIfEmpty()
+                            join distirct in _DigitalEdgeContext.Districts on facilities.DistrictId equals distirct.DistrictId into facilityDistrict
+                            from faccilityInDistrict in facilityDistrict.DefaultIfEmpty()
                             where (facilities.FacilityId == id)
                             select new Facility
                             {
                                 FacilityId = facilities.FacilityId,
                                 FacilityName = facilities.FacilityName,
                                 FacilityTypeId = facilities.FacilityTypeId,
+                                DistrictId = facilities.DistrictId,
                                 IsAvailable = facilities.IsAvailable,
                                 FacilityContactNumber = facilities.FacilityContactNumber,
                                 Address = facilities.Address,
                                 FacilityTypeModel = building,
+                                DateCreated = facilities.DateCreated,
+                                DateEdited = facilities.DateEdited,
+                                CreatedBy = facilities.CreatedBy,
+                                EditedBy = facilities.EditedBy,
+                                Districts = faccilityInDistrict
                             }
                             ).SingleOrDefault();
             return facility;
@@ -1872,7 +1897,11 @@ namespace DigitalEdge.Repository
                                                   IsAvailable = facility.IsAvailable,
                                                   FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
                                                   Address = facility.Address,
-                                                  DistrictName = facility.Districts.DistrictName
+                                                  DistrictName = facility.Districts.DistrictName,
+                                                  DateCreated = facility.DateCreated,
+                                                  DateEdited = facility.DateEdited,
+                                                  CreatedBy = facility.CreatedBy,
+                                                  EditedBy = facility.EditedBy
                                               }
                                               ).ToList();
             return facilities;
@@ -1893,13 +1922,27 @@ namespace DigitalEdge.Repository
                                                                 IsAvailable = facility.IsAvailable,
                                                                 FacilityTypeName = facility.FacilityTypeModel.FacilityTypeName,
                                                                 Address = facility.Address,
-                                                                DistrictName = facility.Districts.DistrictName
+                                                                DistrictName = facility.Districts.DistrictName,
+                                                                DateCreated = facility.DateCreated,
+                                                                DateEdited = facility.DateEdited,
+                                                                CreatedBy = facility.CreatedBy,
+                                                                EditedBy = facility.EditedBy
 
                                                             }).ToList();
 
             return facilitiesInDistrict;
         }
 
-        
+        public List<LanguageModel> GetLanguages()
+        {
+            List<LanguageModel> languages = (from languageModel in _DigitalEdgeContext.Languages
+                                             select new LanguageModel
+                                             {
+                                                 LanguageId = languageModel.LanguageId,
+                                                 LanguageName = languageModel.LanguageName
+                                             }).ToList();
+
+            return languages;
+        }
     }
 }

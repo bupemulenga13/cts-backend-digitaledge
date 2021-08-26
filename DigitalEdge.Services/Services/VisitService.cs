@@ -767,5 +767,14 @@ namespace DigitalEdge.Services
             return (facilities);
             
         }
+
+        public List<LanguageModel> GetLanguages()
+        {
+            List<LanguageModel> languages = _visitRepository.GetLanguages().ToList();
+
+            if (languages == null)
+                return null;
+            return (languages);
+        }
     }
 }

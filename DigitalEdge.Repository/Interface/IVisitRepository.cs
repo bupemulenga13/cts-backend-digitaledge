@@ -80,6 +80,7 @@ namespace DigitalEdge.Repository
         int CountAppointmentsInFacility(long facilityId);
         List<FacilityModel> GetFacilities(long facilityId);
         List<FacilityModel> GetFacilitiesInDistrict(long id);
+        List<LanguageModel> GetLanguages();
     }
 
 }

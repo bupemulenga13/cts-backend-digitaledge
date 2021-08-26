@@ -32,10 +32,10 @@ namespace DigitalEdge.Domain
         public string NextOfKinName { get; set; }
         public long NextOfKinContact { get; set; }
         public long NextOfClientID { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdit { get; set; }
-        public long EditBy { get; set; }
-        public long CreatedBy { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateEdit { get; set; }
+        public long? EditBy { get; set; }
+        public long? CreatedBy { get; set; }
         public string ArtNo { get; set; }
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
@@ -88,12 +88,6 @@ namespace DigitalEdge.Domain
         public long DistrictId { get; set; }
 
         public string DistrictName { get; set; }
-
-
-
-
-       
-
     }
 }
 

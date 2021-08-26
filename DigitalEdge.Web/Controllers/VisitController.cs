@@ -604,5 +604,14 @@ namespace DigitalEdge.Web.Controllers
 
             return Ok(clients);
         }
+
+        [HttpGet]
+        [Route("GetLanguages")]
+        [Authorize]
+        public ActionResult GetLanguages()
+        {
+            var languages = _visitService.GetLanguages();
+            return Ok(languages);
+        }
     }
 }
