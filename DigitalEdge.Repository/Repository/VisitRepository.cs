@@ -1944,5 +1944,12 @@ namespace DigitalEdge.Repository
 
             return languages;
         }
+
+        public int CountFacilities()
+        {
+            var count = _DigitalEdgeContext.Facilities.Count();
+
+            return count;
+        }
     }
 }

@@ -776,5 +776,10 @@ namespace DigitalEdge.Services
                 return null;
             return (languages);
         }
+
+        public int CountFacilities()
+        {
+            return _visitRepository.CountFacilities();
+        }
     }
 }

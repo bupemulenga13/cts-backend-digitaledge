@@ -566,11 +566,21 @@ namespace DigitalEdge.Web.Controllers
         
 
         [HttpGet]
-        [Route("CountFacilities")]
+        [Route("CountFacilitiesInDistricts")]
         public int CountFacilities(long facilityId)
         {
             return _visitService.CountFacilities(facilityId);
         }
+
+
+        [HttpGet]
+        [Route("CountFacilities")]
+        public int CountFacilities()
+        {
+            return _visitService.CountFacilities();
+        }
+
+
 
         [HttpGet]
         [Route("AvailableFacilities")]
