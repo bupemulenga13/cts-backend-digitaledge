@@ -26,7 +26,7 @@ namespace DigitalEdge.Domain
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string ClientPhoneNo { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public int? Age { get; set; }
         public int CurrentAge { get; set; }
         public string NextOfKinName { get; set; }
@@ -41,21 +41,21 @@ namespace DigitalEdge.Domain
         public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
         public string AlternativePhoneNumber2 { get; set; }
-        public bool PhoneVerifiedByAnalyst { get; set; }
-        public bool PhoneVerifiedByFacilityStaff { get; set; }
-        public DateTime EnrollmentDate { get; set; }
+        public bool? PhoneVerifiedByAnalyst { get; set; }
+        public bool? PhoneVerifiedByFacilityStaff { get; set; }
+        public DateTime? EnrollmentDate { get; set; }
         public string EnrolledByPhone { get; set; }
 
-        public long ClientTypeId { get; set; }
+        public long? ClientTypeId { get; set; }
         public string ClientType { get; set; }
 
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
         public string Facility { get; set; }
 
-        public long ClientStatusId { get; set; }
+        public long? ClientStatusId { get; set; }
         public string ClientStatus { get; set; }
 
-        public long StatusCommentId { get; set; }
+        public long? StatusCommentId { get; set; }
         public string StatusComment { get; set; }
 
         public long? ServicePointId { get; set; }
@@ -64,13 +64,13 @@ namespace DigitalEdge.Domain
         public long? LanguageId { get; set; }
         public string Language { get; set; }
 
-        public long SexId { get; set; }
+        public long? SexId { get; set; }
         public string Sex { get; set; }
 
         public int? ClientRelationship { get; set; }
         public int? EnrollmentType { get; set; }
 
-        public bool AccessToPhone { get; set; }
+        public bool? AccessToPhone { get; set; }
 
         public int? HamornizedMobilePhone { get; set; }
 
@@ -85,7 +85,7 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
-        public long DistrictId { get; set; }
+        public long? DistrictId { get; set; }
 
         public string DistrictName { get; set; }
     }

@@ -204,7 +204,7 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.AppointmentId, addappointment.ClientId, addappointment.FacilityId, addappointment.ServiceTypeId,
-                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetDateToday(), addappointment.CalculateDaysLate(), addappointment.CreatedBy);
+                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetDateToday(), addappointment.ArtNo, addappointment.CreatedBy);
 
             string result = this._accountRepository.createappointment(appointmentData);
 

@@ -10,8 +10,8 @@ namespace DigitalEdge.Repository
         public Client()
         {
         }
-        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate, 
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone, 
+        public Client(long id, string firstName, string lastName, string artNo, long? sexId, long? clientTypeId, long? clientStatusId, long? statusCommentId, long? facilityId, DateTime? dateOfBirth, int? age, DateTime? enrollmentDate, 
+            string clientPhoneNo, string alternativePhoneNumber1, bool? verifiedByAnalyst, bool? verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone, 
             int? harmonizedPhone, int? harmonizedAddress, DateTime? dateCreated, long? createdBy)
         {
             ClientId = id;
@@ -48,8 +48,8 @@ namespace DigitalEdge.Repository
             CreatedBy = createdBy;
         }
 
-        public Client(long id, string firstName, string lastName, string artNo, long sexId, long clientTypeId, long clientStatusId, long statusCommentId, long facilityId, DateTime dateOfBirth, int? age, DateTime enrollmentDate,
-            string clientPhoneNo, string alternativePhoneNumber1, bool verifiedByAnalyst, bool verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool accessToPhone,
+        public Client(long id, string firstName, string lastName, string artNo, long? sexId, long? clientTypeId, long? clientStatusId, long? statusCommentId, long? facilityId, DateTime? dateOfBirth, int? age, DateTime? enrollmentDate,
+            string clientPhoneNo, string alternativePhoneNumber1, bool? verifiedByAnalyst, bool? verifiedByStaff, string zone, string village, string houseNo, string location, string enrolledByPhone, long? servicePointId, long? languageId, string enrolledByName, string generalComment, int? enrollmentType, int? clientRelationship, bool? accessToPhone,
             int? harmonizedPhone, int? harmonizedAddress, DateTime? dateCreated, DateTime? dateEdited, long? createdBy, long? editedBy)
         {
             ClientId = id;
@@ -104,7 +104,7 @@ namespace DigitalEdge.Repository
 
         public string ClientPhoneNo { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public int? Age { get; set; }
 
@@ -126,17 +126,17 @@ namespace DigitalEdge.Repository
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
-        public bool PhoneVerifiedByAnalyst { get; set; }
-        public bool PhoneVerifiedByFacilityStaff { get; set; }
-        public DateTime EnrollmentDate { get; set; }
+        public bool? PhoneVerifiedByAnalyst { get; set; }
+        public bool? PhoneVerifiedByFacilityStaff { get; set; }
+        public DateTime? EnrollmentDate { get; set; }
         public string EnrolledByPhone { get; set; }
 
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]
         public virtual Facility Facilities { get; set; }
 
-        public long ClientTypeId { get; set; }
+        public long? ClientTypeId { get; set; }
 
         [ForeignKey("ClientTypeId")]
         public virtual ClientType ClientTypes { get; set; }
@@ -155,17 +155,17 @@ namespace DigitalEdge.Repository
         [ForeignKey("LanguageId")]
         public virtual Language Languages { get; set; }
 
-        public long ClientStatusId { get; set; }
+        public long? ClientStatusId { get; set; }
 
         [ForeignKey("ClientStatusId")]
         public virtual ClientStatus ClientStatuses { get; set; }
 
-        public long StatusCommentId { get; set; }
+        public long? StatusCommentId { get; set; }
 
         [ForeignKey("StatusCommentId")]
         public virtual StatusComments StatusComments { get; set; }
 
-        public long SexId { get; set; }
+        public long? SexId { get; set; }
 
         [ForeignKey("SexId")]
         public virtual Sex Sex { get; set; }
@@ -175,7 +175,7 @@ namespace DigitalEdge.Repository
 
         public int? EnrollmentType { get; set; }
 
-        public bool AccessToPhone { get; set; }
+        public bool? AccessToPhone { get; set; }
 
         public int? HamornizedMobilePhone { get; set; }
 

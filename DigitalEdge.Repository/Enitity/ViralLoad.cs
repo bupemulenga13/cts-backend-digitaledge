@@ -13,7 +13,7 @@ namespace DigitalEdge.Repository
 
         }
 
-        public ViralLoad(long id, long clientId, int initlaVlCount, int currentVLcount, DateTime nextVLDueDate, DateTime dateCreated)
+        public ViralLoad(long id, long? clientId, int? initlaVlCount, int? currentVLcount, DateTime? nextVLDueDate, DateTime? dateCreated)
         {
             ViralLoadId = id;
             ClientId = clientId;
@@ -27,19 +27,19 @@ namespace DigitalEdge.Repository
         [Key]
         public long ViralLoadId { get; set; }
 
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
 
         [ForeignKey("ClientId")]
         public virtual Client Clients { get; set; }
 
 
-        public int InitialViralLoadCount { get; set; }
+        public int? InitialViralLoadCount { get; set; }
 
-        public int CurrentViralLoadCount { get; set; }
+        public int? CurrentViralLoadCount { get; set; }
 
         public DateTime? NextVLDueDate { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
     }
 }

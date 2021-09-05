@@ -8,7 +8,7 @@ namespace DigitalEdge.Domain
         {
         }
 
-        public AppointmentsModel(long appointmentId, long clientId, long facilityId, long? servicePointId, DateTime appointmentDate, DateTime? dateCreated, DateTime? dateEdited, long? editedBy, long? createdBy, int appointmentStatus)
+        public AppointmentsModel(long appointmentId, long? clientId, long? facilityId, long? servicePointId, DateTime? appointmentDate, DateTime? dateCreated, DateTime? dateEdited, long? editedBy, long? createdBy, int? appointmentStatus)
         {
             this.AppointmentId = appointmentId;
             this.ClientId = clientId;
@@ -22,8 +22,8 @@ namespace DigitalEdge.Domain
             AppointmentStatus = appointmentStatus;
         }
 
-        public AppointmentsModel(long id,long clientId,long visitsId,string firstName, string lastName, string middleName, DateTime? priorAppointmentDate,DateTime appointmentDate,
-                DateTime appointmentTime, DateTime? nextAppointmentDate , int? age)
+        public AppointmentsModel(long id,long? clientId,long visitsId,string firstName, string lastName, string middleName, DateTime? priorAppointmentDate,DateTime? appointmentDate,
+                DateTime? appointmentTime, DateTime? nextAppointmentDate , int? age)
         {
             this.Id = id;
             this.ClientId = clientId;
@@ -37,8 +37,8 @@ namespace DigitalEdge.Domain
             this.NextAppointmentDate = nextAppointmentDate;
             this.Age = age;
         }
-        public AppointmentsModel(long id, string firstName, string lastName, string middleName, string clientPhoneNo,DateTime dateOfBirth, DateTime? priorAppointmentDate, 
-           DateTime? nextAppointmentDate, DateTime visitDate, string visitType, string reasonOfVisit, string adviseNotes)
+        public AppointmentsModel(long id, string firstName, string lastName, string middleName, string clientPhoneNo,DateTime? dateOfBirth, DateTime? priorAppointmentDate, 
+           DateTime? nextAppointmentDate, DateTime? visitDate, string visitType, string reasonOfVisit, string adviseNotes)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -58,13 +58,13 @@ namespace DigitalEdge.Domain
 
 
         public long Id { get; set; }
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
         public long VisitsId { get; set; }
         
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
         public long? ServicePointId { get; set; }
 
-        public long ServiceTypeId { get; set; }
+        public long? ServiceTypeId { get; set; }
 
         public string FullName {
             get
@@ -82,12 +82,12 @@ namespace DigitalEdge.Domain
         public ServiceTypeModel ServiceTypeModel { get; set; }
 
         public string ClientPhoneNo { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public DateTime VisitDate { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public DateTime? VisitDate { get; set; }
         public string VisitType { get; set; } 
         public DateTime? PriorAppointmentDate { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public DateTime AppointmentTime { get; set; }
+        public DateTime? AppointmentDate { get; set; }
+        public DateTime? AppointmentTime { get; set; }
         public DateTime? NextAppointmentDate { get; set; }
         public string ReasonOfVisit { get; set; }
         public string AdviseNotes { get; set; }
@@ -98,10 +98,10 @@ namespace DigitalEdge.Domain
         public string FacilityName { get; set; }
         public string DistrictName { get; set; }
         public string ProvinceName { get; set; }
-        public long ProvinceId { get; set; }
-        public long DistrictId { get; set; }
+        public long? ProvinceId { get; set; }
+        public long? DistrictId { get; set; }
         public int? Age { get; set; }
-        public int AppointmentStatus { get; set; }
+        public int? AppointmentStatus { get; set; }
         public DateTime? InteractionDate { get; set; }  
         public long AppointmentId { get; }
         public string Comment { get; set; }

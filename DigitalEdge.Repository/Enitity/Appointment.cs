@@ -13,7 +13,7 @@ namespace DigitalEdge.Repository
         }
 
         //Add Appointment
-        public Appointment(long id, long clientId, long facilityId, long serviceTypeId, DateTime appointmentDate, int appointmentStatus, string detail, DateTime? dateCreated, int daysLate, long? createdBy)
+        public Appointment(long id, long? clientId, long? facilityId, long? serviceTypeId, DateTime appointmentDate, int? appointmentStatus, string detail, DateTime? dateCreated, string artNo, long? createdBy)
         {
             AppointmentId = id;
             ClientId = clientId;
@@ -23,7 +23,7 @@ namespace DigitalEdge.Repository
             AppointmentStatus = appointmentStatus;
             Comment = detail;
             DateCreated = dateCreated;
-            DaysLate = daysLate;
+            ArtNo = artNo;
             CreatedBy = createdBy;
         }
 
@@ -47,30 +47,30 @@ namespace DigitalEdge.Repository
 
         [Key]
         public long AppointmentId { get; set; } 
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
 
         [ForeignKey("ClientId")]
         public virtual Client ClientModel { get; set; }
 
-        public long FacilityId { get; set; }
+        public long? FacilityId { get; set; }
 
         [ForeignKey("FacilityId")]
         public virtual Facility FacilityModel { get; set; }
 
-        public long ServiceTypeId { get; set; }
+        public long? ServiceTypeId { get; set; }
 
         [ForeignKey("ServiceTypeId")]
         public virtual VisitServices ServiceTypeModel { get; set; }
 
         public DateTime AppointmentDate { get; set; }
-        public int AppointmentStatus { get; set; }
+        public int? AppointmentStatus { get; set; }
         public DateTime? InteractionDate { get; set; }
         public string Comment { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateEdited { get; set; }
         public long? EditedBy { get; set; }
         public long? CreatedBy { get; set; }
-        public int? DaysLate { get; set; }
+        public string ArtNo { get; set; }
 
 
 
