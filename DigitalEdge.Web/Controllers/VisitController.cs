@@ -83,14 +83,15 @@ namespace DigitalEdge.Web.Controllers
         }
 
         [HttpGet]
-        [Route("GetAppointments/{facilityId}")]
+        [Route("GetAppointmentsByFacility/{facilityId}")]
         [Authorize]
-        public ActionResult GetAppointments(long facilityId)
+        public ActionResult GetAppointmentsByFacility(long facilityId)
         {
             var appointments = _visitService.GetAppointmentsByFacility(facilityId);
-
             return Ok(appointments);
+
         }
+
         [HttpPost]
         [Route("GetAppointmentsCheck")]
         [Authorize]
@@ -99,6 +100,7 @@ namespace DigitalEdge.Web.Controllers
             var user = _visitService.getAppointmentCheck(model);
             return Ok(user);
         }
+
         [HttpGet]
         [Route("GetAppointmentsDetailsMissed")]
         [Authorize]

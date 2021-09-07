@@ -63,6 +63,7 @@ namespace DigitalEdge.Services
         List<ClientModel> GetClientsByFacility(long facilityId);
 
         List<AppointmentsModel> GetAppointmentsByFacility(long facilityId);
+
         int CountClientsInFacility(long facilityId);
         int CountAppointmentsInFacility(long facilityId);
         List<FacilityModel> GetFacilities(long facilityId);

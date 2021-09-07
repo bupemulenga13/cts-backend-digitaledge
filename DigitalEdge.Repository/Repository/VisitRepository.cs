@@ -388,7 +388,7 @@ namespace DigitalEdge.Repository
                                              CreatedBy = client.CreatedBy,
                                              EditBy = client.EditBy
                                          }
-                ).ToList();
+                ).OrderByDescending(c => c.EnrollmentDate).ThenBy(c => c.FirstName).ToList();
             return clients;
 
         }
@@ -437,7 +437,7 @@ namespace DigitalEdge.Repository
                                                        Sex = sex.SexName,
                                                        Facility = facility.FacilityName                                                   }
 
-                ).ToList();
+                ).OrderByDescending(c => c.EnrollmentDate).ThenBy(c => c.FirstName).ToList();
 
             return clientsInFacility;
 
@@ -446,9 +446,12 @@ namespace DigitalEdge.Repository
         public List<AppointmentsModel> GetAppointments()
         {
             List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
-                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId
-                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId
-                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId
+                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into clientAppt
+                                                    from clientAppts in clientAppt.DefaultIfEmpty()
+                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into apptFacility
+                                                    from appointmentFacility in apptFacility.DefaultIfEmpty()
+                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId into apptDepartment
+                                                    from apptsServicePoint in apptDepartment.DefaultIfEmpty()
                                                     select new AppointmentsModel
                                                     {
                                                         Id = appointment.AppointmentId,
@@ -459,21 +462,21 @@ namespace DigitalEdge.Repository
                                                         AppointmentStatus = appointment.AppointmentStatus,
                                                         InteractionDate = appointment.InteractionDate,
                                                         Comment = appointment.Comment,
-                                                        FirstName = client.FirstName,
-                                                        LastName = client.LastName,
-                                                        ArtNo = client.ArtNo,
+                                                        FirstName = clientAppts.FirstName,
+                                                        LastName = clientAppts.LastName,
+                                                        ArtNo = clientAppts.ArtNo,
                                                         FacilityName = appointment.FacilityModel.FacilityName,
                                                         AppointmentTime = appointment.AppointmentDate,
                                                         ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
-                                                        ClientModel = new ClientModel { FirstName = client.FirstName, LastName = client.LastName, ArtNo = client.ArtNo, ClientPhoneNo = client.ClientPhoneNo },
-                                                        FacilityModel = new FacilityModel { FacilityName = facility.FacilityName },
-                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = department.ServiceTypeName },
+                                                        ClientModel = new ClientModel { FirstName = clientAppts.FirstName, LastName = clientAppts.LastName, ArtNo = clientAppts.ArtNo, ClientPhoneNo = clientAppts.ClientPhoneNo },
+                                                        FacilityModel = new FacilityModel { FacilityName = appointmentFacility.FacilityName },
+                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = apptsServicePoint.ServiceTypeName },
                                                         DateCreated = appointment.DateCreated,
                                                         DateEdited = appointment.DateEdited,
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).ToList();
+                                                    ).OrderByDescending(c=> c.AppointmentDate).ThenBy(c => c.AppointmentStatus == 0).ToList();
             return appointments;
         }
 
@@ -1833,11 +1836,13 @@ namespace DigitalEdge.Repository
         public List<AppointmentsModel> GetAppointmentsByFacility(long facilityId)
         {
             List<AppointmentsModel> appointments = (from appointment in _DigitalEdgeContext.Appointments
-                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into dbClients
-                                                    from clientAppointments in dbClients.DefaultIfEmpty()
-                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId
-                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId
-                                                    where(appointment.FacilityId == facilityId)
+                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into clientAppt
+                                                    from clientAppts in clientAppt.DefaultIfEmpty()
+                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into apptFacility
+                                                    from appointmentFacility in apptFacility.DefaultIfEmpty()
+                                                    join department in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals department.ServiceTypeId into apptDepartment
+                                                    from apptsServicePoint in apptDepartment.DefaultIfEmpty()
+                                                    where appointment.FacilityId == facilityId
                                                     select new AppointmentsModel
                                                     {
                                                         Id = appointment.AppointmentId,
@@ -1848,17 +1853,21 @@ namespace DigitalEdge.Repository
                                                         AppointmentStatus = appointment.AppointmentStatus,
                                                         InteractionDate = appointment.InteractionDate,
                                                         Comment = appointment.Comment,
-                                                        FirstName  = appointment.ClientModel.FirstName,
-                                                        LastName = appointment.ClientModel.LastName,
-                                                        ArtNo = appointment.ClientModel.ArtNo,
-                                                        ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
+                                                        FirstName = clientAppts.FirstName,
+                                                        LastName = clientAppts.LastName,
+                                                        ArtNo = clientAppts.ArtNo,
                                                         FacilityName = appointment.FacilityModel.FacilityName,
                                                         AppointmentTime = appointment.AppointmentDate,
-                                                        ClientModel = new ClientModel { FirstName = clientAppointments.FirstName, LastName = clientAppointments.LastName, ArtNo = clientAppointments.ArtNo, ClientPhoneNo = clientAppointments.ClientPhoneNo },
-                                                        FacilityModel = new FacilityModel { FacilityId = facility.FacilityId, FacilityName = facility.FacilityName },
-                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeId = department.ServiceTypeId, ServiceTypeName = department.ServiceTypeName }
+                                                        ClientPhoneNo = appointment.ClientModel.ClientPhoneNo,
+                                                        ClientModel = new ClientModel { FirstName = clientAppts.FirstName, LastName = clientAppts.LastName, ArtNo = clientAppts.ArtNo, ClientPhoneNo = clientAppts.ClientPhoneNo },
+                                                        FacilityModel = new FacilityModel { FacilityName = appointmentFacility.FacilityName },
+                                                        ServiceTypeModel = new ServiceTypeModel { ServiceTypeName = apptsServicePoint.ServiceTypeName },
+                                                        DateCreated = appointment.DateCreated,
+                                                        DateEdited = appointment.DateEdited,
+                                                        CreatedBy = appointment.CreatedBy,
+                                                        EditedBy = appointment.EditedBy
                                                     }
-                                                   ).ToList();
+                                                    ).OrderByDescending(c => c.AppointmentDate).ThenBy(c => c.AppointmentStatus == 0).ToList();
             return appointments;
         }
 
