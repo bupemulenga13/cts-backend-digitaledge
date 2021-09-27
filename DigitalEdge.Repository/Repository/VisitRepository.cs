@@ -388,7 +388,7 @@ namespace DigitalEdge.Repository
                                              CreatedBy = client.CreatedBy,
                                              EditBy = client.EditBy
                                          }
-                ).OrderByDescending(c => c.EnrollmentDate).ThenBy(c => c.FirstName).ToList();
+                ).OrderByDescending(c => c.EnrollmentDate >= DateTime.Now).ToList();
             return clients;
 
         }
@@ -437,7 +437,7 @@ namespace DigitalEdge.Repository
                                                        Sex = sex.SexName,
                                                        Facility = facility.FacilityName                                                   }
 
-                ).OrderByDescending(c => c.EnrollmentDate).ThenBy(c => c.FirstName).ToList();
+                ).OrderByDescending(c => c.EnrollmentDate >= DateTime.Now).ToList();
 
             return clientsInFacility;
 
@@ -476,7 +476,7 @@ namespace DigitalEdge.Repository
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).OrderByDescending(c=> c.AppointmentDate).ThenBy(c => c.AppointmentStatus == 0).ToList();
+                                                    ).OrderByDescending(c => c.AppointmentDate >= DateTime.Now).ToList();
             return appointments;
         }
 
@@ -1819,7 +1819,7 @@ namespace DigitalEdge.Repository
         {
             DateTime today = DateTime.Now.Date;
 
-            var appointments = _DigitalEdgeContext.Appointments.Where(a => a.DateCreated == today).Count();
+            var appointments = _DigitalEdgeContext.Appointments.Where(a => a.AppointmentDate == today).Count();
 
             return appointments;
         }
@@ -1828,7 +1828,7 @@ namespace DigitalEdge.Repository
         {
             DateTime today = DateTime.Now.Date;
 
-            var clients = _DigitalEdgeContext.Clients.Where(c => c.DateCreated == today).Count();
+            var clients = _DigitalEdgeContext.Clients.Where(c => c.EnrollmentDate == today).Count();
 
             return clients;
         }
@@ -1867,7 +1867,7 @@ namespace DigitalEdge.Repository
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).OrderByDescending(c => c.AppointmentDate).ThenBy(c => c.AppointmentStatus == 0).ToList();
+                                                    ).OrderByDescending(c => c.AppointmentDate >= DateTime.Now).ToList();
             return appointments;
         }
 
@@ -1957,6 +1957,13 @@ namespace DigitalEdge.Repository
         public int CountFacilities()
         {
             var count = _DigitalEdgeContext.Facilities.Count();
+
+            return count;
+        }
+
+        public int CountFacilitiesInDisitrct(long districtId)
+        {
+            var count = _DigitalEdgeContext.Facilities.Count(f => f.DistrictId == districtId);
 
             return count;
         }

@@ -90,14 +90,14 @@ namespace DigitalEdge.Repository
             //User Roles
             var roles = new UserRoles[]
             {
-                new UserRoles{RoleName = "Technical Administrator",Description="Technical Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Supervisor",Description="Facility Supervisor",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Facility Staff",Description="Facility Staff",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Health Analyst",Description="Facility Analyst",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Facility Admin",Description="Facility Adminstrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "District Admin",Description="District Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Provincial Admin",Description="Provincial Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
-                new UserRoles{RoleName = "Central Admin",Description="Central Administrator",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Technical Administrator",Description="System Administrator with all access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Supervisor",Description="Supervisor with facility-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Facility Staff",Description="Facility Staff with facility-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Health Analyst",Description="Health Analyst with facility-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Facility Adminstrator",Description="User facility-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "District Administrator",Description="User with district-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Provincial Administrator",Description="User with province-level access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
+                new UserRoles{RoleName = "Central Administrator",Description="User with all access rights",IsDeleted=false,CreatedBy=1,ModifiedBy=0},
             };
 
             context.UserRoles.AddRange(roles);
@@ -106,7 +106,7 @@ namespace DigitalEdge.Repository
             //Application Users
             var users = new Users[]
             {
-                new Users{FirstName = "Facility",LastName="Administrator", Password="FacilityAdmin@cts21",Email="admin@facility.cts",IsSuperAdmin=false,RoleId=4, DateCreated= DateTime.Now,CreatedBy = 1},
+                new Users{FirstName = "Facility",LastName="Administrator", Password="FacilityAdmin@cts21",Email="admin@facility.cts",IsSuperAdmin=false,RoleId=4, DateCreated= DateTime.Now,CreatedBy = 1, FacilityId = 1, DistrictId = 1, ProvinceId = 1},
                 new Users{FirstName = "Technical",LastName="Administrator", Password="TechAdmin@cts11",Email="bupe@digiprophets.com",IsSuperAdmin=true,RoleId=8, DateCreated= DateTime.Now, CreatedBy = 1},
                 new Users{FirstName = "Central",LastName="Administrator", Password="CentralAdmin@cts21",Email="admin@central.cts",IsSuperAdmin=true,RoleId=1, DateCreated= DateTime.Now, CreatedBy = 1},
             };

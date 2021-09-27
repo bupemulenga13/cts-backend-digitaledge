@@ -781,5 +781,10 @@ namespace DigitalEdge.Services
         {
             return _visitRepository.CountFacilities();
         }
+
+        public int CountFacilitiesInDistrict(long districtId)
+        {
+            return _visitRepository.CountFacilitiesInDisitrct(districtId);
+        }
     }
 }

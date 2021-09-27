@@ -82,6 +82,7 @@ namespace DigitalEdge.Repository
         List<FacilityModel> GetFacilitiesInDistrict(long id);
         List<LanguageModel> GetLanguages();
         int CountFacilities();
+        int CountFacilitiesInDisitrct(long districtId);
     }
 
 }

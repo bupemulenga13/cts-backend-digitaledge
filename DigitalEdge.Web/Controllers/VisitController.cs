@@ -625,5 +625,16 @@ namespace DigitalEdge.Web.Controllers
             var languages = _visitService.GetLanguages();
             return Ok(languages);
         }
+
+        [HttpGet]
+        [Route("CountFacilitiesInDistrict/{disitrictId}")]
+        [Authorize]
+        public ActionResult CountFacilitiesInDistrict(long districtId)
+        {
+            var facilitiesInDistrict = _visitService.CountFacilitiesInDistrict(districtId);
+
+            return Ok(facilitiesInDistrict);
+        }
+
     }
 }
