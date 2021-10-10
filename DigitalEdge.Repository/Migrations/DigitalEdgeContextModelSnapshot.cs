@@ -29,10 +29,10 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("AppointmentStatus")
+                    b.Property<int?>("AppointmentStatus")
                         .HasColumnType("int");
 
-                    b.Property<long>("ClientId")
+                    b.Property<long?>("ClientId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Comment")
@@ -47,25 +47,23 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime?>("DateEdited")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DaysLate")
-                        .HasColumnType("int");
-
                     b.Property<long?>("EditedBy")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("FacilityId")
+                    b.Property<long?>("FacilityId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("InteractionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("ServiceTypeId")
+                    b.Property<long?>("ServiceTypeId")
                         .HasColumnType("bigint");
 
                     b.HasKey("AppointmentId");
 
                     b.HasIndex("ClientId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ClientId] IS NOT NULL");
 
                     b.HasIndex("FacilityId");
 
@@ -124,7 +122,7 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("AccessToPhone")
+                    b.Property<bool?>("AccessToPhone")
                         .HasColumnType("bit");
 
                     b.Property<int?>("Age")
@@ -142,10 +140,10 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<int?>("ClientRelationship")
                         .HasColumnType("int");
 
-                    b.Property<long>("ClientStatusId")
+                    b.Property<long?>("ClientStatusId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ClientTypeId")
+                    b.Property<long?>("ClientTypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("CreatedBy")
@@ -157,7 +155,7 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<DateTime?>("DateEdit")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("EditBy")
@@ -169,13 +167,13 @@ namespace DigitalEdge.Repository.Migrations
                     b.Property<string>("EnrolledByPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EnrollmentDate")
+                    b.Property<DateTime?>("EnrollmentDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("EnrollmentType")
                         .HasColumnType("int");
 
-                    b.Property<long>("FacilityId")
+                    b.Property<long?>("FacilityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("FirstName")
@@ -208,19 +206,19 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<bool>("PhoneVerifiedByAnalyst")
+                    b.Property<bool?>("PhoneVerifiedByAnalyst")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("PhoneVerifiedByFacilityStaff")
+                    b.Property<bool?>("PhoneVerifiedByFacilityStaff")
                         .HasColumnType("bit");
 
                     b.Property<long?>("ServicePointId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("SexId")
+                    b.Property<long?>("SexId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("StatusCommentId")
+                    b.Property<long?>("StatusCommentId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Village")
@@ -739,16 +737,16 @@ namespace DigitalEdge.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("ClientId")
+                    b.Property<long?>("ClientId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CurrentViralLoadCount")
+                    b.Property<int?>("CurrentViralLoadCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("InitialViralLoadCount")
+                    b.Property<int?>("InitialViralLoadCount")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("NextVLDueDate")
@@ -1083,21 +1081,15 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     b.HasOne("DigitalEdge.Repository.Client", "ClientModel")
                         .WithOne("ClientAppointments")
-                        .HasForeignKey("DigitalEdge.Repository.Appointment", "ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DigitalEdge.Repository.Appointment", "ClientId");
 
                     b.HasOne("DigitalEdge.Repository.Facility", "FacilityModel")
                         .WithMany()
-                        .HasForeignKey("FacilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacilityId");
 
                     b.HasOne("DigitalEdge.Repository.VisitServices", "ServiceTypeModel")
                         .WithMany()
-                        .HasForeignKey("ServiceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceTypeId");
                 });
 
             modelBuilder.Entity("DigitalEdge.Repository.BulkMessages", b =>
@@ -1115,21 +1107,15 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     b.HasOne("DigitalEdge.Repository.Enitity.ClientStatus", "ClientStatuses")
                         .WithMany()
-                        .HasForeignKey("ClientStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientStatusId");
 
                     b.HasOne("DigitalEdge.Repository.Enitity.ClientType", "ClientTypes")
                         .WithMany()
-                        .HasForeignKey("ClientTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientTypeId");
 
                     b.HasOne("DigitalEdge.Repository.Facility", "Facilities")
                         .WithMany()
-                        .HasForeignKey("FacilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacilityId");
 
                     b.HasOne("DigitalEdge.Repository.Enitity.Language", "Languages")
                         .WithMany()
@@ -1141,15 +1127,11 @@ namespace DigitalEdge.Repository.Migrations
 
                     b.HasOne("DigitalEdge.Repository.Enitity.Sex", "Sex")
                         .WithMany()
-                        .HasForeignKey("SexId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SexId");
 
                     b.HasOne("DigitalEdge.Repository.Enitity.StatusComments", "StatusComments")
                         .WithMany()
-                        .HasForeignKey("StatusCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatusCommentId");
                 });
 
             modelBuilder.Entity("DigitalEdge.Repository.ClientIdentity", b =>
@@ -1254,9 +1236,7 @@ namespace DigitalEdge.Repository.Migrations
                 {
                     b.HasOne("DigitalEdge.Repository.Client", "Clients")
                         .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("DigitalEdge.Repository.Visit", b =>

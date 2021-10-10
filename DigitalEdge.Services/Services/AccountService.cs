@@ -56,6 +56,8 @@ namespace DigitalEdge.Services
             return (appointmentModel);
 
         }
+
+        
         public UserModel ValidateUser(string email, string password)
         {
             Users user = _accountRepository.GetLogin(email, password);
@@ -204,7 +206,7 @@ namespace DigitalEdge.Services
         public string AddAppointment(RegistrationModel addappointment)
         {
             Appointment appointmentData = new Appointment(addappointment.AppointmentId, addappointment.ClientId, addappointment.FacilityId, addappointment.ServiceTypeId,
-                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetDateToday(), addappointment.ArtNo, addappointment.CreatedBy);
+                addappointment.GetAppointmentDateAndTime(), addappointment.AppointmentStatus, addappointment.Comment, addappointment.GetDateToday(), addappointment.CreatedBy);
 
             string result = this._accountRepository.createappointment(appointmentData);
 

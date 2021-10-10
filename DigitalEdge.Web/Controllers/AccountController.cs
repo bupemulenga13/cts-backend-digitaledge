@@ -142,6 +142,7 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.GetData(id);
             return Ok(user);
         }
+
         [HttpGet]
         [Route("GetAppointment/{id}")]
         [Authorize]
@@ -150,6 +151,7 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.GetAppointment(id);
             return Ok(user);
         }
+       
 
         [HttpPost]
         [Route("Create")]

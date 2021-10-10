@@ -537,6 +537,7 @@ namespace DigitalEdge.Web.Controllers
 
         }
 
+        #region Dashboard Stats
         [HttpGet]
         [Route("CountClients")]
         public int CountClients()
@@ -605,6 +606,18 @@ namespace DigitalEdge.Web.Controllers
             return _visitService.TodaysAppointments();
         }
 
+        [HttpGet]
+        [Route("CountFacilitiesInDistrict/{disitrictId}")]
+        [Authorize]
+        public ActionResult CountFacilitiesInDistrict(long districtId)
+        {
+            var facilitiesInDistrict = _visitService.CountFacilitiesInDistrict(districtId);
+
+            return Ok(facilitiesInDistrict);
+        }
+        #endregion
+        
+
         // User Access Methods
 
         [HttpGet]
@@ -626,15 +639,7 @@ namespace DigitalEdge.Web.Controllers
             return Ok(languages);
         }
 
-        [HttpGet]
-        [Route("CountFacilitiesInDistrict/{disitrictId}")]
-        [Authorize]
-        public ActionResult CountFacilitiesInDistrict(long districtId)
-        {
-            var facilitiesInDistrict = _visitService.CountFacilitiesInDistrict(districtId);
-
-            return Ok(facilitiesInDistrict);
-        }
+        
 
     }
 }
