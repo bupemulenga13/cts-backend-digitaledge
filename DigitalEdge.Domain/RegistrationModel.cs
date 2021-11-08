@@ -61,7 +61,7 @@ namespace DigitalEdge.Domain
         public int AppointmentStatus { get; set; }
         public string InteractionDate { get; set; }
         public string InteractionTime { get; set; }
-        public DateTime DateEdited { get; set; }
+        public DateTime? DateEdited { get; set; }
         public long? EditedBy { get; set; }
 
         public long FacilityId { get; set; }

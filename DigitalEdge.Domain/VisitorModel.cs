@@ -88,6 +88,28 @@ namespace DigitalEdge.Domain
         public long? DistrictId { get; set; }
 
         public string DistrictName { get; set; }
+
+        #region Appointment Properties
+        public string AppointmentDate { get; set; }
+        public string AppointmentTime { get; set; }
+        public int AppointmentStatus { get; set; }
+        public string InteractionDate { get; set; }
+        public string InteractionTime { get; set; }
+        public DateTime? DateEdited { get; set; }
+        public long? EditedBy { get; set; }
+
+
+        public long? ServiceTypeId { get; set; }
+
+        // Newly added properties from CTS
+
+        public long AppointmentId { get; set; }
+
+        public string Comment { get; set; }
+
+
+
+        #endregion
     }
 }
 

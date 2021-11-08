@@ -83,6 +83,9 @@ namespace DigitalEdge.Repository
         List<LanguageModel> GetLanguages();
         int CountFacilities();
         int CountFacilitiesInDisitrct(long districtId);
+        RegistrationModel GetClientAppointemnt(long id);
+        IEnumerable<SearchModel> SearchClient(string searchTerm);
+        IEnumerable<SearchModel> SearchAppointment(string searchTerm);
     }
 
 }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using DigitalEdge.Domain;
 using DigitalEdge.Services;
 using DigitalEdge.Utility;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DigitalEdge.Web.Controllers
 {
@@ -71,6 +73,52 @@ namespace DigitalEdge.Web.Controllers
         {
             var user = _visitService.getAppointmentsDetails();
             return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("SearchClient/{searchterm}")]
+        [Authorize]
+
+        public ActionResult<IEnumerable<SearchModel>> SearchClient(string searchterm)
+        {
+            try
+            {
+                var result = _visitService.SearchClient(searchterm);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database"); ;
+            }
+        }
+        
+        [HttpGet]
+        [Route("SearchAppointment/{searchterm}")]
+        [Authorize]
+
+        public ActionResult<IEnumerable<SearchModel>> SearchAppointment(string searchterm)
+        {
+            try
+            {
+                var result = _visitService.SearchAppointment(searchterm);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database"); ;
+            }
         }
 
         [HttpGet]
@@ -346,6 +394,16 @@ namespace DigitalEdge.Web.Controllers
 
 
             return Ok(client);
+        }
+
+        [HttpGet]
+        [Route("GetClientAppointment/{id}")]
+        [Authorize]
+        public ActionResult GetClientAppointment(long id)
+        {
+            var appointment = _visitService.GetClientAppointment(id);
+
+            return Ok(appointment);
         }
 
         [HttpGet]

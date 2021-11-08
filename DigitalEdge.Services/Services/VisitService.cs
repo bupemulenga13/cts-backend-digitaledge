@@ -786,5 +786,20 @@ namespace DigitalEdge.Services
         {
             return _visitRepository.CountFacilitiesInDisitrct(districtId);
         }
+
+        public RegistrationModel GetClientAppointment(long id)
+        {
+            return _visitRepository.GetClientAppointemnt(id);
+        }
+
+        public IEnumerable<SearchModel> SearchClient(string searchTerm)
+        {
+            return _visitRepository.SearchClient(searchTerm);
+        } 
+        
+        public IEnumerable<SearchModel> SearchAppointment(string searchTerm)
+        {   
+            return _visitRepository.SearchAppointment(searchTerm);
+        }
     }
 }

@@ -388,7 +388,7 @@ namespace DigitalEdge.Repository
                                              CreatedBy = client.CreatedBy,
                                              EditBy = client.EditBy
                                          }
-                ).OrderByDescending(c => c.EnrollmentDate >= DateTime.Now).ToList();
+                ).OrderByDescending(c => c.DateCreated).ToList();
             return clients;
 
         }
@@ -476,7 +476,7 @@ namespace DigitalEdge.Repository
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).OrderByDescending(c => c.AppointmentDate >= DateTime.Now).ToList();
+                                                    ).OrderByDescending(c => c.DateCreated).ToList();
             return appointments;
         }
 
@@ -1966,6 +1966,95 @@ namespace DigitalEdge.Repository
             var count = _DigitalEdgeContext.Facilities.Count(f => f.DistrictId == districtId);
 
             return count;
+        }
+
+        public RegistrationModel GetClientAppointemnt(long id)
+        {
+            var appointment = (from appointments in _DigitalEdgeContext.Appointments
+                               join client in _DigitalEdgeContext.Clients on appointments.ClientId equals client.ClientId into clients
+                               from clientAppointments in clients.DefaultIfEmpty()
+                               join facility in _DigitalEdgeContext.Facilities on appointments.FacilityId equals facility.FacilityId into facilities
+                               from appointmentInFacility in facilities.DefaultIfEmpty()
+                               join serviceType in _DigitalEdgeContext.ServiceTypes on appointments.ServiceTypeId equals serviceType.ServiceTypeId into serviceType
+                               from clientServiceType in serviceType.DefaultIfEmpty()
+                               where (appointments.AppointmentId == id)
+                               select new RegistrationModel
+                               {
+                                   AppointmentId = id,
+                                   ClientId = clientAppointments.ClientId,
+                                   ServiceTypeId = appointments.ServiceTypeId,
+                                   FacilityId = appointmentInFacility.FacilityId,
+                                   AppointmentStatus = appointments.AppointmentStatus,
+                                   AppointmentDate = appointments.AppointmentDate.ToShortDateString(),
+                                   AppointmentTime = appointments.AppointmentDate.ToShortTimeString(),
+                                   Comment = appointments.Comment,
+                                   DateCreated = appointments.DateCreated,
+                                   DateEdited = appointments.DateEdited,
+                                   CreatedBy = appointments.CreatedBy,
+                                   EditedBy = appointments.EditedBy
+                               }
+
+                              ).SingleOrDefault();
+
+            return appointment;
+        }
+
+        public IEnumerable<SearchModel> SearchClient(string searchTerm)
+        {
+            IEnumerable<SearchModel> query = (from client in _DigitalEdgeContext.Clients
+                                                join facility in _DigitalEdgeContext.Facilities on client.FacilityId equals facility.FacilityId into appointmentFacility
+                                                from f in appointmentFacility.DefaultIfEmpty()
+                                                where (client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm))
+                                                select new SearchModel
+                                                    {
+                                                        ClientId = client.ClientId,
+                                                        FirstName = client.FirstName,
+                                                        LastName = client.LastName,
+                                                        ArtNo = client.ArtNo,
+                                                        ClientPhoneNo = client.ClientPhoneNo,
+                                                        EnrollmentDate = client.EnrollmentDate,
+                                                        FacilityId = client.FacilityId,
+                                                        FacilityName = f.FacilityName
+
+                                                    });
+
+            
+
+            return query.ToList();
+        }
+
+        public IEnumerable<SearchModel> SearchAppointment(string searchTerm)
+        {
+            IEnumerable<SearchModel> query = (from appointment in _DigitalEdgeContext.Appointments
+                                                    join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into clients
+                                                    from clientAppointment in clients.DefaultIfEmpty()
+                                                    join facility in _DigitalEdgeContext.Facilities on appointment.FacilityId equals facility.FacilityId into appointmentFacility
+                                                    from f in appointmentFacility.DefaultIfEmpty()
+                                                    join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into appointmentServiceType
+                                                    from st in appointmentServiceType.DefaultIfEmpty()
+                                                    where (clientAppointment.FirstName.Contains(searchTerm) || clientAppointment.LastName.Contains(searchTerm) || clientAppointment.ArtNo.Contains(searchTerm))
+                                                    select new SearchModel
+                                                    {
+                                                        AppointmentId = appointment.AppointmentId,
+                                                        AppointmentDate = appointment.AppointmentDate.ToString("dd/MM/yyyy"),
+                                                        AppointmentTime = appointment.AppointmentDate.ToString("HH:mm"),
+                                                        AppointmentStatus = appointment.AppointmentStatus,
+                                                        ServiceTypeId = appointment.ServiceTypeId,
+                                                        FacilityId = appointment.FacilityId,
+                                                        Comment = appointment.Comment,
+                                                        InteractionDate = appointment.InteractionDate.Value.ToShortDateString(),
+                                                        InteractionTime = appointment.InteractionDate.Value.ToShortTimeString(),                                                        
+                                                        FirstName = clientAppointment.FirstName,
+                                                        LastName = clientAppointment.LastName,
+                                                        ArtNo = clientAppointment.ArtNo,
+                                                        ClientPhoneNo = clientAppointment.ClientPhoneNo                                                       
+
+
+                                                    });
+
+
+
+            return query.ToList();
         }
     }
 }

@@ -66,11 +66,14 @@ namespace DigitalEdge.Services
 
         int CountClientsInFacility(long facilityId);
         int CountAppointmentsInFacility(long facilityId);
+        IEnumerable<SearchModel> SearchClient(string searchTerm);
         List<FacilityModel> GetFacilities(long facilityId);
         
         List<FacilityModel> GetFacilitiesInDistrict(long id);
         List<LanguageModel> GetLanguages();
         int CountFacilities();
         int CountFacilitiesInDistrict(long districtId);
+        RegistrationModel GetClientAppointment(long id);
+        IEnumerable<SearchModel> SearchAppointment(string searchterm);
     }
 }
