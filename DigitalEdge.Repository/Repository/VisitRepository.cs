@@ -2004,7 +2004,7 @@ namespace DigitalEdge.Repository
             IEnumerable<SearchModel> query = (from client in _DigitalEdgeContext.Clients
                                                 join facility in _DigitalEdgeContext.Facilities on client.FacilityId equals facility.FacilityId into appointmentFacility
                                                 from f in appointmentFacility.DefaultIfEmpty()
-                                                where (client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm))
+                                                where (client.FirstName.Contains(searchTerm) || client.LastName.Contains(searchTerm) || client.ArtNo.Contains(searchTerm) || client.ClientPhoneNo.Contains(searchTerm))
                                                 select new SearchModel
                                                     {
                                                         ClientId = client.ClientId,
@@ -2032,7 +2032,7 @@ namespace DigitalEdge.Repository
                                                     from f in appointmentFacility.DefaultIfEmpty()
                                                     join serviceType in _DigitalEdgeContext.ServiceTypes on appointment.ServiceTypeId equals serviceType.ServiceTypeId into appointmentServiceType
                                                     from st in appointmentServiceType.DefaultIfEmpty()
-                                                    where (clientAppointment.FirstName.Contains(searchTerm) || clientAppointment.LastName.Contains(searchTerm) || clientAppointment.ArtNo.Contains(searchTerm))
+                                                    where (clientAppointment.FirstName.Contains(searchTerm) || clientAppointment.LastName.Contains(searchTerm) || clientAppointment.ArtNo.Contains(searchTerm) || clientAppointment.ClientPhoneNo.Contains(searchTerm))
                                                     select new SearchModel
                                                     {
                                                         AppointmentId = appointment.AppointmentId,
