@@ -1,10 +1,11 @@
 USE [CTSMigrationDB]
 GO
-/****** Object:  StoredProcedure [dbo].[UpdateAppointmentStatus]    Script Date: 27/12/2021 10:35:37 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateAppointmentStatus]    Script Date: 27/12/2021 17:57:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 -- =============================================
 -- Author:		    Gift Muyembe JR
 -- Create date:     23.12.2021
@@ -14,7 +15,7 @@ GO
 -- Parameters(s):   @AppointmentId - primary identifier of the appointment
 --                  @ProviderId - Service provider at the facility
 -- =============================================
--- DROP FUNCTION IF EXISTS [dbo].[updateAppointmentStatus];
+-- DROP PROCEDURE IF EXISTS [dbo].[updateAppointmentStatus];
 CREATE OR ALTER PROCEDURE [dbo].[UpdateAppointmentStatus](@AppointmentId AS INT, @ProviderId AS INT, @Result BIT OUTPUT)
 AS
 BEGIN

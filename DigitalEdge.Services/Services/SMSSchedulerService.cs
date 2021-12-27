@@ -33,7 +33,7 @@ namespace DigitalEdge.Services
             {
                 data.Message = Message.Message;
                 data.Message = _visitService.ConvertMessage(data);
-                if (data.NextAppointmentDate.Date != null && data.NextAppointmentDate.Date != DateTime.MinValue)
+                if (data.NextAppointmentDate.Date != DateTime.MinValue)
                 {
                     if (data.NextAppointmentDate.Date == DateTime.UtcNow.Date.AddDays(7))
                     {
@@ -57,7 +57,7 @@ namespace DigitalEdge.Services
                         AppointmentDay.Add(data);
                     
                 }
-                if ((data.NextAppointmentDate.Date == null || data.NextAppointmentDate.Date == DateTime.MinValue) && data.AppointmenDateTime.Date != null)
+                if ((data.NextAppointmentDate.Date == DateTime.MinValue))
                 {
                     if (data.AppointmenDateTime.Date == DateTime.UtcNow.Date.AddDays(7))
                     {

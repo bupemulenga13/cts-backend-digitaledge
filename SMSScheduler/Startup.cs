@@ -10,7 +10,7 @@ namespace DigitalEdge.SMSScheduler
 {
     public class Startup
     {
-       
+        [Obsolete]
         public Startup(IHostingEnvironment env)
         {
 
@@ -35,6 +35,7 @@ namespace DigitalEdge.SMSScheduler
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDeveloperExceptionPage();
