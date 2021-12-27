@@ -9,11 +9,12 @@ namespace DigitalEdge.Services
     public interface IVisitService
     {
         List<SMSRecords> CSVImportFile(DataTable csvFileDataTable);
-        List<AppointmentsModel> getAppointmentsDetails();
-        List<AppointmentsModel> getAppointmentCheck(AppointmentsModel model);
-        List<AppointmentsModel> getUpcommingAppointment(VisitsModel data);
-        List<AppointmentsModel> getAppointmentsDetailsMissed();
-        List<AppointmentsModel> getAppointmentsMissedFilter(VisitsModel data);
+        List<AppointmentsModel> GetAppointmentsDetails();
+        List<AppointmentsModel> GetAppointmentCheck(AppointmentsModel model);
+        List<AppointmentsModel> GetUpcomingAppointment(VisitsModel data);
+        List<AppointmentsModel> GetAppointmentsDetailsMissed();
+        List<AppointmentsModel> GetAppointmentsMissedFilter(VisitsModel data);
+        bool UpdateAppointmentStatus(AppointmentsModel appointment);
         List<AppointmentsModel> getUpcommingVisitsDetails();
         List<AppointmentsModel> getUpcommingVisitsDetails(VisitsModel data);
         List<AppointmentsModel> getMissedVisitsDetails();
