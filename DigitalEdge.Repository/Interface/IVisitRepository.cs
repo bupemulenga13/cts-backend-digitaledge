@@ -9,25 +9,25 @@ namespace DigitalEdge.Repository
     public interface IVisitRepository
     {
         List<SMSRecords> GetAppointementsDetailsForSMS();
-        List<AppointmentsModel> GetAppointementsDetails();
+        List<AppointmentsModel> GetAppointmentsDetails();
         List<AppointmentsModel> GetAppointmentCheck(AppointmentsModel model);
-        List<AppointmentsModel> GetUpcommingAppointment(VisitsModel filterdata);
-        List<AppointmentsModel> GetUpcommingVisitsDetails();
-        List<AppointmentsModel> GetUpcommingVisitsDetailsfilter(VisitsModel filterdata);
+        List<AppointmentsModel> GetUpcomingAppointment(VisitsModel filterData);
+        List<AppointmentsModel> GetUpcomingVisitsDetails();
+        List<AppointmentsModel> GetUpcomingVisitsDetailsFilter(VisitsModel filterData);
         List<AppointmentsModel> GetMissedVisitsDetails();
         List<AppointmentsModel> GetVisitsMissedFilter(VisitsModel data);
         List<AppointmentsModel> GetAppointmentsDetailsMissed();
-        List<AppointmentsModel> GetAppointmentsMissedFilter(VisitsModel filterdata);
+        List<AppointmentsModel> GetAppointmentsMissedFilter(VisitsModel filterData);
         List<AppointmentsModel> GetClientDetails();
         List<ClientModel> GetClientDetails(string searchTerm);
         List<ClientModel> GetClients();
         List<AppointmentsModel> GetAppointments();
-        List<AppointmentsModel> GetClientDetailsFilters(VisitsModel filterdata);
-        List<AppointmentsModel> GetActiveClientFilter(VisitsModel filterdata);
+        List<AppointmentsModel> GetClientDetailsFilters(VisitsModel filterData);
+        List<AppointmentsModel> GetActiveClientFilter(VisitsModel filterData);
         List<AppointmentsModel> GetClientVisitPastDetails();
         List<AppointmentsModel> ViewDetails(long id);
         List<SMSRecords> SmsRecords(long id);
-        List<AppointmentsModel> GetAppointmentsByVistorID();
+        List<AppointmentsModel> GetAppointmentsByVisitorID();
         Task<IList<AppointmentsModel>> GetAllData();
         List<Facility> GetFacility();
         List<District> GetDistrict(long id);
@@ -43,11 +43,11 @@ namespace DigitalEdge.Repository
         Task<long> GetServicePointId(string name);
         string GetFacilityContactNumber(long? id);
         List<SMSRecords> SmsRecordsForVisits(long id);
-        void UpdateServicePoints(List<ServicePoint>  servicepoints);
+        void UpdateServicePoints(List<ServicePoint>  servicePoints);
         void UpdateAppointments(List<Appointment> appointments);
-        void UpdateBulkMessages(List<BulkMessages> bulkmessages);
+        void UpdateBulkMessages(List<BulkMessages> bulkMessages);
         void UpdateMessages(List<Messages> messages);
-        void UpdateUserFacility(List<UserFacility> userfacility);
+        void UpdateUserFacility(List<UserFacility> userFacility);
         void UpdateVisit(List<Visit> visits);
         void DeleteFacility(long facilityId);
         void DeleteServicePoint(long servicePointId);
@@ -82,10 +82,12 @@ namespace DigitalEdge.Repository
         List<FacilityModel> GetFacilitiesInDistrict(long id);
         List<LanguageModel> GetLanguages();
         int CountFacilities();
-        int CountFacilitiesInDisitrct(long districtId);
-        RegistrationModel GetClientAppointemnt(long id);
+        int CountFacilitiesInDistrict(long districtId);
+        RegistrationModel GetClientAppointment(long id);
         IEnumerable<SearchModel> SearchClient(string searchTerm);
         IEnumerable<SearchModel> SearchAppointment(string searchTerm);
+
+        Boolean UpdateAppointmentStatus(AppointmentsModel appointment);
     }
 
 }

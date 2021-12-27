@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using DigitalEdge.Domain;
 
 namespace DigitalEdge.Repository
@@ -52,7 +51,7 @@ namespace DigitalEdge.Repository
             this._visitRepository = visitRepository;
             this._clientRepository = clientRepository;
         }
-        public List<AppointmentsModel> GetAppointementsDetails()
+        public List<AppointmentsModel> GetAppointmentsDetails()
         {
 
             List<AppointmentsModel> appointmentsdetails = (from appointment in _DigitalEdgeContext.Appointments
@@ -100,7 +99,7 @@ namespace DigitalEdge.Repository
             return appointmentsdetails;
         }
 
-        public List<AppointmentsModel> GetUpcommingAppointment(VisitsModel upcommingfilterdata)
+        public List<AppointmentsModel> GetUpcomingAppointment(VisitsModel upcommingfilterdata)
         {
 
             List<AppointmentsModel> upcommingappointmentsfilter = (from appointment in _DigitalEdgeContext.Appointments
@@ -185,7 +184,13 @@ namespace DigitalEdge.Repository
 
             return appointmentsmissedfilter;
         }
-        public List<AppointmentsModel> GetUpcommingVisitsDetailsfilter(VisitsModel filterdata)
+
+        public bool UpdateAppointmentStatus(Appointment appointment)
+        {
+            
+            return true;
+        }
+        public List<AppointmentsModel> GetUpcomingVisitsDetailsFilter(VisitsModel filterdata)
         {
             List<AppointmentsModel> upcommingvisitsdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
                                                                     join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
@@ -212,7 +217,7 @@ namespace DigitalEdge.Repository
 
             return upcommingvisitsdetailsfilter;
         }
-        public List<AppointmentsModel> GetUpcommingVisitsDetails()
+        public List<AppointmentsModel> GetUpcomingVisitsDetails()
         {
             List<AppointmentsModel> upcommingvisitsdetails = (from appointment in _DigitalEdgeContext.Appointments
                                                               join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
@@ -1276,7 +1281,7 @@ namespace DigitalEdge.Repository
                                            }).ToList();
             return smsRecords;
         }
-        public List<AppointmentsModel> GetAppointmentsByVistorID()
+        public List<AppointmentsModel> GetAppointmentsByVisitorID()
         {
 
             try
@@ -1961,14 +1966,14 @@ namespace DigitalEdge.Repository
             return count;
         }
 
-        public int CountFacilitiesInDisitrct(long districtId)
+        public int CountFacilitiesInDistrict(long districtId)
         {
             var count = _DigitalEdgeContext.Facilities.Count(f => f.DistrictId == districtId);
 
             return count;
         }
 
-        public RegistrationModel GetClientAppointemnt(long id)
+        public RegistrationModel GetClientAppointment(long id)
         {
             var appointment = (from appointments in _DigitalEdgeContext.Appointments
                                join client in _DigitalEdgeContext.Clients on appointments.ClientId equals client.ClientId into clients
@@ -2047,13 +2052,8 @@ namespace DigitalEdge.Repository
                                                         FirstName = clientAppointment.FirstName,
                                                         LastName = clientAppointment.LastName,
                                                         ArtNo = clientAppointment.ArtNo,
-                                                        ClientPhoneNo = clientAppointment.ClientPhoneNo                                                       
-
-
+                                                        ClientPhoneNo = clientAppointment.ClientPhoneNo
                                                     });
-
-
-
             return query.ToList();
         }
     }
