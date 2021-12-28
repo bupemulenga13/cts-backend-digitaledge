@@ -9,7 +9,6 @@ using DigitalEdge.Domain;
 using DigitalEdge.Services;
 using DigitalEdge.Utility;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 
 namespace DigitalEdge.Web.Controllers
@@ -22,15 +21,12 @@ namespace DigitalEdge.Web.Controllers
         private readonly IVisitService _visitService;
         private readonly ISMSSchedulerService _smsSchedulerService;
         private readonly IConfiguration _config;
-
-        public VisitController(IVisitService visitService, IConfiguration config,
-            ISMSSchedulerService smsSchedulerService)
+        public VisitController(IVisitService visitService, IConfiguration config, ISMSSchedulerService smsSchedulerService)
         {
             this._smsSchedulerService = smsSchedulerService;
             this._visitService = visitService;
             this._config = config;
         }
-
         [HttpPost]
         [Route("[action]")]
         [Authorize]
@@ -45,13 +41,11 @@ namespace DigitalEdge.Web.Controllers
                     return StatusCode(400, "Please verify .CSV sheet and upload again.");
                 dataTable = DataImporter.CSVDataImport(file.FileToUpload[0]);
                 if (dataTable.Rows.Count == 0)
-                    return StatusCode(400,
-                        "Column heading is missing for any column. Please verify sheet and upload again.");
+                    return StatusCode(400, "Column heading is missing for any column. Please verify sheet and upload again.");
                 var response = _visitService.CSVImportFile(dataTable);
                 return Ok(response);
             }
         }
-
         [HttpPost]
         [Route("CreateVisit")]
         [AllowAnonymous]
@@ -59,41 +53,32 @@ namespace DigitalEdge.Web.Controllers
         {
             if (model == null)
             {
-                return BadRequest(new ServiceResponse()
-                    {Success = false, Message = "Visit not created", StatusCode = 400});
+                return BadRequest(new ServiceResponse() { Success = false, Message = "Visit not created", StatusCode = 400 });
             }
             else
             {
                 var result = this._visitService.AddVisit(model);
                 if (result != null)
                 {
-                    return Ok(new ServiceResponse()
-                        {Success = true, StatusCode = 200, Message = "Visit created successfully!"});
-                }
+                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Visit created successfully!" });
 
-                return BadRequest(new ServiceResponse()
-                    {Success = false, StatusCode = 400, Message = "Error: Visit not created"});
+                }
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Visit not created" });
             }
         }
-
         [HttpGet]
         [Route("GetAppointmentsDetails")]
         [Authorize]
         public ActionResult GetAppointmentsDetails()
         {
-            var appointments = _visitService.GetAppointmentsDetails();
-            //refresh appointments details here as well
-            foreach (var appointment in appointments)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
-            return Ok(appointments);
+            var user = _visitService.GetAppointmentsDetails();
+            return Ok(user);
         }
 
         [HttpGet]
         [Route("SearchClient/{searchterm}")]
         [Authorize]
+
         public ActionResult<IEnumerable<SearchModel>> SearchClient(string searchterm)
         {
             try
@@ -103,20 +88,20 @@ namespace DigitalEdge.Web.Controllers
                 {
                     return NotFound();
                 }
-
                 return Ok(result);
             }
             catch (Exception)
             {
+
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
-                ;
+                "Error retrieving data from the database"); ;
             }
         }
-
+        
         [HttpGet]
         [Route("SearchAppointment/{searchterm}")]
         [Authorize]
+
         public ActionResult<IEnumerable<SearchModel>> SearchAppointment(string searchterm)
         {
             try
@@ -126,14 +111,13 @@ namespace DigitalEdge.Web.Controllers
                 {
                     return NotFound();
                 }
-
                 return Ok(result);
             }
             catch (Exception)
             {
+
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
-                ;
+                "Error retrieving data from the database"); ;
             }
         }
 
@@ -143,11 +127,6 @@ namespace DigitalEdge.Web.Controllers
         public ActionResult GetAppointments()
         {
             var appointments = _visitService.GetAppointments();
-            foreach (var appointment in appointments)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
             return Ok(appointments);
         }
 
@@ -157,12 +136,8 @@ namespace DigitalEdge.Web.Controllers
         public ActionResult GetAppointmentsByFacility(long facilityId)
         {
             var appointments = _visitService.GetAppointmentsByFacility(facilityId);
-            foreach (var appointment in appointments)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
             return Ok(appointments);
+
         }
 
         [HttpPost]
@@ -170,13 +145,8 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public IActionResult GetAppointmentsCheck([FromBody] AppointmentsModel model)
         {
-            var appointments = _visitService.GetAppointmentCheck(model);
-            foreach (var appointment in appointments)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
-            return Ok(appointments);
+            var user = _visitService.GetAppointmentCheck(model);
+            return Ok(user);
         }
 
         [HttpGet]
@@ -184,15 +154,9 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult GetAppointmentsDetailsMissed()
         {
-            var appointments = _visitService.GetAppointmentsDetailsMissed();
-            foreach (var appointment in appointments)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
-            return Ok(appointments);
+            var user = _visitService.GetAppointmentsDetailsMissed();
+            return Ok(user);
         }
-
         [HttpPost]
         [Route("ViewAppointmentsMissedFilter")]
         [Authorize]
@@ -200,38 +164,23 @@ namespace DigitalEdge.Web.Controllers
         {
             if (data.ServicePointId > 1)
             {
-                var appointmentsFilter = _visitService.GetAppointmentsMissedFilter(data);
-                foreach (var appointment in appointmentsFilter)
-                {
-                    var result = _visitService.UpdateAppointmentStatus(appointment);
-                }
-
-                return Ok(appointmentsFilter);
+                var userfilter = _visitService.GetAppointmentsMissedFilter(data);
+                return Ok(userfilter);
             }
-
-            var appointments = _visitService.GetAppointmentsDetailsMissed();
-            foreach (var appointment in appointments)
+            else
             {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
+                var user = _visitService.GetAppointmentsDetailsMissed();
+                return Ok(user);
             }
-
-            return Ok(appointments);
         }
-
         [HttpGet]
         [Route("GetUpcomingVisitsDetails")]
         [Authorize]
         public ActionResult GetUpcommingVisitsDetails()
         {
-            var upcomingVisits = _visitService.getUpcommingVisitsDetails();
-            foreach (var appointment in upcomingVisits)
-            {
-                var result = _visitService.UpdateAppointmentStatus(appointment);
-            }
-
-            return Ok(upcomingVisits);
+            var user = _visitService.getUpcommingVisitsDetails();
+            return Ok(user);
         }
-
         [HttpPost]
         [Route("ViewUpcommingVisits")]
         [Authorize]
@@ -248,21 +197,14 @@ namespace DigitalEdge.Web.Controllers
                 return Ok(user);
             }
         }
-
         [HttpGet]
         [Route("GetVisitHistory")]
         [Authorize]
         public ActionResult GetVisitHistory()
         {
-            var visitHistory = _visitService.getVisitHistory();
-            foreach (var visit in visitHistory)
-            {
-                _visitService.UpdateAppointmentStatus(visit);
-            }
-
-            return Ok(visitHistory);
+            var user = _visitService.getVisitHistory();
+            return Ok(user);
         }
-
         [HttpPost]
         [Route("GetVisitHistoryByServicePoint")]
         [Authorize]
@@ -270,38 +212,23 @@ namespace DigitalEdge.Web.Controllers
         {
             if (data.ServicePointId > 1)
             {
-                var visitHistoryByService = _visitService.getVisitHistoryByServicePoint(data);
-                foreach (var visitHistroy in visitHistoryByService)
-                {
-                    _visitService.UpdateAppointmentStatus(visitHistroy);
-                }
-
-                return Ok(visitHistoryByService);
+                var user = _visitService.getVisitHistoryByServicePoint(data);
+                return Ok(user);
             }
-
-            var visit = _visitService.getUpcommingVisitsDetails();
-            foreach (var visitHistory in visit)
+            else
             {
-                _visitService.UpdateAppointmentStatus(visitHistory);
+                var user = _visitService.getUpcommingVisitsDetails();
+                return Ok(user);
             }
-
-            return Ok(visit);
         }
-
         [HttpGet]
         [Route("GetMissedVisitsDetails")]
         [Authorize]
         public ActionResult GetMissedVisitsDetails()
         {
-            var missedVisits = _visitService.getMissedVisitsDetails();
-            foreach (var visit in missedVisits)
-            {
-                _visitService.UpdateAppointmentStatus(visit);
-            }
-
-            return Ok(missedVisits);
+            var user = _visitService.getMissedVisitsDetails();
+            return Ok(user);
         }
-
         [HttpPost]
         [Route("ViewVisitsMissedFilter")]
         [Authorize]
@@ -309,50 +236,30 @@ namespace DigitalEdge.Web.Controllers
         {
             if (data.ServicePointId > 1)
             {
-                var visits = _visitService.getVisitsMissedFilter(data);
-                foreach (var visit in visits)
-                {
-                    _visitService.UpdateAppointmentStatus(visit);
-                }
-
-                return Ok(visits);
+                var user = _visitService.getVisitsMissedFilter(data);
+                return Ok(user);
             }
             else
             {
-                var visits = _visitService.getMissedVisitsDetails();
-                foreach (var visit in visits)
-                {
-                    _visitService.UpdateAppointmentStatus(visit);
-                }
-
-                return Ok(visits);
+                var user = _visitService.getMissedVisitsDetails();
+                return Ok(user);
             }
         }
-
         [HttpGet]
         [Route("ViewClientDetails")]
         [Authorize]
         public ActionResult ViewClientDetails()
         {
-            var clients = _visitService.getClientDetails();
-            foreach (var client in clients)
-            {
-                _visitService.UpdateAppointmentStatus(client);
-            }
-            return Ok(clients);
+            var user = _visitService.getClientDetails();
+            return Ok(user);
         }
-
         [HttpPost]
         [Route("GetClientDetails")]
         [Authorize]
         public IActionResult GetClientDetails()
         {
-            var clients = _visitService.getClientDetails();
-            foreach (var client in clients)
-            {
-                _visitService.UpdateAppointmentStatus(client);
-            }
-            return Ok(clients);
+            var user = _visitService.getClientDetails();
+            return Ok(user);
         }
 
         [HttpPost]
@@ -360,25 +267,27 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public IActionResult GetClientInfo([FromForm] ClientModel model)
         {
-            if (model.FirstName != null)
+
+            if (model.FirstName != null && model.FirstName == model.FirstName)
             {
                 var userA = _visitService.getClientDetails(model.FirstName);
                 return Ok(userA);
             }
-
-            if (model.LastName != null)
+            if (model.LastName != null && model.LastName == model.LastName)
             {
+
                 var userB = _visitService.getClientDetails(model.LastName);
                 return Ok(userB);
             }
-
-            if (model.ArtNo != null)
+            if (model.ArtNo != null && model.ArtNo == model.ArtNo)
             {
                 var user = _visitService.getClientDetails(model.ArtNo);
                 return Ok(user);
             }
 
             return StatusCode(404, "Please enter valid client details!");
+
+
         }
 
         [HttpGet]
@@ -393,7 +302,7 @@ namespace DigitalEdge.Web.Controllers
         [HttpGet]
         [Route("GetClients/{facilityId}")]
         [Authorize]
-        public ActionResult GetClients(long facilityId)
+        public ActionResult GetClients(long facilityId)   
         {
             // We add method override to accept user with facility.
             // Method in service should host the parameters that are going to be needed
@@ -424,7 +333,7 @@ namespace DigitalEdge.Web.Controllers
 
             return Ok(facilities);
         }
-
+        
         [HttpGet]
         [Route("GetFacilities/{facilityId}")]
         [Authorize]
@@ -482,6 +391,8 @@ namespace DigitalEdge.Web.Controllers
         public ActionResult GetAppointment(long id)
         {
             var client = _visitService.GetAppointmentById(id);
+
+
             return Ok(client);
         }
 
@@ -510,12 +421,9 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public IActionResult ViewClientDetailsFilters([FromBody] VisitsModel data)
         {
-            var clientDetailsFilters = _visitService.getClientDetailsFilters(data);
-            foreach (var clientDetails in clientDetailsFilters)
-            {
-                _visitService.UpdateAppointmentStatus(clientDetails);
-            }
-            return Ok(clientDetailsFilters);
+            var userfilter = _visitService.getClientDetailsFilters(data);
+            return Ok(userfilter);
+
         }
 
 
@@ -527,7 +435,7 @@ namespace DigitalEdge.Web.Controllers
             var userfilter = _visitService.getActiveClientFilter(data);
             return Ok(userfilter);
         }
-
+        
         [HttpPost]
         [Route("ViewUpcommingAppointment")]
         [Authorize]
@@ -585,7 +493,7 @@ namespace DigitalEdge.Web.Controllers
                 user = _visitService.smsRecords(appointmentsModel.Id, true);
             else
                 user = _visitService.smsRecords(appointmentsModel.VisitsId, false);
-            return Ok(new ServiceResponse() {StatusCode = 200, Message = user});
+            return Ok(new ServiceResponse() { StatusCode = 200, Message = user });
         }
 
 
@@ -614,7 +522,6 @@ namespace DigitalEdge.Web.Controllers
         {
             return Ok(_visitService.GetProvince());
         }
-
         [HttpGet]
         [Route("GetServicePoint/{id}")]
         [Authorize]
@@ -622,7 +529,6 @@ namespace DigitalEdge.Web.Controllers
         {
             return Ok(_visitService.GetServicePoint(id));
         }
-
         [HttpPost]
         [Route("GetMessage")]
         [Authorize]
@@ -632,27 +538,24 @@ namespace DigitalEdge.Web.Controllers
                 return null;
             return Ok(_visitService.GetMessage(messageTemplateModel));
         }
-
         [HttpPost]
         [Route("GetBulkMessage")]
         [Authorize]
         public ActionResult GetBulkMessage([FromForm] CSVBulkData bulkData)
         {
             if (bulkData.FileToUpload == null)
-                return Ok(new ServiceResponse() {StatusCode = 400, Message = "Please Upload CSV"});
+                return Ok(new ServiceResponse() { StatusCode = 400, Message = "Please Upload CSV" });
             string extension = Path.GetExtension(bulkData.FileToUpload[0].FileName);
             DataTable dataTable = null;
             if (extension != ".csv")
                 return StatusCode(400, "Please verify .CSV sheet and upload again.");
             dataTable = DataImporter.CSVDataImport(bulkData.FileToUpload[0]);
             if (dataTable.Rows.Count == 0)
-                return StatusCode(400,
-                    "Column heading is missing for any column. Please verify sheet and upload again.");
+                return StatusCode(400, "Column heading is missing for any column. Please verify sheet and upload again.");
             var response = _visitService.CSVImportFile(dataTable);
             var result = _visitService.SendBulkSMS(response, bulkData);
-            return Ok(new ServiceResponse() {StatusCode = 200, Message = result});
+            return Ok(new ServiceResponse() { StatusCode = 200, Message = result });
         }
-
         [HttpPost]
         [Route("DeleteFacility")]
         [Authorize]
@@ -664,14 +567,14 @@ namespace DigitalEdge.Web.Controllers
                 if (facilityModel.AssignedFacilityId == 0 || facilityModel.FacilityId == 0)
                     return null;
                 _visitService.DeleteFacility(facilityModel, isfacility);
-                return Ok(new ServiceResponse() {StatusCode = 200, Message = "Delete Successfully"});
+                return Ok(new ServiceResponse() { StatusCode = 200, Message = "Delete Successfully" });
             }
             catch (Exception ex)
             {
-                return Ok(new ServiceResponse() {StatusCode = 500, Message = ex.Message.ToString()});
+                return Ok(new ServiceResponse() { StatusCode = 500, Message = ex.Message.ToString() });
             }
-        }
 
+        }
         [HttpPost]
         [Route("DeleteServicePoint")]
         [Authorize]
@@ -683,30 +586,30 @@ namespace DigitalEdge.Web.Controllers
                 if (servicePoint.AssignedServicePointId == 0 || servicePoint.ServicePointId == 0)
                     return null;
                 _visitService.DeleteServicePoint(servicePoint, isservicePoint);
-                return Ok(new ServiceResponse() {StatusCode = 200, Message = "Delete Successfully"});
+                return Ok(new ServiceResponse() { StatusCode = 200, Message = "Delete Successfully" });
             }
             catch (Exception ex)
             {
-                return Ok(new ServiceResponse() {StatusCode = 500, Message = ex.Message.ToString()});
+                return Ok(new ServiceResponse() { StatusCode = 500, Message = ex.Message.ToString() });
             }
+
         }
 
         #region Dashboard Stats
-
         [HttpGet]
         [Route("CountClients")]
         public int CountClients()
         {
             return _visitService.CountClients();
         }
-
+        
         [HttpGet]
         [Route("CountClientsInFacility")]
         public int CountClientsInFacility(long facilityId)
         {
             return _visitService.CountClientsInFacility(facilityId);
         }
-
+        
 
         [HttpGet]
         [Route("CountAppointments")]
@@ -714,14 +617,14 @@ namespace DigitalEdge.Web.Controllers
         {
             return _visitService.CountAppointments();
         }
-
+        
         [HttpGet]
         [Route("CountAppointmentsInFacility")]
         public int CountAppointmentsInFacility(long facilityId)
         {
             return _visitService.CountAppointmentsInFacility(facilityId);
         }
-
+        
 
         [HttpGet]
         [Route("CountFacilitiesInDistricts")]
@@ -737,6 +640,7 @@ namespace DigitalEdge.Web.Controllers
         {
             return _visitService.CountFacilities();
         }
+
 
 
         [HttpGet]
@@ -769,9 +673,8 @@ namespace DigitalEdge.Web.Controllers
 
             return Ok(facilitiesInDistrict);
         }
-
         #endregion
-
+        
 
         // User Access Methods
 
@@ -793,5 +696,8 @@ namespace DigitalEdge.Web.Controllers
             var languages = _visitService.GetLanguages();
             return Ok(languages);
         }
+
+        
+
     }
 }
