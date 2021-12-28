@@ -20,10 +20,15 @@ CREATE OR ALTER PROCEDURE [dbo].[UpdateAppointmentStatus](@AppointmentId AS INT,
 AS
 BEGIN
 
-    DECLARE @AppointmentStatus AS INT = 1
     DECLARE @AppointmentDaysLate AS INT = 0
     DECLARE @Today AS DATETIME = GETDATE()
     DECLARE @Comments AS NVARCHAR(60)
+    DECLARE @AppointmentStatus AS INT = (SELECT AppointmentId
+                                         FROM Appointments
+                                         WHERE AppointmentId = @AppointmentId)
+    DECLARE @InteractionDate AS DATETIME = (SELECT InteractionDate
+                                            FROM Appointments
+                                            WHERE AppointmentId = @AppointmentId)
     DECLARE @NextAppointmentDate AS DATETIME = (SELECT AppointmentDate
                                                 FROM Appointments
                                                 WHERE AppointmentId = @AppointmentId)
@@ -35,14 +40,14 @@ BEGIN
                                              FROM UserRoles ur
                                                       JOIN Users u ON ur.RoleId = u.RoleId
                                              WHERE ur.RoleId = @ProviderId)
-
+    -- missed appointment
     IF (@Today > @NextAppointmentDate)
         BEGIN
             PRINT 'Client is late for an appointment, updating status to [Inactive]'
             SET @Result = 1
-            SET @AppointmentStatus = (SELECT ClientStatusId FROM ClientStatuses WHERE ClientStatusName = 'Inactive')
+            SET @AppointmentStatus = -1
             SET @AppointmentDaysLate = (SELECT DATEDIFF(DAY, @NextAppointmentDate, @Today))
-            SET @Comments = 'Dummy'
+            SET @Comments = 'Missed appointment by ' + @AppointmentDaysLate + 'days.'
 
             -- populate all appointments reference data
             -- update the appointments table
@@ -55,20 +60,20 @@ BEGIN
             FROM [dbo].[Appointments] app
             WHERE app.AppointmentId = @AppointmentId
 
-            -- update the clients table with latest appointment details
-            UPDATE c
-            SET c.ClientStatusId  = @AppointmentStatus,
-                c.StatusCommentId = 3,
-                c.DateEdit        = @Today
-            FROM Clients c
-                     LEFT JOIN Appointments app on c.ClientId = app.ClientId
-            WHERE app.AppointmentId = @AppointmentId
         END
     ELSE
-        BEGIN
-            -- nothing to update
-            PRINT 'Client is not late for their next appointment'
-            SET @Result = 0
-        END
+        -- attended appointments
+        IF (@AppointmentStatus = 0 AND @InteractionDate IS NOT NULL)
+            BEGIN
+                PRINT 'Client is not late for their next appointment'
+                SET @Result = 0
+
+                UPDATE app
+                SET app.AppointmentStatus = 1,
+                    app.DateEdited        = @Today,
+                    app.EditedBy = @ProviderId
+                FROM [dbo].[Appointments] app
+                WHERE app.AppointmentId = @AppointmentId
+            END
     RETURN @Result
 END

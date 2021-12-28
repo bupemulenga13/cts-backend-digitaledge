@@ -70,7 +70,7 @@ namespace DigitalEdgeTest.Services
                 DateTime.Now,
                 8,
                 8,
-                0 //1 to denote active; 2 to denote Inactive
+                0 // -1-> Missed, 0 -> Pending, 1 -> Attended
             );
 
 
@@ -85,8 +85,8 @@ namespace DigitalEdgeTest.Services
 
             var outParameter = cmd.Parameters.Add("@Result", SqlDbType.Bit);
             outParameter.Direction = ParameterDirection.Output;
-            
-            
+
+
             var inParameters = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
             inParameters.Direction = ParameterDirection.Input;
             inParameters.Value = appointmentId;
