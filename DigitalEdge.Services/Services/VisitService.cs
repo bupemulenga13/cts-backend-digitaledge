@@ -25,15 +25,16 @@ namespace DigitalEdge.Services
         private readonly IMessageRepository _messageRepository;
         private readonly IConfiguration _iconfigration;
 
-        private readonly string ctsConnStr =
-            @"Server=localhost\SMARTCARE40; Database=CTSMigrationDB; User ID=sa; Password=m7r@n$4mAz; Trusted_Connection=True;";
-
         public VisitService(IConfiguration iconfigration, IVisitRepository visitRepository,
             IMessageRepository messageRepository)
         {
             this._iconfigration = iconfigration;
             this._visitRepository = visitRepository;
             this._messageRepository = messageRepository;
+        }
+
+        public VisitService()
+        {
         }
 
         public List<SMSRecords> CSVImportFile(DataTable csvFileDataTable)
@@ -82,43 +83,6 @@ namespace DigitalEdge.Services
             return obj;
         }
 
-        public bool UpdateAppointmentStatus(AppointmentsModel appointment)
-        {
-            var result = false;
-            var appointmentId = appointment.AppointmentId;
-            var providerId = appointment.EditedBy;
-            using SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = ctsConnStr;
-            SqlCommand cmd =
-                new SqlCommand("SELECT * FROM [dbo].[updateAppointmentStatus](@AppointmentId, @ProviderId)", conn);
-            var parameter = cmd.Parameters.Add("@result", SqlDbType.Int);
-            parameter.Direction = ParameterDirection.ReturnValue;
-            //inputs
-            parameter = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
-            parameter.Value = appointmentId;
-            parameter = cmd.Parameters.Add("@ProviderId", SqlDbType.Int);
-            parameter.Value = providerId;
-
-            conn.Open();
-            cmd.CommandTimeout = 30000;
-            cmd.ExecuteNonQuery();
-            conn.Close();
-
-            parameter = cmd.Parameters["@result"];
-            switch (parameter.Value)
-            {
-                case 0:
-                    result = false;
-                    break;
-                case 1:
-                    result = true;
-                    break;
-                default: //catch errors here
-                    break;
-            }
-
-            return result;
-        }
 
         public List<AppointmentsModel> GetAppointmentsDetails()
         {
@@ -156,8 +120,6 @@ namespace DigitalEdge.Services
                     user.PriorAppointmentDate == DateTime.MinValue ? null : user.PriorAppointmentDate;
             }
 
-            if (userVisits == null)
-                return null;
             return (userVisits);
         }
 
@@ -288,6 +250,12 @@ namespace DigitalEdge.Services
             if (appointments == null)
                 return null;
             return (appointments);
+        }
+
+        public bool UpdateAppointmentStatus(AppointmentsModel appointment)
+        {
+            var result = _visitRepository.UpdateAppointmentStatus(appointment);
+            return result;
         }
 
         public List<AppointmentsModel> getClientDetailsFilters(VisitsModel data)
