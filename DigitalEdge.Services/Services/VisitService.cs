@@ -87,34 +87,36 @@ namespace DigitalEdge.Services
             var result = false;
             var appointmentId = appointment.AppointmentId;
             var providerId = appointment.EditedBy;
-            using SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = ctsConnStr;
-            SqlCommand cmd =
-                new SqlCommand("SELECT * FROM [dbo].[updateAppointmentStatus](@AppointmentId, @ProviderId)", conn);
-            var parameter = cmd.Parameters.Add("@result", SqlDbType.Int);
-            parameter.Direction = ParameterDirection.ReturnValue;
-            //inputs
-            parameter = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
-            parameter.Value = appointmentId;
-            parameter = cmd.Parameters.Add("@ProviderId", SqlDbType.Int);
-            parameter.Value = providerId;
-
-            conn.Open();
-            cmd.CommandTimeout = 30000;
-            cmd.ExecuteNonQuery();
-            conn.Close();
-
-            parameter = cmd.Parameters["@result"];
-            switch (parameter.Value)
+            using (SqlConnection conn = new SqlConnection())
             {
-                case 0:
-                    result = false;
-                    break;
-                case 1:
-                    result = true;
-                    break;
-                default: //catch errors here
-                    break;
+                conn.ConnectionString = ctsConnStr;
+                SqlCommand cmd =
+                    new SqlCommand("SELECT * FROM [dbo].[updateAppointmentStatus](@AppointmentId, @ProviderId)", conn);
+                var parameter = cmd.Parameters.Add("@result", SqlDbType.Int);
+                parameter.Direction = ParameterDirection.ReturnValue;
+                //inputs
+                parameter = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
+                parameter.Value = appointmentId;
+                parameter = cmd.Parameters.Add("@ProviderId", SqlDbType.Int);
+                parameter.Value = providerId;
+
+                conn.Open();
+                cmd.CommandTimeout = 30000;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                parameter = cmd.Parameters["@result"];
+                switch (parameter.Value)
+                {
+                    case 0:
+                        result = false;
+                        break;
+                    case 1:
+                        result = true;
+                        break;
+                    default: //catch errors here
+                        break;
+                }
             }
 
             return result;
@@ -129,7 +131,7 @@ namespace DigitalEdge.Services
                     user.NextAppointmentDate == DateTime.MinValue ? null : user.NextAppointmentDate;
                 user.PriorAppointmentDate =
                     user.PriorAppointmentDate == DateTime.MinValue ? null : user.PriorAppointmentDate;
-
+                
                 //update appointment status
                 var result = UpdateAppointmentStatus(user);
             }
@@ -382,7 +384,8 @@ namespace DigitalEdge.Services
 
             if (message.Contains("{Date}"))
                 message = message.Replace("{Date}",
-                    (smsRecords.NextAppointmentDate.Date == DateTime.MinValue)
+                    (smsRecords.NextAppointmentDate.Date == null ||
+                     smsRecords.NextAppointmentDate.Date == DateTime.MinValue)
                         ? smsRecords.AppointmenDateTime.Date.ToString("MM-dd-yyyy")
                         : smsRecords.NextAppointmentDate.Date.ToString("MM-dd-yyyy"));
             if (message.Contains("{Time}"))
@@ -448,8 +451,7 @@ namespace DigitalEdge.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                throw;
+                throw ex;
             }
         }
 
@@ -478,8 +480,7 @@ namespace DigitalEdge.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                throw;
+                throw ex;
             }
         }
 
@@ -605,8 +606,7 @@ namespace DigitalEdge.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                throw;
+                throw ex;
             }
         }
 

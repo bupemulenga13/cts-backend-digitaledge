@@ -10,8 +10,8 @@ namespace DigitalEdge.Repository
         {
         }
 
-        public new DbSet<Users> Users { get; set; }
-        public new DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Facility> Facilities { get; set; }
