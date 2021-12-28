@@ -71,7 +71,7 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult GetAppointmentsDetails()
         {
-            var user = _visitService.GetAppointmentsDetails();
+            var user = _visitService.getAppointmentsDetails();
             return Ok(user);
         }
 
@@ -145,7 +145,7 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public IActionResult GetAppointmentsCheck([FromBody] AppointmentsModel model)
         {
-            var user = _visitService.GetAppointmentCheck(model);
+            var user = _visitService.getAppointmentCheck(model);
             return Ok(user);
         }
 
@@ -154,7 +154,7 @@ namespace DigitalEdge.Web.Controllers
         [Authorize]
         public ActionResult GetAppointmentsDetailsMissed()
         {
-            var user = _visitService.GetAppointmentsDetailsMissed();
+            var user = _visitService.getAppointmentsDetailsMissed();
             return Ok(user);
         }
         [HttpPost]
@@ -164,17 +164,17 @@ namespace DigitalEdge.Web.Controllers
         {
             if (data.ServicePointId > 1)
             {
-                var userfilter = _visitService.GetAppointmentsMissedFilter(data);
+                var userfilter = _visitService.getAppointmentsMissedFilter(data);
                 return Ok(userfilter);
             }
             else
             {
-                var user = _visitService.GetAppointmentsDetailsMissed();
+                var user = _visitService.getAppointmentsDetailsMissed();
                 return Ok(user);
             }
         }
         [HttpGet]
-        [Route("GetUpcomingVisitsDetails")]
+        [Route("GetUpcommingVisitsDetails")]
         [Authorize]
         public ActionResult GetUpcommingVisitsDetails()
         {
@@ -443,12 +443,12 @@ namespace DigitalEdge.Web.Controllers
         {
             if (data.ServicePointId > 1)
             {
-                var userfilter = _visitService.GetUpcomingAppointment(data);
+                var userfilter = _visitService.getUpcommingAppointment(data);
                 return Ok(userfilter);
             }
             else
             {
-                var user = _visitService.GetAppointmentsDetails();
+                var user = _visitService.getAppointmentsDetails();
                 return Ok(user);
             }
         }
