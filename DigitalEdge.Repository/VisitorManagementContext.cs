@@ -8,10 +8,10 @@ namespace DigitalEdge.Repository
     {
         public DigitalEdgeContext(DbContextOptions<DigitalEdgeContext> options) : base(options)
         {
-        }
 
-        public new DbSet<Users> Users { get; set; }
-        public new DbSet<UserRoles> UserRoles { get; set; }
+        }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Facility> Facilities { get; set; }
@@ -34,22 +34,24 @@ namespace DigitalEdge.Repository
         public DbSet<ViralLoad> ViralLoadResults { get; set; }
 
 
-        #region OnModelCreating
 
+
+
+
+
+
+        #region OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }
-
         #endregion
 
         #region Public methods
-
         public override int SaveChanges()
         {
             return base.SaveChanges(true);
         }
-
         #endregion
     }
 }
