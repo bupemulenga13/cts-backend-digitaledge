@@ -87,7 +87,7 @@ namespace DigitalEdge.Repository
         IEnumerable<SearchModel> SearchClient(string searchTerm);
         IEnumerable<SearchModel> SearchAppointment(string searchTerm);
 
-        bool UpdateAppointmentStatus(AppointmentsModel appointment);
+        Boolean UpdateAppointmentStatus(AppointmentsModel appointment);
     }
 
 }

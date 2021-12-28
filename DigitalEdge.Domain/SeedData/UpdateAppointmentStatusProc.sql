@@ -20,8 +20,8 @@ CREATE OR ALTER PROCEDURE [dbo].[UpdateAppointmentStatus](@AppointmentId AS INT,
 AS
 BEGIN
 
-    DECLARE @AppointmentStatus AS INT = 1
-    DECLARE @AppointmentDaysLate AS INT = 0
+    DECLARE @AppointmentStatus AS INTEGER = 1
+    DECLARE @AppointmentDaysLate AS INTEGER = 0
     DECLARE @Today AS DATETIME = GETDATE()
     DECLARE @Comments AS NVARCHAR(60)
     DECLARE @NextAppointmentDate AS DATETIME = (SELECT AppointmentDate
@@ -42,7 +42,9 @@ BEGIN
             SET @Result = 1
             SET @AppointmentStatus = (SELECT ClientStatusId FROM ClientStatuses WHERE ClientStatusName = 'Inactive')
             SET @AppointmentDaysLate = (SELECT DATEDIFF(DAY, @NextAppointmentDate, @Today))
-            SET @Comments = 'Dummy'
+            SET @Comments = (SELECT StatusCommentName FROM StatusComments WHERE StatusCommentId = 3) + CHAR(13) +
+                            'Days Late: ' + @AppointmentDaysLate + CHAR(13) +
+                            'Service Provider: ' + @ServiceProvider + ', ' + @ProviderRole
 
             -- populate all appointments reference data
             -- update the appointments table
@@ -70,5 +72,5 @@ BEGIN
             PRINT 'Client is not late for their next appointment'
             SET @Result = 0
         END
-    RETURN @Result
+    SELECT @Result
 END

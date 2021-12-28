@@ -202,31 +202,23 @@ namespace DigitalEdge.Repository
             var providerId = appointment.EditedBy;
             using SqlConnection conn = new SqlConnection();
             conn.ConnectionString = ctsConnStr;
-            conn.Open();
             SqlCommand cmd =
-                new SqlCommand("UpdateAppointmentStatus", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+                new SqlCommand("SELECT * FROM [dbo].[updateAppointmentStatus](@AppointmentId, @ProviderId)", conn);
+            var parameter = cmd.Parameters.Add("@result", SqlDbType.Int);
+            parameter.Direction = ParameterDirection.ReturnValue;
+            //inputs
+            parameter = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
+            parameter.Value = appointmentId;
+            parameter = cmd.Parameters.Add("@ProviderId", SqlDbType.Int);
+            parameter.Value = providerId;
 
-            var outParameter = cmd.Parameters.Add("@Result", SqlDbType.Bit);
-            outParameter.Direction = ParameterDirection.Output;
-
-
-            var inParameters = cmd.Parameters.Add("@AppointmentId", SqlDbType.Int);
-            inParameters.Direction = ParameterDirection.Input;
-            inParameters.Value = appointmentId;
-
-            inParameters = cmd.Parameters.Add("@ProviderId", SqlDbType.Int);
-            inParameters.Direction = ParameterDirection.Input;
-            inParameters.Value = providerId;
-
-            var returnValParameter = cmd.Parameters.Add("return_value", SqlDbType.Bit);
-            returnValParameter.Direction = ParameterDirection.ReturnValue;
-
+            conn.Open();
             cmd.CommandTimeout = 30000;
             cmd.ExecuteNonQuery();
             conn.Close();
 
-            switch (returnValParameter.Value)
+            parameter = cmd.Parameters["@result"];
+            switch (parameter.Value)
             {
                 case 0:
                     result = false;
