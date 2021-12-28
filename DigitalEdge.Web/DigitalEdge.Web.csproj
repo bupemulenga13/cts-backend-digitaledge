@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <!-- <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable> -->
@@ -13,6 +13,11 @@
     <UserSecretsId>f1f4c78c-d6cd-45bf-a32a-09d0a43c7690</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ApplicationIcon />
+    <Company>Digital Prophets</Company>
+    <Copyright>Digital Prophets Limited Zambia</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/Digital-Prophets/cts-backend-digitaledge.git</RepositoryUrl>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <!-- <OutputType>WinExe</OutputType>
     <StartupObject /> -->
   </PropertyGroup>
@@ -37,6 +42,24 @@
     <ProjectReference Include="..\DigitalEdge.Services\DigitalEdge.Services.csproj" />
     <ProjectReference Include="..\DigitalEdge.Utility\DigitalEdge.Utility.csproj" />
   </ItemGroup>
+
+
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
 
 
 
