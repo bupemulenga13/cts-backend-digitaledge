@@ -42,7 +42,7 @@ BEGIN
             SET @Result = 1
             SET @AppointmentStatus = (SELECT ClientStatusId FROM ClientStatuses WHERE ClientStatusName = 'Inactive')
             SET @AppointmentDaysLate = (SELECT DATEDIFF(DAY, @NextAppointmentDate, @Today))
-            SET @Comments = (SELECT StatusCommentName FROM StatusComments WHERE StatusCommentId = 3)
+            SET @Comments = 'Dummy'
 
             -- populate all appointments reference data
             -- update the appointments table
