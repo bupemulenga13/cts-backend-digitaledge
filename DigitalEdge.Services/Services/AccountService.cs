@@ -126,7 +126,7 @@ namespace DigitalEdge.Services
                 client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), client.Age, Convert.ToDateTime(client.EnrollmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), Convert.ToString(client.ClientPhoneNo),
                 Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.Zone, client.Village, client.HouseNo,  client.GISLocation, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
                 client.LanguageId, client.EnrolledByName, client.GeneralComment, client.EnrollmentType, client.ClientRelationship, client.AccessToPhone,
-                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetDateToday(), client.CreatedBy, client.EditedBy);
+                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, Convert.ToDateTime(client.DateCreated, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), client.DateEdit = client.GetDateToday(), client.CreatedBy, client.EditedBy);
             this._accountRepository.UpdateClient(updateclient);
         }
 
