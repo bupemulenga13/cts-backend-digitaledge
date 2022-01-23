@@ -115,10 +115,10 @@ namespace DigitalEdge.Services
 
             this._accountRepository.updateUser(adduser);
         }
-        public void UpdateAppointment(RegistrationModel appointment)
+        public void AddAttendance(RegistrationModel appointment)
         {
             Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.DateCreated, appointment.DateEdit = appointment.GetDateCreated(), appointment.CreatedBy, appointment.EditedBy);
-            this._accountRepository.UpdateAppointment(updateuser);
+            this._accountRepository.AddAttendanceService(updateuser);
         }
         public void UpdateClient(RegistrationModel client)
         {
@@ -262,6 +262,12 @@ namespace DigitalEdge.Services
                 return null;
              return (users);
                     
+        }
+
+        public void EditAppointment(RegistrationModel appointment)
+        {
+            Appointment editAppointment = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.Comment, appointment.DateCreated, appointment.DateEdit = appointment.GetDateCreated(), appointment.CreatedBy, appointment.EditedBy);
+            this._accountRepository.EditAppointmentService(editAppointment);
         }
     }
 }

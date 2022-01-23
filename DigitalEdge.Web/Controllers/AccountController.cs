@@ -93,6 +93,39 @@
             }
         }
 
+
+        [HttpPost]
+        [Route("EditAppointment")]
+        [Authorize]
+        public ActionResult EditAppointment([FromBody] RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not update appointment!" });
+            }
+            this._accountService.EditAppointment(model);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appoitnment updated successfully!" });
+
+        }
+
+        /// <summary>
+        /// The AddAttendance.
+        /// </summary>
+        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
+        [HttpPost]
+        [Route("AddAttendance")]
+        [Authorize]
+        public ActionResult AddAttendance([FromBody] RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not add appointment attendance!" });
+            }
+            this._accountService.AddAttendance(model);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appoitnment attendance added successfully!" });
+        }
+
         /// <summary>
         /// The CreateClient.
         /// </summary>
@@ -120,23 +153,6 @@
             }
         }
 
-        /// <summary>
-        /// The EditAppointment.
-        /// </summary>
-        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
-        /// <returns>The <see cref="ActionResult"/>.</returns>
-        [HttpPost]
-        [Route("EditAppointment")]
-        [Authorize]
-        public ActionResult EditAppointment([FromBody] RegistrationModel model)
-        {
-            if (model == null)
-            {
-                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not update appointment!" });
-            }
-            this._accountService.UpdateAppointment(model);
-            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appointment update successfull!" });
-        }
 
         /// <summary>
         /// The EditClient.
