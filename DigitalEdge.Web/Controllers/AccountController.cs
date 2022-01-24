@@ -1,21 +1,41 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using DigitalEdge.Services;
-using DigitalEdge.Domain;
-using Microsoft.AspNetCore.Authorization;
-using DigitalEdge.Utility;
-
-namespace DigitalEdge.Web.Controllers
+﻿namespace DigitalEdge.Web.Controllers
 {
+    using DigitalEdge.Domain;
+    using DigitalEdge.Services;
+    using DigitalEdge.Utility;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+
+    /// <summary>
+    /// Defines the <see cref="AccountController" />.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
 
     public class AccountController : ControllerBase
     {
+        /// <summary>
+        /// Defines the _accountService.
+        /// </summary>
         private readonly IAccountService _accountService;
+
+        /// <summary>
+        /// Defines the _visitService.
+        /// </summary>
         private readonly IVisitService _visitService;
+
+        /// <summary>
+        /// Defines the _config.
+        /// </summary>
         private readonly IConfiguration _config;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
+        /// <param name="accountService">The accountService<see cref="IAccountService"/>.</param>
+        /// <param name="config">The config<see cref="IConfiguration"/>.</param>
+        /// <param name="visitService">The visitService<see cref="IVisitService"/>.</param>
         public AccountController(IAccountService accountService, IConfiguration config, IVisitService visitService)
         {
             this._accountService = accountService;
@@ -23,6 +43,11 @@ namespace DigitalEdge.Web.Controllers
             this._config = config;
         }
 
+        /// <summary>
+        /// The Login.
+        /// </summary>
+        /// <param name="model">The model<see cref="UserModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
@@ -37,6 +62,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new { user, token });
         }
 
+        /// <summary>
+        /// The CreateAppointment.
+        /// </summary>
+        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("CreateAppointment")]
         [Authorize]
@@ -63,6 +93,44 @@ namespace DigitalEdge.Web.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("EditAppointment")]
+        [Authorize]
+        public ActionResult EditAppointment([FromBody] RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not update appointment!" });
+            }
+            this._accountService.EditAppointment(model);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appoitnment updated successfully!" });
+
+        }
+
+        /// <summary>
+        /// The AddAttendance.
+        /// </summary>
+        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
+        [HttpPost]
+        [Route("AddAttendance")]
+        [Authorize]
+        public ActionResult AddAttendance([FromBody] RegistrationModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not add appointment attendance!" });
+            }
+            this._accountService.AddAttendance(model);
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appoitnment attendance added successfully!" });
+        }
+
+        /// <summary>
+        /// The CreateClient.
+        /// </summary>
+        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("CreateClient")]
         [Authorize]
@@ -86,20 +154,11 @@ namespace DigitalEdge.Web.Controllers
         }
 
 
-        [HttpPost]
-        [Route("EditAppointment")]
-        [Authorize]
-        public ActionResult EditAppointment([FromBody] RegistrationModel model)
-        {
-            if (model == null)
-            {
-                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Could not update appointment!" });
-            }
-            this._accountService.UpdateAppointment(model);
-            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Appointment update successfull!" });
-
-        }
-
+        /// <summary>
+        /// The EditClient.
+        /// </summary>
+        /// <param name="model">The model<see cref="RegistrationModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("EditClient")]
         [Authorize]
@@ -113,9 +172,10 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client details successfully updated!" });
         }
 
-
-
-
+        /// <summary>
+        /// The GetData.
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetData")]
         [Authorize]
@@ -124,7 +184,12 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.GetData();
             return Ok(user);
         }
-        
+
+        /// <summary>
+        /// The GetUsersByFacility.
+        /// </summary>
+        /// <param name="facilityId">The facilityId<see cref="long"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetUsersByFacility/{facilityId}")]
         [Authorize]
@@ -134,6 +199,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// The GetData.
+        /// </summary>
+        /// <param name="id">The id<see cref="long"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetData/{id}")]
         [Authorize]
@@ -143,6 +213,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// The GetAppointment.
+        /// </summary>
+        /// <param name="id">The id<see cref="long"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetAppointment/{id}")]
         [Authorize]
@@ -151,8 +226,12 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.GetAppointment(id);
             return Ok(user);
         }
-       
 
+        /// <summary>
+        /// The Create.
+        /// </summary>
+        /// <param name="user">The user<see cref="UserModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("Create")]
         [Authorize]
@@ -166,6 +245,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "User successfully created" });
         }
 
+        /// <summary>
+        /// The AddViralLoadResult.
+        /// </summary>
+        /// <param name="addVLresult">The addVLresult<see cref="ViralLoadModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("AddViralLoadResult")]
         [Authorize]
@@ -179,6 +263,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Viral Load result successfully added" });
         }
 
+        /// <summary>
+        /// The Edit.
+        /// </summary>
+        /// <param name="updateuser">The updateuser<see cref="UserModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPut]
         [Route("Edit")]
         [Authorize]
@@ -192,6 +281,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "User details successfully updated!" });
         }
 
+        /// <summary>
+        /// The Delete.
+        /// </summary>
+        /// <param name="deleteuser">The deleteuser<see cref="UserModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("Delete")]
         [Authorize]
@@ -201,6 +295,10 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "User successfully deleted" });
         }
 
+        /// <summary>
+        /// The GetRoles.
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetRoles")]
         [Authorize]
@@ -210,6 +308,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(userroles);
         }
 
+        /// <summary>
+        /// The CreateFacility.
+        /// </summary>
+        /// <param name="userFacility">The userFacility<see cref="UserBindingModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("CreateFacility")]
         [Authorize]
@@ -220,8 +323,13 @@ namespace DigitalEdge.Web.Controllers
                 return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Failed to create facility" });
             else
                 return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Facility successfully created!" });
-
         }
+
+        /// <summary>
+        /// The ServicePointCreate.
+        /// </summary>
+        /// <param name="servicePoint">The servicePoint<see cref="ServicePointModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("ServicePointCreate")]
         [Authorize]
@@ -232,8 +340,12 @@ namespace DigitalEdge.Web.Controllers
                 return BadRequest(new ServiceResponse() { Success = false, Message = "Failed to create service point", StatusCode = 500 });
             else
                 return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
-
         }
+
+        /// <summary>
+        /// The GetFacilityData.
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetFacilityData")]
         [Authorize]
@@ -243,6 +355,10 @@ namespace DigitalEdge.Web.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// The GetFacilityUserData.
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetFacilityUserData")]
         [Authorize]
@@ -251,6 +367,11 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.getFacilityUserData();
             return Ok(user);
         }
+
+        /// <summary>
+        /// The GetServiceData.
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
         [Route("GetServiceData")]
         [Authorize]
@@ -259,6 +380,12 @@ namespace DigitalEdge.Web.Controllers
             var user = _accountService.getServiceData();
             return Ok(user);
         }
+
+        /// <summary>
+        /// The DeleteFacility.
+        /// </summary>
+        /// <param name="deleteuser">The deleteuser<see cref="UserBindingModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("DeleteFacility")]
         [Authorize]
@@ -268,6 +395,12 @@ namespace DigitalEdge.Web.Controllers
 
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
         }
+
+        /// <summary>
+        /// The ServicePointUpdate.
+        /// </summary>
+        /// <param name="updateservice">The updateservice<see cref="ServicePointModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("ServicePointUpdate")]
         [Authorize]
@@ -278,6 +411,11 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200 });
         }
 
+        /// <summary>
+        /// The UpdatefacilityUser.
+        /// </summary>
+        /// <param name="facilityModel">The facilityModel<see cref="FacilityModel"/>.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpPost]
         [Route("UpdatefacilityUser")]
         [Authorize]
@@ -292,6 +430,10 @@ namespace DigitalEdge.Web.Controllers
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Facility details updated successfully!" });
         }
 
+        /// <summary>
+        /// The CountUsers.
+        /// </summary>
+        /// <returns>The <see cref="int"/>.</returns>
         [HttpGet]
         [Route("CountUsers")]
         [Authorize]
@@ -299,7 +441,12 @@ namespace DigitalEdge.Web.Controllers
         {
             return _accountService.CountUsers();
         }
-        
+
+        /// <summary>
+        /// The CountUsersInFacility.
+        /// </summary>
+        /// <param name="facilityId">The facilityId<see cref="long"/>.</param>
+        /// <returns>The <see cref="int"/>.</returns>
         [HttpGet]
         [Route("CountUsersInFacility")]
         [Authorize]
@@ -308,6 +455,10 @@ namespace DigitalEdge.Web.Controllers
             return _accountService.CountUsersInFacility(facilityId);
         }
 
+        /// <summary>
+        /// The ActiveUsers.
+        /// </summary>
+        /// <returns>The <see cref="int"/>.</returns>
         [HttpGet]
         [Route("ActiveUsers")]
         [Authorize]
@@ -315,8 +466,5 @@ namespace DigitalEdge.Web.Controllers
         {
             return _accountService.ActiveUsers();
         }
-
-
-
     }
 }

@@ -410,7 +410,7 @@ namespace DigitalEdge.Repository
                                                        Age = clients.Age,
                                                        Zone = clients.Zone,
                                                        Village = clients.Village,
-                                                       HouseNo = clients.HouseNo,
+                                                       HouseNo = clients.HouseNo, 
                                                        GISLocation = clients.GISLocation,
                                                        GeneralComment = clients.GeneralComment,
                                                        EnrolledByName = clients.EnrolledByName,
@@ -420,6 +420,7 @@ namespace DigitalEdge.Repository
                                                        EnrollmentDate = clients.EnrollmentDate,
                                                        EnrolledByPhone = clients.EnrolledByPhone,
                                                        FacilityId = clients.FacilityId,
+                                                       Facility = facility.FacilityName,
                                                        ClientTypeId = clients.ClientTypeId,
                                                        ServicePointId = clients.ServicePointId,
                                                        LanguageId = clients.LanguageId,
@@ -434,10 +435,14 @@ namespace DigitalEdge.Repository
                                                        ClientStatus = status.ClientStatusName,
                                                        ClientType = clients.ClientTypes.ClientTypeName,
                                                        StatusComment = clients.StatusComments.StatusCommentName,
-                                                       Sex = sex.SexName,
-                                                       Facility = facility.FacilityName                                                   }
+                                                       Sex = sex.SexName,                                                       
+                                                       DateCreated = clients.DateCreated,
+                                                       DateEdit = clients.DateEdit,
+                                                       CreatedBy = clients.CreatedBy,
+                                                       EditBy = clients.EditBy
+                                                   }
 
-                ).OrderByDescending(c => c.EnrollmentDate >= DateTime.Now).ToList();
+                ).OrderByDescending(c => c.DateCreated).ToList();
 
             return clientsInFacility;
 
@@ -1867,7 +1872,7 @@ namespace DigitalEdge.Repository
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).OrderByDescending(c => c.AppointmentDate >= DateTime.Now).ToList();
+                                                    ).OrderBy(c => c.AppointmentDate == DateTime.Now).ThenByDescending(c => c.DateCreated).ToList();
             return appointments;
         }
 

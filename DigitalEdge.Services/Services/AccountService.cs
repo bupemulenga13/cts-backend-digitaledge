@@ -115,10 +115,10 @@ namespace DigitalEdge.Services
 
             this._accountRepository.updateUser(adduser);
         }
-        public void UpdateAppointment(RegistrationModel appointment)
+        public void AddAttendance(RegistrationModel appointment)
         {
             Appointment updateuser = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.GetInteractionDateAndTime(), appointment.AppointmentStatus, appointment.Comment, appointment.DateCreated, appointment.DateEdit = appointment.GetDateCreated(), appointment.CreatedBy, appointment.EditedBy);
-            this._accountRepository.UpdateAppointment(updateuser);
+            this._accountRepository.AddAttendanceService(updateuser);
         }
         public void UpdateClient(RegistrationModel client)
         {
@@ -126,7 +126,7 @@ namespace DigitalEdge.Services
                 client.StatusCommentId, client.FacilityId, Convert.ToDateTime(client.DateOfBirth, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), client.Age, Convert.ToDateTime(client.EnrollmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), Convert.ToString(client.ClientPhoneNo),
                 Convert.ToString(client.AlternativePhoneNumber1), client.PhoneVerifiedByAnalyst, client.PhoneVerifiedByFacilityStaff, client.Zone, client.Village, client.HouseNo,  client.GISLocation, Convert.ToString(client.EnrolledByPhone), client.ServicePointId,
                 client.LanguageId, client.EnrolledByName, client.GeneralComment, client.EnrollmentType, client.ClientRelationship, client.AccessToPhone,
-                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, client.DateCreated, client.DateEdit = client.GetDateToday(), client.CreatedBy, client.EditedBy);
+                client.HamornizedMobilePhone, client.HarmonizedPhysicalAddress, Convert.ToDateTime(client.DateCreated, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), client.DateEdit = client.GetDateToday(), client.CreatedBy, client.EditedBy);
             this._accountRepository.UpdateClient(updateclient);
         }
 
@@ -262,6 +262,12 @@ namespace DigitalEdge.Services
                 return null;
              return (users);
                     
+        }
+
+        public void EditAppointment(RegistrationModel appointment)
+        {
+            Appointment editAppointment = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.Comment, appointment.DateCreated, appointment.DateEdit = appointment.GetDateCreated(), appointment.CreatedBy, appointment.EditedBy);
+            this._accountRepository.EditAppointmentService(editAppointment);
         }
     }
 }

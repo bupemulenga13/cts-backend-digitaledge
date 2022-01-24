@@ -28,10 +28,6 @@ namespace DigitalEdge.Domain
         public string ClientPhoneNo { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public int? Age { get; set; }
-        public int CurrentAge { get; set; }
-        public string NextOfKinName { get; set; }
-        public long NextOfKinContact { get; set; }
-        public long NextOfClientID { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateEdit { get; set; }
         public long? EditBy { get; set; }
@@ -40,7 +36,6 @@ namespace DigitalEdge.Domain
         public string GeneralComment { get; set; }
         public string EnrolledByName { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
-        public string AlternativePhoneNumber2 { get; set; }
         public bool? PhoneVerifiedByAnalyst { get; set; }
         public bool? PhoneVerifiedByFacilityStaff { get; set; }
         public DateTime? EnrollmentDate { get; set; }
@@ -59,10 +54,8 @@ namespace DigitalEdge.Domain
         public string StatusComment { get; set; }
 
         public long? ServicePointId { get; set; }
-        public string ServicePoint { get; set; }
 
         public long? LanguageId { get; set; }
-        public string Language { get; set; }
 
         public long? SexId { get; set; }
         public string Sex { get; set; }
@@ -85,31 +78,6 @@ namespace DigitalEdge.Domain
 
         public string GISLocation { get; set; }
 
-        public long? DistrictId { get; set; }
-
-        public string DistrictName { get; set; }
-
-        #region Appointment Properties
-        public string AppointmentDate { get; set; }
-        public string AppointmentTime { get; set; }
-        public int AppointmentStatus { get; set; }
-        public string InteractionDate { get; set; }
-        public string InteractionTime { get; set; }
-        public DateTime? DateEdited { get; set; }
-        public long? EditedBy { get; set; }
-
-
-        public long? ServiceTypeId { get; set; }
-
-        // Newly added properties from CTS
-
-        public long AppointmentId { get; set; }
-
-        public string Comment { get; set; }
-
-
-
-        #endregion
     }
 }
 

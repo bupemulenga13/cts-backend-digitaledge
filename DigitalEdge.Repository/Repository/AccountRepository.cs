@@ -137,7 +137,7 @@ namespace DigitalEdge.Repository
             this._loginRepository.Update(users);
         }
 
-        public void UpdateAppointment(Appointment users)
+        public void AddAttendanceService(Appointment users)
         {
             this._appointmentRepository.Update(users);
         }
@@ -292,6 +292,11 @@ namespace DigitalEdge.Repository
                                          RoleId = c.RoleId
                                      }).ToList();
             return users;
+        }
+
+        public void EditAppointmentService(Appointment appointment)
+        {
+            this._appointmentRepository.Update(appointment);
         }
     }
 }
