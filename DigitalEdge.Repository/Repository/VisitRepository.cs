@@ -2062,13 +2062,13 @@ namespace DigitalEdge.Repository
             return query.ToList();
         }
 
-        public RegistrationModel GetClientVlResultDetails(long id)
+        public ViralLoadModel GetClientVlResultDetails(long id)
         {
             var query = (from viralload in _DigitalEdgeContext.ViralLoadResults
                          join client in _DigitalEdgeContext.Clients on viralload.ClientId equals client.ClientId into ClientViralLoad
                          from clientVl in ClientViralLoad.DefaultIfEmpty()
                          where (viralload.ViralLoadId == id)
-                         select new RegistrationModel
+                         select new ViralLoadModel
                          {
 
                              ViralLoadId = viralload.ViralLoadId,

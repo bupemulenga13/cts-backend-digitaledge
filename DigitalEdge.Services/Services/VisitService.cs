@@ -802,7 +802,7 @@ namespace DigitalEdge.Services
             return _visitRepository.SearchAppointment(searchTerm);
         }
 
-        public RegistrationModel getClientVLDetails(long id)
+        public ViralLoadModel getClientVLDetails(long id)
         {
             return _visitRepository.GetClientVlResultDetails(id);   
         }
