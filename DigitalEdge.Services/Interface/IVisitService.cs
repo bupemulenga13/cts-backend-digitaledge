@@ -75,5 +75,7 @@ namespace DigitalEdge.Services
         int CountFacilitiesInDistrict(long districtId);
         RegistrationModel GetClientAppointment(long id);
         IEnumerable<SearchModel> SearchAppointment(string searchterm);
+        RegistrationModel getClientVLDetails(long id);
+        List<ViralLoadModel> getClientVLResults(long id);
     }
 }

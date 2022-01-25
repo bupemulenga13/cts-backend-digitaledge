@@ -801,5 +801,19 @@ namespace DigitalEdge.Services
         {   
             return _visitRepository.SearchAppointment(searchTerm);
         }
+
+        public RegistrationModel getClientVLDetails(long id)
+        {
+            return _visitRepository.GetClientVlResultDetails(id);   
+        }
+
+        public List<ViralLoadModel> getClientVLResults(long id)
+        {
+            List<ViralLoadModel> clientVL = _visitRepository.GetClientVLList(id).ToList();
+
+            if (clientVL == null)
+                return null;
+            return (clientVL);
+        }
     }
 }
