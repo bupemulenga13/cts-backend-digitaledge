@@ -39,5 +39,6 @@ namespace DigitalEdge.Repository
         int CountUsersInFacility(long facilityId);
         List<UserModel> GetUsersByFacility(long facilityId);
         void EditAppointmentService(Appointment updateuser);
+        string EditVLResult(ViralLoad viralLoad);
     }
 }

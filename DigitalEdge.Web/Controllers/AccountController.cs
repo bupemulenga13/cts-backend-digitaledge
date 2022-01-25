@@ -261,6 +261,20 @@
             }
             this._accountService.AddViralLoad(addVLresult);
             return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Viral Load result successfully added" });
+        } 
+
+        
+        [HttpPost]
+        [Route("EditViralLoadResult")]
+        [Authorize]
+        public ActionResult EditViralLoadResult([FromBody] ViralLoadModel addVLresult)
+        {
+            if (addVLresult == null)
+            {
+                return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Error: Failed to edit viral load result" });
+            }
+            this._accountService.EditViralLoad(addVLresult);    
+            return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client viral Load updated successfully" });
         }
 
         /// <summary>

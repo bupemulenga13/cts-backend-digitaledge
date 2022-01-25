@@ -385,6 +385,27 @@ namespace DigitalEdge.Web.Controllers
             return Ok(client);
         }
 
+
+        [HttpGet]
+        [Route("GetClientVLResults/{id}")]
+        [Authorize]
+        public ActionResult GetClientVlResults(long id)     
+        {
+            var clientvl = _visitService.getClientVLResults(id);    
+
+            return Ok(clientvl);
+        }
+        
+        [HttpGet]
+        [Route("ViewClientVLDetails/{id}")]
+        [Authorize]
+        public ActionResult ViewClientVLDetails(long id)    
+        {
+            var clientvl = _visitService.getClientVLDetails(id); 
+
+            return Ok(clientvl);
+        }
+
         [HttpGet]
         [Route("GetAppointment")]
         [Authorize]
@@ -404,7 +425,8 @@ namespace DigitalEdge.Web.Controllers
             var appointment = _visitService.GetClientAppointment(id);
 
             return Ok(appointment);
-        }
+        } 
+      
 
         [HttpGet]
         [Route("GetVisit")]

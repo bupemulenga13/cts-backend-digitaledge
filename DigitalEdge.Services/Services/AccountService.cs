@@ -248,6 +248,15 @@ namespace DigitalEdge.Services
             return vlResult;
 
         }
+        public string EditViralLoad(ViralLoadModel editVLresult)
+        {
+            ViralLoad viralLoad = new ViralLoad(editVLresult.ViralLoadId, editVLresult.ClientId, editVLresult.InitialViralLoadCount, editVLresult.CurrentViralLoadCount, editVLresult.NextVLDueDate, editVLresult.DateCreated);
+
+           string result = _accountRepository.EditVLResult(viralLoad);
+
+           return result;
+;
+        }
 
         public int CountUsersInFacility(long facilityId)
         {
@@ -269,5 +278,6 @@ namespace DigitalEdge.Services
             Appointment editAppointment = new Appointment(appointment.AppointmentId, Convert.ToInt64(appointment.ClientId), Convert.ToInt64(appointment.FacilityId), Convert.ToInt64(appointment.ServiceTypeId), Convert.ToDateTime(appointment.AppointmentDate, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat), appointment.Comment, appointment.DateCreated, appointment.DateEdit = appointment.GetDateCreated(), appointment.CreatedBy, appointment.EditedBy);
             this._accountRepository.EditAppointmentService(editAppointment);
         }
+
     }
 }

@@ -2061,5 +2061,53 @@ namespace DigitalEdge.Repository
 
             return query.ToList();
         }
+
+        public ViralLoadModel GetClientVlResultDetails(long id)
+        {
+            var query = (from viralload in _DigitalEdgeContext.ViralLoadResults
+                         join client in _DigitalEdgeContext.Clients on viralload.ClientId equals client.ClientId into ClientViralLoad
+                         from clientVl in ClientViralLoad.DefaultIfEmpty()
+                         where (viralload.ViralLoadId == id)
+                         select new ViralLoadModel
+                         {
+
+                             ViralLoadId = viralload.ViralLoadId,
+                             ClientId = clientVl.ClientId,
+                             FirstName = clientVl.FirstName,
+                             LastName = clientVl.LastName,
+                             ArtNo = clientVl.ArtNo,
+                             InitialViralLoadCount = viralload.InitialViralLoadCount,
+                             CurrentViralLoadCount = viralload.CurrentViralLoadCount,
+                             NextVLDueDate = viralload.NextVLDueDate
+
+                         }).SingleOrDefault();
+
+
+            return query;
+        }
+
+        public List<ViralLoadModel> GetClientVLList(long id)
+        {
+            List<ViralLoadModel> query = (from viralload in _DigitalEdgeContext.ViralLoadResults
+                                          join client in _DigitalEdgeContext.Clients on viralload.ClientId equals client.ClientId into ClientViralLoad
+                                          from clientVl in ClientViralLoad.DefaultIfEmpty()
+                                          where (viralload.ClientId == id)
+                                          select new ViralLoadModel
+                                          {
+
+                                              ViralLoadId = viralload.ViralLoadId,
+                                              ClientId = clientVl.ClientId,
+                                              FirstName = clientVl.FirstName,
+                                              LastName = clientVl.LastName,
+                                              ArtNo = clientVl.ArtNo,
+                                              InitialViralLoadCount = viralload.InitialViralLoadCount,
+                                              CurrentViralLoadCount = viralload.CurrentViralLoadCount,
+                                              NextVLDueDate = viralload.NextVLDueDate,
+                                              DateCreated = viralload.DateCreated
+
+                                          }).OrderByDescending(vl => vl.DateCreated).ToList();
+
+            return query;
+        }
     }
 }
