@@ -19,6 +19,7 @@ namespace DigitalEdge.Repository
         List<AppointmentsModel> GetAppointmentsDetailsMissed();
         List<AppointmentsModel> GetAppointmentsMissedFilter(VisitsModel filterdata);
         List<AppointmentsModel> GetClientDetails();
+        List<AppointmentsModel> GetAppointmentsByClientId(RegistrationModel filterdata);
         List<ClientModel> GetClientDetails(string searchTerm);
         List<ClientModel> GetClients();
         List<AppointmentsModel> GetAppointments();

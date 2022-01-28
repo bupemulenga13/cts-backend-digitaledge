@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="AccountController" />.
@@ -72,24 +73,61 @@
         [Authorize]
         public ActionResult CreateAppointment([FromBody] RegistrationModel model)
         {
+            var newAppoinmentResponse = Ok(new ServiceResponse() { StatusCode = 400 });
+            var appointmentIsValid = true;
             if (model == null)
             {
-                return Ok(new ServiceResponse() { StatusCode = 400 });
+                return newAppoinmentResponse;
             }
+
             var user = _accountService.ValidateClient(model);
             if (user.ArtNo != model.ArtNo)
             {
-                return NotFound(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Client not found, enroll client before creating appointment!" });
-
+                return NotFound(new ServiceResponse()
+                {
+                    Success = false,
+                    StatusCode = 400,
+                    Message = "Client not found, enroll client before creating appointment!"
+                });
             }
             else
             {
+                var appointments = _visitService.getAppointmentsDetailsByClientId(model);
+                var dtFormat = string.Format("{0} {1}", model.AppointmentDate, model.AppointmentTime);
+                DateTime appDate = DateTime.Parse(dtFormat);
+                foreach (var appointment in appointments)
+                {
+                    // for threading sake, only appointments occuring on this day will be checked first
+                    if (appDate == appointment.AppointmentDate)
+                    {
+                        
+                        if(model.AppointmentStatus == appointment.AppointmentStatus && model.ServiceTypeId == appointment.ServiceTypeId)
+                        {
+                            appointmentIsValid = false;
+                        }
+                    }
+                }
+            }
+            if (appointmentIsValid == true)
+            {
+                // safe to create new appointment 
                 model.ClientId = (user.ClientId);
                 string result = this._accountService.AddAppointment(model);
                 if (result == "null")
-                    return BadRequest(new ServiceResponse() { Success = false, StatusCode = 400, Message = "Appointment model empty" });
+                    return BadRequest(new ServiceResponse()
+                    { Success = false, StatusCode = 400, Message = "Appointment model empty" });
                 else
-                    return Ok(new ServiceResponse() { Success = true, StatusCode = 200, Message = "Client appointment successfully created!" });
+                    return Ok(new ServiceResponse()
+                    { Success = true, StatusCode = 200, Message = "Client appointment successfully created!" });
+            }
+            else
+            {
+                return BadRequest(new ServiceResponse()
+                {
+                    Success = false,
+                    StatusCode = 401,
+                    Message = "Appointment for this service and date already exists."
+                });
             }
         }
 

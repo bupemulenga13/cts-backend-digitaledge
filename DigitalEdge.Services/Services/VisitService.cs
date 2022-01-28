@@ -141,7 +141,20 @@ namespace DigitalEdge.Services
             if (userAppointement == null)
                 return null;
             return (userAppointement);
-        }  
+        }
+        public List<AppointmentsModel> getAppointmentsDetailsByClientId(RegistrationModel data)
+        {
+            List<AppointmentsModel> userAppointement = _visitRepository.GetAppointmentsByClientId(data).ToList();
+            foreach (var user in userAppointement)
+            {
+                user.NextAppointmentDate = user.NextAppointmentDate == DateTime.MinValue ? null : user.NextAppointmentDate;
+                user.PriorAppointmentDate = user.PriorAppointmentDate == DateTime.MinValue ? null : user.PriorAppointmentDate;
+
+            }
+            if (userAppointement == null)
+                return null;
+            return (userAppointement);
+        }
         public List<AppointmentsModel> getMissedVisitsDetails()
         {
             List<AppointmentsModel> userAppointement = _visitRepository.GetMissedVisitsDetails().ToList();

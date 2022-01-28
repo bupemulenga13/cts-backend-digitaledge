@@ -17,6 +17,7 @@ namespace DigitalEdge.Services
         List<AppointmentsModel> getUpcommingVisitsDetails();
         List<AppointmentsModel> getUpcommingVisitsDetails(VisitsModel data);
         List<AppointmentsModel> getMissedVisitsDetails();
+        List<AppointmentsModel> getAppointmentsDetailsByClientId(RegistrationModel filterdata);
         List<AppointmentsModel> getVisitsMissedFilter(VisitsModel data);
         List<AppointmentsModel> getClientDetails();
         List<ClientModel> getClientDetails(string searchTerm);
