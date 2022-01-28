@@ -2076,9 +2076,9 @@ namespace DigitalEdge.Repository
                              FirstName = clientVl.FirstName,
                              LastName = clientVl.LastName,
                              ArtNo = clientVl.ArtNo,
-                             InitialViralLoadCount = viralload.InitialViralLoadCount,
-                             CurrentViralLoadCount = viralload.CurrentViralLoadCount,
-                             NextVLDueDate = viralload.NextVLDueDate
+                             InitialViralLoadCount = viralload.InitialViralLoadCount.ToString(),
+                             CurrentViralLoadCount = viralload.CurrentViralLoadCount.ToString(),
+                             NextVLDueDate = viralload.NextVLDueDate.Value.ToString("dd/mm/yyyy")
 
                          }).SingleOrDefault();
 
@@ -2100,9 +2100,9 @@ namespace DigitalEdge.Repository
                                               FirstName = clientVl.FirstName,
                                               LastName = clientVl.LastName,
                                               ArtNo = clientVl.ArtNo,
-                                              InitialViralLoadCount = viralload.InitialViralLoadCount,
-                                              CurrentViralLoadCount = viralload.CurrentViralLoadCount,
-                                              NextVLDueDate = viralload.NextVLDueDate,
+                                              InitialViralLoadCount = viralload.InitialViralLoadCount.ToString(),
+                                              CurrentViralLoadCount = viralload.CurrentViralLoadCount.ToString(),
+                                              NextVLDueDate = viralload.NextVLDueDate.Value.ToString("dd/MM/yyyy"),
                                               DateCreated = viralload.DateCreated
 
                                           }).OrderByDescending(vl => vl.DateCreated).ToList();

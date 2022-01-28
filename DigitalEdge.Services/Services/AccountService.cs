@@ -241,7 +241,7 @@ namespace DigitalEdge.Services
 
         public string AddViralLoad(ViralLoadModel viralLoad)
         {
-            ViralLoad result = new ViralLoad(viralLoad.ViralLoadId, viralLoad.ClientId, viralLoad.InitialViralLoadCount, viralLoad.CurrentViralLoadCount, viralLoad.NextVLDueDate, viralLoad.DateCreated = DateTime.Now);
+            ViralLoad result = new ViralLoad(viralLoad.ViralLoadId, viralLoad.ClientId, Int32.Parse(viralLoad.InitialViralLoadCount), Int32.Parse(viralLoad.CurrentViralLoadCount), DateTime.Parse(viralLoad.NextVLDueDate), viralLoad.DateCreated = DateTime.Now);
 
             string vlResult = _accountRepository.AddVLResult(result);
 
@@ -250,7 +250,7 @@ namespace DigitalEdge.Services
         }
         public string EditViralLoad(ViralLoadModel editVLresult)
         {
-            ViralLoad viralLoad = new ViralLoad(editVLresult.ViralLoadId, editVLresult.ClientId, editVLresult.InitialViralLoadCount, editVLresult.CurrentViralLoadCount, editVLresult.NextVLDueDate, editVLresult.DateCreated);
+            ViralLoad viralLoad = new ViralLoad(editVLresult.ViralLoadId, editVLresult.ClientId, Int32.Parse(editVLresult.InitialViralLoadCount), Int32.Parse(editVLresult.CurrentViralLoadCount), DateTime.Parse( editVLresult.NextVLDueDate), editVLresult.DateCreated);
 
            string result = _accountRepository.EditVLResult(viralLoad);
 

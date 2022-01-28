@@ -804,7 +804,7 @@ namespace DigitalEdge.Services
 
         public ViralLoadModel getClientVLDetails(long id)
         {
-            return _visitRepository.GetClientVlResultDetails(id);   
+            return _visitRepository.GetClientVlResultDetails(id);
         }
 
         public List<ViralLoadModel> getClientVLResults(long id)

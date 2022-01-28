@@ -14,11 +14,11 @@ namespace DigitalEdge.Domain
 
         public long ClientId { get; set; }
 
-        public int? InitialViralLoadCount { get; set; }
+        public string InitialViralLoadCount { get; set; }
 
-        public int? CurrentViralLoadCount { get; set; }
+        public string CurrentViralLoadCount { get; set; }
 
-        public DateTime? NextVLDueDate { get; set; }
+        public string NextVLDueDate { get; set; }
 
         public DateTime? DateCreated { get; set; }
 
