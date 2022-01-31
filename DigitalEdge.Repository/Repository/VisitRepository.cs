@@ -185,6 +185,29 @@ namespace DigitalEdge.Repository
 
             return appointmentsmissedfilter;
         }
+
+        public List<AppointmentsModel> GetAppointmentsByClientId(RegistrationModel missedfilter)
+        {
+
+            List<AppointmentsModel> appointmentsmissedfilter = (from appointment in _DigitalEdgeContext.Appointments
+                                                                join visit in _DigitalEdgeContext.Visits on appointment.AppointmentId equals visit.AppointmentId into appointments
+                                                                from visits in appointments.DefaultIfEmpty()
+                                                                join client in _DigitalEdgeContext.Clients on appointment.ClientId equals client.ClientId into list
+                                                                from clients in list.DefaultIfEmpty()
+                                                                where appointment.ClientId == missedfilter.ClientId
+                                                                select new AppointmentsModel
+                                                                {
+                                                                    Id = appointment.AppointmentId,
+                                                                    ClientId = clients.ClientId,
+                                                                    AppointmentDate = appointment.AppointmentDate,
+                                                                    AppointmentTime = appointment.AppointmentDate,
+                                                                    ServiceTypeId = appointment.ServiceTypeId,
+                                                                    AppointmentStatus = appointment.AppointmentStatus
+                                                                }).ToList();
+
+            return appointmentsmissedfilter;
+        }
+
         public List<AppointmentsModel> GetUpcommingVisitsDetailsfilter(VisitsModel filterdata)
         {
             List<AppointmentsModel> upcommingvisitsdetailsfilter = (from appointment in _DigitalEdgeContext.Appointments
@@ -1872,7 +1895,7 @@ namespace DigitalEdge.Repository
                                                         CreatedBy = appointment.CreatedBy,
                                                         EditedBy = appointment.EditedBy
                                                     }
-                                                    ).OrderBy(c => c.AppointmentDate == DateTime.Now).ThenByDescending(c => c.DateCreated).ToList();
+                                                    ).OrderByDescending(c => c.DateCreated).ThenByDescending(c => c.DateEdited).ToList();
             return appointments;
         }
 
